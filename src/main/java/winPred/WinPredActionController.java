@@ -1,6 +1,9 @@
-package shortform;
+package winPred;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,10 +11,18 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1")
 
-public class ShortformActionController {
+public class WinPredActionController {
 
-    @GetMapping("short/list")
-    public Map<String, String> list() {
+    @GetMapping("win/month/list")
+    public Map<String, String> monthList() {
+        Map<String, String> response = new HashMap<String, String>();
+        response.put("name", "taehong.kim");
+        response.put("age", "28");
+        response.put("email", "xxxxxxxx@gmail.com");
+        return response;
+    }
+    @PostMapping("win/month/insert")
+    public Map<String, String> monthInsert() {
         Map<String, String> response = new HashMap<String, String>();
         response.put("name", "taehong.kim");
         response.put("age", "28");
@@ -19,33 +30,18 @@ public class ShortformActionController {
         return response;
     }
 
-    @GetMapping("short/search")
-    public Map<String, String> search() {
-        //숏폼검색
-        //해시태그검색
-        //네임태그검색
+    @GetMapping("win/week/list")
+    public Map<String, String> weekList() {
         Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "taehong.kim");
+        response.put("name", "win week list");
         response.put("age", "28");
         response.put("email", "xxxxxxxx@gmail.com");
         return response;
     }
-
-    @PostMapping("short/upload")
-    public Map<String, String> upload() {
-        //편집 영상 업로드
+    @PostMapping("win/week/insert")
+    public Map<String, String> weekInsert() {
         Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "taehong.kim");
-        response.put("age", "28");
-        response.put("email", "xxxxxxxx@gmail.com");
-        return response;
-    }
-
-    @PostMapping("short/Favorit")
-    public Map<String, String> favorit() {
-        //편집 영상 업로드
-        Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "taehong.kim");
+        response.put("name", "win week insert");
         response.put("age", "28");
         response.put("email", "xxxxxxxx@gmail.com");
         return response;
