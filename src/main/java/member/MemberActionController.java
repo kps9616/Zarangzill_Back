@@ -69,4 +69,67 @@ public class MemberActionController {
         return response;
     }
 
+
+    @GetMapping("member/channel/movie")
+    public Map<String, String> channelMovie() {
+        //편집 영상 업로드
+        Map<String, String> response = new HashMap<String, String>();
+        response.put("name", "taehong.kim");
+        response.put("age", "28");
+        response.put("email", "xxxxxxxx@gmail.com");
+        return response;
+    }
+
+
+    @GetMapping("member/channel/fan/board")
+    public Map<String, String> channelFanBoard() {
+        //편집 영상 업로드
+        Map<String, String> response = new HashMap<String, String>();
+        response.put("name", "taehong.kim");
+        response.put("age", "28");
+        response.put("email", "xxxxxxxx@gmail.com");
+        return response;
+    }
+
+
+    @GetMapping("member/channel/member")
+    public Map<String, String> channelMember() {
+        //편집 영상 업로드
+        Map<String, String> response = new HashMap<String, String>();
+        response.put("name", "taehong.kim");
+        response.put("age", "28");
+        response.put("email", "xxxxxxxx@gmail.com");
+        return response;
+    }
+    @GetMapping("member/channel/report")
+    public Map<String, String> channelReport() {
+        //편집 영상 업로드
+        Map<String, String> response = new HashMap<String, String>();
+        response.put("name", "taehong.kim");
+        response.put("age", "28");
+        response.put("email", "xxxxxxxx@gmail.com");
+        return response;
+    }
+    @GetMapping("member/fan/recmm")
+    public Map<String, String> channelRecommend() {
+        //편집 영상 업로드
+        Map<String, String> response = new HashMap<String, String>();
+        response.put("name", "taehong.kim");
+        response.put("age", "28");
+        response.put("email", "xxxxxxxx@gmail.com");
+        return response;
+    }
+
+
+    @GetMapping("member/channel/subc")
+    public Map<String, String> channelSubscribe() {
+        //편집 영상 업로드
+        Map<String, String> response = new HashMap<String, String>();
+        response.put("name", "taehong.kim");
+        response.put("age", "28");
+        response.put("email", "xxxxxxxx@gmail.com");
+        return response;
+    }
+
+
 }
