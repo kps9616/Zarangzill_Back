@@ -1,25 +1,27 @@
 package login;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import login.service.LoginDTO;
+import login.service.LoginService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1")
 
 public class LoginActionController {
 
+    private final LoginService loginService;
+
     @GetMapping("login/login")
-    public Map<String, String> login() {
-        Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "taehong.kim");
-        response.put("age", "28");
-        response.put("email", "xxxxxxxx@gmail.com");
-        return response;
+    public LoginDTO login(@RequestParam Map<String, Object> map) {
+
+        LoginDTO loginDTO = loginService.getUserInfo(map);
+        return loginDTO;
     }
 
     @GetMapping("login/cert")
