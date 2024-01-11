@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ChannelMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <select id="userFanChannelList" resultType="java.util.HashMap">
+        select tch.id as channelId
+             , tch.name as channelName
+             , tch.description as channelDescription
+             , tch.profile_image as profileImage
+             , tm.name as userName
+             , tm.id as userId
+             , tm.profile_image as userProfileImage
+        from tb_channel_fan tcf
+                 inner join tb_channel tch on tch.id = tcf.channel_id
+                 inner join tb_member tm on tch.user_id = tm.id
+        where tcf.user_id = #{userId}
+    </select>
+
+    <select id="selectRecomChannelList" resultType="java.util.HashMap">
+        select tch.id as channelId
+             , tch.name as channelName
+             , tch.description as channelDescription
+             , tch.profile_image as profileImage
+             , tm.name as userName
+             , tm.id as userId
+             , tm.profile_image as userProfileImage
+        from tb_channel tch
+                 inner join tb_channel_fan tcf on tch.id = tcf.channel_id
+                 inner join tb_member tm on tch.user_id = tm.id
+        where tcf.user_id in (
+            select user_id
+            from tb_channel_fan
+            where channel_id in (${channelIds})
+              and user_id != #{userId}
+            ) AND tch.id not in (${channelIds})
+    </select>
+
+    <delete id="deleteUserFanChannel">
+        Delete
+          FROM tb_channel_fan
+         WHERE user_id = #{userId}
+           AND channel_id = #{channelId}
+    </delete>
+
+    <insert id="insertUserFanChannel">
+        INSERT INTO tb_channel_fan
+        (
+             channel_id
+             , user_id
+             , created_at
+             , updated_at
+        )
+        VALUES
+        (    #{channelId}
+            , #{userId}
+            , NOW()
+            , NOW()
+        );
+
+
+    </insert>
+
+</mapper>
