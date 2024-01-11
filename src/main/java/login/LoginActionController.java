@@ -2,8 +2,9 @@ package login;
 
 import login.service.LoginDTO;
 import login.service.LoginService;
+import login.service.SocialLoginService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -14,8 +15,11 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 
 public class LoginActionController {
+    @Autowired
+    LoginService loginService;
 
-    private final LoginService loginService;
+    @Autowired
+    SocialLoginService socialLoginService;
 
     @GetMapping("login/login")
     public LoginDTO login(@RequestParam Map<String, Object> map) {
@@ -36,4 +40,12 @@ public class LoginActionController {
         return response;
     }
 
+    /*
+     * Login Action
+     * */
+    @RequestMapping(value = "/login/oauth2", produces = "application/json")
+    @GetMapping("/code/{registrationId}")
+    public String googleLogin(@RequestParam String code, @PathVariable String registrationId) {
+        return loginService.LoginAction(socialLoginService.socialLogin(code, registrationId));
+    }
 }

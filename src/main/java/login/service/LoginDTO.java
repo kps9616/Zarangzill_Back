@@ -1,10 +1,9 @@
 package login.service;
 
-import org.apache.ibatis.type.Alias;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.ibatis.type.Alias;
 @Alias("login")
 @Getter
 @Setter
@@ -12,6 +11,7 @@ import lombok.ToString;
 public class LoginDTO {
     String userID;
     String name;
+    String email;
     String number;
     String loginDT;
 
