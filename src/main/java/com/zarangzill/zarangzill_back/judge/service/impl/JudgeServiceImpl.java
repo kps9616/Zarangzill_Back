@@ -1,7 +1,7 @@
-package judge.service.impl;
+package com.zarangzill.zarangzill_back.judge.service.impl;
 
-import judge.service.JudgeDTO;
-import judge.service.dao.JudgeDAO;
+import com.zarangzill.zarangzill_back.judge.service.dao.JudgeDAO;
+import com.zarangzill.zarangzill_back.judge.service.JudgeDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class JudgeServiceImpl {

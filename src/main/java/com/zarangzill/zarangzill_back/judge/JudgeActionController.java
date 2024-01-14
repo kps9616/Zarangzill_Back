@@ -1,7 +1,7 @@
-package judge;
+package com.zarangzill.zarangzill_back.judge;
 
-import judge.service.JudgeDTO;
-import judge.service.JudgeService;
+import com.zarangzill.zarangzill_back.judge.service.JudgeDTO;
+import com.zarangzill.zarangzill_back.judge.service.JudgeService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,4 +1,4 @@
-package judge.service;
+package com.zarangzill.zarangzill_back.judge.service;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
