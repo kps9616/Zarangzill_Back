@@ -1,8 +1,8 @@
 package login;
 
-import login.service.LoginDTO;
-import login.service.LoginService;
-import login.service.SocialLoginService;
+import com.zarangzill.zarangzill_back.login.service.LoginDTO;
+import com.zarangzill.zarangzill_back.login.service.LoginService;
+import com.zarangzill.zarangzill_back.login.service.SocialLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

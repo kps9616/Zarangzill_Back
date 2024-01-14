@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="login.service.mapper.LoginMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
-
-    <select id="loginUser" resultType="login.service.LoginDTO">
-        SELECT id AS userID
+<mapper namespace="com.zarangzill.zarangzill_back.login.service.mapper.LoginMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
+    <sql id="LoginSql">
+            id AS userID
              , name
              , number
+    </sql>
+    <select id="loginUser" parameterType="com.zarangzill.zarangzill_back.login.service.LoginDTO" resultType="com.zarangzill.zarangzill_back.login.service.LoginDTO">
+        SELECT
+            <include refid="LoginSql"/>
         FROM tb_member
         WHERE number = #{number}
     </select>
+<!--
+    <select id="loginUser" parameterType="java.util.HashMap" resultType="com.zarangzill.zarangzill_back.login.service.LoginDTO">
+        SELECT
+        <include refid="LoginSql"/>
+        FROM tb_member
+        WHERE number = #{number}
+    </select>-->
 </mapper>

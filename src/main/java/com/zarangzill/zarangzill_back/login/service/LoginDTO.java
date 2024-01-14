@@ -1,10 +1,9 @@
-package login.service;
+package com.zarangzill.zarangzill_back.login.service;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.apache.ibatis.type.Alias;
-@Alias("login")
 @Getter
 @Setter
 @ToString

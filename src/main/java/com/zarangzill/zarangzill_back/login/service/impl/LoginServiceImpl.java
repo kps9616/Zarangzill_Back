@@ -1,28 +1,27 @@
-package login.service.impl;
+package com.zarangzill.zarangzill_back.login.service.impl;
 
-import login.service.LoginDTO;
-import login.service.LoginService;
-import login.service.SocialLoginService;
-import login.service.dao.LoginDAO;
-import org.mybatis.spring.SqlSessionTemplate;
+import com.zarangzill.zarangzill_back.login.service.LoginDTO;
+import com.zarangzill.zarangzill_back.login.service.LoginService;
+import com.zarangzill.zarangzill_back.login.service.SocialLoginService;
+import com.zarangzill.zarangzill_back.login.service.mapper.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
+@Service
 public class LoginServiceImpl implements LoginService {
-    private LoginDAO loginDAO;
 
+    @Autowired
+    private LoginMapper loginMapper;
+    @Autowired
     private SocialLoginService socialLoginService;
 
-    private SqlSessionTemplate session;
-
-
     public LoginDTO getUserInfo(Map loginMap) {
-        return loginDAO.loginUser(loginMap, session);
+        return loginMapper.loginUser(loginMap);
     }
 
     public LoginDTO getUserInfo(LoginDTO loginDTO) {
-        return loginDAO.loginUser(loginDTO, session);
+        return loginMapper.loginUser(loginDTO);
     }
 
     public String LoginAction(LoginDTO sLoginDTO){

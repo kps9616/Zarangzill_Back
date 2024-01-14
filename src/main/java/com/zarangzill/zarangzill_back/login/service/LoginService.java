@@ -1,9 +1,6 @@
-package login.service;
-
-import org.apache.ibatis.annotations.Mapper;
+package com.zarangzill.zarangzill_back.login.service;
 
 import java.util.Map;
-@Mapper
 public interface LoginService {
 
     public LoginDTO getUserInfo(Map loginMap);
