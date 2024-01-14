@@ -55,15 +55,16 @@ public class MemberActionController {
         response.put("email", "xxxxxxxx@gmail.com");
         return response;
     }
-/*
-    @PostMapping("member/info/delete")
-    @ResponseStatus(HttpStatus.CREATED)
-    public CommonResult deleteMember(@RequestBody MemberDTO memberDto, HttpServletRequest request, HttpServletResponse response) {
 
-            return responseService.getSuccessResult();
+    /*
+        @PostMapping("member/info/delete")
+        @ResponseStatus(HttpStatus.CREATED)
+        public CommonResult deleteMember(@RequestBody MemberDTO memberDto, HttpServletRequest request, HttpServletResponse response) {
 
-    }
-*/
+                return responseService.getSuccessResult();
+
+        }
+    */
     @GetMapping("member/terms")
     public Map<String, String> terms() {
         //편집 영상 업로드
@@ -106,6 +107,7 @@ public class MemberActionController {
         response.put("email", "xxxxxxxx@gmail.com");
         return response;
     }
+
     @GetMapping("member/channel/report")
     public Map<String, String> channelReport() {
         //편집 영상 업로드
@@ -115,6 +117,7 @@ public class MemberActionController {
         response.put("email", "xxxxxxxx@gmail.com");
         return response;
     }
+
     @GetMapping("member/fan/recmm")
     public Map<String, String> channelRecommend() {
         //편집 영상 업로드

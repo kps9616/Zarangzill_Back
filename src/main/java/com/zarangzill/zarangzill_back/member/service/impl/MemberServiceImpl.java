@@ -11,13 +11,15 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberMapper memberMapper;
 
-    public int createMember (MemberDTO memberDto){
+    public int createMember(MemberDTO memberDto) {
         return memberMapper.createMember(memberDto);
     }
-    public int updateMember (MemberDTO memberDto){
+
+    public int updateMember(MemberDTO memberDto) {
         return memberMapper.updateMember(memberDto);
     }
-    public int deleteMember (MemberDTO memberDto) {
+
+    public int deleteMember(MemberDTO memberDto) {
         return memberMapper.deleteMember(memberDto);
     }
 }
