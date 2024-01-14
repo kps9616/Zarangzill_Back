@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WinnerMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <select id="selectWinPredIngList" resultType="java.util.HashMap">
+
+        select tv.id as video_id
+             ,tv.channel_id  as video_channel_id
+             ,tv.video_tags
+             ,tv.video_description
+             ,tv.video_thumbnail
+             ,tv.video_path
+             ,DATE_FORMAT(tv.created_at, '%Y-%m-%d') as video_created_at
+
+            <if test='"M".equals(predictionType)'>
+                ,(
+                    select sum(judge_score_1+judge_score_2+judge_score_3)
+                      from tb_video_judge tvj
+                     where tvj.video_id = tv.id
+                and DATE_FORMAT(tvj.judge_date, '%Y-%m') between DATE_FORMAT(#{startDate}, '%Y-%m') and DATE_FORMAT(#{endDate}, '%Y-%m')
+                  ) as video_score
+
+            </if>
+            <if test='"W".equals(predictionType)'>
+                ,(
+                    select sum(judge_score_1+judge_score_2+judge_score_3)
+                    from tb_video_judge tvj
+                    where tvj.video_id = tv.id
+                and DATE_FORMAT(tvj.judge_date, '%Y-%m-%d') between DATE_FORMAT(#{startDate}, '%Y-%m-%d') and DATE_FORMAT(#{endDate}, '%Y-%m-%d')
+                ) as video_score
+            </if>
+             ,(select count(twpul.id)
+               from tb_winning_prediction_user_list twpul
+               where twpul.prediction_type = #{predictionType}
+                 and twpul.video_id = tv.id
+                 and '2024-01-11' BETWEEN twpul.start_date and twpul.end_date
+        ) as pred_cnt
+        ,tc.name as channel_name
+        from tb_video tv
+        inner join tb_channel tc on tv.channel_id = tc.id
+        <where>
+            <if test='"M".equals(predictionType)'>
+                DATE_FORMAT(tv.created_at, '%Y-%m') between DATE_FORMAT(#{startDate}, '%Y-%m') and DATE_FORMAT(#{endDate}, '%Y-%m')
+            </if>
+            <if test='"W".equals(predictionType)'>
+                DATE_FORMAT(tv.created_at, '%Y-%m-%d') between DATE_FORMAT(#{startDate}, '%Y-%m-%d') and DATE_FORMAT(#{endDate}, '%Y-%m-%d')
+            </if>
+        </where>
+        order by pred_cnt desc
+    </select>
+
+
+</mapper>
