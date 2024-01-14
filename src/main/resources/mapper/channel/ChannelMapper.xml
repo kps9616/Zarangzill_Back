@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ChannelMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
 
-    <select id="userFanChannelList" resultType="java.util.HashMap">
+<mapper namespace="ChannelDTO">	<!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <select id="userFanChannelList" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO" resultType="java.util.HashMap">
         select tch.id as channelId
              , tch.name as channelName
              , tch.description as channelDescription
@@ -16,7 +17,7 @@
         where tcf.user_id = #{userId}
     </select>
 
-    <select id="selectRecomChannelList" resultType="java.util.HashMap">
+    <select id="selectRecomChannelList" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO" resultType="java.util.HashMap">
         select tch.id as channelId
              , tch.name as channelName
              , tch.description as channelDescription
@@ -35,14 +36,14 @@
             ) AND tch.id not in (${channelIds})
     </select>
 
-    <delete id="deleteUserFanChannel">
+    <delete id="deleteUserFanChannel" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO">
         Delete
           FROM tb_channel_fan
          WHERE user_id = #{userId}
            AND channel_id = #{channelId}
     </delete>
 
-    <insert id="insertUserFanChannel">
+    <insert id="insertUserFanChannel" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO">
         INSERT INTO tb_channel_fan
         (
              channel_id
@@ -55,7 +56,7 @@
             , #{userId}
             , NOW()
             , NOW()
-        );
+        )
 
 
     </insert>

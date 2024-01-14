@@ -1,4 +1,4 @@
-package mypage;
+package com.zarangzill.zarangzill_back.shortform;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,10 +11,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1")
 
-public class MypageActionController {
+public class ShortformActionController {
 
-    @GetMapping("mypage/badge/info")
-    public Map<String, String> badgeInfo() {
+    @GetMapping("short/list")
+    public Map<String, String> list() {
         Map<String, String> response = new HashMap<String, String>();
         response.put("name", "taehong.kim");
         response.put("age", "28");
@@ -22,8 +22,8 @@ public class MypageActionController {
         return response;
     }
 
-    @GetMapping("mypage/movie/recent")
-    public Map<String, String> movieRecent() {
+    @GetMapping("short/search")
+    public Map<String, String> search() {
         //숏폼검색
         //해시태그검색
         //네임태그검색
@@ -34,8 +34,9 @@ public class MypageActionController {
         return response;
     }
 
-    @GetMapping("mypage/movie/like")
-    public Map<String, String> movieLike() {
+    @PostMapping("short/upload")
+    public Map<String, String> upload() {
+        //편집 영상 업로드
         Map<String, String> response = new HashMap<String, String>();
         response.put("name", "taehong.kim");
         response.put("age", "28");
@@ -43,17 +44,9 @@ public class MypageActionController {
         return response;
     }
 
-    @GetMapping("mypage/movie/judge/score")
-    public Map<String, String> movieJudgeCore() {
-        Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "taehong.kim");
-        response.put("age", "28");
-        response.put("email", "xxxxxxxx@gmail.com");
-        return response;
-    }
-
-    @PostMapping("mypage/movie/judge")
-    public Map<String, String> movieJudge() {
+    @PostMapping("short/Favorit")
+    public Map<String, String> favorit() {
+        //편집 영상 업로드
         Map<String, String> response = new HashMap<String, String>();
         response.put("name", "taehong.kim");
         response.put("age", "28");

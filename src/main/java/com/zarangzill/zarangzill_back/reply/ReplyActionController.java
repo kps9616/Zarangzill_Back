@@ -1,4 +1,4 @@
-package reply;
+package com.zarangzill.zarangzill_back.reply;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
