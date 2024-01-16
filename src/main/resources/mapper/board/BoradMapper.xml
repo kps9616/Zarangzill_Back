@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zarangzill.zarangzill_back.board.service.mapper.BoardMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+
+
+    <select id="selectBoardList" parameterType="com.zarangzill.zarangzill_back.board.service.BoardDTO" resultType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
+        SELECT
+            id
+             , subject
+             , description
+             , type
+             , flag_push
+             , flag_use
+             , creator
+             , created_at
+             , editor
+             , updated_at
+        FROM zarangzill.tb_board
+        <where>
+            <if test='id != null and id != ""'>
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateBoard" parameterType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
+        UPDATE zarangzill.tb_board
+        SET name = #{name}
+        UPDATE zarangzill.tb_board
+        SET
+            editor = #{editor}
+            , updated_at = sysdate()
+        <if test='subject != null and subject != ""'>
+            , subject = #{subject}
+        </if>
+        <if test='description != null and description != ""'>
+          , description = #{description}
+        </if>
+        <if test='type != null and type != ""'>
+          , type = #{type}
+        </if>
+        <if test='flag_push != null and flag_push != ""'>
+          , flag_push = #{flag_push}
+        </if>
+        <if test='flag_use != null and flag_use != ""'>
+          , flag_use = #{flag_use}
+        </if>
+        WHERE id =  #{id}
+    </update>
+
+    <delete id="deleteBoard" parameterType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
+        DELETE
+        FROM zarangzill.tb_board
+        WHERE id = #{id}
+    </delete>
+
+    <insert id="createBoard" parameterType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
+        INSERT INTO zarangzill.tb_board
+        (subject, description, type, flag_push, flag_use, creator, created_at)
+        VALUES
+            (#{subject}, #{description}, #{type}, #{flag_push}, #{flag_use}, #{creator}, sysdate());
+
+    </insert>
+</mapper>
