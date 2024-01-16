@@ -3,6 +3,7 @@ package com.zarangzill.zarangzill_back.member.service;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.ibatis.type.Alias;
 
 @Getter
 @Setter
