@@ -33,13 +33,21 @@ public class WinPredDTO {
     @JsonProperty("video_score")
     private int videoScore;
 
+    @JsonProperty("video_score_cnt")
+    private int videoScoreCnt;
+
     @JsonProperty("pred_cnt")
     private int predCnt;
 
     @JsonProperty("channel_name")
     private String channelName;
 
+    @JsonProperty("flag_use")
+    private String flagUse;
+
     private String predictionType;
     private String startDate;
     private String endDate;
+    private String searchType;
+    private String sYear;
 }

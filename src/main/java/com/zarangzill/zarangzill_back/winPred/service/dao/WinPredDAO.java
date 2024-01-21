@@ -13,5 +13,11 @@ public class WinPredDAO {
         return session.selectList("WinnerMapper.selectWinPredIngList", paramMap);
     }
 
+    public List<HashMap> selectWinPredMonthEndList(WinPredDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("WinnerMapper.selectWinPredMonthEndList", paramMap);
+    }
+    public List<HashMap> selectWinPredWeekEndList(WinPredDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("WinnerMapper.selectWinPredWeekEndList", paramMap);
+    }
 
 }
