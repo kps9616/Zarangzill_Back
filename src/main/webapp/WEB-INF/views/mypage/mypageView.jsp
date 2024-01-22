@@ -148,12 +148,12 @@
          
          <h3><span uk-icon="icon: center; ratio: 1.2"></span> 고객센터</h3>
          <div class="my-link mt5">
-            <a href="83-2공지사항.html"> 공지사항<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="84-2서비스소개.html"> 서비스소개<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="85-2자주묻는질문.html"> 자주 묻는 질문<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="86-2문의제안.html"> 문의/제안<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="88-2이용약관.html"> 이용약관<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="88-3개인정보취급방침.html"> 개인정보 취급방침<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/boardListView?type=1"> 공지사항<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/boardListView?type=2"> 서비스소개<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/boardListView?type=3"> 자주 묻는 질문<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/boardListView?type=4"> 문의/제안<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/boardListView?type=5"> 이용약관<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/boardListView?type=6"> 개인정보 취급방침<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
          </div>
     </div>
 

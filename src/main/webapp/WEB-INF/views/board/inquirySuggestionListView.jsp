@@ -35,34 +35,39 @@
             <textarea class="inp_txtr mb20" name="" placeholder="문의 내용을 입력해주세요"></textarea>
             <button type="button" class="bt_gradient w100">문의 등록</button>
         </div>
+        <c:choose>
+            <c:when test="${boardList.size() >0 }">
+                <ul class="bbs_list mt40">
+                    <c:forEach var="boardInfo" items="${boardList}">
+                    <li>
+                        <a href="board/inquirySuggestionView?id=${boardInfo.id}" class="tit-link">
+                            <c:choose>
+                                <c:when test="${empty(boardInfo.updated_at)}">
+                                    <em>${boardInfo.created_at}</em>
+                                </c:when>
+                                <c:otherwise>
+                                    <em>${boardInfo.updated_at}</em>
+                                </c:otherwise>
+                            </c:choose>
+                            <div class="clamp">
+                                    ${boardInfo.description}
+                            </div>
+                            <div class="txt_icon b_gray">답변대기</div>
+                        </a>
 
-        <ul class="bbs_list mt40">
-            <li>                
-                <a href="87-2문의제안-view.html" class="tit-link">
-                    <em>2023.09.22  19:00</em>
-                    <div class="clamp">채널이 삭제되었습니다. 기여자로 등록된 영상을 백업해 두지 않았는데 채널이나 영상을 복구 할 수 있나요?  
-                    </div> 
-                    <div class="txt_icon b_gray">답변대기</div>              
-                </a>
-               
-                <a href="#modal-center" class="uk-icon-link" uk-icon="trash" uk-toggle></a>
-            </li> 
-            <li>                
-                <a href="87-2문의제안-view.html" class="tit-link">
-                    <em>2023.09.12  10:00</em>
-                    <div class="clamp">문의 내용이 보여집니다. 내용이 너무 길어서 3줄이 넘어 가면 이후 ...처리 됩니다. 내용의 3줄까지만 보여지고 클릭해서 문의 내용 보기에서 문의 내용을 모두  확인 할 수 있습니다.                        
-                    </div>
-                    <div class="txt_icon b_point">답변완료</div>                    
-                </a>
-                <a href="#modal-center" class="uk-icon-link" uk-icon="trash" uk-toggle></a>
-            </li>
-                       
-        </ul>
-        <!--데이터  없을시-->
-        <div class="nonedb"><span uk-icon="icon: warning"></span><br>문의 내용이 없습니다.</div>
+                        <a href="#modal-center" class="uk-icon-link" uk-icon="trash" uk-toggle></a>
+                    </li>
+                    </c:forEach>
+                </ul>
+            </c:when>
+            <c:otherwise>
+                <!--데이터  없을시-->
+                <div class="nonedb"><span uk-icon="icon: warning"></span><br>문의 내용이 없습니다.</div>
+            </c:otherwise>
+        </c:choose>
     </div>   
     
-    <!--문의 삭제하기-->
+    <!--문의 삭제하기
     <div id="modal-center" class="uk-flex-top" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
@@ -78,6 +83,7 @@
             </div>
         </div>
     </div>
+    -->
    
 </body>
 

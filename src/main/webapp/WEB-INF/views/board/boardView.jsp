@@ -28,11 +28,21 @@
      <!--탑-->
      <div class="top-bx bline">
         <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
-       서비스 소개       
+       공지사항        
     </div>
     <div class="container"> 
-       <div class="bbs_view">          
-            서비스 소개 내용
+       <div class="bbs_view">
+           <c:choose>
+               <c:when test="${empty(boardInfo.updated_at)}">
+                   <em>${boardInfo.created_at}</em>
+               </c:when>
+               <c:otherwise>
+                   <em>${boardInfo.updated_at}</em>
+               </c:otherwise>
+           </c:choose>
+            <p>
+                ${boardInfo.description}
+            </p>
         </div>
 
     </div>   

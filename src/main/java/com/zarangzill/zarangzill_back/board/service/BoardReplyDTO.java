@@ -9,10 +9,8 @@ import lombok.ToString;
 @ToString
 public class BoardReplyDTO {
     int id;
-    String subject;
-    String description;
-    String type;
-    String flag_push;
+    int board_id;
+    String reply_description;
     String flag_use;
     int creator;
     String created_at;

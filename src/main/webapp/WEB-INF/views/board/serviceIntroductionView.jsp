@@ -28,13 +28,11 @@
      <!--탑-->
      <div class="top-bx bline">
         <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
-       공지사항        
+         ${boardInfo.subject}
     </div>
     <div class="container"> 
        <div class="bbs_view">
-            <em>2023.10.12  09:00</em>            
-            <p>본문 내용을 보여 줍니다. 이곳에 분문내용이 보여집니다.  이곳에 분문내용이 보여집니다.이곳에 분문내용이 보여집니다.이곳에 분문내용이 보여집니다.
-            </p>
+           ${boardInfo.description}
         </div>
 
     </div>   
