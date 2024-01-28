@@ -65,7 +65,7 @@
                      <h2 class="uk-modal-title">약관동의</h2>
                  </div>
                  <div class="uk-modal-body" uk-overflow-auto>
-                     <p>내용</p>
+                     <p>${useTermsInfo}</p>
                  </div>
                  <div class="uk-modal-footer tac">
                      <button class="uk-button uk-button-default uk-modal-close" type="button">확인</button>
@@ -80,7 +80,7 @@
                     <h2 class="uk-modal-title">개인정보 수집 및 이용 동의</h2>
                 </div>
                 <div class="uk-modal-body" uk-overflow-auto>
-                    <p>내용</p>
+                    <p>${privacyStatementInfo}</p>
                 </div>
                 <div class="uk-modal-footer tac">
                     <button class="uk-button uk-button-default uk-modal-close" type="button">확인</button>
