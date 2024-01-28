@@ -24,6 +24,13 @@ public class BoardServiceImpl implements BoardService {
         return boardMapper.selectBoardInfo(boardMap);
     }
 
+    public BoardDTO selectServiceIntroductionInfo() {
+        Map boardMap = new HashMap();
+        boardMap.put("type", "2");
+        boardMap.put("flag_use", "Y");
+        return boardMapper.selectBoardInfo(boardMap);
+    }
+
     public BoardDTO selectUseTermsInfo() {
         Map boardMap = new HashMap();
         boardMap.put("type", "5");

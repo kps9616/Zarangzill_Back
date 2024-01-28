@@ -11,6 +11,7 @@ public interface BoardService {
     Map createBoard(BoardDTO BoardDto);
     Map updateBoard(BoardDTO BoardDto);
     Map deleteBoard(BoardDTO BoardDto);
+    BoardDTO selectServiceIntroductionInfo();
     BoardDTO selectUseTermsInfo();
     BoardDTO selectPrivacyStatementInfo();
 }

@@ -26,19 +26,22 @@ public class BoardViewController {
         model.addAttribute("boardInfo", boardService.selectBoardInfo(paramMap));
         return "board/boardView";
     }
-
+    
+    //서비스소개
     @RequestMapping("/serviceIntroductionView")
     public String serviceIntroductionView(@RequestParam Map paramMap, Model model) {
-        model.addAttribute("boardInfo", boardService.selectBoardInfo(paramMap));
+        model.addAttribute("serviceIntroductionInfo", boardService.selectServiceIntroductionInfo());
         return "board/serviceIntroductionView";
     }
 
+    //문의/제안
     @RequestMapping(value="/inquirySuggestionListView")
     public String inquirySuggestionListView(@RequestParam Map paramMap, Model model) {
         model.addAttribute("boardList", boardService.selectBoardList(paramMap));
         return "/board/inquirySuggestionListView";
     }
 
+    //문의/제안
     @RequestMapping("/inquirySuggestionView")
     public String inquirySuggestionView(@RequestParam Map paramMap, Model model) {
         model.addAttribute("boardList", boardService.selectBoardList(paramMap));

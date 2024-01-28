@@ -28,11 +28,11 @@
      <!--탑-->
      <div class="top-bx bline">
         <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
-         ${boardInfo.subject}
+         서비스 소개
     </div>
     <div class="container"> 
        <div class="bbs_view">
-           ${boardInfo.description}
+           ${serviceIntroductionInfo.description}
         </div>
 
     </div>   
