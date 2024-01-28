@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zarangzill.zarangzill_back.videoviewhistory.service.mapper.VideoViewHistoryMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <sql id="selectVideoViewHistory">
+        SELECT
+            A.history_id
+             , A.user_id
+             , A.video_id
+             , DATE_FORMAT(A.view_date, '%Y-%m-%d %H:%i') AS view_date
+             , DATE_FORMAT(A.created_at, '%Y-%m-%d %H:%i') AS created_at
+             , B.id AS mvideo_id
+             , B.video_path
+             , B.video_thumbnail
+             , B.video_description
+             , C.name AS userNm
+             , C.profile_image
+        FROM zarangzill.tb_user_view_history A
+                 Left Join zarangzill.tb_video B ON A.video_id = B.id
+                 Left join tb_member C ON A.user_id = C.id
+    </sql>
+
+    <select id="selectVideoViewHistoryList" parameterType="HashMap" resultType="HashMap">
+        <include refid="selectVideoViewHistory"/>
+        <where>
+            <if test='user_id != null and user_id != ""'>
+                AND A.user_id = #{user_id}
+            </if>
+            <if test='startSrchDate != null and startSrchDate != "" and endSrchDate != null and endSrchDate != ""'>
+                AND DATE_FORMAT(A.created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
+            </if>
+        </where>
+        ORDER BY updated_at DESC, created_at DESC
+    </select>
+
+    <select id="selectVideoViewHistoryInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.videoViewHistory.service.VideoViewHistoryDTO">
+        <include refid="selectVideoViewHistory"/>
+        <where>
+            <if test='user_id != null and user_id != ""'>
+                AND A.user_id = #{user_id}
+            </if>
+            <if test='video_id != null and video_id != ""'>
+                AND A.video_id = #{video_id}
+            </if>
+        </where>
+    </select>
+    <!--
+    <update id="updateVideoViewHistory" parameterType="com.zarangzill.zarangzill_back.videoViewHistory.service.VideoViewHistoryDTO">
+        UPDATE zarangzill.tb_video_favorite
+        SET
+            updated_at = sysdate()
+        <if test='video_id != null and video_id != ""'>
+            , video_id = #{video_id}
+        </if>
+        <if test='user_id != null and user_id != ""'>
+          , user_id = #{user_id}
+        </if>
+        <if test='flag_use != null and flag_use != ""'>
+          , flag_use = #{flag_use}
+        </if>
+        WHERE id =  #{id}
+    </update>
+    -->
+    <delete id="deleteVideoViewHistory" parameterType="com.zarangzill.zarangzill_back.videoviewhistory.service.VideoViewHistoryDTO">
+        DELETE
+        FROM zarangzill.tb_user_view_history
+        WHERE history_id = #{history_id}
+    </delete>
+
+    <insert id="createVideoViewHistory" parameterType="com.zarangzill.zarangzill_back.videoviewhistory.service.VideoViewHistoryDTO">
+        INSERT INTO zarangzill.tb_user_view_history
+            (user_id, video_id, view_date, created_at)
+        VALUES(#{user_id}, #{video_id}, sysdate(), sysdate());
+    </insert>
+
+
+</mapper>

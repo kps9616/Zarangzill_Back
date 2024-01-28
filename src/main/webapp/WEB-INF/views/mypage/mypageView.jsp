@@ -119,12 +119,12 @@
             
         </div>
         <div class="my-link-2th">
-            <a href="76-2최근본영상.html">
+            <a href="/mypage/recentViewVideo">
                 <em uk-icon="icon: play-circle;"></em>
                 최근 본 영상
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
             </a>
-            <a href="77-2즐겨찾기영상.html">
+            <a href="/mypage/favoriteVideoView">
                 <em uk-icon="icon: bookmark;"></em>
                 즐겨찾기 영상
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
@@ -149,7 +149,7 @@
          <h3><span uk-icon="icon: center; ratio: 1.2"></span> 고객센터</h3>
          <div class="my-link mt5">
             <a href="/board/boardListView?type=1"> 공지사항<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/boardListView?type=2"> 서비스소개<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/serviceIntroductionView?type=2"> 서비스소개<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="/board/boardListView?type=3"> 자주 묻는 질문<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="/board/inquirySuggestionListView?type=4"> 문의/제안<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="/board/useTermsView"> 이용약관<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
