@@ -22,17 +22,17 @@
         <include refid="selectBoard"/>
         <where>
             <if test='id != null and id != ""'>
-                AND id = #{id}
+                AND A.id = #{id}
             </if>
             <if test='type != null and type != ""'>
-                AND type = #{type}
+                AND A.type = #{type}
             </if>
             <if test='startSrchDate != null and startSrchDate != "" and endSrchDate != null and endSrchDate != ""'>
-                AND DATE_FORMAT(created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
+                AND DATE_FORMAT(A.created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
             </if>
 
         </where>
-        ORDER BY updated_at DESC, created_at DESC
+        ORDER BY A.updated_at DESC, A.created_at DESC
     </select>
 
     <select id="selectBoardInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
@@ -45,7 +45,6 @@
                 AND type = #{type}
             </if>
         </where>
-        ORDER BY updated_at DESC, created_at DESC
     </select>
 
     <update id="updateBoard" parameterType="com.zarangzill.zarangzill_back.board.service.BoardDTO">

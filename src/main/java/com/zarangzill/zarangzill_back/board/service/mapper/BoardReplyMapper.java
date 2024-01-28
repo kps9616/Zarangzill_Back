@@ -9,10 +9,10 @@ import java.util.Map;
 
 @Mapper
 public interface BoardReplyMapper {
-    public List<Map> selectBoardReplyList(Map boardReplyMap);
-    public BoardReplyDTO selectBoardReplyInfo(Map boardReplyMap);
-    public int createBoardReply(BoardReplyDTO boardReplyDto);
-    public int updateBoardReply(BoardReplyDTO boardReplyDto);
-    public int deleteBoardReply(BoardReplyDTO boardReplyDto);
+    List<Map> selectBoardReplyList(Map boardReplyMap);
+    BoardReplyDTO selectBoardReplyInfo(Map boardReplyMap);
+    int createBoardReply(BoardReplyDTO boardReplyDto);
+    int updateBoardReply(BoardReplyDTO boardReplyDto);
+    int deleteBoardReply(BoardReplyDTO boardReplyDto);
 
 }

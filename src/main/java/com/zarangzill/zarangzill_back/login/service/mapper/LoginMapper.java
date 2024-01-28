@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.Map;
 @Mapper
 public interface LoginMapper {
-    public LoginDTO loginUser(Map param);
-    public LoginDTO loginUser(LoginDTO loginDTO);
+    LoginDTO loginUser(Map param);
+    LoginDTO loginUser(LoginDTO loginDTO);
 
 }

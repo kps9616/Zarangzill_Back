@@ -35,7 +35,7 @@
         ORDER BY A.updated_at DESC, A.created_at DESC
     </select>
 
-    <select id="selectVideoFavoriteInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.videoFavorite.service.VideoFavoriteDTO">
+    <select id="selectVideoFavoriteInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.videofavorite.service.VideoFavoriteDTO">
         <include refid="selectVideoFavorite"/>
         <where>
             <if test='id != null and id != ""'>

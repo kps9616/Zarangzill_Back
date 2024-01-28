@@ -3,9 +3,9 @@ package com.zarangzill.zarangzill_back.login.service;
 import java.util.Map;
 public interface LoginService {
 
-    public LoginDTO getUserInfo(Map loginMap);
+    LoginDTO getUserInfo(Map loginMap);
 
-    public LoginDTO getUserInfo(LoginDTO loginDTO);
-    public String LoginAction(LoginDTO loginDTO);
+    LoginDTO getUserInfo(LoginDTO loginDTO);
+    String LoginAction(LoginDTO loginDTO);
 
 }

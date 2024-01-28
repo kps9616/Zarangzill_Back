@@ -9,9 +9,9 @@ import java.util.Map;
 
 @Mapper
 public interface VideoFavoriteMapper {
-    public List<Map> selectVideoFavoriteList(Map videoFavoriteMap);
-    public VideoFavoriteDTO selectVideoFavoriteInfo(Map videoFavoriteMap);
-    public int createVideoFavorite(VideoFavoriteDTO videoFavoriteDto);
-    public int updateVideoFavorite(VideoFavoriteDTO videoFavoriteDto);
-    public int deleteVideoFavorite(VideoFavoriteDTO videoFavoriteDto);
+    List<Map> selectVideoFavoriteList(Map videoFavoriteMap);
+    VideoFavoriteDTO selectVideoFavoriteInfo(Map videoFavoriteMap);
+    int createVideoFavorite(VideoFavoriteDTO videoFavoriteDto);
+    int updateVideoFavorite(VideoFavoriteDTO videoFavoriteDto);
+    int deleteVideoFavorite(VideoFavoriteDTO videoFavoriteDto);
 }

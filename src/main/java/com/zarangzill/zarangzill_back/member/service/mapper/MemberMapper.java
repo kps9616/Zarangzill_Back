@@ -5,8 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MemberMapper {
-    public int createMember(MemberDTO memberDto);
-    public int updateMember(MemberDTO memberDto);
-    public int deleteMember(MemberDTO memberDto);
+    int createMember(MemberDTO memberDto);
+    int updateMember(MemberDTO memberDto);
+    int deleteMember(MemberDTO memberDto);
 
 }

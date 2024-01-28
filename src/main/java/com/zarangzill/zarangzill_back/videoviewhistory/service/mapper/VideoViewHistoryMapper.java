@@ -9,9 +9,9 @@ import java.util.Map;
 
 @Mapper
 public interface VideoViewHistoryMapper {
-    public List<Map> selectVideoViewHistoryList(Map videoViewHistoryMap);
-    public VideoViewHistoryDTO selectVideoViewHistoryInfo(Map videoViewHistoryMap);
-    public int createVideoViewHistory(VideoViewHistoryDTO videoViewHistoryDto);
-    public int updateVideoViewHistory(VideoViewHistoryDTO videoViewHistoryDto);
-    public int deleteVideoViewHistory(VideoViewHistoryDTO videoViewHistoryDto);
+    List<Map> selectVideoViewHistoryList(Map videoViewHistoryMap);
+    VideoViewHistoryDTO selectVideoViewHistoryInfo(Map videoViewHistoryMap);
+    int createVideoViewHistory(VideoViewHistoryDTO videoViewHistoryDto);
+    int updateVideoViewHistory(VideoViewHistoryDTO videoViewHistoryDto);
+    int deleteVideoViewHistory(VideoViewHistoryDTO videoViewHistoryDto);
 }
