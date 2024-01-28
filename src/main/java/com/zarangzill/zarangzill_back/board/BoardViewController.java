@@ -41,8 +41,22 @@ public class BoardViewController {
 
     @RequestMapping("/inquirySuggestionView")
     public String inquirySuggestionView(@RequestParam Map paramMap, Model model) {
-        model.addAttribute("boardInfo", boardService.selectBoardInfo(paramMap));
+        model.addAttribute("boardList", boardService.selectBoardList(paramMap));
         return "board/inquirySuggestionView";
+    }
+
+    //이용약관
+    @RequestMapping("/useTermsView")
+    public String useTermsView(@RequestParam Map paramMap, Model model) {
+        model.addAttribute("useTermsInfo", boardService.selectUseTermsInfo());
+        return "board/useTermsView";
+    }
+
+    //개인정보 취급방침
+    @RequestMapping("/privacyStatementView")
+    public String privacyStatementView(@RequestParam Map paramMap, Model model) {
+        model.addAttribute("privacyStatementInfo", boardService.selectPrivacyStatementInfo());
+        return "board/privacyStatementView";
     }
 
 }

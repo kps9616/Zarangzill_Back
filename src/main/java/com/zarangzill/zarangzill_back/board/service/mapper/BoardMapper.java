@@ -13,6 +13,4 @@ public interface BoardMapper {
     public int createBoard(BoardDTO boardDto);
     public int updateBoard(BoardDTO boardDto);
     public int deleteBoard(BoardDTO boardDto);
-    public List<Map> selectBoardListWithBoardReply(Map boardMap);
-
 }

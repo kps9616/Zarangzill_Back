@@ -32,7 +32,7 @@
     </div>
     <div class="container"> 
        <div class="bbs_view">          
-           이용약관내용
+           ${useTermsInfo.description}
         </div>
 
     </div>   

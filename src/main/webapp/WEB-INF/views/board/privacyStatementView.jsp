@@ -28,12 +28,12 @@
      <!--탑-->
      <div class="top-bx bline">
         <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
-       개인정보 취급침    
+         개인정보 취급방침
     </div>
     <div class="container"> 
        <div class="bbs_view">          
-        개인정보 취급침 내용
-        </div>
+        ${privacyStatementInfo.description}
+       </div>
 
     </div>   
     

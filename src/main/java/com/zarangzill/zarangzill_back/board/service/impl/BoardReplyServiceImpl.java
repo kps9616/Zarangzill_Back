@@ -17,6 +17,9 @@ public class BoardReplyServiceImpl implements BoardReplyService {
     @Autowired
     private BoardReplyMapper boardReplyMapper;
 
+    public List<Map> selectBoardReplyList(Map boardReplyMap) {
+        return boardReplyMapper.selectBoardReplyList(boardReplyMap);
+    }
     public BoardReplyDTO selectBoardReplyInfo(Map boardReplyMap) {
         return boardReplyMapper.selectBoardReplyInfo(boardReplyMap);
     }

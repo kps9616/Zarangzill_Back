@@ -5,13 +5,12 @@ import java.util.Map;
 
 public interface BoardService {
 
+
     List<Map> selectBoardList(Map boardMap);
     BoardDTO selectBoardInfo(Map boardMap);
-    int createBoard(BoardDTO BoardDto);
-
-    int updateBoard(BoardDTO BoardDto);
-
-    int deleteBoard(BoardDTO BoardDto);
-
-    List<Map> selectBoardListWithBoardReply(Map boardMap);
+    Map createBoard(BoardDTO BoardDto);
+    Map updateBoard(BoardDTO BoardDto);
+    Map deleteBoard(BoardDTO BoardDto);
+    BoardDTO selectUseTermsInfo();
+    BoardDTO selectPrivacyStatementInfo();
 }

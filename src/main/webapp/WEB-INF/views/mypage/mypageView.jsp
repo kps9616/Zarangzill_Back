@@ -151,9 +151,9 @@
             <a href="/board/boardListView?type=1"> 공지사항<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="/board/boardListView?type=2"> 서비스소개<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="/board/boardListView?type=3"> 자주 묻는 질문<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/boardListView?type=4"> 문의/제안<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/boardListView?type=5"> 이용약관<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/boardListView?type=6"> 개인정보 취급방침<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/inquirySuggestionListView?type=4"> 문의/제안<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/useTermsView"> 이용약관<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/privacyStatementView"> 개인정보 취급방침<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
          </div>
     </div>
 

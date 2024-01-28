@@ -5,6 +5,7 @@ import java.util.Map;
 
 public interface BoardReplyService {
 
+    List<Map> selectBoardReplyList(Map boardReplyMap);
     BoardReplyDTO selectBoardReplyInfo(Map boardReplyMap);
     int createBoardReply(BoardReplyDTO BoardReplyDto);
 

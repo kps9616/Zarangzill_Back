@@ -9,6 +9,7 @@ import java.util.Map;
 
 @Mapper
 public interface BoardReplyMapper {
+    public List<Map> selectBoardReplyList(Map boardReplyMap);
     public BoardReplyDTO selectBoardReplyInfo(Map boardReplyMap);
     public int createBoardReply(BoardReplyDTO boardReplyDto);
     public int updateBoardReply(BoardReplyDTO boardReplyDto);

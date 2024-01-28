@@ -23,6 +23,29 @@
     <style>
       
     </style>
+    <script>
+        $(document).ready(function(){
+
+        });
+
+        function boardSave(){
+            var formData = $("#boraForm").serialize();
+            $.ajax({
+                type:'post',   //post 방식으로 전송
+                url:'/board/createBoard',   //데이터를 주고받을 파일 주소
+                data:formData,   //위의 변수에 담긴 데이터를 전송해준다.
+                dataType:'json',   //html 파일 형식으로 값을 담아온다.
+                success : function(data){   //파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
+                    alert("저장했습니다.");
+                    location.reload();
+                },
+                error: function (request, status, error) {
+                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+                }
+            });
+        }
+    </script>
 </head>
 <body>
      <!--탑-->
@@ -32,15 +55,20 @@
     </div>
     <div class="container"> 
         <div class="bbs_inp">
-            <textarea class="inp_txtr mb20" name="" placeholder="문의 내용을 입력해주세요"></textarea>
-            <button type="button" class="bt_gradient w100">문의 등록</button>
+            <form class="form-signin" id="boraForm">
+                <input class="uk-input" type="text" id="subject" name="subject" placeholder="제목을 입력해주세요" aria-label="Input">
+                <input class="uk-input" type="hidden" id="type" name="type" value="4" aria-label="Input">
+                <textarea class="inp_txtr mb20" id="description" name="description" placeholder="문의 내용을 입력해주세요"></textarea>
+
+                <button type="button" class="bt_gradient w100" onclick="boardSave();">>문의 등록</button>
+            </form>
         </div>
         <c:choose>
-            <c:when test="${boardList.size() >0 }">
+            <c:when test="${boardList.size() > 0 }">
                 <ul class="bbs_list mt40">
                     <c:forEach var="boardInfo" items="${boardList}">
                     <li>
-                        <a href="board/inquirySuggestionView?id=${boardInfo.id}" class="tit-link">
+                        <a href="/board/inquirySuggestionView?id=${boardInfo.id}" class="tit-link">
                             <c:choose>
                                 <c:when test="${empty(boardInfo.updated_at)}">
                                     <em>${boardInfo.created_at}</em>
@@ -52,7 +80,16 @@
                             <div class="clamp">
                                     ${boardInfo.description}
                             </div>
-                            <div class="txt_icon b_gray">답변대기</div>
+
+                            <c:choose>
+                                <c:when test="${ boardInfo.reply_yn eq 'N' }">
+                                    <div class="txt_icon b_gray">답변대기</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="txt_icon b_point">답변완료</div>
+                                </c:otherwise>
+                            </c:choose>
+
                         </a>
 
                         <a href="#modal-center" class="uk-icon-link" uk-icon="trash" uk-toggle></a>
@@ -68,6 +105,7 @@
     </div>   
     
     <!--문의 삭제하기
+    -->
     <div id="modal-center" class="uk-flex-top" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
@@ -83,7 +121,6 @@
             </div>
         </div>
     </div>
-    -->
    
 </body>
 
