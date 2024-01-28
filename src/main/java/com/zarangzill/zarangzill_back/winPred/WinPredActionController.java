@@ -5,9 +5,11 @@ import org.springframework.web.bind.annotation.*;
 import com.zarangzill.zarangzill_back.winPred.service.WinPredDTO;
 import com.zarangzill.zarangzill_back.winPred.service.WinPredService;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.zarangzill.zarangzill_back.util.*;
 
 @RestController
 @CrossOrigin
@@ -33,12 +35,25 @@ public class WinPredActionController {
         response.put("message", "succress");
         return response;
     }
-    @PostMapping("win/month/insert")
-    public Map<String, String> monthInsert() {
-        Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "taehong.kim");
-        response.put("age", "28");
-        response.put("email", "xxxxxxxx@gmail.com");
+
+    @GetMapping("win/month/list/old")
+    public Map<String, Object> monthOldList(@RequestParam HashMap map) {
+        WinPredDTO param = new WinPredDTO();
+        int sYear = Integer.parseInt(StringUtil.checkNull(map.get("sYear")));
+        int sMonth = Integer.parseInt(StringUtil.checkNull(map.get("sMonth")));
+
+        LocalDate oldDate = LocalDate.of(sYear, sMonth,1);
+
+        param.setStartDate(String.valueOf(oldDate.withDayOfMonth(1)));
+        param.setEndDate(String.valueOf(oldDate.withDayOfMonth(oldDate.lengthOfMonth())));
+        param.setSearchType(StringUtil.checkNull(map.get("searchType")));
+        List<HashMap> result = winPredService.selectWinPredMonthEndList(param);
+
+        Map<String, Object> response = new HashMap<String, Object>();
+        response.put("code", "200");
+        response.put("winPredMList", result);
+        response.put("winPredMListSize", 10);
+        response.put("message", "success");
         return response;
     }
 
@@ -55,15 +70,21 @@ public class WinPredActionController {
         response.put("code", "200");
         response.put("winPredWList", result);
         response.put("winPredWListSize", result.size());
-        response.put("message", "succress");
+        response.put("message", "success");
         return response;
     }
-    @PostMapping("win/week/insert")
-    public Map<String, String> weekInsert() {
-        Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "win week insert");
-        response.put("age", "28");
-        response.put("email", "xxxxxxxx@gmail.com");
+    @GetMapping("win/week/list/old")
+    public Map<String, Object> weekOldList(@RequestParam HashMap map)  {
+        WinPredDTO param = new WinPredDTO();
+        param.setSYear(map.get("sYear").toString());
+
+        List<HashMap> result = winPredService.selectWinPredWeekEndList(param);
+
+        Map<String, Object> response = new HashMap<String, Object>();
+        response.put("code", "200");
+        response.put("winPredWList", result);
+        response.put("winPredWListSize", result.size());
+        response.put("message", "success");
         return response;
     }
 

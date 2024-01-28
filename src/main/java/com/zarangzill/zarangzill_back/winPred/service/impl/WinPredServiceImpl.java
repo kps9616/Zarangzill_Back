@@ -21,4 +21,13 @@ public class WinPredServiceImpl implements WinPredService {
         return winPredDAO.selectWinPredIngList(paramMap, session);
     }
 
+    public List<HashMap> selectWinPredMonthEndList(WinPredDTO paramMap) {
+        return winPredDAO.selectWinPredMonthEndList(paramMap, session);
+    }
+
+    public List<HashMap> selectWinPredWeekEndList(WinPredDTO paramMap) {
+        return winPredDAO.selectWinPredWeekEndList(paramMap, session);
+    }
+
+
 }
