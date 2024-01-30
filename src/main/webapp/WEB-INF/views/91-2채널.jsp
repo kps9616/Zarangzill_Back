@@ -89,7 +89,7 @@
                 <ul>
                     <li>
                         <div class="mych-mov-img">
-                            <a href="107쇼츠.html"><img src="${path}/resources/images/thum/thum04.jpg"></a>
+                            <a href="/subShots"><img src="${path}/resources/images/thum/thum04.jpg"></a>
                         </div>
                        
                             <div class="mych-mov-info">
@@ -111,7 +111,7 @@
                     </li>
                     <li>
                         <div class="mych-mov-img">
-                            <a href="107쇼츠.html"><img src="${path}/resources/images/thum/thum01.jpg"></a>
+                            <a href="/subShots"><img src="${path}/resources/images/thum/thum01.jpg"></a>
                         </div>
                         <div class="mych-mov-info">
                             <a href="94-2영상관리.html">

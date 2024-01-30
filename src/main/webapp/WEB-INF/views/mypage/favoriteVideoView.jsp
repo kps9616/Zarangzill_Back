@@ -38,7 +38,7 @@
                         <c:when test="${not empty videoFavoriteInfo.mvideo_id}">
                             <li>
                                 <div class="bigthum">
-                                    <a href="107쇼츠.html?id=${videoFavoriteInfo.video_id}"><img src="${path}/resources/images/thum/${videoFavoriteInfo.video_thumbnail}"  class="thum"></a>
+                                    <a href="/subShots?id=${videoFavoriteInfo.video_id}"><img src="${path}/resources/images/thum/${videoFavoriteInfo.video_thumbnail}"  class="thum"></a>
                                 </div>
                                 <div class="list-tit ellipsis2">
                                         ${videoFavoriteInfo.video_description}<span>${videoFavoriteInfo.video_tags}</span>

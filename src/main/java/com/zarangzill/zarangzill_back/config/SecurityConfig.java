@@ -1,5 +1,5 @@
 package com.zarangzill.zarangzill_back.config;
-
+/*
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -53,4 +53,4 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     public HttpFirewall getHttpFirewall() {
         return new DefaultHttpFirewall();
     }
-}
+}*/

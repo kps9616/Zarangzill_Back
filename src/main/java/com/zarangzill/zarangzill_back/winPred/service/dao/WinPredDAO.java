@@ -10,14 +10,14 @@ import java.util.List;
 @Service
 public class WinPredDAO {
     public List<HashMap> selectWinPredIngList(WinPredDTO paramMap, SqlSessionTemplate session) {
-        return session.selectList("WinnerMapper.selectWinPredIngList", paramMap);
+        return session.selectList("WinPredDAO.selectWinPredIngList", paramMap);
     }
 
     public List<HashMap> selectWinPredMonthEndList(WinPredDTO paramMap, SqlSessionTemplate session) {
-        return session.selectList("WinnerMapper.selectWinPredMonthEndList", paramMap);
+        return session.selectList("WinPredDAO.selectWinPredMonthEndList", paramMap);
     }
     public List<HashMap> selectWinPredWeekEndList(WinPredDTO paramMap, SqlSessionTemplate session) {
-        return session.selectList("WinnerMapper.selectWinPredWeekEndList", paramMap);
+        return session.selectList("WinPredDAO.selectWinPredWeekEndList", paramMap);
     }
 
 }

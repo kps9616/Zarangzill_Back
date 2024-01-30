@@ -10,19 +10,19 @@ import java.util.List;
 public class ChannelDAO {
 
     public List<HashMap> selectFanChannelList(ChannelDTO paramMap, SqlSessionTemplate session) {
-        return session.selectList("ChannelMapper.userFanChannelList", paramMap);
+        return session.selectList("ChannelDAO.userFanChannelList", paramMap);
     }
 
 
     public List<HashMap> selectRecomChannelList(ChannelDTO paramMap, SqlSessionTemplate session) {
-        return session.selectList("ChannelMapper.userFanChannelList", paramMap);
+        return session.selectList("ChannelDAO.userFanChannelList", paramMap);
     }
 
     public int deleteUserFanChannel(ChannelDTO paramMap, SqlSessionTemplate session) {
-        return session.delete("ChannelMapper.deleteUserFanChannel", paramMap);
+        return session.delete("ChannelDAO.deleteUserFanChannel", paramMap);
     }
 
     public int insertUserFanChannel(ChannelDTO paramMap, SqlSessionTemplate session) {
-        return session.insert("ChannelMapper.insertUserFanChannel", paramMap);
+        return session.insert("ChannelDAO.insertUserFanChannel", paramMap);
     }
 }

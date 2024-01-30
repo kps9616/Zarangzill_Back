@@ -39,9 +39,7 @@
             브라우저가 비디오 태그를 지원하지 않습니다.
         </video>
         <div class="v_top_icons">
-            <a href="search" class="vticon"><span uk-icon="icon: searchTop; ratio: 1.5"></a>
-            <a href="alarm" class="vticon"><span uk-icon="icon: alam;ratio: 1.5"></span><em class="circle_bg_blue">0</em></a>
-
+            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         </div>
 
         <!--비디오 약간어둡게-->
@@ -267,7 +265,6 @@
 
             fn_settingUserFavCheck();
             fn_settingVideoCntInfo();
-            insertUserViewHistory();
 
             videoElement.load();
             videoElement.play();
@@ -839,24 +836,6 @@
         emElement.textContent = emValue;
 
 
-    }
-
-    function insertUserViewHistory() {
-        $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/view/histroy',
-            method: 'POST',
-            dataType: 'json',
-            data: {
-                user_id:$("#userId").val()
-                ,video_id:$("#videoId").val()
-            },
-            success: function(response) {
-                fn_getVideoReply();
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
     }
 
     function updateJudgeScore() {

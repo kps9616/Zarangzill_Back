@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReplyDAO">	<!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <select id="selectVideoReplyList" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO" resultType="java.util.HashMap">
+        SELECT tm.name as user_name
+             , tm.profile_image
+             , tvr.id as reply_id
+             , DATE_FORMAT(tvr.created_at, '%Y-%m-%d %H:%i:%s') as created_at
+             , tvr.description
+             , tvr.user_id as reply_creator_id
+             , IFNULL(tr.id,'') as report_id
+         FROM tb_video tv
+             LEFT OUTER JOIN tb_video_reply tvr on tv.id  = tvr.video_id
+             LEFT OUTER JOIN tb_member tm on tm.id = tvr.user_id
+             LEFT OUTER JOIN tb_report tr on tvr.user_id = tr.report_target_id
+         WHERE tv.flag_use = 'Y'
+           AND tv.id = #{videoId}
+         ORDER BY tvr.created_at
+    </select>
+
+    <insert id="insertVideoReply" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO">
+        INSERT INTO tb_video_reply (
+                video_id,
+                description,
+                user_id,
+                flag_use,
+                created_at,
+                updated_at
+        )
+        VALUES(
+               #{videoId}
+             , #{replyDescription}
+             , #{userId}
+             , #{flagUse}
+             , NOW()
+             , NOW()
+        )
+    </insert>
+
+
+    <update id="updateVideoReply" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO">
+        UPDATE tb_video_reply
+           SET flag_use = #{flagUse}
+              ,updated_at = NOW()
+         WHERE reply_id = #{replyId}
+    </update>
+
+</mapper>

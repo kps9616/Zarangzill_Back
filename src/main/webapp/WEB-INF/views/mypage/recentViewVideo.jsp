@@ -38,7 +38,7 @@
                     <c:when test="${not empty videoViewHistoryInfo.mvideo_id}">
                         <li>
                             <div class="bigthum">
-                                <a href="107쇼츠.html?id=${videoViewHistoryInfo.video_id}"><img src="${path}/resources/images/thum/${videoViewHistoryInfo.video_thumbnail}"  class="thum"></a>
+                                <a href="/subShots?id=${videoViewHistoryInfo.video_id}"><img src="${path}/resources/images/thum/${videoViewHistoryInfo.video_thumbnail}"  class="thum"></a>
                             </div>
                             <div class="list-tit ellipsis2">
                                     ${videoViewHistoryInfo.video_description}<span>${videoViewHistoryInfo.video_tags}</span>

@@ -35,7 +35,7 @@
             <ul>
                 <li>
                     <div class="bigthum">
-                        <a href="107쇼츠.html"><img src="${path}/resources/images/thum/thum01.jpg"  class="thum"></a>
+                        <a href="/subShots"><img src="${path}/resources/images/thum/thum01.jpg"  class="thum"></a>
                     </div>
                     <div class="list-tit ellipsis2">
                         홍대 댄스 여신 준비된 아이돌 데뷔 임박!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
@@ -77,7 +77,7 @@
                 </li>
                 <li>
                     <div class="bigthum">
-                        <a href="107쇼츠.html"><img src="${path}/resources/images/thum/thum02.jpg"  class="thum"></a>
+                        <a href="/subShots"><img src="${path}/resources/images/thum/thum02.jpg"  class="thum"></a>
                     </div>
                     <div class="list-tit ellipsis2">
                     준비된 아이돌 데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
