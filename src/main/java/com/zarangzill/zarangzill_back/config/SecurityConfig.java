@@ -32,6 +32,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
                     .requestMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
                     .requestMatchers("/signup","/login/**").permitAll()
                     .requestMatchers("/login","/login/**").permitAll()
+                    .requestMatchers("/**").permitAll() // 임시
                     .anyRequest().authenticated()
             )
             //.httpBasic(Customizer.withDefaults())
