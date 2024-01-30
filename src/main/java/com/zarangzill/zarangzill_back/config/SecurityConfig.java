@@ -1,5 +1,5 @@
 package com.zarangzill.zarangzill_back.config;
-/*
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,26 +23,26 @@ import static jakarta.servlet.DispatcherType.FORWARD;
 @EnableWebSecurity
 public class SecurityConfig {
 
-@Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-            //.securityMatcher(antMatcher("/**"))
-            .authorizeHttpRequests((authorize) -> authorize
-                    .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
-                    .requestMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
-                    .requestMatchers("/signup","/login/**").permitAll()
-                    .requestMatchers("/login","/login/**").permitAll()
-                    .requestMatchers("/**").permitAll() // 임시
-                    .anyRequest().authenticated()
-            )
-            //.httpBasic(Customizer.withDefaults())
-            .formLogin(form -> form
-                    .loginPage("/login")
-                    .permitAll()
-            );
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                //.securityMatcher(antMatcher("/**"))
+                .authorizeHttpRequests((authorize) -> authorize
+                        .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
+                        .requestMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
+                        .requestMatchers("/signup","/login/**").permitAll()
+                        .requestMatchers("/login","/login/**").permitAll()
+                        .requestMatchers("/**").permitAll() // 임시
+                        .anyRequest().authenticated()
+                )
+                //.httpBasic(Customizer.withDefaults())
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .permitAll()
+                );
 
 
-    return http.build();
+        return http.build();
     }
 
     @Bean
@@ -54,4 +54,4 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     public HttpFirewall getHttpFirewall() {
         return new DefaultHttpFirewall();
     }
-}*/
+}
