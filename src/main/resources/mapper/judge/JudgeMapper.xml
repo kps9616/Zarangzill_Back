@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JudgeDAO">	<!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <select id="selectJudgeScoreList" resultType="java.util.HashMap">
+        SELECT
+            A.ranking
+             , A.video_id
+             , A.sum_judge_score_1
+             , A.sum_judge_score_2
+             , A.sum_judge_score_3
+             , A.total_judge_score
+             , B.flag_use AS mflag_use
+             , B.video_path
+             , B.video_thumbnail
+             , B.video_description
+             , D.name AS userNm
+             , D.profile_image
+        FROM (
+                 SELECT
+                     video_id as video_id
+                      , SUM(judge_score_1) AS sum_judge_score_1
+                      , SUM(judge_score_2) AS sum_judge_score_2
+                      , SUM(judge_score_3) AS sum_judge_score_3
+                      , SUM(judge_score_1) + SUM(judge_score_2) + SUM(judge_score_3) AS total_judge_score
+                      , RANK () OVER(ORDER BY SUM(judge_score_1) + SUM(judge_score_2) + SUM(judge_score_3) DESC) AS ranking
+                 FROM tb_video_judge
+                 GROUP BY video_id
+             ) A
+                 Left Join zarangzill.tb_video B ON A.video_id = B.id
+                 Left Join zarangzill.tb_channel C ON B.channel_id = C.id
+                 Left Join zarangzill.tb_member D ON C.user_id = D.id
+        ORDER BY A.ranking
+    </select>
+
+</mapper>

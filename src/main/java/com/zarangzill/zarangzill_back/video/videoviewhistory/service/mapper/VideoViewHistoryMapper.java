@@ -1,7 +1,7 @@
-package com.zarangzill.zarangzill_back.videoviewhistory.service.mapper;
+package com.zarangzill.zarangzill_back.video.videoviewhistory.service.mapper;
 
 
-import com.zarangzill.zarangzill_back.videoviewhistory.service.VideoViewHistoryDTO;
+import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

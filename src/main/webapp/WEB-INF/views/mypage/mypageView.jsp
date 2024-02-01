@@ -129,7 +129,7 @@
                 즐겨찾기 영상
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
             </a>
-            <a href="78-2심사.html">
+            <a href="/mypage/judgeView">
                 <em uk-icon="icon: side01;"></em>
                 심사
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>

@@ -31,7 +31,6 @@ public class SecurityConfig {
                         .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
                         .requestMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
                         .requestMatchers("/signup","/login/**").permitAll()
-                        .requestMatchers("/login","/login/**").permitAll()
                         .requestMatchers("/**").permitAll() // 임시
                         .anyRequest().authenticated()
                 )

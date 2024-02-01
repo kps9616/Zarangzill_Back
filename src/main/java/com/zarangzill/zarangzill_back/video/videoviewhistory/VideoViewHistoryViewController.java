@@ -1,4 +1,4 @@
-package com.zarangzill.zarangzill_back.videoviewhistory;
+package com.zarangzill.zarangzill_back.video.videoviewhistory;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.zarangzill.zarangzill_back.videoviewhistory.service;
+package com.zarangzill.zarangzill_back.video.videoviewhistory.service;
 
 import lombok.Getter;
 import lombok.Setter;

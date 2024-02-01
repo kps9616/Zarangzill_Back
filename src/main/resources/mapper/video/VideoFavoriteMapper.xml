@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zarangzill.zarangzill_back.videofavorite.service.mapper.VideoFavoriteMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+<mapper namespace="com.zarangzill.zarangzill_back.video.favoritevideo.service.mapper.FavoriteVideoMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
 
     <sql id="selectVideoFavorite">
         SELECT
@@ -35,7 +35,7 @@
         ORDER BY A.updated_at DESC, A.created_at DESC
     </select>
 
-    <select id="selectVideoFavoriteInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.videofavorite.service.VideoFavoriteDTO">
+    <select id="selectVideoFavoriteInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoDTO">
         <include refid="selectVideoFavorite"/>
         <where>
             <if test='id != null and id != ""'>
@@ -66,13 +66,13 @@
         WHERE id =  #{id}
     </update>
     -->
-    <delete id="deleteVideoFavorite" parameterType="com.zarangzill.zarangzill_back.videofavorite.service.VideoFavoriteDTO">
+    <delete id="deleteVideoFavorite" parameterType="com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoDTO">
         DELETE
         FROM zarangzill.tb_video_favorite
         WHERE id = #{id}
     </delete>
 
-    <insert id="createVideoFavorite" parameterType="com.zarangzill.zarangzill_back.videofavorite.service.VideoFavoriteDTO">
+    <insert id="createVideoFavorite" parameterType="com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoDTO">
         INSERT INTO zarangzill.tb_video_favorite
             (video_id, user_id, flag_use, created_at)
         VALUES(#{video_id}, #{user_id}, #{flag_use}, sysdate());

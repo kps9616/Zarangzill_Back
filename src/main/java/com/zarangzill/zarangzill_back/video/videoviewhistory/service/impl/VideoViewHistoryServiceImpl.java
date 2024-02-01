@@ -1,8 +1,8 @@
-package com.zarangzill.zarangzill_back.videoviewhistory.service.impl;
+package com.zarangzill.zarangzill_back.video.videoviewhistory.service.impl;
 
-import com.zarangzill.zarangzill_back.videoviewhistory.service.VideoViewHistoryDTO;
-import com.zarangzill.zarangzill_back.videoviewhistory.service.VideoViewHistoryService;
-import com.zarangzill.zarangzill_back.videoviewhistory.service.mapper.VideoViewHistoryMapper;
+import com.zarangzill.zarangzill_back.video.videoviewhistory.service.mapper.VideoViewHistoryMapper;
+import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryDTO;
+import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

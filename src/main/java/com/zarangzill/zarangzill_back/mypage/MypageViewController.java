@@ -1,27 +1,25 @@
 package com.zarangzill.zarangzill_back.mypage;
 
-import com.zarangzill.zarangzill_back.board.service.BoardService;
-import com.zarangzill.zarangzill_back.videofavorite.service.VideoFavoriteService;
-import com.zarangzill.zarangzill_back.videoviewhistory.service.VideoViewHistoryService;
+import com.zarangzill.zarangzill_back.judge.service.JudgeService;
+import com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoService;
+import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/mypage")
 public class MypageViewController {
     @Autowired
-    private VideoFavoriteService videoFavoriteService;
-
+    private FavoriteVideoService favoriteVideoService;
     @Autowired
     private VideoViewHistoryService videoViewHistoryService;
+    @Autowired
+    private JudgeService judgeService;
 
     //마이페이지
     @RequestMapping(value="/mypageView")
@@ -39,8 +37,14 @@ public class MypageViewController {
     //즐겨찾기 영상
     @RequestMapping(value="/favoriteVideoView")
     public String favoriteVideoView(@RequestParam Map ParamMap, Model model) {
-        model.addAttribute("videoFavoriteList", videoFavoriteService.selectVideoFavoriteList(ParamMap));
+        model.addAttribute("videoFavoriteList", favoriteVideoService.selectVideoFavoriteList(ParamMap));
         return "/mypage/favoriteVideoView";
+    }
+    //심사
+    @RequestMapping(value="/judgeView")
+    public String judgeView(@RequestParam Map ParamMap, Model model) {
+        model.addAttribute("judgeScoreList", judgeService.selectJudgeScoreList(ParamMap));
+        return "/mypage/judgeView";
     }
 
 }
