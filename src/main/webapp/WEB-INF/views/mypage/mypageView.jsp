@@ -134,7 +134,7 @@
                 심사
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
             </a>
-            <a href="79-2우승예측.html">
+            <a href="/mypage/winPredView">
                 <em uk-icon="icon: side02;"></em>
                 우승예측
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>

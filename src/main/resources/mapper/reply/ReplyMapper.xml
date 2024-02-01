@@ -18,7 +18,26 @@
            AND tv.id = #{videoId}
          ORDER BY tvr.created_at
     </select>
-
+    <!--
+    <select id="selectVideoReplyList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+             A.id AS reply_id
+             , A.flag_use AS rflag_use
+             , A.description AS rdescription
+             , B.flag_use AS mflag_use
+             , B.video_path
+             , B.video_thumbnail
+             , B.video_description
+             , D.name AS userNm
+             , D.profile_image
+        FROM zarangzill.tb_video_reply A
+            Left Join zarangzill.tb_video B ON A.video_id = B.id
+            Left Join zarangzill.tb_channel C ON B.channel_id = C.id
+            Left Join zarangzill.tb_member D ON C.user_id = D.id
+        WHERE A.user_id = #{user_id}
+        ORDER BY A.updated_at DESC, A.created_at DESC
+    </select>
+    -->
     <insert id="insertVideoReply" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO">
         INSERT INTO tb_video_reply (
                 video_id,

@@ -1,6 +1,8 @@
 package com.zarangzill.zarangzill_back.mypage;
 
 import com.zarangzill.zarangzill_back.judge.service.JudgeService;
+import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
+import com.zarangzill.zarangzill_back.reply.service.ReplyService;
 import com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoService;
 import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class MypageViewController {
     private VideoViewHistoryService videoViewHistoryService;
     @Autowired
     private JudgeService judgeService;
+    @Autowired
+    private ReplyService replyService;
+
+
 
     //마이페이지
     @RequestMapping(value="/mypageView")
@@ -46,5 +52,19 @@ public class MypageViewController {
         model.addAttribute("judgeScoreList", judgeService.selectJudgeScoreList(ParamMap));
         return "/mypage/judgeView";
     }
+    //우승예측
+    @RequestMapping(value="/winPredView")
+    public String winPredView(@RequestParam Map ParamMap, Model model) {
+        //model.addAttribute("judgeScoreList", judgeService.selectJudgeScoreList(ParamMap));
+        return "/mypage/winPredView";
+    }
+    //영상댓글
+    @RequestMapping(value="/videoReplyView")
+    public String videoReplyView(@RequestParam Map ParamMap, Model model) {
+        ReplyDTO replyDto = new ReplyDTO();
+        replyDto.setReply_id(ParamMap.get("reply_id").toString());
 
+        model.addAttribute("videoReplyList", replyService.selectVideoReplyList(replyDto));
+        return "/mypage/videoReplyView";
+    }
 }
