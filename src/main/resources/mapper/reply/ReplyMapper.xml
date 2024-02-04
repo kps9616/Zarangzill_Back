@@ -18,16 +18,16 @@
            AND tv.id = #{videoId}
          ORDER BY tvr.created_at
     </select>
-    <!--
-    <select id="selectVideoReplyList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    <select id="selectVideoReplyListByMypage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         SELECT
              A.id AS reply_id
-             , A.flag_use AS rflag_use
-             , A.description AS rdescription
-             , B.flag_use AS mflag_use
+             , A.flag_use AS reply_flag_use
+             , A.description AS reply_description
+             , B.flag_use AS video_flag_use
              , B.video_path
              , B.video_thumbnail
              , B.video_description
+             , REPLACE(B.video_tags, ',',' ') AS video_tags
              , D.name AS userNm
              , D.profile_image
         FROM zarangzill.tb_video_reply A
@@ -37,7 +37,6 @@
         WHERE A.user_id = #{user_id}
         ORDER BY A.updated_at DESC, A.created_at DESC
     </select>
-    -->
     <insert id="insertVideoReply" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO">
         INSERT INTO tb_video_reply (
                 video_id,

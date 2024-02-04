@@ -35,7 +35,7 @@
             <ul>
                 <c:forEach var="videoFavoriteInfo" items="${videoFavoriteList}">
                     <c:choose>
-                        <c:when test="${not empty videoFavoriteInfo.mvideo_id}">
+                        <c:when test="${videoFavoriteInfo.video_flag_use eq 'Y'}">
                             <li>
                                 <div class="bigthum">
                                     <a href="/subShots?id=${videoFavoriteInfo.video_id}"><img src="${path}/resources/images/thum/${videoFavoriteInfo.video_thumbnail}"  class="thum"></a>

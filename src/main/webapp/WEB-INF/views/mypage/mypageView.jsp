@@ -43,7 +43,7 @@
             </div>
     
             <div class="user-info">
-                <img src="${path}/resources/images/thum/face02.jpg" class="thum">
+                <img src="${path}/upload/thum/face02.jpg" class="thum">
                 <div class="user-mody">
                     <img src="${path}/resources/images/icon/google-g.png">
                     <span class="pr5 pl10">010-1234-5678</span>
@@ -141,7 +141,7 @@
             </a>
         </div>
          <div class="my-link mt20 mb20">
-            <a href="80-2영상댓글.html"> 영상댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/mypage/videoReplyView"> 영상댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="81-2팬게시글.html"> 팬 게시글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="82-2팬댓글.html"> 팬 댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
          </div>

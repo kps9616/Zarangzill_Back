@@ -9,10 +9,11 @@
              , A.video_id
              , DATE_FORMAT(A.view_date, '%Y-%m-%d %H:%i') AS view_date
              , DATE_FORMAT(A.created_at, '%Y-%m-%d %H:%i') AS created_at
-             , B.id AS mvideo_id
+             , B.flag_use AS video_flag_use
              , B.video_path
              , B.video_thumbnail
              , B.video_description
+             , REPLACE(B.video_tags, ',',' ') AS video_tags
              , C.name AS userNm
              , C.profile_image
         FROM zarangzill.tb_user_view_history A
