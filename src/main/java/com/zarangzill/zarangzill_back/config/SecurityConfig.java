@@ -1,9 +1,17 @@
 package com.zarangzill.zarangzill_back.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
@@ -22,6 +30,8 @@ import static jakarta.servlet.DispatcherType.FORWARD;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    @Value("${upload.path.pattern}")
+    private String uploadPathPattern;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -30,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
                         .requestMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
+                        .requestMatchers(uploadPathPattern).permitAll()
                         .requestMatchers("/signup","/login/**").permitAll()
                         .requestMatchers("/**").permitAll() // 임시
                         .anyRequest().authenticated()
@@ -53,4 +64,24 @@ public class SecurityConfig {
     public HttpFirewall getHttpFirewall() {
         return new DefaultHttpFirewall();
     }
+/*
+    @Bean
+    public AuthenticationManager authenticationManager(
+            UserDetailsService userDetailsService
+            ) {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService);
+
+        return new ProviderManager(authenticationProvider);
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails userDetails = User.withDefaultPasswordEncoder()
+                .username("user")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(userDetails);
+    }*/
 }
