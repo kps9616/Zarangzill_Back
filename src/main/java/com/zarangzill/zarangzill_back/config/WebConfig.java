@@ -9,7 +9,7 @@ import org.springframework.web.servlet.resource.EncodedResourceResolver;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-
+    @Value("${upload.Path}")
     private String uploadPath;
     @Value("${upload.path.pattern}")
     private String uploadPathPattern;
