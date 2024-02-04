@@ -10,7 +10,7 @@
              , A.flag_use
              , DATE_FORMAT(A.created_at, '%Y-%m-%d %H:%i') AS created_at
              , DATE_FORMAT(A.updated_at, '%Y-%m-%d %H:%i') AS updated_at
-             , B.id AS mvideo_id
+             , B.flag_use AS video_flag_use
              , B.video_path
              , B.video_thumbnail
              , B.video_description

@@ -35,7 +35,7 @@
             <ul>
                 <c:forEach var="videoViewHistoryInfo" items="${videoViewHistoryList}">
                 <c:choose>
-                    <c:when test="${not empty videoViewHistoryInfo.mvideo_id}">
+                    <c:when test="${videoViewHistoryInfo.video_flag_use eq 'Y'}">
                         <li>
                             <div class="bigthum">
                                 <a href="/subShots?id=${videoViewHistoryInfo.video_id}"><img src="${path}/resources/images/thum/${videoViewHistoryInfo.video_thumbnail}"  class="thum"></a>

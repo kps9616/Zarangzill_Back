@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class ReplyServiceImpl implements ReplyService {
 
@@ -18,6 +20,10 @@ public class ReplyServiceImpl implements ReplyService {
     SqlSessionTemplate session;
 
     public List<HashMap> selectVideoReplyList(ReplyDTO paramMap) {
+        return replyDAO.selectVideoReplyList(paramMap, session);
+    }
+
+    public List<HashMap> selectVideoReplyList(Map paramMap) {
         return replyDAO.selectVideoReplyList(paramMap, session);
     }
 

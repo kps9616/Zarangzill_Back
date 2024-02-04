@@ -34,24 +34,33 @@
     <div class="container"> 
         <div class="my-ch-bx">
             <ul>
-                <li>
-                    <div class="mych-thum" style="background-image:url(${path}/resources/images/thum/thum01.jpg);">
-                        <span class="sr-only">영상썸네일</span>
-                    </div>
-                    <div class="mych-bx">
-                        <div class="mych-img">
-                            <img src="${path}/resources/images/thum/face02.jpg">
-                            <span>TWICE</span>
-                        </div>                        
-                        <div class="mych-text">
-                            완벽한 궁극의 아이돌 ✧트와이스✧ #TWICE #트와이스
+                <c:forEach var="videoReplyInfo" items="${videoReplyList}">
+                <c:choose>
+                <c:when test="${videoReplyInfo.video_flag_use eq 'Y'}">
+                    <li>
+                        <div class="mych-thum" style="background-image:url(${path}/resources/images/thum/${videoReplyInfo.video_thumbnail});">
+                            <span class="sr-only">영상썸네일</span>
                         </div>
-                        <div class="comment-view">
-                            <span uk-icon="icon:comment-arrow"></span>
-                            <a href="25-2댓글.html">JIHYO The 1st Mini Album “ZONE” TWICE 트와이스</a> 
+                        <div class="mych-bx">
+                            <div class="mych-img">
+                                <img src="${path}/resources/images/thum/${videoReplyInfo.profile_image}">
+                                <span>TWICE</span>
+                            </div>
+                            <div class="mych-text">
+                                    ${videoReplyInfo.video_description}<span>${videoReplyInfo.video_tags}</span>
+                            </div>
+                            <div class="comment-view">
+                                <span uk-icon="icon:comment-arrow"></span>
+                                <a href="25-2댓글.html?reply_id=${videoReplyInfo.reply_id}">${videoReplyInfo.reply_description}</a>
+                            </div>
                         </div>
-                    </div>                    
-                </li>
+                    </li>
+                </c:when>
+                    <c:otherwise>
+                    </c:otherwise>
+                </c:choose>
+                </c:forEach>
+
                 
                 <li>
                     <em>

@@ -6,10 +6,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class ReplyDAO {
     public List<HashMap> selectVideoReplyList(ReplyDTO paramMap, SqlSessionTemplate session) {
         return session.selectList("ReplyDAO.selectVideoReplyList", paramMap);
+    }
+    public List<HashMap> selectVideoReplyList(Map paramMap, SqlSessionTemplate session) {
+        return session.selectList("ReplyDAO.selectVideoReplyListByMypage", paramMap);
     }
     public int insertVideoReply(ReplyDTO paramMap, SqlSessionTemplate session) {
         return session.insert("ReplyDAO.insertVideoReply", paramMap);

@@ -1,6 +1,8 @@
 package com.zarangzill.zarangzill_back.mypage;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zarangzill.zarangzill_back.judge.service.JudgeService;
+import com.zarangzill.zarangzill_back.member.service.MemberDTO;
 import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
 import com.zarangzill.zarangzill_back.reply.service.ReplyService;
 import com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoService;
@@ -61,10 +63,8 @@ public class MypageViewController {
     //영상댓글
     @RequestMapping(value="/videoReplyView")
     public String videoReplyView(@RequestParam Map ParamMap, Model model) {
-        ReplyDTO replyDto = new ReplyDTO();
-        replyDto.setReply_id(ParamMap.get("reply_id").toString());
-
-        model.addAttribute("videoReplyList", replyService.selectVideoReplyList(replyDto));
+        ParamMap.put("user_id", "1");
+        model.addAttribute("videoReplyList", replyService.selectVideoReplyList(ParamMap));
         return "/mypage/videoReplyView";
     }
 }
