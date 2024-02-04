@@ -31,4 +31,8 @@ public class ChannelServiceImpl implements ChannelService {
     public int insertUserFanChannel(ChannelDTO paramMap) {
         return channelDAO.insertUserFanChannel(paramMap, session);
     }
+
+    public List<ChannelDTO> selectUsrChannelList(ChannelDTO paramMap) {
+        return channelDAO.selectUsrChannelList(paramMap, session);
+    }
 }

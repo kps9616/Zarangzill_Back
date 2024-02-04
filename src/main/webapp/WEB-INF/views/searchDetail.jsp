@@ -23,7 +23,128 @@
       
     </style>
 </head>
+<script>
+
+    $( document ).ready(function() {
+        fn_getSearchList();
+    });
+
+    function fn_search(type) {
+        $("#searchType").val(type);
+        fn_getSearchList(type);
+    }
+
+    function fn_getSearchList(type) {
+        $.ajax({
+
+            url: 'http://localhost:9090/api/v1/short/search/many',
+            method: 'GET',
+            dataType: 'json',
+            data: $("#searchForm").serialize(),
+            success: function(response) {
+
+                if("H" == type) {
+                    fn_searchResultH(response.result, response.resultSize);
+                } else if("N" == type) {
+                    fn_searchResultN(response.result, response.resultSize);
+                } else if("V" == type) {
+                    fn_searchResultV(response.result, response.resultSize);
+                }
+
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+    }
+
+    function fn_searchResultV(result, resultSize) {
+        let html = "<ul>";
+
+        for(let i=0; i < resultSize; i++) {
+            let info = result[i];
+
+            html += '<li>';
+            html += '   <div class="bigthum">';
+            html += '        <img src="${path}/'+info.video_thumbnail+''"  class="thum">';
+            html += '    </div>';
+            html += '    <div class="list-tit ellipsis2">';
+            html += '        '+info.video_description+'<span> '+info.video_tag+'</span>';
+            html += '    </div>';
+            html += '    <div class="list-name">';
+            html += '        <a href="#none">';
+            html += '            <img class="small-thum mr5" src="${path}/'+info.profile_image+'">';
+            html += '                '+info.user_name;
+            html += '        </a>';
+            html += '   </div>';
+            html += '</li>';
+
+        }
+        html = "</ul>";
+
+        $("#searchList").html(html);
+    }
+    function fn_searchResultH(result, resultSize) {
+        let html = "<ul>";
+
+        for(let i=0; i < resultSize; i++) {
+            let info = result[i];
+
+            html += '<li>';
+            html += '    <a href="#none" onclick="fn_searchHashDetail('+info.video_tag+')">'+info.video_tag+'<span>'+AddComma(info.video_cnt)+'</span><em uk-icon="chevron-right"></em></a>';
+            html += '</li>';
+
+        }
+        html = "</ul>";
+        $("#hashDiv").html(html);
+    }
+    function AddComma(num) {
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        return num.toString().replace(regexp, ',');
+    }
+    function fn_searchResultN(result, resultSize) {
+
+        let html = "<ul>";
+
+        for(let i=0; i < resultSize; i++) {
+            let info = result[i];
+
+            html += '<li>';
+            html += '    <img src="${path}/'+info.channel_profile_image+'">';
+            html += '        <a href="#" onclick="fn_moveChannel('+info.channel_id+')">@'+info.channel_name+' <span>'+info.video_cnt+'</span><em uk-icon="chevron-right"></em></a>';
+            html += '</li>';
+
+        }
+        html = "</ul>";
+        $("#nameDiv").html(html);
+    }
+
+    function fn_moveChannel(id) {
+        const mvFrm = $("#mvChannelFrm");
+        $("#mvChannelId").val(id);
+        mvFrm.action = "";
+        mvFrm.submit();
+    }
+
+    function fn_searchHashDetail(name) {
+
+        const searchFrm = $("#searchForm");
+        $("#searchKeyword").val(name);
+
+        searchFrm.action = "search/detail/hash";
+        searchFrm.submit();
+    }
+</script>
 <body>
+    <form id="searchForm" name="searchForm" method="post">
+        <input type="hidden" id="searchKeyword" name="searchKeyword" value="${serachKeyword}"/>
+        <input type="hidden" id="searchType" name="searchType" value="V"/>
+    </form>
+    <form id="mvChannelFrm" name="mvChannelFrm" method="post">
+        <input type="hidden" id="mvChannelId" name="channelId" value="V"/>
+    </form>
+
     <div class="top-bx">
         <a href="main.html" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         검색
@@ -40,80 +161,27 @@
 
         <div class="chioce-bx">   
             <div class="radio-set">
-                <input type="radio" id="b1" name="radio_b" value="▶ 영상" checked>
+                <input type="radio" id="b1" name="radio_b" value="▶ 영상" onclick="fn_search('V')" checked>
                 <label for="b1" class="m-frist wp100"><span>▶ 영상</span></label>
     
-                <input type="radio" id="b2" name="radio_b" value="#해시태그" onclick="window.location.href='21-2검색결과_해시태그.html'">
+                <input type="radio" id="b2" name="radio_b" value="#해시태그" onclick="fn_search('H')">
                 <label for="b2" class="wp100"><span>#해시태그</span></label>
 
-                <input type="radio" id="b3" name="radio_b" value="@네임태그" onclick="window.location.href='22-1네임태그.html'">
+                <input type="radio" id="b3" name="radio_b" value="@네임태그" onclick="fn_search('N')">
                 <label for="b3" class="wp100"><span>@네임태그</span></label>
             </div>
         </div>
 
-        <div class="thum-list">
-            <ul>
-                <li>
-                    <div class="bigthum">
-                        <img src="${path}/resources/images/thum/thum01.jpg"  class="thum">
-                    </div>
-                    <div class="list-tit ellipsis2">
-                        홍대 댄스 여신 준비된 아이돌 데뷔 임박!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
-                    </div>
-                    <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face01.jpg">
-                            Hong Dae
-                        </a>
-                    </div> 
-                </li>
-                <li>
-                    <div class="bigthum">
-                        <img src="${path}/resources/images/thum/thum02.jpg"  class="thum">
-                    </div>
-                    <div class="list-tit ellipsis2">
-                    준비된 아이돌 데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
-                    </div>
-                    <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face02.jpg">
-                            idol dance team
-                        </a>
-                    </div> 
-                </li>
-                <li>
-                    <div class="bigthum">
-                        <img src="${path}/resources/images/thum/thum01.jpg"  class="thum">
-                    </div>
-                    <div class="list-tit ellipsis2">
-                        홍대 댄스 여신 준비된 아이돌 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
-                    </div>
-                    <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face01.jpg">
-                            dance team
-                        </a>
-                    </div> 
-                </li>
-                <li>
-                    <div class="bigthum">
-                        <img src="${path}/resources/images/thum/thum02.jpg"  class="thum">
-                    </div>
-                    <div class="list-tit ellipsis2">
-                        데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
-                    </div>
-                    <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face02.jpg">
-                            dance team
-                        </a>
-                    </div> 
-                </li>                     
-               
-            </ul>
+        <div class="thum-list" id="movieDiv">
+
 
         </div>
-            
+
+        <div class="hash_list" id="hashDiv">
+        </div>
+
+        <div class="name_list" id="nameDiv">
+        </div>
 
     </div>   
     

@@ -162,7 +162,74 @@
             alert("공유하기 환경이 아닙니다.");
         }
 
+    }
 
+    function fn_settingWinPredInfo() {
+        $.ajax({
+            url: 'http://1.226.83.35:9090/api/v1/short/winPred/info',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                video_id:$("#videoId").val(),
+                user_id:$("#userId").val(),
+            },
+            success: function(response) {
+                var result = response.result;
+                var reangeInfo = response.reangeInfo;
+                var userPredInfo = response.userPredInfo;
+                var flagMonth = userPredInfo.flag_check_month;
+                var flagWeek = userPredInfo.flag_check_week;
+
+                var html = "";
+
+
+                html += '<h3 className="mb10">2월 우승</h3>';
+                html += '<a href="#" onClick="updateWinnerPredict(\'month\');">';
+                if(flagMonth == 'Y') {
+                    html += '<div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>';
+                }
+                else {
+                    html += '<div><em uk-icon="icon: vote-ok;"></em><span>투표하기</span></div>';
+                }
+                html += '</a>';
+                $("#winPredMonth").html(html);
+
+                html = "";
+                html += '<h3 class="mb10">'+reangeInfo.week_idx+'번째 우승</h3>';
+                html += '    <a href="#" onClick="updateWinnerPredict(\'week\');">';
+                if(flagWeek == 'Y') {
+                    html += '<div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>';
+                }
+                else {
+                    html += '<div><em uk-icon="icon: vote-ok;"></em><span>투표하기</span></div>';
+                }
+
+                html += '    <span class="font11">'+reangeInfo.week_start_date+' ~ '+reangeInfo.week_end_date+'</span>';
+                html += '</a>';
+
+
+                $("#winPredWeek").html(html);
+
+                html = "<h3>최근 순위정보</h3>";
+
+                for(var i=3; i>0; i--) {
+
+                    html += '<div class="w-rank-list">';
+                    if(result[i].flag_week_win == 'Y') {
+                        html += '    <img src="${path}/resources/images/icon/crown-yellow.png">';
+                    }
+                    html += '    <span>'+result[i].win_idx+'</span>';
+                    html += '    <em>'+result[i].week_idx+'주</em>';
+                    html += '</div>';
+                }
+
+                $("#winPredBeforeList").html(html);
+
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
     }
 
     //구독버튼 class추가
@@ -668,7 +735,7 @@
             <h2 class="uk-modal-title uk-text-center">우승예측 투표하기</h2>
         </div>
 
-        <div class="modal-vote-con">
+        <div class="modal-vote-con" id="winPredVideoInfo">
             <div class="mod-team-txt">홍대 스트리트 댄스팀. 춤에 대한 열정이 많은 멤버들로  구성된 팀들의 진짜 실력
                 <span>#스트리트 댄스팀 #홍대춤꾼</span>
             </div>
@@ -676,13 +743,13 @@
 
             <!--투표버튼-->
             <div class="mod-team-btnbx">
-                <div class="mod-btn-black">
-                    <h3 class="mb10">1월 우승</h3>
+                <div class="mod-btn-black" id="winPredMonth">
+                    <h3 class="mb10">2월 우승</h3>
                     <a href="#" onclick="updateWinnerPredict('month');">
                         <div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>
                     </a>
                 </div>
-                <div class="mod-btn-blue">
+                <div class="mod-btn-blue" id="winPredWeek">
                     <h3 class="mb10">30번째 우승</h3>
                     <a href="#" onclick="updateWinnerPredict('week');">
                         <div><em uk-icon="icon: vote-ok;"></em><span>투표하기</span></div>
@@ -692,7 +759,7 @@
             </div>
             <!--최근 순위 정보-->
 
-            <div class="mod-w-rank">
+            <div class="mod-w-rank" id="winPredBeforeList">
                 <h3>최근 순위정보</h3>
                 <div class="w-rank-list">
                     <span>22</span>
@@ -747,6 +814,7 @@
     }
     btn_winner.onclick = function() {
         modal_winner.style.display = "block";
+        fn_settingWinPredInfo();
     }
 
 

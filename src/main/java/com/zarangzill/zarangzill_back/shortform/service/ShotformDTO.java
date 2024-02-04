@@ -21,6 +21,12 @@ public class ShotformDTO {
     @JsonProperty("description")
     private String description;
 
+    @JsonProperty("video_description")
+    private String videoDescription;
+
+    @JsonProperty("video_thumbnail")
+    private String videoThumbnail;
+
     @JsonProperty("reply_description")
     private String replyDescription;
 
@@ -53,5 +59,55 @@ public class ShotformDTO {
     private String endDate;
     private String searchType;
     private String sYear;
+    private String avgAge;
+    private String gender;
+    private String searchKeyword;
+
+    @JsonProperty("video_tag")
+    private String videoTag;
+
+    @JsonProperty("prediction_id")
+    private String predictionId;
+
+    @JsonProperty("week_idx")
+    private String weekIdx;
+
+    @JsonProperty("week_start_date")
+    private String weekStartDate;
+
+    @JsonProperty("week_end_date")
+    private String weekEndDate;
+
+    @JsonProperty("wp_id")
+    private String wpId;
+
+    @JsonProperty("flag_week_win")
+    private String flagWeekWin;
+
+    @JsonProperty("flag_check_month")
+    private String flagCheckMonth;
+
+    @JsonProperty("flag_check_week")
+    private String flagCheckWeek;
+
+    private String flagOpen;
+
+    @JsonProperty("video_path")
+    private String videoPath;
+
+    @JsonProperty("video_cnt")
+    private String videoCnt;
+
+    @JsonProperty("channel_profile_image")
+    private String channelProfileImage;
+
+    @JsonProperty("channel_name")
+    private String channelName;
+
+    @JsonProperty("channel_id")
+    private String channelId;
+
+
+
 
 }

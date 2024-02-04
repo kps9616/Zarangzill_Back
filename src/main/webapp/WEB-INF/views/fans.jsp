@@ -136,7 +136,7 @@
    
          <div class="swiper-slide">
            <div class="swp-img" title="비디오 썸네일" style="background-image: url(images/thum/thum03.jpg);"></div>
-           <div class="swp-info">
+           <div class="swp-info">ㅊ
                <a href="#">
                    <img src="images/thum/group04.jpg">
                    <span>Nya</span>

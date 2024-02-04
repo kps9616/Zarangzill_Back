@@ -129,25 +129,55 @@
 
     </div>   
     
+<script>
+    $( document ).ready(function() {
+        $("#okMember").hide();
+        $("#noMember").hide();
+    });
 
+    function fn_okJoinMember() {
+        $("#joinMemberDiv").hide();
+        $("#okMember").show();
+        fn_post("channelForm", "channel/fans/ins");
+    }
+
+    function fn_noJoinMember() {
+        $("#joinMemberDiv").hide();
+        $("#noMember").show();
+    }
+
+</script>
    
  <!--채널초대모달 --> 
  <div id="invte-modal" class="uk-flex-top" uk-modal>
+
+     <form id="channelForm" name="channelForm" method="post">
+         <input type="hidden" id="userId" name="userId" value="1"/>
+         <input type="hidden" id="channelId" name="channelId" value="1"/>
+     </form>
+
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-default" type="button" uk-close></button>        
         <div class="uk-modal-body">
-            <div class="invite-modal">
+            <div class="invite-modal" id="joinMemberDiv">
                 <div class="inv-img"><img src="${path}/resources/images/thum/grup03.jpg"></div>
                 <div class="inv-tit">twice.official</div>
                 <div class="inv-txt">트와이스 공식 채널</div>
                 <div class="inv-msg">채널멤버 초대를 받았습니다.</div>
+            </div>
+
+            <div class="invite-modal" id="noMember">
+                <div class="inv-img"><img src="${path}/resources/images/thum/grup03.jpg"></div>
                 <div class="inv-msg">거절했습니다.</div>
+            </div>
+            <div class="invite-modal" id="okMember">
+                <div class="inv-img"><img src="${path}/resources/images/thum/grup03.jpg"></div>
                 <div class="inv-msg">멤버가 되었습니다.</div>
             </div>
         </div>
         <div class="uk-modal-footer uk-text-center">
-            <a href="#msg-modal" class="sm-btn-line-gray" uk-toggle>거절</a>
-            <a href="#msg-modal" class="sm-btn-line-blue" uk-toggle>수락</a>
+            <a href="#msg-modal" class="sm-btn-line-gray" uk-toggle onclick="fn_noJoinMember();">거절</a>
+            <a href="#msg-modal" class="sm-btn-line-blue" uk-toggle onclick="fn_okJoinMember();">수락</a>
         </div>
     </div>
      

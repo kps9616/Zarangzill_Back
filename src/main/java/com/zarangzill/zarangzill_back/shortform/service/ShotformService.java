@@ -11,6 +11,15 @@ public interface ShotformService {
     HashMap selectVideoCountInfo(ShotformDTO paramMap);
     HashMap selectCheckUserVideoFav(ShotformDTO paramMap);
     int insertUserViewHistory(ShotformDTO paramMap);
-
+    List<ShotformDTO> selectManyViewHistory(ShotformDTO paramMap);
+    int insertUserVideoInfo(ShotformDTO paramMap);
+    int insertUserVideoTagsInfo(ShotformDTO paramMap);
+    int insertUserVideoContInfo(ShotformDTO paramMap);
+    String selectNewVideoId(ShotformDTO paramMap);
+    List<ShotformDTO> selectSearchKeyWordList(ShotformDTO paramMap);
+    List<ShotformDTO> selectSearchKeyWordDetailList(ShotformDTO paramMap);
+    ShotformDTO selectWeekPredictionRangeInfo(ShotformDTO paramMap);
+    List<ShotformDTO> selectVideoRankListFor4(ShotformDTO paramMap);
+    ShotformDTO selectUserCheckWinPredInfo(ShotformDTO paramMap);
 
 }

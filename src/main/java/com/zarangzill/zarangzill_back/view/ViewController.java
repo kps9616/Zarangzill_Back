@@ -139,11 +139,20 @@ public class ViewController {
 
 
     @GetMapping("search/detail")
-    public ModelAndView mainSearchDetail(Model model) {
+    public ModelAndView mainSearchDetail(@RequestParam("searchKeyword") String searchKeyword, Model model) {
         ModelAndView mav = new ModelAndView();
 
         mav.setViewName("searchDetail");
-        mav.addObject("title","알람입니다.");
+        mav.addObject("searchKeyword",searchKeyword);
+        return mav;
+    }
+
+    @GetMapping("search/detail/hash")
+    public ModelAndView mainSearchHashDetail(@RequestParam("searchKeyword") String searchKeyword,Model model) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("searchHashDetail");
+        mav.addObject("searchKeyword",searchKeyword);
         return mav;
     }
 

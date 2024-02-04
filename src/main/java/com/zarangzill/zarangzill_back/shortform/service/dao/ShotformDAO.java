@@ -21,4 +21,36 @@ public class ShotformDAO {
     public int insertUserViewHistory(ShotformDTO paramMap, SqlSessionTemplate session) {
         return session.insert("ShotformDAO.insertUserViewHistory", paramMap);
     }
+    public List<ShotformDTO> selectManyViewHistory(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("ShotformDAO.selectManyViewHistory", paramMap);
+    }
+    public int insertUserVideoInfo(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.insert("ShotformDAO.insertUserVideoInfo", paramMap);
+    }
+    public int insertUserVideoTagsInfo(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.insert("ShotformDAO.insertUserVideoTagsInfo", paramMap);
+    }
+    public int insertUserVideoContInfo(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.insert("ShotformDAO.insertUserVideoContInfo", paramMap);
+    }
+    public String selectNewVideoId(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return (String)session.selectOne("ShotformDAO.selectNewVideoId", paramMap);
+    }
+    public List<ShotformDTO> selectSearchKeyWordList(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("ShotformDAO.selectSearchKeyWordList", paramMap);
+    }
+    public List<ShotformDTO> selectSearchKeyWordDetailList(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("ShotformDAO.selectSearchKeyWordDetailList", paramMap);
+    }
+    public ShotformDTO selectWeekPredictionRangeInfo(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.selectOne("ShotformDAO.selectWeekPredictionRangeInfo", paramMap);
+    }
+    public List<ShotformDTO> selectVideoRankListFor4(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("ShotformDAO.selectVideoRankListFor4", paramMap);
+    }
+    public ShotformDTO selectUserCheckWinPredInfo(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.selectOne("ShotformDAO.selectUserCheckWinPredInfo", paramMap);
+    }
+
+
 }

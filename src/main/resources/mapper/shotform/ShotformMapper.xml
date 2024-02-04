@@ -53,4 +53,217 @@
         )
     </insert>
 
+    <select id="selectManyViewHistory" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+
+        SELECT A.video_id
+             , A.user_name
+             , A.video_id
+             , A.user_name
+             , A.channel_id
+             , A.profile_image
+             , A.video_tag
+             , A.video_description
+             , A.video_thumbnail
+        FROM (select tv.id                  as video_id
+                   , tm.name                as user_name
+                   , tm.profile_image       as profile_image
+                   , (select group_concat(video_tag) from tb_video_tags tvt where tvt.video_id  = tv.id) as video_tag
+                   , tv.video_thumbnail
+                   , tv.video_description
+                   , tc.id                  as channel_id
+                   , count(tuvh.history_id) as cnt
+              from tb_user_view_history tuvh
+                       left outer join tb_video tv on tuvh.video_id = tv.id
+                       left outer join tb_channel tc on tv.channel_id = tc.id
+                       left outer join tb_member tm on tc.user_id = tm.id
+              where tv.flag_use = 'Y'
+                AND tv.flag_open = 'Y'
+                and tm.gender = #{gender}
+                and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) = #{avgAge}
+              GROUP BY tv.id
+                     , tm.name
+                     , tv.video_thumbnail
+                     , tv.video_description
+                     , tm.profile_image
+                     , tc.id
+              )A
+        order by A.cnt desc
+    </select>
+
+    <select id="selectSearchKeyWordList" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        select
+              <if test='"V".equals(searchType)'>
+              tv.id as video_id
+             ,tm.name as user_name
+             ,tm.profile_image as user_profile_image
+             ,tv.video_thumbnail
+             ,tv.video_description
+              </if>
+             <if test='"N".equals(searchType)'>
+             ,tc.id as channel_id
+             ,tc.name as channel_name
+             ,tc.profile_image as channel_profile_image
+             ,(select count(id) from tb_video where channel_id = tc.id) as video_cnt
+             </if>
+             <if test='"H".equals(searchType)'>
+             ,tvt.video_tag
+             ,count(tv.id) as video_cnt
+             </if>
+        from tb_video tv
+                 left outer join tb_channel tc on tv.channel_id = tc.id
+                 left outer join tb_member tm on tc.user_id  = tm.id
+        <if test='"H".equals(searchType)'>
+            left outer join tb_video_tags tvt on tvt.video_id  = tv.id
+        </if>
+        where tv.flag_use = 'Y'
+          AND tv.flag_open = 'Y'
+            <if test='"V".equals(searchType)'>
+                AND tv.video_description like '%' + #{searchKeyword} + '%'
+            </if>
+            <if test='"N".equals(searchType)'>
+                and tc.description like '%' + #{searchKeyword} + '%'
+            </if>
+            <if test='"H".equals(searchType)'>
+                and tvt.video_tag like '%' + #{searchKeyword} + '%'
+            GROUP BY tvt.video_tag
+            </if>
+    </select>
+
+    <select id="selectSearchKeyWordDetailList" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        SELECT A.video_id
+             , A.user_name
+             , A.video_id
+             , A.user_name
+             , A.channel_id
+             , A.video_description
+             , A.video_thumbnail
+        FROM (select tv.id                  as video_id
+                   , tm.name                as user_name
+                   , tv.video_thumbnail
+                   , tv.video_description
+                   , tc.id                  as channel_id
+                   , count(tuvh.history_id) as cnt
+              from tb_user_view_history tuvh
+                       left outer join tb_video tv on tuvh.video_id = tv.id
+                       left outer join tb_channel tc on tv.channel_id = tc.id
+                       left outer join tb_member tm on tc.user_id = tm.id
+                       left outer join tb_video_tags tvt on tvt.video_id  = tv.id
+              where tv.flag_use = 'Y'
+                AND tv.flag_open = 'Y'
+                and tvt.video_tag = #{searchKeyword}
+                and tm.gender = #{gender}
+                and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) = #{avgAge}
+              GROUP BY tv.id
+                     , tm.name
+                     , tv.video_thumbnail
+                     , tv.video_description
+                     , tc.id
+              )A
+        order by A.cnt desc
+    </select>
+
+    <select id="selectWeekPredictionRangeInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        SELECT week_idx
+             , week_start_date
+             , week_end_date
+             , id as prediction_id
+        FROM tb_win_prediction_date_list
+        WHERE flag_use = 'Y'
+    </select>
+
+    <select id="selectVideoRankListFor4" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+       SELECT a.week_idx
+             ,a.week_start_date
+             ,a.week_end_date
+             ,a.id as wp_id
+             ,b.win_idx
+             ,CASE WHEN IFNULL(c.id,0) > 0 THEN 'Y' ELSE 'N' END AS flag_week_win
+        FROM tb_win_prediction_date_list a
+                 LEFT OUTER JOIN tb_video_win_rank_list b on a.week_idx = b.week_idx and b.win_type = 'W'
+                 left outer join tb_winner_list c on c.week_idx  = b.week_idx and b.video_id  = c.video_id
+        WHERE flag_after_use  = 'Y'
+          and b.video_id  = #{videoId}
+        order by flag_after_idx desc
+    </select>
+
+
+    <select id="selectUserCheckWinPredInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        SELECT CASE WHEN IFNULL((
+                    select count(id) as month_pred
+                    from tb_winning_prediction_user_list twpul
+                    where user_id = #{userId}
+                      and video_id = #{videoId}
+                      and prediction_type = 'M'
+                      and start_date = #{startDate}
+                      and end_date  = #{endDate}
+                ),0) > 0 THEN 'Y' ELSE 'N' END AS flag_check_month,
+               CASE WHEN IFNULL((
+                    select count(id) as week_pred
+                    from tb_winning_prediction_user_list twpul
+                    where user_id = #{userId}
+                      and video_id = #{videoId}
+                      and prediction_type = 'W'
+                      and start_date = #{startWeekDate}
+                      and end_date  = #{endWeekDate}
+                ),0) > 0 THEN 'Y' ELSE 'N' END AS flag_check_week
+    </select>
+
+
+    <insert id="insertUserVideoInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        INSERT INTO tb_video (
+            channel_id,
+            video_path,
+            video_thumbnail,
+            video_description,
+            video_tags,
+            flag_open,
+            view_cnt,
+            flag_use,
+            created_at,
+            updated_at)
+        VALUES(
+                #{channelId}
+              , #{videoPath}
+              , #{videoThumbnail}
+              , #{videoDescription}
+              , #{videoTag}
+              , #{flagOpen}
+              , 0
+              , 'Y'
+              , NOW()
+              , NOW()
+        )
+    </insert>
+
+    <insert id="insertUserVideoTagsInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        INSERT INTO tb_video_tags (
+            video_id,
+            video_tag,
+            created_at)
+        VALUES(
+                #{videoId}
+              , #{videoTag}
+              , NOW()
+              )
+    </insert>
+
+    <insert id="insertUserVideoContInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        INSERT INTO tb_video_contributor (
+            video_id,
+            user_id,
+            flag_use,
+            created_at)
+        VALUES(
+                #{videoId}
+              , #{userId}
+              , 'Y'
+              , NOW()
+              )
+    </insert>
+
+    <select id="selectNewVideoId" resultType="java.lang.String">
+        select max(id)
+          FROM tb_video
+    </select>
+
 </mapper>

@@ -13,7 +13,6 @@ public class ChannelDAO {
         return session.selectList("ChannelDAO.userFanChannelList", paramMap);
     }
 
-
     public List<HashMap> selectRecomChannelList(ChannelDTO paramMap, SqlSessionTemplate session) {
         return session.selectList("ChannelDAO.userFanChannelList", paramMap);
     }
@@ -24,5 +23,9 @@ public class ChannelDAO {
 
     public int insertUserFanChannel(ChannelDTO paramMap, SqlSessionTemplate session) {
         return session.insert("ChannelDAO.insertUserFanChannel", paramMap);
+    }
+
+    public List<ChannelDTO> selectUsrChannelList(ChannelDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("ChannelDAO.selectUsrChannelList", paramMap);
     }
 }

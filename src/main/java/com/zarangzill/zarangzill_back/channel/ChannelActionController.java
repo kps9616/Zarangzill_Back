@@ -19,6 +19,24 @@ public class ChannelActionController {
     @Autowired
     ChannelService channelService;
 
+    @GetMapping("/channel/usr/list")
+    public Map<String, Object> getUsrList(@RequestParam("userId") String userId) {
+        ChannelDTO param = new ChannelDTO();
+        param.setUserId(userId);
+
+        List<ChannelDTO> resultList = channelService.selectUsrChannelList(param);
+
+        //심사 평가 저장
+        Map<String, Object> response = new HashMap<String, Object>();
+        response.put("code", "200");
+
+        response.put("resultList", resultList);
+        response.put("resultListSize", resultList.size());
+
+        response.put("message", "success");
+        return response;
+    }
+
     @GetMapping("/channel/fans/list")
     public Map<String, Object> getFansList(@RequestParam("userId") String userId) {
         ChannelDTO param = new ChannelDTO();
