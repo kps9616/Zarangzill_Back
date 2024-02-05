@@ -42,7 +42,7 @@
     function fn_getSearchList() {
         $.ajax({
 
-            url: 'http://localhost:9090/api/v1/short/search/detai',
+            url: 'http://1.226.83.35:9090/api/v1/short/search/detai',
             method: 'GET',
             dataType: 'json',
             data: $("#searchForm").serialize(),

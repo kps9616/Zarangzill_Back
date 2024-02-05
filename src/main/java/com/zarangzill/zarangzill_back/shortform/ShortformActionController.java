@@ -10,6 +10,8 @@ import org.jcodec.common.io.NIOUtils;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,16 +20,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1")
 
 public class ShortformActionController {
+
+    @Value("${upload.Path}")
+    private String uploadPath;
 
     @Autowired
     ShotformService shotformService;
@@ -181,11 +187,16 @@ public class ShortformActionController {
         System.out.println("test start");
         System.out.println(user_id);
         System.out.println(multipartFile);
-        if(multipartFile==null || multipartFile.isEmpty()) {
 
-            response.put("code", "100");
-            response.put("message", "nonFile");
-            return response;
+        try {
+            if (multipartFile == null || multipartFile.isEmpty()) {
+
+                response.put("code", "100");
+                response.put("message", "nonFile");
+                return response;
+            }
+        }catch (Exception e) {
+            System.out.println("error 1");
         }
 
         //날짜폴더를 추가
@@ -202,10 +213,21 @@ public class ShortformActionController {
 
         String pathname=uploadFilePath +filename;
         String thumbname = uploadFileThumbPath + "/thumb.png";
-        File dest=new File(pathname);
-        try {
-            multipartFile.transferTo(dest);
+        File folder2 =new File(uploadFileThumbPath);
+        if(!folder2.isDirectory()) {
+            folder2.mkdirs();
+        }
 
+        System.out.println(pathname);
+        File dest=new File(pathname);
+        System.out.println(dest.getAbsolutePath());
+        try {
+            System.out.println("error 1");
+            Path path = Paths.get(pathname).toAbsolutePath();
+
+            multipartFile.transferTo(path.toFile());
+
+            System.out.println("error 1");
             FrameGrab grab;
 
             grab = FrameGrab.createFrameGrab(NIOUtils.readableChannel(dest));
@@ -216,7 +238,8 @@ public class ShortformActionController {
             BufferedImage bufferedImage = AWTUtil.toBufferedImage(picture);
             ImageIO.write(bufferedImage,"png", new File(thumbname));
         }catch (Exception e) {
-
+            System.out.println("error 3");
+            System.out.println(e.getMessage());
         }
 
         response.put("code", "200");

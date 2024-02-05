@@ -29,7 +29,7 @@
     function fn_initChannelList() {
         $.ajax({
 
-            url: 'http://localhost:9090/api/v1/channel/usr/list',
+            url: 'http://1.226.83.35:9090/api/v1/channel/usr/list',
             method: 'GET',
             dataType: 'json',
             data: $("#videoForm").serialize(),
@@ -74,7 +74,7 @@
 
         $.ajax({
 
-            url: 'http://localhost:9090/api/v1/channel/usr/list',
+            url: 'http://1.226.83.35:9090/api/v1/channel/usr/list',
             method: 'GET',
             dataType: 'json',
             data: { channelId : channelId },
@@ -124,7 +124,7 @@
 
         $.ajax({
 
-            url: 'http://localhost:9090/api/v1/short/upload/ins',
+            url: 'http://1.226.83.35:9090/api/v1/short/upload/ins',
             method: 'POST',
             dataType: 'json',
             data: $("#videoForm").serialize(),
