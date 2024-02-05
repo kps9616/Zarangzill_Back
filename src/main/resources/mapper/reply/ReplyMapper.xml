@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ReplyDAO">	<!-- mapper 인터페이스가 위치하는 경로 -->
 
-    <select id="selectVideoReplyList" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO" resultType="java.util.HashMap">
+    <select id="selectVideoReplyList" parameterType="com.zarangzill.zarangzill_back.video.reply.service.ReplyDTO" resultType="java.util.HashMap">
         SELECT tm.name as user_name
              , tm.profile_image
              , tvr.id as reply_id
@@ -37,7 +37,7 @@
         WHERE A.user_id = #{user_id}
         ORDER BY A.updated_at DESC, A.created_at DESC
     </select>
-    <insert id="insertVideoReply" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO">
+    <insert id="insertVideoReply" parameterType="com.zarangzill.zarangzill_back.video.reply.service.ReplyDTO">
         INSERT INTO tb_video_reply (
                 video_id,
                 description,
@@ -57,7 +57,7 @@
     </insert>
 
 
-    <update id="updateVideoReply" parameterType="com.zarangzill.zarangzill_back.reply.service.ReplyDTO">
+    <update id="updateVideoReply" parameterType="com.zarangzill.zarangzill_back.video.reply.service.ReplyDTO">
         UPDATE tb_video_reply
            SET flag_use = #{flagUse}
               ,updated_at = NOW()

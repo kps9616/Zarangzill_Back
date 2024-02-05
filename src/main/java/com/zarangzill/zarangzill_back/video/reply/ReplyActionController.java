@@ -1,9 +1,8 @@
-package com.zarangzill.zarangzill_back.reply;
+package com.zarangzill.zarangzill_back.video.reply;
 
-import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
-import com.zarangzill.zarangzill_back.reply.service.ReplyService;
+import com.zarangzill.zarangzill_back.video.reply.service.ReplyDTO;
+import com.zarangzill.zarangzill_back.video.reply.service.ReplyService;
 import com.zarangzill.zarangzill_back.util.StringUtil;
-import com.zarangzill.zarangzill_back.winPred.service.WinPredDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

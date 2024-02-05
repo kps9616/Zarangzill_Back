@@ -9,8 +9,12 @@ import java.util.Map;
 @Mapper
 public interface BoardMapper {
     List<Map> selectBoardList(Map boardMap);
+
     BoardDTO selectBoardInfo(Map boardMap);
     int createBoard(BoardDTO boardDto);
     int updateBoard(BoardDTO boardDto);
     int deleteBoard(BoardDTO boardDto);
+    List<Map> selectFanBoardList(Map boardMap);
+    Map selectFanBoardInfo(Map boardMap);
+
 }

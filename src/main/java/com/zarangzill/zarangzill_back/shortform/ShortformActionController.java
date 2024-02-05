@@ -1,11 +1,9 @@
 package com.zarangzill.zarangzill_back.shortform;
 
-import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
 import com.zarangzill.zarangzill_back.shortform.service.ShotformDTO;
 import com.zarangzill.zarangzill_back.shortform.service.ShotformService;
 import com.zarangzill.zarangzill_back.util.StringUtil;
 import org.jcodec.api.FrameGrab;
-import org.jcodec.api.JCodecException;
 import org.jcodec.common.io.NIOUtils;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
@@ -16,9 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

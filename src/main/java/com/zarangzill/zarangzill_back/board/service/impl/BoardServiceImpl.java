@@ -1,5 +1,6 @@
 package com.zarangzill.zarangzill_back.board.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zarangzill.zarangzill_back.board.service.BoardDTO;
 import com.zarangzill.zarangzill_back.board.service.BoardService;
 import com.zarangzill.zarangzill_back.board.service.mapper.BoardMapper;
@@ -15,6 +16,8 @@ import java.util.Map;
 public class BoardServiceImpl implements BoardService {
     @Autowired
     private BoardMapper boardMapper;
+    @Autowired
+    private BoardReplyMapper boardReplyMapper;
 
     public List<Map> selectBoardList(Map boardMap) {
         return boardMapper.selectBoardList(boardMap);
@@ -75,4 +78,14 @@ public class BoardServiceImpl implements BoardService {
         return response;
     }
 
+    public List<Map> selectFanBoardList(Map boardMap) {
+        return boardMapper.selectFanBoardList(boardMap);
+    }
+
+    public Map selectFanBoardInfo(Map boardMap) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> boardInfo = objectMapper.convertValue(boardMapper.selectBoardInfo(boardMap), Map.class);
+        boardInfo.put("boardReplyList", boardReplyMapper.selectBoardReplyList(boardMap));
+        return boardInfo;
+    }
 }

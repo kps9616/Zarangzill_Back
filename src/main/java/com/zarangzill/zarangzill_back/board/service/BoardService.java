@@ -12,4 +12,6 @@ public interface BoardService {
     BoardDTO selectServiceIntroductionInfo();
     BoardDTO selectUseTermsInfo();
     BoardDTO selectPrivacyStatementInfo();
+    List<Map> selectFanBoardList(Map boardMap);
+    Map selectFanBoardInfo(Map boardMap);
 }

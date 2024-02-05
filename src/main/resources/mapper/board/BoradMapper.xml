@@ -84,5 +84,18 @@
 
     </insert>
 
+    <select id="selectFanBoardList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+            A.description AS board_description
+             , A.flag_use AS board_flag_use
+             , B.id AS channel_id
+             , B.name AS channel_name
+             , B.profile_image AS channel_profile_image
+             , DATEDIFF(IFNULL(A.updated_at ,A.created_at), SYSDATE()) AS date_diff
+        FROM tb_board A
+                 Inner Join tb_channel B ON A.type_id = B.id
+                 Inner Join tb_channel_fan C ON B.id = C.channel_id
+        WHERE C.user_id = #{user_id}
+    </select>
 
 </mapper>

@@ -1,4 +1,4 @@
-package com.zarangzill.zarangzill_back.reply.service;
+package com.zarangzill.zarangzill_back.video.reply.service;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
