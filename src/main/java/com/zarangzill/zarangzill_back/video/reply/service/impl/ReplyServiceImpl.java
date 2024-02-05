@@ -1,8 +1,8 @@
-package com.zarangzill.zarangzill_back.reply.service.impl;
+package com.zarangzill.zarangzill_back.video.reply.service.impl;
 
-import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
-import com.zarangzill.zarangzill_back.reply.service.ReplyService;
-import com.zarangzill.zarangzill_back.reply.service.dao.ReplyDAO;
+import com.zarangzill.zarangzill_back.video.reply.service.ReplyDTO;
+import com.zarangzill.zarangzill_back.video.reply.service.ReplyService;
+import com.zarangzill.zarangzill_back.video.reply.service.dao.ReplyDAO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,8 @@
 package com.zarangzill.zarangzill_back.mypage;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zarangzill.zarangzill_back.board.service.BoardService;
 import com.zarangzill.zarangzill_back.judge.service.JudgeService;
-import com.zarangzill.zarangzill_back.member.service.MemberDTO;
-import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
-import com.zarangzill.zarangzill_back.reply.service.ReplyService;
+import com.zarangzill.zarangzill_back.video.reply.service.ReplyService;
 import com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoService;
 import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,8 @@ public class MypageViewController {
     private JudgeService judgeService;
     @Autowired
     private ReplyService replyService;
+    @Autowired
+    private BoardService boardService;
 
 
 
@@ -67,4 +67,7 @@ public class MypageViewController {
         model.addAttribute("videoReplyList", replyService.selectVideoReplyList(ParamMap));
         return "/mypage/videoReplyView";
     }
+
+
+
 }

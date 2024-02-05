@@ -38,27 +38,27 @@
                    
                     <div class="mych-bx">
                         <div class="mych-img">
-                            <img src="${path}/resources/images/thum/face02.jpg">
+                            <img src="${path}/upload/thum/face02.jpg">
                             <span>TWICE</span>
-                        </div>                        
+                        </div>
                         <div class="mych-text">
                             완벽한 궁극의 아이돌 ✧트와이스✧ #TWICE #트와이스
                         </div>
                         <div class="comment-view">
                             <span uk-icon="icon:comment-arrow"></span>
-                            <a href="41-3팬게시물.html">JIHYO The 1st Mini Album “ZONE” TWICE 트와이스</a> 
+                            <a href="41-3팬게시물.html">JIHYO The 1st Mini Album “ZONE” TWICE 트와이스</a>
                         </div>
-                    </div>                    
+                    </div>
                 </li>
-                
+
                 <li>
                     <em>
                         <a href="#none" class="c_red" uk-icon="icon: close"></a>
                     </em>
-                   
+
                     <div class="mych-bx">
                         <div class="mych-img">
-                            <img src="${path}/resources/images/thum/face01.jpg">
+                            <img src="${path}/upload/thum/face01.jpg">
                             <span>방탄소년단</span>
                         </div>                        
                         <div class="mych-text c_red">

@@ -1,6 +1,5 @@
-package com.zarangzill.zarangzill_back.reply.service;
+package com.zarangzill.zarangzill_back.video.reply.service;
 
-import com.zarangzill.zarangzill_back.channel.service.ChannelDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

@@ -61,4 +61,20 @@ public class BoardViewController {
         return "board/privacyStatementView";
     }
 
+    //팬게시글
+    @RequestMapping(value="/fanBoardListView")
+    public String fanBoardListView(@RequestParam Map ParamMap, Model model) {
+        ParamMap.put("user_id", "1");
+        model.addAttribute("fanBoardList", boardService.selectFanBoardList(ParamMap));
+        return "/board/fanBoardListView";
+    }
+
+    //팬게시글
+    @RequestMapping(value="/fanBoardView")
+    public String fanBoardView(@RequestParam Map ParamMap, Model model) {
+        ParamMap.put("user_id", "1");
+        model.addAttribute("fanBoardInfo", boardService.selectFanBoardInfo(ParamMap));
+        return "/board/fanBoardView";
+    }
+
 }

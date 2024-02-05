@@ -1,6 +1,6 @@
-package com.zarangzill.zarangzill_back.reply.service.dao;
+package com.zarangzill.zarangzill_back.video.reply.service.dao;
 
-import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
+import com.zarangzill.zarangzill_back.video.reply.service.ReplyDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
