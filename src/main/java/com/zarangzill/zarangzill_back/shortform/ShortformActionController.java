@@ -1,6 +1,5 @@
 package com.zarangzill.zarangzill_back.shortform;
 
-import com.zarangzill.zarangzill_back.reply.service.ReplyDTO;
 import com.zarangzill.zarangzill_back.shortform.service.ShotformDTO;
 import com.zarangzill.zarangzill_back.shortform.service.ShotformService;
 import com.zarangzill.zarangzill_back.util.StringUtil;
@@ -11,6 +10,8 @@ import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,7 +28,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1")
 
 public class ShortformActionController {
@@ -181,19 +182,17 @@ public class ShortformActionController {
         return response;
     }
     @PostMapping("short/upload/file")
-    public Map<String, Object> uploadFile(@RequestParam("userId") String user_id, @RequestParam("file") MultipartFile multipartFile) {
+    public ResponseEntity uploadFile(@RequestParam("userId") String user_id, @RequestParam("file") MultipartFile multipartFile) {
 
         Map<String, Object> response = new HashMap<String, Object>();
-        System.out.println("test start");
-        System.out.println(user_id);
-        System.out.println(multipartFile);
 
         try {
             if (multipartFile == null || multipartFile.isEmpty()) {
 
                 response.put("code", "100");
                 response.put("message", "nonFile");
-                return response;
+
+                return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }catch (Exception e) {
             System.out.println("error 1");
@@ -218,16 +217,12 @@ public class ShortformActionController {
             folder2.mkdirs();
         }
 
-        System.out.println(pathname);
         File dest=new File(pathname);
-        System.out.println(dest.getAbsolutePath());
         try {
-            System.out.println("error 1");
             Path path = Paths.get(pathname).toAbsolutePath();
 
             multipartFile.transferTo(path.toFile());
 
-            System.out.println("error 1");
             FrameGrab grab;
 
             grab = FrameGrab.createFrameGrab(NIOUtils.readableChannel(dest));
@@ -242,12 +237,12 @@ public class ShortformActionController {
             System.out.println(e.getMessage());
         }
 
-        response.put("code", "200");
+        response.put("code", HttpStatus.OK);
         response.put("message", "success");
         response.put("filePath", pathname);
         response.put("thumbnail", thumbname);
 
-        return response;
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("short/Favorit")

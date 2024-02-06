@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -171,6 +172,17 @@ public class ViewController {
 
         mav.setViewName("subShots");
         mav.addObject("title","알람입니다.");
+        return mav;
+    }
+    @PostMapping("videoRec")
+    public ModelAndView uploadVideoRec(@RequestParam("uploadFilePath") String filePath, @RequestParam("uploadThumbnail") String uploadThumbnail, Model model) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("videoRec");
+        mav.addObject("uploadThumbnail",uploadThumbnail);
+        mav.addObject("filePath",filePath);
+        mav.addObject("userId","1");
+
         return mav;
     }
 }

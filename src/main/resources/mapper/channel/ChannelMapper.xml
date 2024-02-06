@@ -3,7 +3,7 @@
 
 <mapper namespace="ChannelDAO">	<!-- mapper 인터페이스가 위치하는 경로 -->
 
-    <select id="selectUsrChannelList" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO" resultType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO">
+    <select id="selectUsrChannelList" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO" resultType="java.util.HashMap">
         select tc.name as channel_name
              , tc.description as channel_description
              , tc.profile_image
@@ -12,7 +12,7 @@
         where tc.user_id = #{userId}
     </select>
 
-    <select id="selectChannelMbmList" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO" resultType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO">
+    <select id="selectChannelMbmList" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO" resultType="java.util.HashMap">
         select tm.name as user_name
              , tm.profile_image
              , tm.id as user_id

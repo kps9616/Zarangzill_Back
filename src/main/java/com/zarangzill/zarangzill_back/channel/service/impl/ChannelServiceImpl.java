@@ -32,7 +32,10 @@ public class ChannelServiceImpl implements ChannelService {
         return channelDAO.insertUserFanChannel(paramMap, session);
     }
 
-    public List<ChannelDTO> selectUsrChannelList(ChannelDTO paramMap) {
+    public List<HashMap> selectUsrChannelList(ChannelDTO paramMap) {
         return channelDAO.selectUsrChannelList(paramMap, session);
+    }
+    public List<HashMap> selectChannelMbmList(ChannelDTO paramMap) {
+        return channelDAO.selectChannelMbmList(paramMap, session);
     }
 }

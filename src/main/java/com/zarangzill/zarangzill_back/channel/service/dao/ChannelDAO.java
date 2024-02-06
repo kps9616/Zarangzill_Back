@@ -25,7 +25,12 @@ public class ChannelDAO {
         return session.insert("ChannelDAO.insertUserFanChannel", paramMap);
     }
 
-    public List<ChannelDTO> selectUsrChannelList(ChannelDTO paramMap, SqlSessionTemplate session) {
+    public List<HashMap> selectUsrChannelList(ChannelDTO paramMap, SqlSessionTemplate session) {
         return session.selectList("ChannelDAO.selectUsrChannelList", paramMap);
     }
+    public List<HashMap> selectChannelMbmList(ChannelDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("ChannelDAO.selectChannelMbmList", paramMap);
+    }
+
+
 }

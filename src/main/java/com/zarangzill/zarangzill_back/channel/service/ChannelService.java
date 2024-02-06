@@ -14,7 +14,8 @@ public interface ChannelService {
     List<HashMap> selectRecomChannelList(ChannelDTO paramMap);
     int deleteUserFanChannel(ChannelDTO paramMap);
     int insertUserFanChannel(ChannelDTO paramMap);
-    List<ChannelDTO> selectUsrChannelList(ChannelDTO paramMap);
+    List<HashMap> selectUsrChannelList(ChannelDTO paramMap);
+    List<HashMap> selectChannelMbmList(ChannelDTO paramMap);
 
 }
 

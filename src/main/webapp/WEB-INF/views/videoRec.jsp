@@ -23,7 +23,7 @@
 
 
     $( document ).ready(function() {
-        fn_getSearchList();
+        fn_initChannelList();
     });
 
     function fn_initChannelList() {
@@ -34,19 +34,20 @@
             dataType: 'json',
             data: $("#videoForm").serialize(),
             success: function(response) {
-                const result = response.result;
-                const resultSize = response.resultSize;
+                const result = response.resultList;
+                const resultSize = response.resultListSize;
+                console.log(result);
                 let html = "";
 
                 if(resultSize > 0) {
-                    html += '<div class="mov-dropdown-header" id="dropdownHeader">';
                     html += '    <div class="mov-drop-info">';
                     html += '        <img src="${path}/'+result[0].profile_image+'" alt="썸네일">';
                     html += '            <span id="selectedOption"><p>'+result[0].channel_name+'<br>'+result[0].channel_description+'</p></span>';
                     html += '            <i class="mov-select-arrow" id="arrow"></i>';
                     html += '    </div>';
-                    html += '</div>';
-                    html += '<ul class="mov-dropdown-list" id="dropdownList">';
+                    $("#dropdownHeader").html(html);
+                    $("#channelId").val(result[0].channel_id);
+                    html = "";
 
                     for(let i = 0; i < resultSize; i++) {
                         html += '<li data-id="'+result[i].channel_id+' data-option="Option "'+(i+1)+' data-image="${path}/'+result[i].profile_image+'">';
@@ -56,9 +57,8 @@
                         html += '    </div>';
                         html += '</li>';
                     }
-                    html += '</ul>';
 
-                    $("#dropdown").html(html);
+                    $("#dropdownList").html(html);
                     fn_initVideoCont(result[0].channel_id);
                 }
 
@@ -72,21 +72,22 @@
 
     function fn_initVideoCont(channelId) {
 
+        $("#channelId").val(channelId);
         $.ajax({
 
-            url: 'http://1.226.83.35:9090/api/v1/channel/usr/list',
+            url: 'http://1.226.83.35:9090/api/v1/channel/usr/list/mbm',
             method: 'GET',
             dataType: 'json',
             data: { channelId : channelId },
             success: function(response) {
-                const result = response.result;
-                const resultSize = response.resultSize;
+                const result = response.resultList;
+                const resultSize = response.resultListSize;
                 let html = "";
 
                 if(resultSize > 0) {
 
                     for(let i = 0; i < resultSize; i++) {
-                        html += '<li data-id="'+result[i].user_id+'" class="name-sh-list" onClick="selectItem(\"'+result[i].user_name+'\", \"${path}/'+result[i].profile_image+'\",\"'+result[i].user_id+'\")">';
+                        html += '<li data-id="'+result[i].user_id+'" class="name-sh-list" onClick="selectItem(\''+result[i].user_name+'\', \'${path}/'+result[i].profile_image+'\',\''+result[i].user_id+'\')">';
                         html += '    <img src="${path}/'+result[i].profile_image+'" alt="profile-image">';
                         html += '        <p>'+result[i].user_name+'</p>';
                         html += '</li>';
@@ -104,7 +105,7 @@
     }
 
     function fn_createVideo() {
-        $("#videoDescription").val($("#editor").val());
+        $("#videoDescription").val($("#editor").text());
         $("#flagOpen").val($("input[name='radio2']").prop("checked",true).val());
         $("#videoTags").val($("#nameTag-input").val());
 
@@ -143,8 +144,8 @@
     <form id="videoForm" name="videoForm" method="post">
         <input type="hidden" id="userId" name="userId" value="${userId}"/>
         <input type="hidden" id="videoDescription" name="videoDescription" value=""/>
-        <input type="hidden" id="videoThumbnail" name="videoThumbnail" value="${videoThumbnail}"/>
-        <input type="hidden" id="videoPath" name="videoPath" value="${videoPath}"/>
+        <input type="hidden" id="videoThumbnail" name="videoThumbnail" value="${uploadThumbnail}"/>
+        <input type="hidden" id="videoPath" name="videoPath" value="${filePath}"/>
         <input type="hidden" id="channelId" name="channelId" value=""/>
         <input type="hidden" id="flagOpen" name="flagOpen" value=""/>
         <input type="hidden" id="videoTags" name="videoTags" value=""/>
@@ -180,16 +181,18 @@
                     <span>채널</span>
                     <div class="mov-info-con">
                         <div class="mov-dropdown" id="dropdown">
-
-
+                            <div class="mov-dropdown-header" id="dropdownHeader">
+                            </div>
+                            <ul class="mov-dropdown-list" id="dropdownList">
+                            </ul>
                         </div>
                     </div>
                 </li>
                 <li class="mov-info">                   
                     <span>공개</span>
                     <div class="mov-info-con">
-                        <label class="mr20"><input class="uk-radio" type="radio" name="radio2" checked> 공개</label>
-                        <label><input class="uk-radio" type="radio" name="radio2"> 비공개</label>
+                        <label class="mr20"><input class="uk-radio" value="Y" type="radio" name="radio2" checked> 공개</label>
+                        <label><input class="uk-radio" type="radio" value="N"  name="radio2"> 비공개</label>
                     </div>    
                 </li>
 
@@ -379,6 +382,7 @@
     });
 
     dropdownList.addEventListener('click', (e) => {
+
         const liElement = e.target.closest('li');
 
         if (liElement) {

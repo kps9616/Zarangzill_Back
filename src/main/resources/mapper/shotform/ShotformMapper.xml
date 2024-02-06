@@ -211,18 +211,22 @@
 
     <insert id="insertUserVideoInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
         INSERT INTO tb_video (
+            id,
+            sound_id,
             channel_id,
             video_path,
             video_thumbnail,
-            video_description,
             video_tags,
+            video_description,
             flag_open,
             view_cnt,
             flag_use,
             created_at,
             updated_at)
         VALUES(
-                #{channelId}
+                #{videoId}
+              , NULL
+              , #{channelId}
               , #{videoPath}
               , #{videoThumbnail}
               , #{videoDescription}
@@ -262,7 +266,7 @@
     </insert>
 
     <select id="selectNewVideoId" resultType="java.lang.String">
-        select max(id)
+        select max(id)+1
           FROM tb_video
     </select>
 
