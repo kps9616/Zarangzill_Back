@@ -61,6 +61,9 @@ public class ShotformServiceImpl implements ShotformService {
     public ShotformDTO selectUserCheckWinPredInfo(ShotformDTO paramMap) {
         return shotformDAO.selectUserCheckWinPredInfo(paramMap, session);
     }
+    public List<ShotformDTO> selectVideoList(ShotformDTO paramMap) {
+        return shotformDAO.selectVideoList(paramMap, session);
+    }
 
 
 

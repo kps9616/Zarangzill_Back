@@ -26,7 +26,7 @@
 <script>
 
     $( document ).ready(function() {
-        fn_getSearchList();
+        fn_getSearchList("V");
     });
 
     function fn_search(type) {
@@ -36,18 +36,20 @@
 
     function fn_getSearchList(type) {
         $.ajax({
-
-            url: 'http://1.226.83.35:9090/api/v1/short/search/many',
+            url: 'http://localhost:9090/api/v1/short/search',
             method: 'GET',
             dataType: 'json',
             data: $("#searchForm").serialize(),
             success: function(response) {
 
-                if("H" == type) {
+                $("#movieDiv").hide();
+                $("#hashDiv").hide();
+                $("#nameDiv").hide();
+                if(type == "H") {
                     fn_searchResultH(response.result, response.resultSize);
-                } else if("N" == type) {
+                } else if(type == "N") {
                     fn_searchResultN(response.result, response.resultSize);
-                } else if("V" == type) {
+                } else if(type == "V") {
                     fn_searchResultV(response.result, response.resultSize);
                 }
 
@@ -67,23 +69,25 @@
 
             html += '<li>';
             html += '   <div class="bigthum">';
-            html += '        <img src="${path}/'+info.video_thumbnail+''"  class="thum">';
+            html += '        <img src="${path}'+info.video_thumbnail+'"  class="thum">';
             html += '    </div>';
             html += '    <div class="list-tit ellipsis2">';
             html += '        '+info.video_description+'<span> '+info.video_tag+'</span>';
             html += '    </div>';
             html += '    <div class="list-name">';
             html += '        <a href="#none">';
-            html += '            <img class="small-thum mr5" src="${path}/'+info.profile_image+'">';
+            html += '            <img class="small-thum mr5" src="${path}'+info.channel_profile_image+'">';
             html += '                '+info.user_name;
             html += '        </a>';
             html += '   </div>';
             html += '</li>';
 
         }
-        html = "</ul>";
+        html += "</ul>";
+        console.log(html)
 
-        $("#searchList").html(html);
+        $("#movieDiv").html(html);
+        $("#movieDiv").show();
     }
     function fn_searchResultH(result, resultSize) {
         let html = "<ul>";
@@ -92,12 +96,14 @@
             let info = result[i];
 
             html += '<li>';
-            html += '    <a href="#none" onclick="fn_searchHashDetail('+info.video_tag+')">'+info.video_tag+'<span>'+AddComma(info.video_cnt)+'</span><em uk-icon="chevron-right"></em></a>';
+            html += '    <a href="#none" onclick="fn_searchHashDetail(\''+info.video_tag+'\')">'+info.video_tag+'<span>'+AddComma(info.video_cnt)+'</span><em uk-icon="chevron-right"></em></a>';
             html += '</li>';
 
         }
-        html = "</ul>";
+        html += "</ul>";
         $("#hashDiv").html(html);
+        $("#hashDiv").show();
+
     }
     function AddComma(num) {
         var regexp = /\B(?=(\d{3})+(?!\d))/g;
@@ -111,13 +117,14 @@
             let info = result[i];
 
             html += '<li>';
-            html += '    <img src="${path}/'+info.channel_profile_image+'">';
+            html += '    <img src="${path}'+info.channel_profile_image+'">';
             html += '        <a href="#" onclick="fn_moveChannel('+info.channel_id+')">@'+info.channel_name+' <span>'+info.video_cnt+'</span><em uk-icon="chevron-right"></em></a>';
             html += '</li>';
 
         }
-        html = "</ul>";
+        html += "</ul>";
         $("#nameDiv").html(html);
+        $("#nameDiv").show();
     }
 
     function fn_moveChannel(id) {
@@ -132,13 +139,14 @@
         const searchFrm = $("#searchForm");
         $("#searchKeyword").val(name);
 
-        searchFrm.action = "search/detail/hash";
+        searchFrm.attr("action","/search/detail/hash");
+        searchFrm.attr("method","get");
         searchFrm.submit();
     }
 </script>
 <body>
     <form id="searchForm" name="searchForm" method="post">
-        <input type="hidden" id="searchKeyword" name="searchKeyword" value="${serachKeyword}"/>
+        <input type="hidden" id="searchKeyword" name="searchKeyword" value="${searchKeyword}"/>
         <input type="hidden" id="searchType" name="searchType" value="V"/>
     </form>
     <form id="mvChannelFrm" name="mvChannelFrm" method="post">
@@ -155,7 +163,7 @@
         <div class="top-search">
             <div class="uk-inline">
                 <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: close"></a>
-                <input class="uk-input" type="text" aria-label="Clickable icon" value="트와이스">
+                <input class="uk-input" type="text" aria-label="Clickable icon" value="${searchKeyword}">
             </div>
         </div>
 

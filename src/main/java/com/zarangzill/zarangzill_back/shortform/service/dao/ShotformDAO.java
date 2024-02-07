@@ -52,5 +52,8 @@ public class ShotformDAO {
         return session.selectOne("ShotformDAO.selectUserCheckWinPredInfo", paramMap);
     }
 
+    public List<ShotformDTO> selectVideoList(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.selectList("ShotformDAO.selectVideoList", paramMap);
+    }
 
 }

@@ -30,8 +30,8 @@
     });
 
     function fn_search() {
-        const genderV = $("input[name='radio_a']").prop("checked",true).val();
-        const avgAgeV = $("input[name='radio_b']").prop("checked",true).val();
+        const genderV = $("input[name='radio_a']:checked").val();
+        const avgAgeV = $("input[name='radio_b']:checked").val();
 
         $("#gender").val(genderV);
         $("#avgAge").val(avgAgeV);
@@ -42,7 +42,7 @@
         var response;
         $.ajax({
 
-            url: 'http://1.226.83.35:9090/api/v1/short/search/many',
+            url: 'http://localhost:9090/api/v1/short/search/many',
             method: 'GET',
             dataType: 'json',
             data: $("#searchForm").serialize(),
@@ -53,10 +53,10 @@
 
                 for(let i=0; i < resultSize; i++) {
                     let info = result[i];
-
+                    console.log(info);
                     html += '<li>';
                     html += '   <div class="bigthum">';
-                    html += '        <img src="${path}/'+info.video_thumbnail+''"  class="thum">';
+                    html += '        <img src="${path}'+info.video_thumbnail+'"  class="thum">';
                     html += '    </div>';
                     html += '    <div class="list-tit ellipsis2">';
                     html += '        '+info.video_description+'<span> '+info.video_tag+'</span>';
@@ -84,8 +84,10 @@
 
     function fn_searchDetail() {
         const serachFrm = $("#searchForm");
-        serachFrm.searchKeyword = $("#detailValue").val();
-        serachFrm.action = "search/detail";
+        const keyword = $("#detailValue").val();
+        $("#searchKeyword").val(keyword);
+        serachFrm.attr("action","search/detail");
+        serachFrm.attr("method","get");
         serachFrm.submit();
     }
 </script>

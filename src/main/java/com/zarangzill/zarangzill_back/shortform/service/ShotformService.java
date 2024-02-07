@@ -21,5 +21,6 @@ public interface ShotformService {
     ShotformDTO selectWeekPredictionRangeInfo(ShotformDTO paramMap);
     List<ShotformDTO> selectVideoRankListFor4(ShotformDTO paramMap);
     ShotformDTO selectUserCheckWinPredInfo(ShotformDTO paramMap);
+    List<ShotformDTO> selectVideoList(ShotformDTO paramMap);
 
 }

@@ -30,7 +30,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1")
-
+@CrossOrigin
 public class ShortformActionController {
 
     @Value("${upload.Path}")
@@ -40,11 +40,16 @@ public class ShortformActionController {
     ShotformService shotformService;
 
     @GetMapping("short/list")
-    public Map<String, String> list() {
-        Map<String, String> response = new HashMap<String, String>();
-        response.put("name", "taehong.kim");
-        response.put("age", "28");
-        response.put("email", "xxxxxxxx@gmail.com");
+    public Map<String, Object> list() {
+        ShotformDTO params = new ShotformDTO();
+
+        List result = shotformService.selectVideoList(params);
+
+        Map<String, Object> response = new HashMap<String, Object>();
+        response.put("code", "200");
+        response.put("message", "success");
+        response.put("resultListSize",result.size());
+        response.put("resultList",result);
         return response;
     }
 

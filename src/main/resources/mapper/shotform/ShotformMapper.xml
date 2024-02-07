@@ -53,7 +53,7 @@
         )
     </insert>
 
-    <select id="selectManyViewHistory" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+    <select id="selectManyViewHistory" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
 
         SELECT A.video_id
              , A.user_name
@@ -79,7 +79,14 @@
               where tv.flag_use = 'Y'
                 AND tv.flag_open = 'Y'
                 and tm.gender = #{gender}
-                and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) = #{avgAge}
+                <choose>
+                    <when test="{!'30'.equals(avgAge)}">
+                        and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) = ${avgAge}
+                    </when>
+                    <otherwise>
+                        and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) <![CDATA[ >= ]]> = ${avgAge}
+                    </otherwise>
+                </choose>
               GROUP BY tv.id
                      , tm.name
                      , tv.video_thumbnail
@@ -90,12 +97,12 @@
         order by A.cnt desc
     </select>
 
-    <select id="selectSearchKeyWordList" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+    <select id="selectSearchKeyWordList" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
         select
-              <if test='"V".equals(searchType)'>
               tv.id as video_id
+              <if test='"V".equals(searchType)'>
              ,tm.name as user_name
-             ,tm.profile_image as user_profile_image
+              ,tc.profile_image as channel_profile_image
              ,tv.video_thumbnail
              ,tv.video_description
               </if>
@@ -118,18 +125,18 @@
         where tv.flag_use = 'Y'
           AND tv.flag_open = 'Y'
             <if test='"V".equals(searchType)'>
-                AND tv.video_description like '%' + #{searchKeyword} + '%'
+                AND tv.video_description like concat('%', #{searchKeyword} , '%')
             </if>
             <if test='"N".equals(searchType)'>
-                and tc.description like '%' + #{searchKeyword} + '%'
+                and tc.description like concat('%', #{searchKeyword} , '%')
             </if>
             <if test='"H".equals(searchType)'>
-                and tvt.video_tag like '%' + #{searchKeyword} + '%'
+                and tvt.video_tag like concat('%', #{searchKeyword} , '%')
             GROUP BY tvt.video_tag
             </if>
     </select>
 
-    <select id="selectSearchKeyWordDetailList" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+    <select id="selectSearchKeyWordDetailList" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
         SELECT A.video_id
              , A.user_name
              , A.video_id
@@ -152,7 +159,14 @@
                 AND tv.flag_open = 'Y'
                 and tvt.video_tag = #{searchKeyword}
                 and tm.gender = #{gender}
-                and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) = #{avgAge}
+                <choose>
+                    <when test="{!'30'.equals(avgAge)}">
+                    and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) = ${avgAge}
+                    </when>
+                    <otherwise>
+                        and TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(tm.birthday)) / 365, -1) <![CDATA[ >= ]]> = ${avgAge}
+                    </otherwise>
+                </choose>
               GROUP BY tv.id
                      , tm.name
                      , tv.video_thumbnail
@@ -162,7 +176,7 @@
         order by A.cnt desc
     </select>
 
-    <select id="selectWeekPredictionRangeInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+    <select id="selectWeekPredictionRangeInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
         SELECT week_idx
              , week_start_date
              , week_end_date
@@ -171,7 +185,7 @@
         WHERE flag_use = 'Y'
     </select>
 
-    <select id="selectVideoRankListFor4" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+    <select id="selectVideoRankListFor4" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
        SELECT a.week_idx
              ,a.week_start_date
              ,a.week_end_date
@@ -187,7 +201,7 @@
     </select>
 
 
-    <select id="selectUserCheckWinPredInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+    <select id="selectUserCheckWinPredInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
         SELECT CASE WHEN IFNULL((
                     select count(id) as month_pred
                     from tb_winning_prediction_user_list twpul
@@ -268,6 +282,23 @@
     <select id="selectNewVideoId" resultType="java.lang.String">
         select max(id)+1
           FROM tb_video
+    </select>
+
+    <select id="selectVideoList" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
+        select
+             tv.id as video_id
+            ,tv.video_path
+            ,tv.video_tags
+            ,tv.video_description
+            ,tc.id as channel_id
+            ,tc.name as channel_name
+            ,tc.profile_image as channel_profile_image
+            ,tm.name as user_name
+        from tb_video tv
+        left outer join tb_channel tc on tv.channel_id = tc.id
+        left outer join tb_member tm on tc.user_id  = tm.id
+        where tv.flag_use = 'Y'
+        AND tv.flag_open = 'Y'
     </select>
 
 </mapper>

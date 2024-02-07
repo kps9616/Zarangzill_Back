@@ -35,7 +35,7 @@
 
     <div class="v_video">
         <video id="videoElement" class="videoElement" preload="metadata" autoplay loop>
-            <source id="videoSource" src="${path}/resources/images/video/svideo.mp4" type="video/mp4">
+            <source id="videoSource" src="" type="video/mp4">
             브라우저가 비디오 태그를 지원하지 않습니다.
         </video>
         <div class="v_top_icons">
@@ -62,7 +62,7 @@
     </div>
     -->
 </div>
-<div class="v_contents">
+<div class="v_contents" id="v_contents_list">
     <ul>
         <li class="v_con_info">
             <div class="v_img"><a href="91-2채널.html"><img src="${path}/resources/images/thum.jpg"></a></div>
@@ -91,11 +91,61 @@
 
 
 <script>
+    const videoList = [];
+    const videoInfoList = [];
+    let videoIndex = 0;
+    let maxVideoLength = 0;
 
     $( document ).ready(function() {
+        fn_settingVideoList();
         fn_settingUserFavCheck();
         fn_settingVideoCntInfo();
+
     });
+
+    function fn_settingVideoList() {
+        $.ajax({
+            url: 'http://1.226.83.35:9090/api/v1/short/list',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                var resultList = response.resultList;
+                var listSize = response.resultListSize;
+                var html = "";
+                maxVideoLength = listSize;
+                for(var i=0; i< listSize; i++) {
+                    var resultInfo = resultList[i];
+
+                    if(i == 0) {
+                        html += '<ul id="videoIdx_'+resultInfo.video_id+'">';
+                    }
+                    else {
+                        html += '<ul id="videoIdx_'+resultInfo.video_id+'" style="display:none;">';
+                    }
+                    html += '    <li class="v_con_info">';
+                    html += '       <div class="v_img"><a href="91-2채널.html"><img src="${path}'+resultInfo.channel_profile_image+'"></a></div>';
+                    html += '        <div class="v_grup"><a href="91-2채널.html">'+resultInfo.channel_name+'</a></div>';
+                    html += '       <div><button type="button" id="subscribe-button" class="v_button">팬</button></div>';
+                    html += '    </li>';
+                    html += '    <li class="v_con_tit">'+resultInfo.video_description+'  <span>'+resultInfo.video_tags+'</span> </li>';
+                    html += '    <li class="v_con_name">@'+resultInfo.user_name+'</li>';
+                    html += ' </ul>';
+                    videoList.push("${path}" + resultInfo.video_path);
+                    videoInfoList.push(resultInfo.video_id);
+                }
+                document.getElementById("videoSource").setAttribute("src", videoList[0]);
+                $("#v_contents_list").html(html);
+
+                document.getElementById('videoElement').load();
+                document.getElementById('videoElement').play();
+
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+
 
     function fn_settingUserFavCheck() {
         $.ajax({
@@ -235,8 +285,7 @@
     //구독버튼 class추가
     // 버튼 요소 가져오기
     const subscribeButton = document.getElementById('subscribe-button');
-    const videoList = ['${path}/resources/images/video/svideo.mp4','${path}/resources/images/video/test720.mp4','${path}/resources/images/video/test720_2.mp4','${path}/resources/images/video/test1080.mp4','${path}/resources/images/video/test1920.mp4'];
-    let videoIndex = 0;
+
     // 클릭 상태를 저장하는 변수
     let isClicked = false;
     let start_y, end_y;
@@ -277,8 +326,10 @@
         var videoSource = document.getElementById("videoSource");
         if (event.deltaY > 0) {
             // scroll up
-            if(videoIndex < 4) {
+            if(videoIndex < maxVideoLength) {
+                $("#videoIdx_"+videoInfoList[videoIndex]).hide();
                 videoIndex++;
+                $("#videoIdx_"+videoInfoList[videoIndex]).show();
                 isVideoChange = true;
             }
             else {
@@ -288,7 +339,9 @@
         else {
             // scroll down
             if(videoIndex > 0) {
+                $("#videoIdx_"+videoInfoList[videoIndex]).hide();
                 videoIndex--;
+                $("#videoIdx_"+videoInfoList[videoIndex]).show();
                 isVideoChange = true;
             }
             else {
@@ -298,8 +351,8 @@
 
         if(isVideoChange) {
             videoSource.setAttribute("src", videoList[videoIndex]);
-            $("#judge_video_id").val(videoIndex);
-            $("#videoId").val(videoIndex);
+            $("#judge_video_id").val(videoInfoList[videoIndex]);
+            $("#videoId").val(videoInfoList[videoIndex]);
             fn_settingUserFavCheck();
             fn_settingVideoCntInfo();
 
@@ -328,9 +381,9 @@
         if(isVideoChange) {
             var videoSource = document.getElementById("videoSource");
             videoSource.setAttribute("src", videoList[videoIndex]);
+            $("#judge_video_id").val(videoInfoList[videoIndex]);
+            $("#videoId").val(videoInfoList[videoIndex]);
 
-            $("#judge_video_id").val(videoIndex);
-            $("#videoId").val(videoIndex);
 
             fn_settingUserFavCheck();
             fn_settingVideoCntInfo();
@@ -342,8 +395,10 @@
     });
 
     function nextVideo() {
-        if(videoIndex < 4) {
+        if(videoIndex < maxVideoLength) {
+            $("#videoIdx_"+videoInfoList[videoIndex]).hide();
             videoIndex++;
+            $("#videoIdx_"+videoInfoList[videoIndex]).show();
             isVideoChange = true;
         }
         else {
@@ -352,7 +407,9 @@
     }
     function prevVideo() {
         if(videoIndex > 0) {
+            $("#videoIdx_"+videoInfoList[videoIndex]).hide();
             videoIndex--;
+            $("#videoIdx_"+videoInfoList[videoIndex]).show();
             isVideoChange = true;
         }
         else {
