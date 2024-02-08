@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
@@ -48,27 +48,27 @@
         <div class="my-badge">
             <div class="my-badge-bx">
                 <div class="my-icon-img">
-                    <img src="${path}/resources/images/icon/my-channel.png">
+                    <img src="${path}/images/icon/my-channel.png">
                 </div>
                 <div class="my-badge-tit active">채널개설</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
-                    <img src="${path}/resources/images/icon/my-movie.png">
+                    <img src="${path}/images/icon/my-movie.png">
                 </div>
                 <div class="my-badge-tit active">영상 등록</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
                     <span>05</span>
-                    <img src="${path}/resources/images/icon/my-mov-num.png">
+                    <img src="${path}/images/icon/my-mov-num.png">
                 </div>
                 <div class="my-badge-tit active">5개 영상</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
                     <span>10</span>
-                    <img src="${path}/resources/images/icon/my-mov-num-gray.png">
+                    <img src="${path}/images/icon/my-mov-num-gray.png">
                 </div>
                 <div class="my-badge-tit active">10개 영상</div>
             </div>
@@ -76,46 +76,46 @@
         <div class="my-badge">
             <div class="my-badge-bx">
                 <div class="my-badge-img">
-                    <img src="${path}/resources/images/icon/top-100.png">
+                    <img src="${path}/images/icon/top-100.png">
                 </div>
                 <div class="my-badge-tit active">TOP 100일</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-badge-img">                    
                     <span>10</span>
-                    <img src="${path}/resources/images/icon/my-week.png">
+                    <img src="${path}/images/icon/my-week.png">
                 </div>
                 <div class="my-badge-tit active">주 우승</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-badge-img">                    
                     <span>02</span>
-                    <img src="${path}/resources/images/icon/my-month.png">
+                    <img src="${path}/images/icon/my-month.png">
                 </div>
                 <div class="my-badge-tit active">월 우승</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-badge-img">
-                    <img src="${path}/resources/images/icon/year-winner.png">
+                    <img src="${path}/images/icon/year-winner.png">
                 </div>
                 <div class="my-badge-tit active">왕중왕</div>
             </div>
         </div>
 
         <div class="my-link mt20 mb20">
-        <a href="90-2내채널.html"> 내 채널<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="102-2내영상.html"> 내 영상<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="103-2우승상품.html"> 우승상품<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/90-2내채널.html"> 내 채널<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/102-2내영상.html"> 내 영상<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/103-2우승상품.html"> 우승상품<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
         
         <div class="my-link mb20">
-        <a href="104-2즐겨찾는사운드.html"> 즐겨 찾는 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="104-3내가올린사운드.html"> 내가 올린 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/104-2즐겨찾는사운드.html"> 즐겨 찾는 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/104-3내가올린사운드.html"> 내가 올린 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
 
         <div class="my-link mt5">
-        <a href="105-2제작자센터.html"> 제작자 센터<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="106-2온라인문의.html"> 온라인 문의<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/105-2제작자센터.html"> 제작자 센터<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/106-2온라인문의.html"> 온라인 문의<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
 
 
@@ -125,11 +125,11 @@
 <div class="full-bottom-bar">
     <div class="v_bottom_nav">                
         <ul>
-            <li><a href="#" class="vsicon"><span uk-icon="icon: bottom01;"><i class="sr-only">숏폼</i></span></a></li>
-            <li><a href="#" class="vsicon"><span uk-icon="icon: bottom02;"><i class="sr-only">우승예측</i></span></a></li>
-            <li class="mcircle"><a href="#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
-            <li><a href="#" class="vsicon"><span uk-icon="icon: bottom04;"><i class="sr-only">팬</i></span></a></li>
-            <li><a href="#" class="vsicon"><span uk-icon="icon: bottomOn05;"><i class="sr-only">마이페이지</i></span></a></li>
+            <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom01;"><i class="sr-only">숏폼</i></span></a></li>
+            <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom02;"><i class="sr-only">우승예측</i></span></a></li>
+            <li class="mcircle"><a href="${path}/#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
+            <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom04;"><i class="sr-only">팬</i></span></a></li>
+            <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottomOn05;"><i class="sr-only">마이페이지</i></span></a></li>
         </ul>        
     </div>
     <div class="full-bar-bg"><span></span><span class="bg-transparent"></span><span></span></div>

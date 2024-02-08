@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
     
     <title>자랑질앱</title>
 
@@ -25,7 +25,7 @@
 </head>
 <body>
      <div class="testimg" style="overflow: hidden;">
-        <img src="${path}/resources/images/thum/thum01.jpg" >
+        <img src="${path}/images/thum/thum01.jpg" >
      </div>
      
 
@@ -44,19 +44,19 @@
                         <ul class="ch-inner">
                             <li class="ch-bbs-list">
                                 <div class="chbbslist-img red-circle">
-                                    <img src="${path}/resources/images/thum/face02.jpg">
+                                    <img src="${path}/images/thum/face02.jpg">
                                 </div>
                                 <div class="chbbslist-bx">
                                     <div class="chbbslist-name">
                                         team member A<span>3일 전</span>
                                         <em  id="pan-toggle" uk-icon="icon: more-vertical">
                                             <div id="pan-toggle-con">
-                                            <a href="#modal-group-1" uk-toggle>신고하기</a>
+                                            <a href="${path}/#modal-group-1" uk-toggle>신고하기</a>
                                             </div>
                                         </em>                                
                                     </div>
                                     <div class="chbbslist-text">
-                                        <a href="#none">
+                                        <a href="${path}/#none">
                                             <p>반갑습니다.</p>
                                         </a> 
                                     </div>
@@ -64,18 +64,18 @@
                             </li>
                             <li class="ch-bbs-list">
                                 <div class="chbbslist-img gray-circle">
-                                    <img src="${path}/resources/images/thum/face01.jpg">
+                                    <img src="${path}/images/thum/face01.jpg">
                                 </div>
                                 <div class="chbbslist-bx">
                                     <div class="chbbslist-name">
                                         team member B<span>3일 전</span>
                                         <em>
-                                            <a href="#modal-center" class="c_gray" uk-toggle uk-icon="icon: close"></a>
+                                            <a href="${path}/#modal-center" class="c_gray" uk-toggle uk-icon="icon: close"></a>
                                         </em>
                                             
                                     </div>
                                     <div class="chbbslist-text">
-                                        <a href="#none">
+                                        <a href="${path}/#none">
                                             <p>환영합니다.</p>  
                                         </a>                                                      
                                     </div>
@@ -84,18 +84,18 @@
                             </li>
                             <li class="ch-bbs-list" id="targetDiv">
                                 <div class="chbbslist-img">
-                                    <img src="${path}/resources/images/thum/grup01.jpg">
+                                    <img src="${path}/images/thum/grup01.jpg">
                                 </div>
                                 <div class="chbbslist-bx">
                                     <div class="chbbslist-name">
                                         different team<span>3일 전</span>
                                         <em>
-                                            <a href="#none" class="c_red" uk-icon="icon: close"></a>
+                                            <a href="${path}/#none" class="c_red" uk-icon="icon: close"></a>
                                         </em>
                                             
                                     </div>
                                     <div class="chbbslist-text">
-                                        <a href="#none">
+                                        <a href="${path}/#none">
                                             <p>뭐라고 심한말.</p>  
                                         </a>                                                      
                                     </div>
@@ -109,11 +109,11 @@
                 <div class="uk-modal-footer">
                     <div class="msg-send">
                         <div class="msg-send-img">
-                            <img src="${path}/resources/images/thum/face01.jpg">
+                            <img src="${path}/images/thum/face01.jpg">
                         </div>
                         <div class="msg-send-inp">
                             <div class="uk-inline w100">
-                                <a class="uk-form-icon uk-form-icon-flip on" href="#" uk-icon="icon: send"></a>
+                                <a class="uk-form-icon uk-form-icon-flip on" href="${path}/#" uk-icon="icon: send"></a>
                                 <input class="uk-input" type="text" aria-label="Clickable icon" placeholder="글씨가 적혀있으면 class on">
                             </div>
                         </div>

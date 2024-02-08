@@ -9,17 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
     <title>녹화</title>
     <style>
-       .body-bg{background-image:url(${path}/resources/images/thum/thum01.jpg); background-position: top;background-size: cover; background-repeat: no-repeat;}
+       .body-bg{background-image:url(images/thum/thum01.jpg); background-position: top;background-size: cover; background-repeat: no-repeat;}
 
       
     </style>
@@ -31,25 +31,25 @@
         
         
         <div class="v_progress_control">
-            <a href="#" class="v-del"><span uk-icon="icon: close;"></span></a>
-            <a href="#none" class="v-bt-round">완료</a>
-            <a href="#none" class="v-bt-round">X</a>
+            <a href="${path}/#" class="v-del"><span uk-icon="icon: close;"></span></a>
+            <a href="${path}/#none" class="v-bt-round">완료</a>
+            <a href="${path}/#none" class="v-bt-round">X</a>
        </div>
     </div>
 
     <div class="rec-bx">       
-        <a href="#"><span uk-icon="icon:light;ratio:0.7"></span></a>
-        <a href="#"><span uk-icon="icon:self;ratio:0.8"></span></a>
-        <a href="#" class="mt20"><span class="v-rec-tiemer">30</span></a>
+        <a href="${path}/#"><span uk-icon="icon:light;ratio:0.7"></span></a>
+        <a href="${path}/#"><span uk-icon="icon:self;ratio:0.8"></span></a>
+        <a href="${path}/#" class="mt20"><span class="v-rec-tiemer">30</span></a>
     </div>
 
     <div class="v_rec_bottom">
-        <a href="#" class="v-back-icon"><span uk-icon="icon:vfolder;ratio:0.7"></span>업로드</a>        
+        <a href="${path}/#" class="v-back-icon"><span uk-icon="icon:vfolder;ratio:0.7"></span>업로드</a>        
             <div class="recbtn-bx">
                 <div onclick="toggleRecording()" id="record-button" class="rec-button"></div>
                 <div class="text-center" id="app"></div>
             </div>
-            <a href="#none" class="sound-add"><span uk-icon="icon: side06;ratio:0.8"></span>사운드 추가</a>
+            <a href="${path}/#none" class="sound-add"><span uk-icon="icon: side06;ratio:0.8"></span>사운드 추가</a>
     </div>
    
     <script>

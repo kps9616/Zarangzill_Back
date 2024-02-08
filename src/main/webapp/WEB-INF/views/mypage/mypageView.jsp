@@ -142,7 +142,7 @@
         </div>
          <div class="my-link mt20 mb20">
             <a href="/mypage/videoReplyView"> 영상댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="81-2팬게시글.html"> 팬 게시글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="/board/fanBoardListView"> 팬 게시글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
             <a href="82-2팬댓글.html"> 팬 댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
          </div>
          

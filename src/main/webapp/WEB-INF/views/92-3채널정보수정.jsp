@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
     <title>자랑질</title>
     
 </head>
 <body>
     <div class="top-bx bline">
-        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
       채널 정보
     </div>
     <div class="container"> 
@@ -30,7 +30,7 @@
             <ul>
                 <li class="photo mb20">
                     <span id="deleteButton" onclick="deleteImage()"><i uk-icon="icon:close;"></i></span>
-                    <img src="${path}/resources/images/thum/face01.jpg" id="imagePreview">
+                    <img src="${path}/images/thum/face01.jpg" id="imagePreview">
                     <div uk-form-custom>
                         <input type="file" id="imageInput" aria-label="Custom controls">
                         <div class="flex-align">
@@ -56,7 +56,7 @@
   
  <!--이미지등록-->
  <script>
-    const defaultImage = "${path}/resources/images/thum/noimg.png";
+    const defaultImage = "images/thum/noimg.png";
 
     document.getElementById('imageInput').addEventListener('change', function(e) {
         const file = e.target.files[0];

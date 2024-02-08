@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
     
     <title>자랑질앱</title>
 </head>
@@ -25,21 +25,21 @@
      <!--container-full b_grayLB-->
     <div class="container-full b_grayLB">      
         <div class="top-bx">
-            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+            <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
             채널              
             <div class="top-right">
                 <button id="popupButton" type="button"><span uk-icon="icon: more-vertical"  class="pd10"></span></button>         
             </div>     
           
             <div class="white-bx" id="whiteBox">                
-                <a href="#modal-sections" uk-toggle>신고하기</a>
+                <a href="${path}/#modal-sections" uk-toggle>신고하기</a>
             </div>
         </div>
 
         <div class="container pb20">
             <div class="channel-bx">
                 <div class="channel-top">
-                    <div class="ch-img"><img src="${path}/resources/images/thum/grup03.jpg"></div>
+                    <div class="ch-img"><img src="${path}/images/thum/grup03.jpg"></div>
                     <div class="ch-info">                    
                         <div class="ch-info-name">
                            Twice.danceteam <span>트와이스 댄스팀</span>
@@ -50,11 +50,11 @@
                     </div>
                     <div class="ch-info-icon">
                         <span class="icon-winner">
-                            <img src="${path}/resources/images/icon/m-medal01.png">
+                            <img src="${path}/images/icon/m-medal01.png">
                             <em>05</em>
                         </span>
                         <span class="icon-winner">
-                            <img src="${path}/resources/images/icon/w-medal03.png">
+                            <img src="${path}/images/icon/w-medal03.png">
                             <em>25</em>
                         </span>
                     </div>                   
@@ -78,9 +78,9 @@
     <div class="container-full">
         <div class="tab-nav">
             <ul>
-                <li><a href="38-2채널.html">영상</a></li>
-                <li><a href="41-1팬게시판.html" class="on">팬게시판</a></li>
-                <li><a href="43-1멤버.html">멤버</a></li>
+                <li><a href="${path}/38-2채널.html">영상</a></li>
+                <li><a href="${path}/41-1팬게시판.html" class="on">팬게시판</a></li>
+                <li><a href="${path}/43-1멤버.html">멤버</a></li>
             </ul>
         </div>
         <!--container-->
@@ -89,27 +89,27 @@
                 <ul>
                     <li class="ch-bbs-list align-img-top">
                         <div class="chbbslist-img">
-                            <img src="${path}/resources/images/thum/grup03.jpg">
+                            <img src="${path}/images/thum/grup03.jpg">
                         </div>
                         <div class="chbbslist-bx">
                             <div class="chbbslist-name">
                                 Twice.danceteam<span>5일 전</span>
                                 <em  id="pan-toggle" uk-icon="icon: more-vertical">
                                     <div id="pan-toggle-con">
-                                    <a href="#modal-group-1" uk-toggle>신고하기</a>
+                                    <a href="${path}/#modal-group-1" uk-toggle>신고하기</a>
                                     </div>
                                 </em>
                                  
                             </div>
                             <div class="chbbslist-text">
-                                <a href="41-3팬게시물.html">
+                                <a href="${path}/41-3팬게시물.html">
                                     <p>새로운 멤버가 추가되었어요 환영해주세요</p>
-                                    <p><img src="${path}/resources/images/thum/face02.jpg"></p>
+                                    <p><img src="${path}/images/thum/face02.jpg"></p>
                                 </a>    
                                
                             </div>
                             <div class="ch-comment">
-                                <a href="41-3팬게시물.html">
+                                <a href="${path}/41-3팬게시물.html">
                                     <span uk-icon="icon:  commenting; ratio: 1.2"></span>
                                     <span>30</span>
                                 </a>
@@ -139,7 +139,7 @@
             </div>
             <div class="msg-send-inp">
                 <div class="uk-inline w100">
-                    <a class="uk-form-icon uk-form-icon-flip on" href="#" uk-icon="icon: send"></a>
+                    <a class="uk-form-icon uk-form-icon-flip on" href="${path}/#" uk-icon="icon: send"></a>
                     <input class="uk-input" type="text" aria-label="Clickable icon" placeholder="글씨가 적혀있으면 class on">
                 </div>
             </div>

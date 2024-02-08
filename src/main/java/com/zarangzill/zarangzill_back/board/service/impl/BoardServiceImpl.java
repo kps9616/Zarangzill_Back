@@ -83,8 +83,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     public Map selectFanBoardInfo(Map boardMap) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Object> boardInfo = objectMapper.convertValue(boardMapper.selectBoardInfo(boardMap), Map.class);
+        Map boardInfo = boardMapper.selectFanBoardInfo(boardMap);
         boardInfo.put("boardReplyList", boardReplyMapper.selectBoardReplyList(boardMap));
         return boardInfo;
     }

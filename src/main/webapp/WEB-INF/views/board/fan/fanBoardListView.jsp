@@ -24,11 +24,11 @@
       
     </style>
 </head>
-<body>
+<body class="bg">
      <!--탑-->
      <div class="top-bx">
-        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
-        영상 댓글
+        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        팬 게시글
     </div>
  
     <!--container-->
@@ -37,11 +37,11 @@
             <ul>
                 <c:forEach var="fanBoardInfo" items="${fanBoardList}">
                 <c:choose>
-                <c:when test="${fanBoardInfo.video_flag_use eq 'Y'}">
+                <c:when test="${fanBoardInfo.board_flag_use eq 'Y'}">
                     <li class="ch-bbs-list align-img-top white-gradation">
                         <div class="white-gradation-overlay"></div>
                         <div class="chbbslist-img">
-                            <img src="${path}/upload/thum/${fanBoardInfo.channel_profile_image}">
+                            <img src="${path}/images/thum/${fanBoardInfo.channel_profile_image}">
                         </div>
                         <div class="chbbslist-bx">
                             <div class="chbbslist-name">
@@ -49,8 +49,8 @@
 
                             </div>
                             <div class="chbbslist-text">
-                                <a href="/board/fanBoardView/">
-                                    <p>${fanBoardInfo.board_description}</p>
+                                <a href="/board/fanBoardView?board_id=${fanBoardInfo.board_id}&channel_id=${fanBoardInfo.channel_id}">
+                                    ${fanBoardInfo.board_description}
                                 </a>
                             </div>
                         </div>

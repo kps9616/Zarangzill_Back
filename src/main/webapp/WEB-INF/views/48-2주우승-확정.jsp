@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
@@ -28,25 +28,25 @@
      
     <div class="container">
         <div class="tab-2th">
-            <a href="45-1월우승-진행중.html" class="mleft">월 우승</a><a href="48-2주우승-진행중" class="mright on">주 우승</a>
+            <a href="${path}/45-1월우승-진행중.html" class="mleft">월 우승</a><a href="${path}/48-2주우승-진행중" class="mright on">주 우승</a>
         </div>
 
         <div class="data-nav">
-            <a href="#" title="이전"><em uk-icon="icon: chevron-left; ratio: 1.2"></em></a>
+            <a href="${path}/#" title="이전"><em uk-icon="icon: chevron-left; ratio: 1.2"></em></a>
             <h3>2023년 </h3>
-            <a href="#" title="다음"><em uk-icon="icon: chevron-right; ratio: 1.2"></em></a>
+            <a href="${path}/#" title="다음"><em uk-icon="icon: chevron-right; ratio: 1.2"></em></a>
         </div>
         
        
         <div class="thum-adv">
             <div class="rank-adv">                    
                 <span class="rank-adv-icon">광고</span>
-                <div class="rankimg"><a href="#none"><img src="${path}/resources/images/thum/thum-cu.jpg"></a></div>
+                <div class="rankimg"><a href="${path}/#none"><img src="${path}/images/thum/thum-cu.jpg"></a></div>
                 <div class="rankinfo">
-                    <div class="rankinfo-tit ellipsis2"><a href="#none">CU편의점 고인물 편 ♡♡♡편의점 알바이야기 연속 보기</a></div>
+                    <div class="rankinfo-tit ellipsis2"><a href="${path}/#none">CU편의점 고인물 편 ♡♡♡편의점 알바이야기 연속 보기</a></div>
                     <div class="c_gray ellipsis">#편의점 #CU편의점 알바이야기 #CU편의점</div>
                     <div class="c_gray font11 mb5">2023.01.02</div>
-                    <div class="rankinfo-name"><a href="#none">CU편의점</a></div>
+                    <div class="rankinfo-name"><a href="${path}/#none">CU편의점</a></div>
                 </div>           
            
             </div>
@@ -58,16 +58,16 @@
                     <div class="rank-num"><strong>30주.</strong>2,313 <span>/ 730명</span></div>
                     <div class="bigthum">
                         <div class="rank-badge">
-                            <img src="${path}/resources/images/icon/w-winner.png">
+                            <img src="${path}/images/icon/w-winner.png">
                         </div>
-                        <img src="${path}/resources/images/thum/thum04.jpg"  class="thum">
+                        <img src="${path}/images/thum/thum04.jpg"  class="thum">
                     </div>
                     <div class="list-tit ellipsis2">
                         홍대 댄스 여신 준비된 아이돌 데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
                     </div>
                     <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face01.jpg">
+                        <a href="${path}/#none">
+                            <img class="small-thum mr5" src="${path}/images/thum/face01.jpg">
                             Hong Dae
                         </a>
                     </div> 
@@ -76,16 +76,16 @@
                     <div class="rank-num"><strong>29주.</strong>2,013 <span>/ 630명</span></div>
                     <div class="bigthum">
                         <div class="rank-badge">
-                            <img src="${path}/resources/images/icon/w-winner.png">
+                            <img src="${path}/images/icon/w-winner.png">
                         </div>
-                        <img src="${path}/resources/images/thum/thum02.jpg"  class="thum">
+                        <img src="${path}/images/thum/thum02.jpg"  class="thum">
                     </div>
                     <div class="list-tit ellipsis2">
                         홍대 댄스 여신 준비된 아이돌 데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
                     </div>
                     <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face02.jpg">
+                        <a href="${path}/#none">
+                            <img class="small-thum mr5" src="${path}/images/thum/face02.jpg">
                             Hong Dae
                         </a>
                     </div> 
@@ -95,16 +95,16 @@
                     <div class="rank-num"><strong>28주.</strong>1,013 <span>/ 430명</span></div>
                     <div class="bigthum">
                         <div class="rank-badge">
-                            <img src="${path}/resources/images/icon/w-winner.png">
+                            <img src="${path}/images/icon/w-winner.png">
                         </div>
-                        <img src="${path}/resources/images/thum/thum01.jpg"  class="thum">
+                        <img src="${path}/images/thum/thum01.jpg"  class="thum">
                     </div>
                     <div class="list-tit ellipsis2">
                         홍대 댄스 여신 준비된 아이돌 데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
                     </div>
                     <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face01.jpg">
+                        <a href="${path}/#none">
+                            <img class="small-thum mr5" src="${path}/images/thum/face01.jpg">
                             Hong Dae
                         </a>
                     </div> 
@@ -113,16 +113,16 @@
                     <div class="rank-num"><strong>27주.</strong>913 <span>/ 330명</span></div>
                     <div class="bigthum">
                         <div class="rank-badge">
-                            <img src="${path}/resources/images/icon/w-winner.png">
+                            <img src="${path}/images/icon/w-winner.png">
                         </div>
-                        <img src="${path}/resources/images/thum/thum03.jpg"  class="thum">
+                        <img src="${path}/images/thum/thum03.jpg"  class="thum">
                     </div>
                     <div class="list-tit ellipsis2">
                         홍대 댄스 여신 준비된 아이돌 데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
                     </div>
                     <div class="list-name">
-                        <a href="#none">
-                            <img class="small-thum mr5" src="${path}/resources/images/thum/face02.jpg">
+                        <a href="${path}/#none">
+                            <img class="small-thum mr5" src="${path}/images/thum/face02.jpg">
                             Hong Dae
                         </a>
                     </div> 
@@ -141,11 +141,11 @@
     <div class="full-bottom-bar">
         <div class="v_bottom_nav">                
             <ul>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottom01;"><i class="sr-only">숏폼</i></span></a></li>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottomOn02;"><i class="sr-only">우승예측</i></span></a></li>
-                <li class="mcircle"><a href="#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottom04;"><i class="sr-only">팬</i></span></a></li>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottom05;"><i class="sr-only">마이페이지</i></span></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom01;"><i class="sr-only">숏폼</i></span></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottomOn02;"><i class="sr-only">우승예측</i></span></a></li>
+                <li class="mcircle"><a href="${path}/#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom04;"><i class="sr-only">팬</i></span></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom05;"><i class="sr-only">마이페이지</i></span></a></li>
             </ul>        
         </div>
         <div class="full-bar-bg"><span></span><span class="bg-transparent"></span><span></span></div>

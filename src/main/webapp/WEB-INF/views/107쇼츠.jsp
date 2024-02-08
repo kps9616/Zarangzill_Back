@@ -8,16 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css?20230921" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css?20230921" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
   
     
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
     <title>비디오 레이아웃</title>
 </head>
 
@@ -26,11 +26,11 @@
         <div class="v_video">
 
             <video id="videoElement" class="videoElement" preload="metadata" autoplay loop>
-                <source id="videoSource" src="${path}/resources/images/video/svideo.mp4" type="video/mp4">
+                <source id="videoSource" src="${path}/images/video/svideo.mp4" type="video/mp4">
                 브라우저가 비디오 태그를 지원하지 않습니다.
             </video>
             <div class="v_top_icons">
-                <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+                <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
             </div>
 
             <!--비디오 약간어둡게-->
@@ -41,8 +41,8 @@
     <div class="v_contents">
         <ul>
             <li class="v_con_info">
-                <div class="v_img"><a href="91-2채널.html"><img src="${path}/resources/images/thum.jpg"></a></div>
-                <div class="v_grup"><a href="91-2채널.html">Hong Dae</a></div>
+                <div class="v_img"><a href="${path}/91-2채널.html"><img src="${path}/images/thum.jpg"></a></div>
+                <div class="v_grup"><a href="${path}/91-2채널.html">Hong Dae</a></div>
                 <div><button type="button" id="subscribe-button" class="v_button">팬</button></div>
             </li>
             <li class="v_con_tit">홍대 댄스 여신 준비된 아이돌 데뷔 임박  <span>#홍대여신 #아이돌 연습생들  #홍대 #댄스여신들</span> </li>
@@ -50,13 +50,13 @@
         </ul>
     </div>
     <div class="v_side_icons">
-        <a href="#none" class="vsicon" id="Btn-comment-judge"><span uk-icon="icon: side01; ratio: 1.1"></span>심사하기</a>
-        <a href="#none" id="Btn-comment-winner" class="vsicon"><span uk-icon="icon: side02; ratio: 1.2"></span><em class="new_bg">new</em>우승예측</a>
-        <a href="#none" id="Btn-comment" class="vsicon"><span uk-icon="icon: side03; ratio: 1.2" class="check_on"></span>77<i class="sr-only">댓글</i><em uk-icon="icon: v_check; ratio: 1.3" class="circle_check"></em></a>
-        <a href="#none" class="vsicon"><span uk-icon="icon: side04; ratio: 1.2" class="check_on"></span>33 <i class="sr-only">즐겨찾기</i><em uk-icon="icon: v_check; ratio: 1.3" class="circle_check"></em></a>
-        <a href="#none" class="vsicon"><span uk-icon="icon: side05; ratio: 1.2"></span>22<i class="sr-only">공유</i></a>
-        <a href="#none" class="vsicon"><span uk-icon="icon: side06; ratio: 1.1"></span>음악사용</a>
-        <a href="#none" class="vsicon main-more"  id="main-toggle"><span uk-icon="icon: more;"></span>
+        <a href="${path}/#none" class="vsicon" id="Btn-comment-judge"><span uk-icon="icon: side01; ratio: 1.1"></span>심사하기</a>
+        <a href="${path}/#none" id="Btn-comment-winner" class="vsicon"><span uk-icon="icon: side02; ratio: 1.2"></span><em class="new_bg">new</em>우승예측</a>
+        <a href="${path}/#none" id="Btn-comment" class="vsicon"><span uk-icon="icon: side03; ratio: 1.2" class="check_on"></span>77<i class="sr-only">댓글</i><em uk-icon="icon: v_check; ratio: 1.3" class="circle_check"></em></a>
+        <a href="${path}/#none" class="vsicon"><span uk-icon="icon: side04; ratio: 1.2" class="check_on"></span>33 <i class="sr-only">즐겨찾기</i><em uk-icon="icon: v_check; ratio: 1.3" class="circle_check"></em></a>
+        <a href="${path}/#none" class="vsicon"><span uk-icon="icon: side05; ratio: 1.2"></span>22<i class="sr-only">공유</i></a>
+        <a href="${path}/#none" class="vsicon"><span uk-icon="icon: side06; ratio: 1.1"></span>음악사용</a>
+        <a href="${path}/#none" class="vsicon main-more"  id="main-toggle"><span uk-icon="icon: more;"></span>
             <div id="main-toggle-con">
                 <button type="button" data-uk-toggle="#modal-group-1">신고하기</button>
             </div>
@@ -71,7 +71,7 @@
     //구독버튼 class추가
     // 버튼 요소 가져오기
     const subscribeButton = document.getElementById('subscribe-button');
-    const videoList = ['${path}/resources/images/video/svideo.mp4','${path}/resources/images/video/test720.mp4','${path}/resources/images/video/test720_2.mp4','${path}/resources/images/video/test1080.mp4','${path}/resources/images/video/test1920.mp4'];
+    const videoList = ['images/video/svideo.mp4','images/video/test720.mp4','images/video/test720_2.mp4','images/video/test1080.mp4','images/video/test1920.mp4'];
     let videoIndex = 0;
     // 클릭 상태를 저장하는 변수
     let isClicked = false;
@@ -203,19 +203,19 @@
                        <ul class="ch-inner">
                            <li class="ch-bbs-list">
                                <div class="chbbslist-img red-circle">
-                                   <img src="${path}/resources/images/thum/face02.jpg">
+                                   <img src="${path}/images/thum/face02.jpg">
                                </div>
                                <div class="chbbslist-bx">
                                    <div class="chbbslist-name">
                                        team member A<span>3일 전</span>
                                        <em  id="pan-toggle" uk-icon="icon: more-vertical">
                                            <div id="pan-toggle-con">
-                                           <a href="#modal-group-1" uk-toggle>신고하기</a>
+                                           <a href="${path}/#modal-group-1" uk-toggle>신고하기</a>
                                            </div>
                                        </em>                                
                                    </div>
                                    <div class="chbbslist-text">
-                                       <a href="#none">
+                                       <a href="${path}/#none">
                                            <p>반갑습니다.</p>
                                        </a> 
                                    </div>
@@ -223,18 +223,18 @@
                            </li>
                            <li class="ch-bbs-list">
                                <div class="chbbslist-img gray-circle">
-                                   <img src="${path}/resources/images/thum/face01.jpg">
+                                   <img src="${path}/images/thum/face01.jpg">
                                </div>
                                <div class="chbbslist-bx">
                                    <div class="chbbslist-name">
                                        team member B<span>3일 전</span>
                                        <em>
-                                           <a href="#modal-center" class="c_gray" uk-toggle uk-icon="icon: close"></a>
+                                           <a href="${path}/#modal-center" class="c_gray" uk-toggle uk-icon="icon: close"></a>
                                        </em>
                                            
                                    </div>
                                    <div class="chbbslist-text">
-                                       <a href="#none">
+                                       <a href="${path}/#none">
                                            <p>환영합니다.</p>  
                                        </a>                                                      
                                    </div>
@@ -243,18 +243,18 @@
                            </li>
                            <li class="ch-bbs-list" id="targetDiv">
                                <div class="chbbslist-img">
-                                   <img src="${path}/resources/images/thum/grup01.jpg">
+                                   <img src="${path}/images/thum/grup01.jpg">
                                </div>
                                <div class="chbbslist-bx">
                                    <div class="chbbslist-name">
                                        different team<span>3일 전</span>
                                        <em>
-                                           <a href="#none" class="c_red" uk-icon="icon: close"></a>
+                                           <a href="${path}/#none" class="c_red" uk-icon="icon: close"></a>
                                        </em>
                                            
                                    </div>
                                    <div class="chbbslist-text">
-                                       <a href="#none">
+                                       <a href="${path}/#none">
                                            <p>뭐라고 심한말.</p>  
                                        </a>                                                      
                                    </div>
@@ -268,11 +268,11 @@
                <div class="uk-modal-footer">
                    <div class="msg-send">
                        <div class="msg-send-img">
-                           <img src="${path}/resources/images/thum/face01.jpg">
+                           <img src="${path}/images/thum/face01.jpg">
                        </div>
                        <div class="msg-send-inp">
                            <div class="uk-inline w100">
-                               <a class="uk-form-icon uk-form-icon-flip on" href="#" uk-icon="icon: send"></a>
+                               <a class="uk-form-icon uk-form-icon-flip on" href="${path}/#" uk-icon="icon: send"></a>
                                <input class="uk-input" type="text" aria-label="Clickable icon" placeholder="글씨가 적혀있으면 class on">
                            </div>
                        </div>
@@ -425,13 +425,13 @@
                 <div class="mod-team-btnbx">
                     <div class="mod-btn-black">
                         <h3 class="mb10">8월 우승</h3>
-                        <a href="#">
+                        <a href="${path}/#">
                             <div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>
                         </a>
                     </div>
                     <div class="mod-btn-blue">
                         <h3 class="mb10">30번째 우승</h3>
-                        <a href="#">
+                        <a href="${path}/#">
                             <div><em uk-icon="icon: vote-ok;"></em><span>투표하기</span></div>
                             <span class="font11">7월 25일 ~ 7월 29일</span>
                         </a>
@@ -450,7 +450,7 @@
                         <em>30주</em>
                     </div>
                     <div class="w-rank-list">
-                        <img src="${path}/resources/images/icon/crown-yellow.png">
+                        <img src="${path}/images/icon/crown-yellow.png">
                         <span>1</span>
                         <em>31주</em>
                     </div>

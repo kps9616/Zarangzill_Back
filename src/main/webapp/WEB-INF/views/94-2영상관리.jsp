@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
@@ -26,28 +26,28 @@
 </head>
 <body>
     <div class="top-bx">
-        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         채널              
         <div class="top-right">
             <button id="popupButton" type="button"><span uk-icon="icon: more-vertical"  class="pd10"></span></button>         
         </div>     
         
             <div class="white-bx" id="whiteBox">                
-                <a href="#none">공개로 변경</a>
-                <a href="#modal-sections" uk-toggle>수정</a>
-                <a href="#modal-sections2" uk-toggle>삭제</a>
+                <a href="${path}/#none">공개로 변경</a>
+                <a href="${path}/#modal-sections" uk-toggle>수정</a>
+                <a href="${path}/#modal-sections2" uk-toggle>삭제</a>
             </div> 
     </div>
 
     <div class="container"> 
         <div class="mymov-manage">
-            <div class="mymov-ma-img"><img src="${path}/resources/images/thum/thum02.jpg"></div>
+            <div class="mymov-ma-img"><img src="${path}/images/thum/thum02.jpg"></div>
             <div class="mymov-ma-info">
                <div class="mymov-ma-tit">완벽한 궁극의 아이돌 ✧트와이스✧<span>#TWICE #트와이스 </span>  </div> 
                <p><span>등록</span>2023.0612</p>
                <p><span uk-icon="icon:eye-slash;"></span> 비공개</p>
                <p><span uk-icon="icon:eye;"></span> 공개</p>
-               <p><span uk-icon="icon: ccman;"></span><a href="#modal-sections3" class="tlink" uk-toggle>기여자 3명</a></p>
+               <p><span uk-icon="icon: ccman;"></span><a href="${path}/#modal-sections3" class="tlink" uk-toggle>기여자 3명</a></p>
             </div>
         </div>
         
@@ -79,14 +79,14 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td class="tar fontBold"><img src="${path}/resources/images/icon/icon-winner.png" width="20" title="월우승 왕관">2023.07</td>
+                        <td class="tar fontBold"><img src="${path}/images/icon/icon-winner.png" width="20" title="월우승 왕관">2023.07</td>
                         <td>555</td>
                         <td>1,456/44명(1위)</td>
                         <td>142</td>
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td class="tar"><img src="${path}/resources/images/icon/icon-winner-w.png" width="20" title="주우승 왕관">29주</td>
+                        <td class="tar"><img src="${path}/images/icon/icon-winner-w.png" width="20" title="주우승 왕관">29주</td>
                         <td>555</td>
                         <td>1,456/44명(54위)</td>
                         <td>142</td>
@@ -161,12 +161,12 @@
                     <div class="name-search">
                         <input id="search-input" class="uk-input" type="text" placeholder="@">
                         <ul id="name-list" class="name-sh-bx">
-                            <li class="name-sh-list" onclick="selectItem('지효', '${path}/resources/images/thum/face01.jpg')">
-                                <img src="${path}/resources/images/thum/face01.jpg" alt="profile-image">
+                            <li class="name-sh-list" onclick="selectItem('지효', 'images/thum/face01.jpg')">
+                                <img src="${path}/images/thum/face01.jpg" alt="profile-image">
                                 <p>지효</p>
                             </li>
-                            <li class="name-sh-list" onclick="selectItem('사나', '${path}/resources/images/thum/face02.jpg')">
-                                <img src="${path}/resources/images/thum/face02.jpg" alt="profile-image">
+                            <li class="name-sh-list" onclick="selectItem('사나', 'images/thum/face02.jpg')">
+                                <img src="${path}/images/thum/face02.jpg" alt="profile-image">
                                 <p>사나</p>
                             </li>
                             <!-- 추가 리스트 아이템 -->

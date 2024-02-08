@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
 
     <title>자랑질앱</title>
     
@@ -25,17 +25,17 @@
 <body>
      <!--탑-->
      <div class="top-bx">
-        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         알림
-        <a href="#none" class="top-right c_point">모두 읽음</a>
+        <a href="${path}/#none" class="top-right c_point">모두 읽음</a>
     </div>
     <div class="container-full"> 
         <div class="alarm_list">
             <ul class="uk-animation-slide-bottom">
                 
                 <li>
-                    <img src="${path}/resources/images/thum/jarang.png">
-                    <a href="#modal-full" class="alarm-link alarm-bx" uk-toggle>
+                    <img src="${path}/images/thum/jarang.png">
+                    <a href="${path}/#modal-full" class="alarm-link alarm-bx" uk-toggle>
                             <div class="alarm-tit">자랑질</div>
                             <div class="alarm-txt">♣♣2023년 7월 9일 02시 부터 4시간 동안 긴급 시스템 점검이 진행됩니다.점검이 진행됩니다점검이</div>
                             <div class="alarm-time">10분 전</div>
@@ -44,8 +44,8 @@
                     </a>
                 </li>
                 <li class="unread">
-                    <img src="${path}/resources/images/thum/jarang.png">
-                    <a href="#none" class="alarm-link alarm-bx">
+                    <img src="${path}/images/thum/jarang.png">
+                    <a href="${path}/#none" class="alarm-link alarm-bx">
                         <div class="alarm-tit">자랑질<span>영상이 신고되었습니다</span></div> 
                         <div class="alarm-txt">완벽한 궁극의 아이돌 트와이스 CE완벽한 궁극의 아이돌 트와이스TWICE</div>
                         <div class="alarm-time">10분 전</div>
@@ -54,8 +54,8 @@
                     </a>                    
                 </li>   
                 <li>
-                    <img src="${path}/resources/images/thum/jarang.png">
-                    <a href="31-3공지사항뷰.html" class="alarm-link alarm-bx">
+                    <img src="${path}/images/thum/jarang.png">
+                    <a href="${path}/31-3공지사항뷰.html" class="alarm-link alarm-bx">
                             <div class="alarm-tit">자랑질</div>
                             <div class="alarm-txt">1년동안 로그인 하지 않아 2023년 7월 19일 휴면계정으로 전화 예정되어 안내드립니다</div>
                             <div class="alarm-time">10분 전</div>
@@ -76,7 +76,7 @@
         <button class="uk-modal-close-default" type="button" uk-close></button>        
         <div class="uk-modal-body">
             <div class="invite-modal">
-                <div class="inv-img"><img src="${path}/resources/images/thum/grup03.jpg"></div>
+                <div class="inv-img"><img src="${path}/images/thum/grup03.jpg"></div>
                 <div class="inv-tit">twice.official</div>
                 <div class="inv-txt">트와이스 공식 채널</div>
                 <div class="inv-msg">채널멤버 초대를 받았습니다.</div>
@@ -85,8 +85,8 @@
             </div>
         </div>
         <div class="uk-modal-footer uk-text-center">
-            <a href="#msg-modal" class="sm-btn-line-gray" uk-toggle>거절</a>
-            <a href="#msg-modal" class="sm-btn-line-blue" uk-toggle>수락</a>
+            <a href="${path}/#msg-modal" class="sm-btn-line-gray" uk-toggle>거절</a>
+            <a href="${path}/#msg-modal" class="sm-btn-line-blue" uk-toggle>수락</a>
         </div>
     </div>
      
@@ -98,7 +98,7 @@
         <button class="uk-modal-close-default" type="button" uk-close></button>        
         <div class="uk-modal-body">
             <div class="invite-modal">
-                <div class="inv-img"><img src="${path}/resources/images/thum/grup03.jpg"></div>
+                <div class="inv-img"><img src="${path}/images/thum/grup03.jpg"></div>
                 <div class="inv-tit">twice.official</div>
                 <div class="inv-txt">트와이스 공식 채널</div>
                 <div class="inv-msg">거절했습니다.</div>

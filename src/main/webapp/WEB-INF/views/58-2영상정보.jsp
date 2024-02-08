@@ -8,20 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
 
     <title>자랑질</title>
 
 </head>
 <body>
     <div class="top-bx">
-        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
        영상정보
     </div>
 
@@ -29,7 +29,7 @@
         <div class="movie-box">
             <ul>
                 <li>
-                    <div class="mov-img"><img src="${path}/resources/images/thum/thum01.jpg"></div>
+                    <div class="mov-img"><img src="${path}/images/thum/thum01.jpg"></div>
                     <div class="mov-txtr">
                         <div id="editor" class="editor" contenteditable="true"><span class="c_blue">#단어쓰고</span> 스페이스바 <br><span class="c_blue">@태그</span> 써보기</div>
                         <div id="counter" class="counter">0/100</div>
@@ -41,34 +41,34 @@
                         <div class="mov-dropdown" id="dropdown">
                             <div class="mov-dropdown-header" id="dropdownHeader">
                                 <div class="mov-drop-info">
-                                    <img src="${path}/resources/images/thum/face01.jpg" alt="썸네일">
+                                    <img src="${path}/images/thum/face01.jpg" alt="썸네일">
                                     <span id="selectedOption"><p>Twice.official<br>트와이스 공식채널</p></span>
                                     <i class="mov-select-arrow" id="arrow"></i>
                                 </div>
                               
                             </div>
                             <ul class="mov-dropdown-list" id="dropdownList">
-                              <li data-option="Option 1" data-image="${path}/resources/images/thum/face01.jpg">
+                              <li data-option="Option 1" data-image="images/thum/face01.jpg">
                                <div class="mov-drop-info">
-                                    <img src="${path}/resources/images/thum/face01.jpg" alt="썸네일"> 
+                                    <img src="${path}/images/thum/face01.jpg" alt="썸네일"> 
                                     <p>Twice.official<br>투피엠 공식채널</p>
                                </div>
                               </li>
-                              <li data-option="Option 2" data-image="${path}/resources/images/thum/face02.jpg">
+                              <li data-option="Option 2" data-image="images/thum/face02.jpg">
                                 <div class="mov-drop-info"> 
-                                    <img src="${path}/resources/images/thum/face02.jpg" alt="썸네일"> 
+                                    <img src="${path}/images/thum/face02.jpg" alt="썸네일"> 
                                     <p>Twice.official<br>방탄소년단 공식채널</p>
                                 </div>    
                               </li>
-                              <li data-option="Option 3" data-image="${path}/resources/images/thum/face01.jpg">
+                              <li data-option="Option 3" data-image="images/thum/face01.jpg">
                                 <div class="mov-drop-info">
-                                    <img src="${path}/resources/images/thum/face01.jpg" alt="썸네일"> 
+                                    <img src="${path}/images/thum/face01.jpg" alt="썸네일"> 
                                     <p>Twice.official<br>블랙핑크 공식채널</p>
                                 </div>                                
                               </li> 
                               <li class="c_blue">
                                 <i uk-icon="icon:plus-circle;" class="mr5 ml10"></i>
-                                <p><a  href="#modal-center" uk-toggle>채널만들기</a></p> 
+                                <p><a  href="${path}/#modal-center" uk-toggle>채널만들기</a></p> 
                             </li>                            
                             </ul>
                         </div>
@@ -90,12 +90,12 @@
                         <div class="name-search">
                             <input id="search-input" class="uk-input" type="text" placeholder="@">
                             <ul id="name-list" class="name-sh-bx">
-                                <li class="name-sh-list" onclick="selectItem('지효', '${path}/resources/images/thum/face01.jpg')">
-                                    <img src="${path}/resources/images/thum/face01.jpg" alt="profile-image">
+                                <li class="name-sh-list" onclick="selectItem('지효', 'images/thum/face01.jpg')">
+                                    <img src="${path}/images/thum/face01.jpg" alt="profile-image">
                                     <p>지효</p>
                                 </li>
-                                <li class="name-sh-list" onclick="selectItem('사나', '${path}/resources/images/thum/face02.jpg')">
-                                    <img src="${path}/resources/images/thum/face02.jpg" alt="profile-image">
+                                <li class="name-sh-list" onclick="selectItem('사나', 'images/thum/face02.jpg')">
+                                    <img src="${path}/images/thum/face02.jpg" alt="profile-image">
                                     <p>사나</p>
                                 </li>
                                 <!-- 추가 리스트 아이템 -->
@@ -132,7 +132,7 @@
                 <ul>
                     <li class="photo">
                         <span id="deleteButton" onclick="deleteImage()"><i uk-icon="icon:close;"></i></span>
-                        <img src="${path}/resources/images/thum/noimg.png" id="imagePreview">
+                        <img src="${path}/images/thum/noimg.png" id="imagePreview">
                         <div uk-form-custom>
                             <input type="file" id="imageInput" aria-label="Custom controls">
                             <div class="flex-align">
@@ -170,7 +170,7 @@
 
  <!--이미지등록-->
  <script>
-    const defaultImage = "${path}/resources/images/thum/noimg.png";
+    const defaultImage = "images/thum/noimg.png";
 
     document.getElementById('imageInput').addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -250,9 +250,9 @@
         const maxLength = 100;
         
         const users = [
-            { name: '민희', image: '${path}/resources/images/thum/face01.jpg' },
-            { name: '초희', image: '${path}/resources/images/thum/face02.jpg' },
-            { name: '강숙', image: '${path}/resources/images/thum/group04.jpg' }
+            { name: '민희', image: 'images/thum/face01.jpg' },
+            { name: '초희', image: 'images/thum/face02.jpg' },
+            { name: '강숙', image: 'images/thum/group04.jpg' }
         ];
 
         function updateCounter() {

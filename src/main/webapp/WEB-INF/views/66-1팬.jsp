@@ -9,18 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
 
     <!--스와이퍼슬라이더-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="${path}/https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <title>자랑질앱</title>
   
 </head>
@@ -37,10 +37,10 @@
        <div class="swiper-wrapper">
    
          <div class="swiper-slide">
-           <div class="swp-img" title="비디오 썸네일" style="background-image: url(${path}/resources/images/thum/thum01.jpg);"></div>
+           <div class="swp-img" title="비디오 썸네일" style="background-image: url(images/thum/thum01.jpg);"></div>
            <div class="swp-info">
-               <a href="#">
-                   <img src="${path}/resources/images/thum/face01.jpg">
+               <a href="${path}/#">
+                   <img src="${path}/images/thum/face01.jpg">
                    <span>TWICE</span>
                </a>
                <div class="swp-txt ellipsis2">
@@ -50,10 +50,10 @@
          </div>
    
          <div class="swiper-slide">
-           <div class="swp-img" title="비디오 썸네일" style="background-image: url(${path}/resources/images/thum/thum02.jpg);"></div>
+           <div class="swp-img" title="비디오 썸네일" style="background-image: url(images/thum/thum02.jpg);"></div>
            <div class="swp-info">
-               <a href="#">
-                   <img src="${path}/resources/images/thum/face02.jpg">
+               <a href="${path}/#">
+                   <img src="${path}/images/thum/face02.jpg">
                    <span>newjeans</span>
                </a>
                <div class="swp-txt ellipsis2">
@@ -63,10 +63,10 @@
          </div>
    
          <div class="swiper-slide">
-           <div class="swp-img" title="비디오 썸네일" style="background-image: url(${path}/resources/images/thum/thum03.jpg);"></div>
+           <div class="swp-img" title="비디오 썸네일" style="background-image: url(images/thum/thum03.jpg);"></div>
            <div class="swp-info">
-               <a href="#">
-                   <img src="${path}/resources/images/thum/group04.jpg">
+               <a href="${path}/#">
+                   <img src="${path}/images/thum/group04.jpg">
                    <span>Nya</span>
                </a>
                <div class="swp-txt ellipsis2">
@@ -76,10 +76,10 @@
          </div>
 
          <div class="swiper-slide">
-            <div class="swp-img" title="비디오 썸네일" style="background-image: url(${path}/resources/images/thum/thum01.jpg);"></div>
+            <div class="swp-img" title="비디오 썸네일" style="background-image: url(images/thum/thum01.jpg);"></div>
             <div class="swp-info">
-                <a href="#">
-                    <img src="${path}/resources/images/thum/face01.jpg">
+                <a href="${path}/#">
+                    <img src="${path}/images/thum/face01.jpg">
                     <span>TWICE</span>
                 </a>
                 <div class="swp-txt ellipsis2">
@@ -89,10 +89,10 @@
           </div>
     
           <div class="swiper-slide">
-            <div class="swp-img" title="비디오 썸네일" style="background-image: url(${path}/resources/images/thum/thum02.jpg);"></div>
+            <div class="swp-img" title="비디오 썸네일" style="background-image: url(images/thum/thum02.jpg);"></div>
             <div class="swp-info">
-                <a href="#">
-                    <img src="${path}/resources/images/thum/face02.jpg">
+                <a href="${path}/#">
+                    <img src="${path}/images/thum/face02.jpg">
                     <span>newjeans</span>
                 </a>
                 <div class="swp-txt ellipsis2">
@@ -102,10 +102,10 @@
           </div>
     
           <div class="swiper-slide">
-            <div class="swp-img" title="비디오 썸네일" style="background-image: url(${path}/resources/images/thum/thum03.jpg);"></div>
+            <div class="swp-img" title="비디오 썸네일" style="background-image: url(images/thum/thum03.jpg);"></div>
             <div class="swp-info">
-                <a href="#">
-                    <img src="${path}/resources/images/thum/group04.jpg">
+                <a href="${path}/#">
+                    <img src="${path}/images/thum/group04.jpg">
                     <span>Nya</span>
                 </a>
                 <div class="swp-txt ellipsis2">
@@ -125,29 +125,29 @@
         <div class="pan-list">
             <ul>
                 <li>
-                    <a href="#none">
-                        <img src="${path}/resources/images/thum/face01.jpg">
+                    <a href="${path}/#none">
+                        <img src="${path}/images/thum/face01.jpg">
                         <div>bts.official <span>방탄소년단댄스동아리</span></div>
                     </a>
                     <button type="button" class="bt_subscribe_blue">팬</button>
                 </li>
                 <li>
-                    <a href="#none">
-                        <img src="${path}/resources/images/thum/face02.jpg">
+                    <a href="${path}/#none">
+                        <img src="${path}/images/thum/face02.jpg">
                         <div>hing Dae <span>홍대여신 공식팬 채널</span></div>
                     </a>
                     <button type="button" class="bt_subscribe_blue">팬</button>
                 </li>
                 <li>
-                    <a href="#none">
-                        <img src="${path}/resources/images/thum/grup01.jpg">
+                    <a href="${path}/#none">
+                        <img src="${path}/images/thum/grup01.jpg">
                         <div>hing Dae.official <span>아이돌 트와이스의 공연</span></div>
                     </a>
                     <button type="button" class="bt_subscribe_blue">팬</button>
                 </li>
                 <li>
-                    <a href="#none">
-                        <img src="${path}/resources/images/thum/grup03.jpg">
+                    <a href="${path}/#none">
+                        <img src="${path}/images/thum/grup03.jpg">
                         <div>hing Dae.official <span>홍대여신 공식팬 채널</span></div>
                     </a>
                     <button type="button" class="bt_subscribe_blue">팬</button>
@@ -163,11 +163,11 @@
     <div class="full-bottom-bar">
         <div class="v_bottom_nav">                
             <ul>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottom01;"><i class="sr-only">숏폼</i></span></a></li>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottom02;"><i class="sr-only">우승예측</i></span></a></li>
-                <li class="mcircle"><a href="#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottomOn04;"><i class="sr-only">팬</i></span></a></li>
-                <li><a href="#" class="vsicon"><span uk-icon="icon: bottom05;"><i class="sr-only">마이페이지</i></span></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom01;"><i class="sr-only">숏폼</i></span></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom02;"><i class="sr-only">우승예측</i></span></a></li>
+                <li class="mcircle"><a href="${path}/#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottomOn04;"><i class="sr-only">팬</i></span></a></li>
+                <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom05;"><i class="sr-only">마이페이지</i></span></a></li>
             </ul>        
         </div>
         <div class="full-bar-bg"><span></span><span class="bg-transparent"></span><span></span></div>
@@ -195,7 +195,7 @@
     </script>    
     <!--스와이퍼슬라이더-->
     <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="${path}/https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
   <!-- Initialize Swiper -->
   <script>

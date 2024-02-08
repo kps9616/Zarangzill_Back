@@ -8,12 +8,12 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BoardReplyDTO {
-    int id;
+    int reply_id;
     int board_id;
     String reply_description;
-    String flag_use;
-    int creator;
-    String created_at;
-    int editor;
-    String updated_at;
+    String reply_flag_use;
+    int reply_creator;
+    String reply_created_at;
+    int reply_editor;
+    String reply_updated_at;
 }

@@ -10,7 +10,7 @@
     
     
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
 
@@ -23,14 +23,14 @@
 </head>
 <body>
 
-    <div class="container-full b_grayLB">      
+    <div class="container-full b_grayLB">
         <div class="top-bx">
-            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>    
+            <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>    
             <div class="top-team-thum pt10">
-                <img src="${path}/resources/images/thum/grup03.jpg">
+                <img src="${path}/images/thum/${fanBoardInfo.channel_profile_image}">
                 <div class="group-thum">
-                    <p> twice.official</p>
-                    <span>5일 전</span>
+                    <p>${fanBoardInfo.channel_name}</p>
+                    <span>${fanBoardInfo.date_diff}일 전</span>
                 </div>
             </div>        
         </div>
@@ -41,73 +41,61 @@
     <div class="container">
         
         <div class="top-bbs-team">
-            <p>새로운 멤버가 추가되었어요 환영해주세요새로운 멤버가 추가되었어요 </p>
-            <p><img src="${path}/resources/images/thum/face02.jpg"></p>
+            ${fanBoardInfo.board_description}
         </div>
 
         <div class="ch-bbs-bx pl20">
             <ul class="ch-inner">
-                <li class="ch-bbs-list">
-                    <div class="chbbslist-img">
-                        <img src="${path}/resources/images/thum/face02.jpg">
-                    </div>
-                    <div class="chbbslist-bx">
-                        <div class="chbbslist-name">
-                            team member A<span>3일 전</span>
-                            <em  id="pan-toggle" uk-icon="icon: more-vertical">
-                                <div id="pan-toggle-con">
-                                <a href="#modal-group-1" uk-toggle>신고하기</a>
+                <c:forEach var="boardReplyInfo" items="${fanBoardInfo.boardReplyList}">
+                <c:choose>
+                <c:when test="${boardReplyInfo.reply_flag_use eq 'Y'}">
+                    <li class="ch-bbs-list">
+                        <div class="chbbslist-img">
+                            <img src="${path}/images/thum/${boardReplyInfo.profile_image}">
+                        </div>
+                        <div class="chbbslist-bx">
+                            <div class="chbbslist-name">
+                                ${boardReplyInfo.userNm}<span>${boardReplyInfo.date_diff}일 전</span>
+                                <em  id="pan-toggle" uk-icon="icon: more-vertical">
+                                    <div id="pan-toggle-con">
+                                        <a href="${path}/#modal-group-1" uk-toggle>신고하기</a>
+                                    </div>
+                                </em>
+                            </div>
+                            <div class="chbbslist-text">
+                                <a href="${path}/#none">
+                                    <p>${boardReplyInfo.reply_description}.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </c:when>
+                    <c:otherwise>
+                        <li class="ch-bbs-list">
+                            <div class="chbbslist-img">
+                                <img src="${path}/images/thum/grup01.jpg">
+                            </div>
+                            <div class="chbbslist-bx">
+                                <div class="chbbslist-name">
+                                    different team<span>3일 전</span>
+                                    <em>
+                                        <a href="${path}/#none" class="c_red" uk-icon="icon: close"></a>
+                                    </em>
+
                                 </div>
-                            </em>                                
-                        </div>
-                        <div class="chbbslist-text">
-                            <a href="#none">
-                                <p>반갑습니다.</p>
-                            </a> 
-                        </div>
-                    </div>                    
-                </li>
-                <li class="ch-bbs-list" id="targetDiv">
-                    <div class="chbbslist-img">
-                        <img src="${path}/resources/images/thum/face01.jpg">
-                    </div>
-                    <div class="chbbslist-bx">
-                        <div class="chbbslist-name">
-                            team member B<span>3일 전</span>
-                            <em>
-                                <a href="#modal-center" class="c_gray" uk-toggle uk-icon="icon: close"></a>
-                            </em>
-                                
-                        </div>
-                        <div class="chbbslist-text">
-                            <a href="#none">
-                                <p>환영합니다.</p>  
-                            </a>                                                      
-                        </div>
-                    </div>
-                    
-                </li>
+                                <div class="chbbslist-text">
+                                    <a href="${path}/#none">
+                                        <p class="c_red">신고로 삭제되었습니다.</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+                </c:forEach>
                 
-                <li class="ch-bbs-list">
-                    <div class="chbbslist-img">
-                        <img src="${path}/resources/images/thum/grup01.jpg">
-                    </div>
-                    <div class="chbbslist-bx">
-                        <div class="chbbslist-name">
-                            different team<span>3일 전</span>
-                            <em>
-                                <a href="#none" class="c_red" uk-icon="icon: close"></a>
-                            </em>
-                                
-                        </div>
-                        <div class="chbbslist-text">
-                            <a href="#none">
-                                <p class="c_red">신고로 삭제되었습니다.</p>  
-                            </a>                                                      
-                        </div>
-                    </div>
-                    
-                </li>
+
             </ul>
         </div>
 

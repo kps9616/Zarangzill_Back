@@ -10,15 +10,15 @@
     
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
     
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
     <title>자랑질앱</title>
     <style>
       
@@ -26,14 +26,14 @@
 </head>
 <body>
     <div class="top-bx">
-        <a href="main.html" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="${path}/main.html" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         검색
     </div>
     <div class="container">      
 
         <div class="top-search">
             <div class="uk-inline">
-                <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: close"></a>
+                <a class="uk-form-icon uk-form-icon-flip" href="${path}/#" uk-icon="icon: close"></a>
                 <input class="uk-input" type="text" aria-label="Clickable icon" value="트와이스">
             </div>
         </div>
@@ -56,20 +56,20 @@
         <div class="name_list">
             <ul>
                 <li>
-                    <img src="${path}/resources/images/thum/grup01.jpg">
-                    <a href="#none">#트와이스 <span>3,050,000</span><em uk-icon="chevron-right"></em></a>
+                    <img src="${path}/images/thum/grup01.jpg">
+                    <a href="${path}/#none">#트와이스 <span>3,050,000</span><em uk-icon="chevron-right"></em></a>
                 </li>
                 <li>
-                    <img src="${path}/resources/images/thum/grup02.jpg">
-                    <a href="#none">#트와이스 사나<span>50,000</span><em uk-icon="chevron-right"></em></a>
+                    <img src="${path}/images/thum/grup02.jpg">
+                    <a href="${path}/#none">#트와이스 사나<span>50,000</span><em uk-icon="chevron-right"></em></a>
                 </li>
                 <li>
-                    <img src="${path}/resources/images/thum/grup03.jpg">
-                    <a href="#none">#트와이스 나연<span>10,500</span><em uk-icon="chevron-right"></em></a>
+                    <img src="${path}/images/thum/grup03.jpg">
+                    <a href="${path}/#none">#트와이스 나연<span>10,500</span><em uk-icon="chevron-right"></em></a>
                 </li>
                 <li>
-                    <img src="${path}/resources/images/thum/grup04.jpg">
-                    <a href="#none">#트와이스 나연<span>10,500</span><em uk-icon="chevron-right"></em></a>
+                    <img src="${path}/images/thum/grup04.jpg">
+                    <a href="${path}/#none">#트와이스 나연<span>10,500</span><em uk-icon="chevron-right"></em></a>
                 </li>
             </ul>
         </div>

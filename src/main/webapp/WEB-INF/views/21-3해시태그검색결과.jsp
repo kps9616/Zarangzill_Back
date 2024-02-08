@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
     
     <title>자랑질앱</title>
     <style>
@@ -27,7 +27,7 @@
 <body>
     
     <div class="top-bx">
-        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
        #트와이스
     </div>
 
@@ -50,13 +50,13 @@
         <div class="hash_list">
             <ul>
                 <li>
-                    <a href="#none">#트와이스 <span>3,050,000</span><em uk-icon="chevron-right"></em></a>
+                    <a href="${path}/#none">#트와이스 <span>3,050,000</span><em uk-icon="chevron-right"></em></a>
                 </li>
                 <li>
-                    <a href="#none">#트와이스 사나<span>50,000</span><em uk-icon="chevron-right"></em></a>
+                    <a href="${path}/#none">#트와이스 사나<span>50,000</span><em uk-icon="chevron-right"></em></a>
                 </li>
                 <li>
-                    <a href="#none">#트와이스 나연<span>10,500</span><em uk-icon="chevron-right"></em></a>
+                    <a href="${path}/#none">#트와이스 나연<span>10,500</span><em uk-icon="chevron-right"></em></a>
                 </li>
             </ul>
         </div>

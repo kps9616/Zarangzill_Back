@@ -4,78 +4,78 @@
 
     <sql id="selectBoardReply">
         SELECT
-            id
-             , board_id
-             , reply_description
-             , flag_use
-             , creator
-             , DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') AS created_at
-             , editor
-             , DATE_FORMAT(updated_at, '%Y-%m-%d %H:%i') AS updated_at
-        FROM zarangzill.tb_board_reply
+            A.id AS reply_id
+             , A.board_id
+             , A.reply_description
+             , A.flag_use AS reply_flag_use
+             , A.creator
+             , DATE_FORMAT(A.created_at, '%Y-%m-%d %H:%i') AS created_at
+             , A.editor
+             , DATE_FORMAT(A.updated_at, '%Y-%m-%d %H:%i') AS updated_at
+             , DATEDIFF(SYSDATE(), IFNULL(A.updated_at ,A.created_at)) AS date_diff
+             , B.name AS userNm
+             , B.profile_image
+        FROM zarangzill.tb_board_reply A
+                 Left Join tb_member B ON A.creator = B.id
     </sql>
 
     <select id="selectBoardReplyList" parameterType="HashMap" resultType="HashMap">
         <include refid="selectBoardReply"/>
         <where>
             <if test='id != null and id != ""'>
-                AND id = #{id}
+                AND A.id = #{reply_id}
             </if>
             <if test='board_id != null and board_id != ""'>
-                AND board_id = #{board_id}
+                AND A.board_id = #{board_id}
             </if>
             <if test='type != null and type != ""'>
-                AND type = #{type}
+                AND A.type = #{type}
             </if>
             <if test='startSrchDate != null and startSrchDate != "" and endSrchDate != null and endSrchDate != ""'>
-                AND DATE_FORMAT(created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
+                AND DATE_FORMAT(A.created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
             </if>
 
         </where>
-        ORDER BY updated_at DESC, created_at DESC
+        ORDER BY A.updated_at DESC, A.created_at DESC
     </select>
 
     <select id="selectBoardReplyInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.board.service.BoardReplyDTO">
         <include refid="selectBoardReply"/>
         <where>
             <if test='id != null and id != ""'>
-                AND id = #{id}
+                AND A.id = #{reply_id}
             </if>
             <if test='board_id != null and board_id != ""'>
-                AND board_id = #{board_id}
-            </if>
-            <if test='type != null and type != ""'>
-                AND type = #{type}
+                AND A.board_id = #{board_id}
             </if>
         </where>
-        ORDER BY updated_at DESC, created_at DESC
     </select>
 
     <update id="updateBoardReply" parameterType="com.zarangzill.zarangzill_back.board.service.BoardReplyDTO">
         UPDATE zarangzill.tb_boardReply
         SET
-            editor = #{editor}
+            editor = #{reply_editor}
             , updated_at = sysdate()
         <if test='reply_description != null and reply_description != ""'>
           , reply_description = #{reply_description}
         </if>
         <if test='flag_use != null and flag_use != ""'>
-          , flag_use = #{flag_use}
+          , flag_use = #{reply_flag_use}
         </if>
-        WHERE id =  #{id}
+        WHERE id =  #{reply_id}
     </update>
 
     <delete id="deleteBoardReply" parameterType="com.zarangzill.zarangzill_back.board.service.BoardReplyDTO">
         DELETE
         FROM zarangzill.tb_boardReply
-        WHERE id = #{id}
+        WHERE id = #{reply_id}
     </delete>
 
     <insert id="createBoardReply" parameterType="com.zarangzill.zarangzill_back.board.service.BoardReplyDTO">
         INSERT INTO zarangzill.tb_boardReply
         (board_id, reply_description, flag_use, creator, created_at)
         VALUES
-            (#{board_id}, #{reply_description}, #{flag_use}, #{creator}, sysdate());
+            (#{board_id}, #{reply_description}, #{reply_flag_use}, #{reply_creator}, sysdate());
 
     </insert>
 </mapper>

@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
     
     <title>자랑질앱</title>
 </head>
@@ -25,21 +25,21 @@
      <!--container-full b_grayLB-->
     <div class="container-full b_grayLB">      
         <div class="top-bx">
-            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+            <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
             채널              
             <div class="top-right">
                 <button id="popupButton" type="button"><span uk-icon="icon: more-vertical"  class="pd10"></span></button>         
             </div>     
           
             <div class="white-bx" id="whiteBox">                
-                <a href="#modal-sections" uk-toggle>신고하기</a>
+                <a href="${path}/#modal-sections" uk-toggle>신고하기</a>
             </div>
         </div>  
      
         <div class="container pb20">
             <div class="channel-bx">
                 <div class="channel-top">
-                    <div class="ch-img"><img src="${path}/resources/images/thum/grup03.jpg"></div>
+                    <div class="ch-img"><img src="${path}/images/thum/grup03.jpg"></div>
                     <div class="ch-info">                    
                         <div class="ch-info-name">
                            Twice.danceteam <span>트와이스 댄스팀</span>
@@ -50,11 +50,11 @@
                     </div>
                     <div class="ch-info-icon">
                         <span class="icon-winner">
-                            <img src="${path}/resources/images/icon/m-medal01.png">
+                            <img src="${path}/images/icon/m-medal01.png">
                             <em>05</em>
                         </span>
                         <span class="icon-winner">
-                            <img src="${path}/resources/images/icon/w-medal03.png">
+                            <img src="${path}/images/icon/w-medal03.png">
                             <em>25</em>
                         </span>
                     </div>                   
@@ -77,9 +77,9 @@
     <div class="container-full">
         <div class="tab-nav">
             <ul>
-                <li><a href="38-2채널.html" class="on">영상</a></li>
-                <li><a href="41-1팬게시판.html">팬게시판</a></li>
-                <li><a href="43-1멤버.html">멤버</a></li>
+                <li><a href="${path}/38-2채널.html" class="on">영상</a></li>
+                <li><a href="${path}/41-1팬게시판.html">팬게시판</a></li>
+                <li><a href="${path}/43-1멤버.html">멤버</a></li>
             </ul>
         </div>
 
@@ -89,9 +89,9 @@
                     <li>
                         <div class="bigthum">
                             <div class="icon_crown" uk-scrollspy="cls: uk-animation-slide-bottom; repeat: true">
-                                <img src="${path}/resources/images/icon/icon-crown.png"><span>2023.29 주 우승</span>
+                                <img src="${path}/images/icon/icon-crown.png"><span>2023.29 주 우승</span>
                             </div>
-                            <img src="${path}/resources/images/thum/thum01.jpg" class="thum">
+                            <img src="${path}/images/thum/thum01.jpg" class="thum">
                         </div>
                         <div class="list-tit ellipsis2">
                             홍대 댄스 여신 준비된 아이돌 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 
@@ -99,7 +99,7 @@
                     </li>
                     <li>
                         <div class="bigthum">
-                            <img src="${path}/resources/images/thum/thum02.jpg"  class="thum">
+                            <img src="${path}/images/thum/thum02.jpg"  class="thum">
                         </div>
                         <div class="list-tit ellipsis2">
                             준비된 아이돌 데뷔<span> #아이돌 연습생 #홍대아이돌들</span> 
@@ -108,7 +108,7 @@
                     </li>
                     <li>
                         <div class="bigthum">
-                            <img src="${path}/resources/images/thum/thum01.jpg"  class="thum">
+                            <img src="${path}/images/thum/thum01.jpg"  class="thum">
                         </div>
                         <div class="list-tit ellipsis2">
                             댄스 여신 준비된 아이돌 데뷔 임박<span># 연습생 #홍대아이돌들</span> 
@@ -118,9 +118,9 @@
                     <li>
                         <div class="bigthum" >
                             <div class="icon_crown" uk-scrollspy="cls: uk-animation-slide-bottom; repeat: true">
-                                <img src="${path}/resources/images/icon/icon-crown.png"><span>2023.10 주 우승</span>
+                                <img src="${path}/images/icon/icon-crown.png"><span>2023.10 주 우승</span>
                             </div>
-                            <img src="${path}/resources/images/thum/thum02.jpg"  class="thum">
+                            <img src="${path}/images/thum/thum02.jpg"  class="thum">
                         </div>
                         <div class="list-tit ellipsis2">
                             홍대 댄스 여신 준비된 아이돌 데뷔 임박 바로 보기!<span> #홍대여신 #아이돌 연습생 #홍대아이돌들</span> 

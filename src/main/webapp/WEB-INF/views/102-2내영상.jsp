@@ -9,22 +9,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
+    <script src="${path}/js/script.js"></script>
     
     <title>자랑질앱</title>
 </head>
 <body>
      
         <div class="top-bx">
-            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+            <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
             내영상      
         </div>
          <div class="container">
@@ -39,11 +39,11 @@
                 <ul>
                     <li>
                         <div class="mych-mov-img">
-                            <a href="/subShots"><img src="${path}/resources/images/thum/thum04.jpg"/></a>
+                            <a href="${path}/107쇼츠.html"><img src="${path}/images/thum/thum04.jpg"/></a>
                         </div>
                        
                             <div class="mych-mov-info">
-                                <a href="94-2영상관리.html">
+                                <a href="${path}/94-2영상관리.html">
                                     <div class="mych-info-tit">
                                         완벽한 궁극의 아이돌 ✧트와이스✧<span> #TWICE #트와이스</span>
                                     </div>
@@ -60,10 +60,10 @@
                     </li>
                     <li>
                         <div class="mych-mov-img">
-                            <a href="/subShots"><img src="${path}/resources/images/thum/thum01.jpg"></a>
+                            <a href="${path}/107쇼츠.html"><img src="${path}/images/thum/thum01.jpg"></a>
                         </div>
                         <div class="mych-mov-info">
-                            <a href="94-2영상관리.html">
+                            <a href="${path}/94-2영상관리.html">
                                 <div class="mych-info-tit">
                                     완벽한 궁극의 아이돌 ✧트와이스✧<span> #TWICE #트와이스</span>
                                 </div>

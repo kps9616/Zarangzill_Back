@@ -11,7 +11,7 @@ import org.mybatis.spring.annotation.MapperScan;
 @Setter
 @ToString
 public class BoardDTO {
-    int id;
+    int board_id;
     String subject;
     String description;
     String type;

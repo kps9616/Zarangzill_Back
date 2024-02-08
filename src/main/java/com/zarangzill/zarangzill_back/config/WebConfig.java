@@ -18,9 +18,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler(uploadPathPattern)
-                .addResourceLocations(uploadPath);/*
+                .addResourceLocations(uploadPath)
                 .setCachePeriod(3600)
                 .resourceChain(true)
-                .addResolver(new EncodedResourceResolver());*/
+                .addResolver(new EncodedResourceResolver());
     }
 }

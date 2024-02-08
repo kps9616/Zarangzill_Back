@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
+    <script src="${path}/js/uikit.js"></script>
+    <script src="${path}/js/uikit-icons.js"></script>
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/js/jquery.min.js"></script>
     <title>자랑질</title>
     
 </head>
@@ -24,22 +24,22 @@
     <div class="top-bx">
         
         사운드  
-        <a href="javascript:history.back();" class="top-right pt5" uk-icon="icon: close; ratio:1.5"></a>          
+        <a href="${path}/javascript:history.back();" class="top-right pt5" uk-icon="icon: close; ratio:1.5"></a>          
     </div>
     <div class="container">   
 
         <div class="top-search">
             <div class="uk-inline">
-                <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: search"></a>
+                <a class="uk-form-icon uk-form-icon-flip" href="${path}/#" uk-icon="icon: search"></a>
                 <input class="uk-input" type="text" aria-label="Clickable icon">
             </div>
         </div>
 
         <div class="tab-nav">
             <ul>
-                <li><a href="#none" class="on">추천</a></li>
-                <li><a href="#none">즐겨찾기</a></li>
-                <li><a href="#none">업로드</a></li>
+                <li><a href="${path}/#none" class="on">추천</a></li>
+                <li><a href="${path}/#none">즐겨찾기</a></li>
+                <li><a href="${path}/#none">업로드</a></li>
             </ul>
         </div>
 
@@ -69,8 +69,8 @@
             <ul>
                 <li>                    
                     <div class="music-star"><span uk-icon="icon: starfill;"></span></div>
-                    <div><img src="${path}/resources/images/thum/face01.jpg"></div>
-                    <div class="music-tit ellipsis"><a href="#none">나를 잊지 말아요<span>박민환</span></a></div>
+                    <div><img src="${path}/images/thum/face01.jpg"></div>
+                    <div class="music-tit ellipsis"><a href="${path}/#none">나를 잊지 말아요<span>박민환</span></a></div>
                     <div class="music-time">2:50</div>
                     <div class="music-play">                        
                         <div class="music-circle-container" id="hiddenDiv">
@@ -83,8 +83,8 @@
                 </li>
                 <li>
                     <div class="music-star-y"><span uk-icon="icon: starfill;"></span></div>
-                    <div><img src="${path}/resources/images/thum/face02.jpg"></div>
-                    <div class="music-tit ellipsis"><a href="#modal-center" uk-toggle>♣♣허전해<span>미스사이버</span></a></div>
+                    <div><img src="${path}/images/thum/face02.jpg"></div>
+                    <div class="music-tit ellipsis"><a href="${path}/#modal-center" uk-toggle>♣♣허전해<span>미스사이버</span></a></div>
                     <div class="music-time">4:30</div>
                     <div class="music-play">
                         <button type="button" id="showButton" uk-icon="icon:  play-circle; ratio: 1.2"></button>
@@ -92,8 +92,8 @@
                 </li>
                 <li>
                     <div class="music-star-y"><span uk-icon="icon: starfill;"></span></div>
-                    <div><img src="${path}/resources/images/thum/grup01.jpg"></div>
-                    <div class="music-tit ellipsis"><a href="#none">거울속의 내모습은<span>댄스보이</span></a></div>
+                    <div><img src="${path}/images/thum/grup01.jpg"></div>
+                    <div class="music-tit ellipsis"><a href="${path}/#none">거울속의 내모습은<span>댄스보이</span></a></div>
                     <div class="music-time">4:10</div>
                     <div class="music-play">
                         <button type="button" id="showButton" uk-icon="icon:  play-circle; ratio: 1.2"></button>
@@ -101,8 +101,8 @@
                 </li>
                 <li>
                     <div class="music-star"><span uk-icon="icon: starfill;"></span></div>
-                    <div><img src="${path}/resources/images/thum/grup02.jpg"></div>
-                    <div class="music-tit ellipsis"><a href="#none">즐거운 하루되세요<span>나이스보이</span></a></div>
+                    <div><img src="${path}/images/thum/grup02.jpg"></div>
+                    <div class="music-tit ellipsis"><a href="${path}/#none">즐거운 하루되세요<span>나이스보이</span></a></div>
                     <div class="music-time">4:10</div>
                     <div class="music-play">
                         <button type="button" id="showButton" uk-icon="icon:  play-circle; ratio: 1.2"></button>
@@ -110,8 +110,8 @@
                 </li>
                 <li>
                     <div class="music-star"><span uk-icon="icon: starfill;"></span></div>
-                    <div><img src="${path}/resources/images/thum/grup03.jpg"></div>
-                    <div class="music-tit ellipsis"><a href="#none">하늘의 구름이 솜사탕<span>점프걸</span></a></div>
+                    <div><img src="${path}/images/thum/grup03.jpg"></div>
+                    <div class="music-tit ellipsis"><a href="${path}/#none">하늘의 구름이 솜사탕<span>점프걸</span></a></div>
                     <div class="music-time">4:10</div>
                     <div class="music-play">
                         <button type="button" id="showButton" uk-icon="icon:  play-circle; ratio: 1.2"></button>
