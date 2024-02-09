@@ -84,21 +84,21 @@
 
     </insert>
 
-    <sql id="selectFan">
-        SELECT
-            A.id AS board_id
-             , A.description AS board_description
-             , A.flag_use AS board_flag_use
-             , B.id AS channel_id
-             , B.name AS channel_name
-             , B.profile_image AS channel_profile_image
-             , DATEDIFF(SYSDATE(), IFNULL(A.updated_at ,A.created_at)) AS date_diff
+    <sql id="fromFan">
         FROM tb_board A
                  Inner Join tb_channel B ON A.type_id = B.id
                  Inner Join tb_channel_fan C ON B.id = C.channel_id
     </sql>
     <select id="selectFanBoardList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-        <include refid="selectFan"/>
+        SELECT
+            A.id AS board_id
+            , A.description AS board_description
+            , A.flag_use AS board_flag_use
+            , B.id AS channel_id
+            , B.name AS channel_name
+            , B.profile_image AS channel_profile_image
+            , DATEDIFF(SYSDATE(), IFNULL(A.updated_at ,A.created_at)) AS date_diff
+        <include refid="fromFan"/>
         <where>
             <if test='board_id != null and board_id != ""'>
                 AND A.id = #{board_id}
@@ -112,8 +112,44 @@
         </where>
     </select>
 
+    <select id="selectFanBoardReplyList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        A.id AS board_id
+        , A.subject
+        , A.description AS board_description
+        , A.flag_use AS board_flag_use
+        , B.id AS channel_id
+        , B.name AS channel_name
+        , B.profile_image AS channel_profile_image
+        , DATEDIFF(SYSDATE(), IFNULL(A.updated_at ,A.created_at)) AS date_diff
+        , D.id AS reply_id
+        , D.reply_description
+        , D.flag_use AS reply_flag_use
+        <include refid="fromFan"/>
+        Inner Join tb_board_reply D ON A.id = D.board_id
+        WHERE D.creator = #{user_id}
+        AND C.user_id = #{user_id}
+            <if test='board_id != null and board_id != ""'>
+                AND A.id = #{board_id}
+            </if>
+            <if test='channel_id != null and channel_id != ""'>
+                AND B.id = #{channel_id}
+            </if>
+            <if test='user_id != null and user_id != ""'>
+                AND C.user_id = #{user_id}
+            </if>
+    </select>
+
     <select id="selectFanBoardInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-        <include refid="selectFan"/>
+        SELECT
+            A.id AS board_id
+            , A.description AS board_description
+            , A.flag_use AS board_flag_use
+            , B.id AS channel_id
+            , B.name AS channel_name
+            , B.profile_image AS channel_profile_image
+            , DATEDIFF(SYSDATE(), IFNULL(A.updated_at ,A.created_at)) AS date_diff
+        <include refid="fromFan"/>
         <where>
             <if test='board_id != null and board_id != ""'>
                 AND A.id = #{board_id}

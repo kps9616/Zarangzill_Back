@@ -66,7 +66,7 @@ public class BoardViewController {
     public String fanBoardListView(@RequestParam Map ParamMap, Model model) {
         ParamMap.put("user_id", "1");
         model.addAttribute("fanBoardList", boardService.selectFanBoardList(ParamMap));
-        return "board/fan/fanBoardListView";
+        return "/fan/fanBoardListView";
     }
 
     //팬게시물
@@ -74,7 +74,14 @@ public class BoardViewController {
     public String fanBoardView(@RequestParam Map ParamMap, Model model) {
         ParamMap.put("user_id", "1");
         model.addAttribute("fanBoardInfo", boardService.selectFanBoardInfo(ParamMap));
-        return "/board/fan/fanBoardView";
+        return "/fan/fanBoardView";
+    }
+    //팬댓글
+    @RequestMapping(value="/fanBoardRelpyListView")
+    public String fanBoardRelpyListView(@RequestParam Map ParamMap, Model model) {
+        ParamMap.put("user_id", "1");
+        model.addAttribute("fanBoardReplyList", boardService.selectFanBoardReplyList(ParamMap));
+        return "/fan/fanBoardRelpyListView";
     }
 
 }

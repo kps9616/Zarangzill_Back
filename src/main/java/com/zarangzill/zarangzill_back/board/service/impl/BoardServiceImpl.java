@@ -81,6 +81,9 @@ public class BoardServiceImpl implements BoardService {
     public List<Map> selectFanBoardList(Map boardMap) {
         return boardMapper.selectFanBoardList(boardMap);
     }
+    public List<Map> selectFanBoardReplyList(Map boardMap) {
+        return boardMapper.selectFanBoardReplyList(boardMap);
+    }
 
     public Map selectFanBoardInfo(Map boardMap) {
         Map boardInfo = boardMapper.selectFanBoardInfo(boardMap);

@@ -15,6 +15,7 @@ public interface BoardMapper {
     int updateBoard(BoardDTO boardDto);
     int deleteBoard(BoardDTO boardDto);
     List<Map> selectFanBoardList(Map boardMap);
+    List<Map> selectFanBoardReplyList(Map boardMap);
     Map selectFanBoardInfo(Map boardMap);
 
 }
