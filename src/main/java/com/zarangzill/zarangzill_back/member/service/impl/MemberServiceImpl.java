@@ -6,10 +6,16 @@ import com.zarangzill.zarangzill_back.member.service.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberMapper memberMapper;
+
+    public Map selectMemberInfo(MemberDTO memberDto) {
+        return memberMapper.selectMemberInfo(memberDto);
+    }
 
     public int createMember(MemberDTO memberDto) {
         return memberMapper.createMember(memberDto);

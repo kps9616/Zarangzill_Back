@@ -9,26 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resource/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resource/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resource/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resource/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
 
-    <script src="${path}/resource/js/jquery.min.js"></script>
-    <script src="${path}/resource/js/uikit.js"></script>
-    <script src="${path}/resource/js/uikit-icons.js"></script>
-    <script src="${path}/resource/js/script.js"></script>
+    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/resources/js/uikit.js"></script>
+    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <script src="${path}/resources/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
-      
+
     </style>
 </head>
 <body class="bg">
 
      <!--탑-->
     <div class="top-bx bline">
-        마이페이지               
+        마이페이지
     </div>
 
     <div class="container pt20">
@@ -41,13 +41,13 @@
                 </label>
                 <span>댄서</span>
             </div>
-    
+
             <div class="user-info">
                 <img src="${path}/upload/thum/face02.jpg" class="thum">
                 <div class="user-mody">
-                    <img src="${path}/resource/images/icon/google-g.png">
+                    <img src="${path}/resources/images/icon/google-g.png">
                     <span class="pr5 pl10">010-1234-5678</span>
-                    <a href="74-2회원정보수정.html" class="uk-icon-link" uk-icon="cog"></a>
+                    <a href="/member/memberInfoModify" class="uk-icon-link" uk-icon="cog"></a>
                 </div> 
             </div>
         </div>         
