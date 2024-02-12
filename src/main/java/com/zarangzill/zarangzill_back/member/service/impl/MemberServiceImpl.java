@@ -6,6 +6,7 @@ import com.zarangzill.zarangzill_back.member.service.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -17,15 +18,33 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.selectMemberInfo(memberDto);
     }
 
-    public int createMember(MemberDTO memberDto) {
-        return memberMapper.createMember(memberDto);
+    public Map createMember(MemberDTO memberDto) {
+        Map response = new HashMap<>();
+        if(memberMapper.createMember(memberDto) > 0){
+            response.put("response", "success");
+        } else {
+            response.put("response", "fail");
+        }
+        return response;
     }
 
-    public int updateMember(MemberDTO memberDto) {
-        return memberMapper.updateMember(memberDto);
+    public Map updateMember(MemberDTO memberDto) {
+        Map response = new HashMap<>();
+        if(memberMapper.updateMember(memberDto) > 0){
+            response.put("response", "success");
+        } else {
+            response.put("response", "fail");
+        }
+        return response;
     }
 
-    public int deleteMember(MemberDTO memberDto) {
-        return memberMapper.deleteMember(memberDto);
+    public Map deleteMember(MemberDTO memberDto) {
+        Map response = new HashMap<>();
+        if(memberMapper.deleteMember(memberDto) > 0){
+            response.put("response", "success");
+        } else {
+            response.put("response", "fail");
+        }
+        return response;
     }
 }

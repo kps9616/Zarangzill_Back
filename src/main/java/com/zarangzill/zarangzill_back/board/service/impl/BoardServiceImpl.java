@@ -48,6 +48,21 @@ public class BoardServiceImpl implements BoardService {
         return boardMapper.selectBoardInfo(boardMap);
     }
 
+
+    public List<Map> selectFanBoardList(Map boardMap) {
+        return boardMapper.selectFanBoardList(boardMap);
+    }
+    public List<Map> selectFanBoardReplyList(Map boardMap) {
+        return boardMapper.selectFanBoardReplyList(boardMap);
+    }
+
+    public Map selectFanBoardInfo(Map boardMap) {
+        Map boardInfo = boardMapper.selectFanBoardInfo(boardMap);
+        boardInfo.put("boardReplyList", boardReplyMapper.selectBoardReplyList(boardMap));
+        return boardInfo;
+    }
+
+
     public Map createBoard(BoardDTO boardDto) {
         Map response = new HashMap<>();
         if(boardMapper.createBoard(boardDto) > 0){
@@ -76,18 +91,5 @@ public class BoardServiceImpl implements BoardService {
             response.put("response", "fail");
         }
         return response;
-    }
-
-    public List<Map> selectFanBoardList(Map boardMap) {
-        return boardMapper.selectFanBoardList(boardMap);
-    }
-    public List<Map> selectFanBoardReplyList(Map boardMap) {
-        return boardMapper.selectFanBoardReplyList(boardMap);
-    }
-
-    public Map selectFanBoardInfo(Map boardMap) {
-        Map boardInfo = boardMapper.selectFanBoardInfo(boardMap);
-        boardInfo.put("boardReplyList", boardReplyMapper.selectBoardReplyList(boardMap));
-        return boardInfo;
     }
 }

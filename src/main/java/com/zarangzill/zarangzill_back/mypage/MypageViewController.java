@@ -24,17 +24,13 @@ public class MypageViewController {
     private JudgeService judgeService;
     @Autowired
     private ReplyService replyService;
-    @Autowired
-    private BoardService boardService;
-
-
 
     //마이페이지
     @RequestMapping(value="/mypageView")
-    public String boardListView(@RequestParam Map ParamMap, Model model) {
+    public String mypageView(@RequestParam Map ParamMap, Model model) {
         return "/mypage/mypageView";
     }
-    
+
     //최근 본 영상
     @RequestMapping(value="/recentViewVideo")
     public String recentViewVideo(@RequestParam Map ParamMap, Model model) {
@@ -68,6 +64,10 @@ public class MypageViewController {
         return "/mypage/videoReplyView";
     }
 
-
+    //마이페이지(댄서)
+    @RequestMapping(value="/mypageDancerView")
+    public String mypageDancerView(@RequestParam Map ParamMap, Model model) {
+        return "/mypage/dancer/mypageDancerView";
+    }
 
 }

@@ -47,7 +47,7 @@
                 <div class="user-mody">
                     <img src="${path}/resources/images/icon/google-g.png">
                     <span class="pr5 pl10">010-1234-5678</span>
-                    <a href="/member/memberInfoModify" class="uk-icon-link" uk-icon="cog"></a>
+                    <a href="${path}member/memberInfoModifyView" class="uk-icon-link" uk-icon="cog"></a>
                 </div> 
             </div>
         </div>         
@@ -119,41 +119,41 @@
             
         </div>
         <div class="my-link-2th">
-            <a href="/mypage/recentViewVideo">
+            <a href="${path}mypage/recentViewVideo">
                 <em uk-icon="icon: play-circle;"></em>
                 최근 본 영상
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
             </a>
-            <a href="/mypage/favoriteVideoView">
+            <a href="${path}mypage/favoriteVideoView">
                 <em uk-icon="icon: bookmark;"></em>
                 즐겨찾기 영상
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
             </a>
-            <a href="/mypage/judgeView">
+            <a href="${path}mypage/judgeView">
                 <em uk-icon="icon: side01;"></em>
                 심사
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
             </a>
-            <a href="/mypage/winPredView">
+            <a href="${path}mypage/winPredView">
                 <em uk-icon="icon: side02;"></em>
                 우승예측
                 <span uk-icon="icon: chevron-right; ratio: 1.2"></span>
             </a>
         </div>
          <div class="my-link mt20 mb20">
-            <a href="/mypage/videoReplyView"> 영상댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/fanBoardListView"> 팬 게시글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/fanBoardRelpyListView"> 팬 댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}mypage/videoReplyView"> 영상댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/fanBoardListView"> 팬 게시글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/fanBoardRelpyListView"> 팬 댓글<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
          </div>
          
          <h3><span uk-icon="icon: center; ratio: 1.2"></span> 고객센터</h3>
          <div class="my-link mt5">
-            <a href="/board/boardListView?type=1"> 공지사항<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/serviceIntroductionView?type=2"> 서비스소개<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/boardListView?type=3"> 자주 묻는 질문<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/inquirySuggestionListView?type=4"> 문의/제안<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/useTermsView"> 이용약관<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-            <a href="/board/privacyStatementView"> 개인정보 취급방침<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/boardListView?type=1"> 공지사항<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/serviceIntroductionView?type=2"> 서비스소개<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/FAQListView?type=3"> 자주 묻는 질문<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/QnAListView?type=4"> 문의/제안<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/useTermsView"> 이용약관<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+            <a href="${path}board/privacyStatementView"> 개인정보 취급방침<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
          </div>
     </div>
 

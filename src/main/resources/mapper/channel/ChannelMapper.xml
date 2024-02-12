@@ -8,6 +8,9 @@
              , tc.description as channel_description
              , tc.profile_image
              , tc.id as channel_id
+             , tc.channel_type
+             , (SELECT count(1) from tb_channel_member tcm WHERE tc.id = tcm.channel_id) AS channel_member_cnt
+             , tc.restriction
         from tb_channel tc
         where tc.user_id = #{userId}
     </select>

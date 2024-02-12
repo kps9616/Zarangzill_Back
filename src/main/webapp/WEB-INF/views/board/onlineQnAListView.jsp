@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     
     
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
@@ -24,6 +26,9 @@
       
     </style>
     <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
         $(document).ready(function(){
 
         });
@@ -35,6 +40,9 @@
                 url:'/board/createBoard',   //데이터를 주고받을 파일 주소
                 data:formData,   //위의 변수에 담긴 데이터를 전송해준다.
                 dataType:'json',   //html 파일 형식으로 값을 담아온다.
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader(header, token);
+                },
                 success : function(data){   //파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
                     alert("저장했습니다.");
                     location.reload();
@@ -51,7 +59,7 @@
      <!--탑-->
      <div class="top-bx">
         <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
-       문의/제안        
+         온라인 문의
     </div>
     <div class="container"> 
         <div class="bbs_inp">
@@ -64,25 +72,25 @@
             </form>
         </div>
         <c:choose>
-            <c:when test="${boardList.size() > 0 }">
+            <c:when test="${onlineQnAList.size() > 0 }">
                 <ul class="bbs_list mt40">
-                    <c:forEach var="boardInfo" items="${boardList}">
+                    <c:forEach var="onlineQnAInfo" items="${onlineQnAList}">
                     <li>
-                        <a href="/board/inquirySuggestionView?id=${boardInfo.id}" class="tit-link">
+                        <a href="/board/inquirySuggestionView?id=${onlineQnAInfo.id}" class="tit-link">
                             <c:choose>
-                                <c:when test="${empty(boardInfo.updated_at)}">
-                                    <em>${boardInfo.created_at}</em>
+                                <c:when test="${empty(onlineQnAInfo.updated_at)}">
+                                    <em>${onlineQnAInfo.created_at}</em>
                                 </c:when>
                                 <c:otherwise>
-                                    <em>${boardInfo.updated_at}</em>
+                                    <em>${onlineQnAInfo.updated_at}</em>
                                 </c:otherwise>
                             </c:choose>
                             <div class="clamp">
-                                    ${boardInfo.description}
+                                    ${onlineQnAInfo.description}
                             </div>
 
                             <c:choose>
-                                <c:when test="${ boardInfo.reply_yn eq 'N' }">
+                                <c:when test="${ onlineQnAInfo.reply_yn eq 'N' }">
                                     <div class="txt_icon b_gray">답변대기</div>
                                 </c:when>
                                 <c:otherwise>

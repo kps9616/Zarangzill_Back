@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
 
-    <script src="${path}/js/jquery.min.js"></script>
-    <script src="${path}/js/uikit.js"></script>
-    <script src="${path}/js/uikit-icons.js"></script>
-    <script src="${path}/js/script.js"></script>
+    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/resources/js/uikit.js"></script>
+    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <script src="${path}/resources/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
@@ -112,8 +112,8 @@
         </div>
 
         <div class="my-link mt5">
-        <a href="${path}/105-2제작자센터.html"> 제작자 센터<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="${path}/106-2온라인문의.html"> 온라인 문의<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/board/producerCentorListView?type=80> 제작자 센터<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/board/onlineQnAView?type=90"> 온라인 문의<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
 
 

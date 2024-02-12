@@ -21,4 +21,5 @@ public class MemberDTO {
     String dormant_account;
     String dormant_date;
     String profile_image;
+    String withdrawal;
 }

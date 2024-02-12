@@ -5,9 +5,9 @@ import java.util.Map;
 public interface MemberService {
     Map selectMemberInfo(MemberDTO memberDto);
 
-    int createMember(MemberDTO memberDto);
+    Map createMember(MemberDTO memberDto);
 
-    int updateMember(MemberDTO memberDto);
+    Map updateMember(MemberDTO memberDto);
 
-    int deleteMember(MemberDTO memberDto);
+    Map deleteMember(MemberDTO memberDto);
 }

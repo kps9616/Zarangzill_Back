@@ -33,18 +33,32 @@ public class BoardViewController {
         return "board/serviceIntroductionView";
     }
 
-    //문의/제안
-    @RequestMapping(value="/inquirySuggestionListView")
-    public String inquirySuggestionListView(@RequestParam Map paramMap, Model model) {
-        model.addAttribute("boardList", boardService.selectBoardList(paramMap));
-        return "/board/inquirySuggestionListView";
+    //자주묻는질문 목록
+    @RequestMapping(value="/FAQListView")
+    public String FAQListView(@RequestParam Map paramMap, Model model) {
+        model.addAttribute("faqList", boardService.selectBoardList(paramMap));
+        return "board/FAQListView";
+    }
+
+    //자주묻는질문
+    @RequestMapping("/FAQView")
+    public String FAQView(@RequestParam Map paramMap, Model model) {
+        model.addAttribute("faqInfo", boardService.selectBoardInfo(paramMap));
+        return "board/FAQView";
+    }
+
+    //문의/제안 목록
+    @RequestMapping(value="/QnAListView")
+    public String QnAListView(@RequestParam Map paramMap, Model model) {
+        model.addAttribute("qnaList", boardService.selectBoardList(paramMap));
+        return "board/QnAListView";
     }
 
     //문의/제안
-    @RequestMapping("/inquirySuggestionView")
-    public String inquirySuggestionView(@RequestParam Map paramMap, Model model) {
+    @RequestMapping("/QnAView")
+    public String QnAView(@RequestParam Map paramMap, Model model) {
         model.addAttribute("boardList", boardService.selectBoardList(paramMap));
-        return "board/inquirySuggestionView";
+        return "QnAView";
     }
 
     //이용약관
@@ -74,14 +88,38 @@ public class BoardViewController {
     public String fanBoardView(@RequestParam Map ParamMap, Model model) {
         ParamMap.put("user_id", "1");
         model.addAttribute("fanBoardInfo", boardService.selectFanBoardInfo(ParamMap));
-        return "/fan/fanBoardView";
+        return "fan/fanBoardView";
     }
+
     //팬댓글
     @RequestMapping(value="/fanBoardRelpyListView")
     public String fanBoardRelpyListView(@RequestParam Map ParamMap, Model model) {
         ParamMap.put("user_id", "1");
         model.addAttribute("fanBoardReplyList", boardService.selectFanBoardReplyList(ParamMap));
-        return "/fan/fanBoardRelpyListView";
+        return "fan/fanBoardRelpyListView";
+    }
+
+    //제작자센터 목록
+    @RequestMapping(value="/producerCentorListView")
+    public String producerCentorListView(@RequestParam Map ParamMap, Model model) {
+        ParamMap.put("user_id", "1");
+        model.addAttribute("fanBoardReplyList", boardService.selectBoardList(ParamMap));
+        return "board/producerCentorListView";
+    }
+
+    //제작자센터 목록
+    @RequestMapping(value="/producerCentorView")
+    public String producerCentorView(@RequestParam Map ParamMap, Model model) {
+        ParamMap.put("user_id", "1");
+        model.addAttribute("producerCentorList", boardService.selectBoardInfo(ParamMap));
+        return "board/producerCentorView";
+    }
+
+    //온라인문의
+    @RequestMapping(value="/onlineQnAView")
+    public String onlineQnAView(@RequestParam Map paramMap, Model model) {
+        model.addAttribute("onlineQnAList", boardService.selectBoardList(paramMap));
+        return "board/onlineQnAView";
     }
 
 }

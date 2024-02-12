@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zarangzill.zarangzill_back.member.service.mapper.MemberMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <select id="selectMemberInfo" parameterType="com.zarangzill.zarangzill_back.member.service.MemberDTO" resultType="java.util.HashMap">
+        SELECT
+            id
+             , name
+             , birthday
+             , gender
+             , number
+             , social_yn
+             , social_type
+             , social_data
+             , last_login
+             , dormant_account
+             , dormant_date
+             , profile_image
+             , join_date
+        FROM zarangzill.tb_member
+        WHERE id = #{id}
+    </select>
+
     <update id="updateMember" parameterType="com.zarangzill.zarangzill_back.member.service.MemberDTO">
         UPDATE zarangzill.tb_member
         SET name = #{name}
@@ -34,13 +54,21 @@
         <if test='profile_image != null and profile_image != ""'>
             , profile_image = #{profile_image}
         </if>
+        <if test='withdrawal != null and withdrawal != ""'>
+            , withdrawal = #{withdrawal}
+        </if>
         WHERE id= #{id}
     </update>
 
     <delete id="deleteMember" parameterType="com.zarangzill.zarangzill_back.member.service.MemberDTO">
+        /*
         DELETE
         FROM zarangzill.tb_member
         WHERE id = #{id}
+        */
+        UPDATE zarangzill.tb_member
+        SET withdrawal = 'Y'
+        WHERE id= #{id}
     </delete>
 
     <insert id="createMember" parameterType="com.zarangzill.zarangzill_back.member.service.MemberDTO">
