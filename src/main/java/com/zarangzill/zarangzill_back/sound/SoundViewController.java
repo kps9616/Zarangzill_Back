@@ -16,10 +16,19 @@ public class SoundViewController {
     private SoundService soundService;
 
     //즐겨찾는 사운드
+    @RequestMapping(value="/mySoundListView")
+    public String mySoundListView(@RequestParam Map paramMap, Model model) {
+        paramMap.put("user_id", "1");
+        model.addAttribute("soundList", soundService.selectSoundList(paramMap));
+        return "/sound/mySoundListView";
+    }
+
+    //즐겨찾는 사운드
     @RequestMapping(value="/favoriteSoundListView")
     public String soundListView(@RequestParam Map paramMap, Model model) {
-        model.addAttribute("soundList", soundService.selectSoundList(paramMap));
-        return "/sound/soundListView";
+        paramMap.put("user_id", "1");
+        model.addAttribute("favoriteSoundList", soundService.selectFavoriteSoundList(paramMap));
+        return "/sound/favoriteSoundListView";
     }
 
 

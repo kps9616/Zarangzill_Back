@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
-    <script src="${path}/js/uikit.js"></script>
-    <script src="${path}/js/uikit-icons.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
+    <script src="${path}/resources/js/uikit.js"></script>
+    <script src="${path}/resources/js/uikit-icons.js"></script>
 
-    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/resources/js/jquery.min.js"></script>
     <title>자랑질</title>
     
 </head>
@@ -37,20 +37,28 @@
        
         <div class="music-list mt20">
             <ul>
-                <li>                    
-                    <div class="music-star"><span uk-icon="icon: starfill;"></span></div>
-                    <div><img src="${path}/images/thum/face01.jpg"></div>
-                    <div class="music-tit ellipsis"><a href="${path}/#none">나를 잊지 말아요<span>박민환</span></a></div>
-                    <div class="music-time">2:50</div>
-                    <div class="music-play">                        
-                        <div class="music-circle-container" id="hiddenDiv">
-                            <svg class="music-circle" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="48" />
-                            </svg>
-                            <div class="music-square"></div>
-                        </div>
-                    </div>
-                </li>
+                <c:forEach var="favoriteSoundInfo" items="${favoriteSoundList}">
+                    <c:choose>
+                        <c:when test="${favoriteSoundInfo.flag_use eq 'Y'}">
+                            <li>
+                                <div class="music-star"><span uk-icon="icon:close;"></span></div>
+                                <div class="music-tit ellipsis"><a href="${path}/#none">${favoriteSoundInfo.subject}<span>${favoriteSoundInfo.singer}</span></a></div>
+                                <div class="music-time">${favoriteSoundInfo.play_time_minute}:${favoriteSoundInfo.play_time_second}</div>
+                                <div class="music-play">
+                                    <div class="music-circle-container" id="hiddenDiv">
+                                        <svg class="music-circle" viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="48" />
+                                        </svg>
+                                        <div class="music-square"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+<%--
                 <li>
                     <div class="music-star-y"><span uk-icon="icon: starfill;"></span></div>
                     <div><img src="${path}/images/thum/face02.jpg"></div>
@@ -86,7 +94,7 @@
                     <div class="music-play">
                         <button type="button" id="showButton" uk-icon="icon:  play-circle; ratio: 1.2"></button>
                     </div>
-                </li>
+                </li>--%>
                
             </ul>
         </div>

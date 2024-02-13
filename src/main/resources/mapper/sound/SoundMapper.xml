@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zarangzill.zarangzill_back.sound.service.mapper.SoundMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <sql id="selectSound">
+        select
+            A.id AS sound_id
+             , A.sound_type_id
+             , A.subject
+             , A.singer
+             , A.sound_file_path
+             , A.sound_thumbnail
+             , A.play_time_minute
+             , A.play_time_second
+             , A.flag_use
+             , A.creator
+             , A.created_at
+             , A.updated_at
+             , B.subject AS type_subject
+    </sql>
+    <sql id="fromSound">
+        From tb_sound A
+                 Left Join tb_sound_type B ON A.sound_type_id = B.id and B.flag_use = 'Y'
+    </sql>
+
+    <select id="selectSoundList" parameterType="HashMap" resultType="HashMap">
+        <include refid="selectSound"/>
+        <include refid="fromSound"/>
+        <where>
+            <if test='user_id != null and user_id != ""'>
+                AND A.creator = #{user_id}
+            </if>
+        </where>
+        ORDER BY A.updated_at DESC, A.created_at DESC
+    </select>
+
+
+    <select id="selectSoundInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+        <include refid="selectSound"/>
+        <where>
+            <if test='id != null and id != ""'>
+                AND A.id = #{id}
+            </if>
+            <if test='sound_id != null and sound_id != ""'>
+                AND A.id = #{sound_id}
+            </if>
+            <if test='user_id != null and user_id != ""'>
+                AND A.user_id = #{user_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectFavoriteSoundList" parameterType="HashMap" resultType="HashMap">
+        <include refid="selectSound"/>
+        <include refid="fromSound"/>
+        Inner Join tb_sound_favorite C ON A.id = C.sound_id AND C.flag_use = 'Y'
+        <where>
+            <if test='user_id != null and user_id != ""'>
+                AND A.creator = #{user_id}
+            </if>
+        </where>
+        ORDER BY A.updated_at DESC, A.created_at DESC
+    </select>
+
+    <update id="updateSound" parameterType="com.zarangzill.zarangzill_back.sound.service.SoundDTO">
+        UPDATE zarangzill.tb_sound
+        SET updated_at = sysdate()
+        <if test='sound_type_id != null and sound_type_id != ""'>
+        , sound_type_id = #{sound_type_id}
+        </if>
+        <if test='subject != null and subject != ""'>
+        , subject = #{subject}
+        </if>
+        <if test='sound_file_path != null and sound_file_path != ""'>
+        , sound_file_path = #{sound_file_path}
+        </if>
+        <if test='sound_thumbnail != null and sound_thumbnail != ""'>
+        , sound_thumbnail = #{sound_thumbnail}
+        </if>
+        <if test='play_time_minute != null and play_time_minute != ""'>
+        , play_time_minute = #{play_time_minute}
+        </if>
+        <if test='play_time_second != null and play_time_second != ""'>
+        , play_time_second = #{play_time_second}
+        </if>
+        <if test='flag_use != null and flag_use != ""'>
+        , flag_use = #{flag_use}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteSound" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+        DELETE
+        FROM zarangzill.tb_sound
+        WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteSoundFavorite" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+        DELETE
+        FROM zarangzill.tb_sound_favorite
+        WHERE id = #{id}
+    </delete>
+
+    <insert id="createSound" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+        INSERT INTO zarangzill.tb_sound
+            (sound_type_id, subject, singer, sound_file_path, sound_thumbnail, play_time_minute, play_time_second, flag_use, creator,created_at)
+        VALUES(#{sound_type_id}, #{subject}, #{singer}, #{sound_file_path}, #{sound_thumbnail}, #{play_time_minute}, #{play_time_second}, #{flag_use}, #{creator}, sysdate());
+    </insert>
+
+    <insert id="createSoundFavorite" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+        INSERT INTO zarangzill.tb_sound_favorite
+            (sound_id, user_id, flag_use, created_at)
+        VALUES(#{sound_id}, #{user_id}, #{flag_use}, sysdate());
+    </insert>
+
+</mapper>

@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
-    <script src="${path}/js/uikit.js"></script>
-    <script src="${path}/js/uikit-icons.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
+    <script src="${path}/resources/js/uikit.js"></script>
+    <script src="${path}/resources/js/uikit-icons.js"></script>
 
-    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/resources/js/jquery.min.js"></script>
     <title>자랑질</title>
     
 </head>
@@ -37,20 +37,29 @@
        
         <div class="music-list mt20">
             <ul>
-                <li>                    
-                    <div class="music-star"><span uk-icon="icon:close;"></span></div>
-                    <div class="music-tit ellipsis"><a href="${path}/#none">나를 잊지 말아요<span>박민환</span></a></div>
-                    <div class="music-time">2:50</div>
-                    <div class="music-play">                        
-                        <div class="music-circle-container" id="hiddenDiv">
-                            <svg class="music-circle" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="48" />
-                            </svg>
-                            <div class="music-square"></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
+                <c:forEach var="soundInfo" items="${soundList}">
+                <c:choose>
+                    <c:when test="${soundInfo.flag_use eq 'Y'}">
+                        <li>
+                            <div class="music-star"><span uk-icon="icon:close;"></span></div>
+                            <div class="music-tit ellipsis"><a href="${path}/#none">${soundInfo.subject}<span>${soundInfo.singer}</span></a></div>
+                            <div class="music-time">${soundInfo.play_time_minute}:${soundInfo.play_time_second}</div>
+                            <div class="music-play">
+                                <div class="music-circle-container" id="hiddenDiv">
+                                    <svg class="music-circle" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="48" />
+                                    </svg>
+                                    <div class="music-square"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                    </c:otherwise>
+                </c:choose>
+                </c:forEach>
+
+                <%--<li>
                     <div class="music-star"><span uk-icon="icon: close;"></span></div>
                     <div class="music-tit ellipsis"><a href="${path}/#modal-center" uk-toggle>♣♣허전해<span>미스사이버</span></a></div>
                     <div class="music-time">4:30</div>
@@ -65,7 +74,7 @@
                     <div class="c_red">
                         <span uk-icon="icon:ban; ratio: 1.2"></span>
                     </div>
-                </li>                
+                </li>                --%>
                
             </ul>
         </div>

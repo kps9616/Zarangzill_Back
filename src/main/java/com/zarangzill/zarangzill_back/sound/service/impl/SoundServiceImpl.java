@@ -19,45 +19,13 @@ public class SoundServiceImpl implements SoundService {
         return soundMapper.selectSoundList(soundMap);
     }
 
+    public List<Map> selectFavoriteSoundList(Map soundMap) {
+        return soundMapper.selectFavoriteSoundList(soundMap);
+    }
+
     public SoundDTO selectSoundInfo(Map soundMap) {
         return soundMapper.selectSoundInfo(soundMap);
     }
-
-    public SoundDTO selectServiceIntroductionInfo() {
-        Map soundMap = new HashMap();
-        soundMap.put("type", "2");
-        soundMap.put("flag_use", "Y");
-        return soundMapper.selectSoundInfo(soundMap);
-    }
-
-    public SoundDTO selectUseTermsInfo() {
-        Map soundMap = new HashMap();
-        soundMap.put("type", "5");
-        soundMap.put("flag_use", "Y");
-        return soundMapper.selectSoundInfo(soundMap);
-    }
-
-    public SoundDTO selectPrivacyStatementInfo() {
-        Map soundMap = new HashMap();
-        soundMap.put("type", "6");
-        soundMap.put("flag_use", "Y");
-        return soundMapper.selectSoundInfo(soundMap);
-    }
-
-
-    public List<Map> selectFanSoundList(Map soundMap) {
-        return soundMapper.selectFanSoundList(soundMap);
-    }
-    public List<Map> selectFanSoundReplyList(Map soundMap) {
-        return soundMapper.selectFanSoundReplyList(soundMap);
-    }
-
-    public Map selectFanSoundInfo(Map soundMap) {
-        Map soundInfo = soundMapper.selectFanSoundInfo(soundMap);
-        //soundInfo.put("soundReplyList", soundReplyMapper.selectSoundReplyList(soundMap));
-        return soundInfo;
-    }
-
 
     public Map createSound(SoundDTO soundDto) {
         Map response = new HashMap<>();
