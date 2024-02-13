@@ -34,7 +34,7 @@ public class MypageViewController {
     //최근 본 영상
     @RequestMapping(value="/recentViewVideo")
     public String recentViewVideo(@RequestParam Map ParamMap, Model model) {
-
+        ParamMap.put("user_id" , "1");
         model.addAttribute("videoViewHistoryList", videoViewHistoryService.selectVideoViewHistoryList(ParamMap));
         return "/mypage/recentViewVideo";
     }

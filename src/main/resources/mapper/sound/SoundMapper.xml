@@ -35,7 +35,7 @@
     </select>
 
 
-    <select id="selectSoundInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+    <select id="selectSoundInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.sound.service.SoundDTO">
         <include refid="selectSound"/>
         <where>
             <if test='id != null and id != ""'>
@@ -89,25 +89,25 @@
         WHERE id = #{id}
     </update>
 
-    <delete id="deleteSound" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+    <delete id="deleteSound" parameterType="com.zarangzill.zarangzill_back.sound.service.SoundDTO">
         DELETE
         FROM zarangzill.tb_sound
         WHERE id = #{id}
     </delete>
 
-    <delete id="deleteSoundFavorite" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+    <delete id="deleteSoundFavorite" parameterType="com.zarangzill.zarangzill_back.sound.service.SoundDTO">
         DELETE
         FROM zarangzill.tb_sound_favorite
         WHERE id = #{id}
     </delete>
 
-    <insert id="createSound" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+    <insert id="createSound" parameterType="com.zarangzill.zarangzill_back.sound.service.SoundDTO">
         INSERT INTO zarangzill.tb_sound
             (sound_type_id, subject, singer, sound_file_path, sound_thumbnail, play_time_minute, play_time_second, flag_use, creator,created_at)
         VALUES(#{sound_type_id}, #{subject}, #{singer}, #{sound_file_path}, #{sound_thumbnail}, #{play_time_minute}, #{play_time_second}, #{flag_use}, #{creator}, sysdate());
     </insert>
 
-    <insert id="createSoundFavorite" parameterType="com.zarangzill.zarangzill_back.sound.favoritesound.service.FavoriteSoundDTO">
+    <insert id="createSoundFavorite" parameterType="com.zarangzill.zarangzill_back.sound.service.SoundDTO">
         INSERT INTO zarangzill.tb_sound_favorite
             (sound_id, user_id, flag_use, created_at)
         VALUES(#{sound_id}, #{user_id}, #{flag_use}, sysdate());

@@ -24,7 +24,7 @@ public class LoginServiceImpl implements LoginService {
         return loginMapper.loginUser(loginDTO);
     }
 
-    public String LoginAction(LoginDTO sLoginDTO){
+    public String loginAction(LoginDTO sLoginDTO){
         // 회원정보 조회
         LoginDTO rLoginDTO = getUserInfo(sLoginDTO);
 

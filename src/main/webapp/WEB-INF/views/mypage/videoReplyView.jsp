@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="/resources/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/uikit.js"></script>
+    <script src="/resources/js/uikit-icons.js"></script>
+    <script src="/resources/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
@@ -38,13 +38,13 @@
                 <c:choose>
                 <c:when test="${videoReplyInfo.video_flag_use eq 'Y'}">
                     <li>
-                        <div class="mych-thum" style="background-image:url(${path}/resources/images/thum/${videoReplyInfo.video_thumbnail});">
+                        <div class="mych-thum" style="background-image:url(/upload/thum/${videoReplyInfo.video_thumbnail});">
                             <span class="sr-only">영상썸네일</span>
                         </div>
                         <div class="mych-bx">
                             <div class="mych-img">
-                                <img src="${path}/resources/images/thum/${videoReplyInfo.profile_image}">
-                                <span>TWICE</span>
+                                <img src="/upload/thum/${videoReplyInfo.profile_image}">
+                                <span>${videoReplyInfo.member_name}</span>
                             </div>
                             <div class="mych-text">
                                     ${videoReplyInfo.video_description}<span>${videoReplyInfo.video_tags}</span>
@@ -57,33 +57,34 @@
                     </li>
                 </c:when>
                     <c:otherwise>
+                        <li>
+                            <em>
+                                <a href="#none" class="c_red" uk-icon="icon: close"></a>
+                            </em>
+                            <div class="mych-thum filter-gray" style="background-image:url(/upload/thum/thum01.jpg);">
+                                <div class="video-del"><img src="/upload/icon/del-video.png" alt="삭제된영상아이콘" width="30"></div>
+                                <span class="sr-only">영상썸네일</span>
+                            </div>
+                            <div class="mych-bx">
+                                <div class="mych-img">
+                                    <img src="/upload/thum/face01.jpg">
+                                    <span>${videoReplyInfo.member_name}</span>
+                                </div>
+                                <div class="mych-text c_red">
+                                    영상이 삭제되었습니다.
+                                </div>
+                                <div class="comment-view">
+                                    <span uk-icon="icon:comment-arrow"></span>
+                                    <a href="25-2댓글.html?reply_id=${videoReplyInfo.reply_id}">${videoReplyInfo.video_description}</a>
+                                </div>
+                            </div>
+                        </li>
                     </c:otherwise>
                 </c:choose>
                 </c:forEach>
 
                 
-                <li>
-                    <em>
-                        <a href="#none" class="c_red" uk-icon="icon: close"></a>
-                    </em>
-                    <div class="mych-thum filter-gray" style="background-image:url(${path}/resources/images/thum/thum01.jpg);">
-                        <div class="video-del"><img src="${path}/resources/images/icon/del-video.png" alt="삭제된영상아이콘" width="30"></div>  
-                        <span class="sr-only">영상썸네일</span>
-                    </div>
-                    <div class="mych-bx">
-                        <div class="mych-img">
-                            <img src="${path}/resources/images/thum/face01.jpg">
-                            <span>방탄소년단</span>
-                        </div>                        
-                        <div class="mych-text c_red">
-                            영상이 삭제되었습니다.
-                        </div>
-                        <div class="comment-view">
-                            <span uk-icon="icon:comment-arrow"></span>
-                            <a href="25-2댓글.html">아무말</a> 
-                        </div>
-                    </div>                    
-                </li>
+
                 
             </ul>
         </div>

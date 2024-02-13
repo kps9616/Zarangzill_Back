@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="/resources/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/uikit.js"></script>
+    <script src="/resources/js/uikit-icons.js"></script>
+    <script src="/resources/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
@@ -38,14 +38,14 @@
                         <c:when test="${videoFavoriteInfo.video_flag_use eq 'Y'}">
                             <li>
                                 <div class="bigthum">
-                                    <a href="/subShots?id=${videoFavoriteInfo.video_id}"><img src="${path}/resources/images/thum/${videoFavoriteInfo.video_thumbnail}"  class="thum"></a>
+                                    <a href="/subShots?id=${videoFavoriteInfo.video_id}"><img src="/upload/thum/${videoFavoriteInfo.video_thumbnail}"  class="thum"></a>
                                 </div>
                                 <div class="list-tit ellipsis2">
                                         ${videoFavoriteInfo.video_description}<span>${videoFavoriteInfo.video_tags}</span>
                                 </div>
                                 <div class="list-name">
                                     <a href="#none">
-                                        <img class="small-thum mr5" src="${path}/resources/images/thum/${videoFavoriteInfo.profile_image}">
+                                        <img class="small-thum mr5" src="/upload/thum/${videoFavoriteInfo.profile_image}">
                                             ${videoFavoriteInfo.userNm}
                                     </a>
                                 </div>
@@ -54,15 +54,15 @@
                         <c:otherwise>
                             <li>
                                 <div class="bigthum">
-                                    <div class="video-del-100"><img src="${path}/resources/images/icon/del-video.png" alt="삭제된영상아이콘" width="50"></div>
-                                    <img src="${path}/resources/images/thum/thum02.jpg"  class="thum filter-gray">
+                                    <div class="video-del-100"><img src="/upload/icon/del-video.png" alt="삭제된영상아이콘" width="50"></div>
+                                    <img src="/upload/thum/thum02.jpg"  class="thum filter-gray">
                                 </div>
                                 <div class="list-tit ellipsis2">
                                     <div class="c_red">삭제된 영상입니다.</div>
                                 </div>
                                 <div class="list-name">
                                     <a href="#none">
-                                        <img class="small-thum mr5 img-grayscale" src="${path}/resources/images/thum/face02.jpg" >
+                                        <img class="small-thum mr5 img-grayscale" src="/upload/thum/face02.jpg" >
                                         dance team
                                     </a>
                                 </div>

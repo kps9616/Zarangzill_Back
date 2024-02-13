@@ -3,7 +3,7 @@
 <mapper namespace="ReplyDAO">	<!-- mapper 인터페이스가 위치하는 경로 -->
 
     <select id="selectVideoReplyList" parameterType="com.zarangzill.zarangzill_back.video.reply.service.ReplyDTO" resultType="java.util.HashMap">
-        SELECT tm.name as user_name
+        SELECT tm.name as member_name
              , tm.profile_image
              , tvr.id as reply_id
              , DATE_FORMAT(tvr.created_at, '%Y-%m-%d %H:%i:%s') as created_at

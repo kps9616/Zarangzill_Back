@@ -7,16 +7,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import java.util.Arrays;
 
 import static jakarta.servlet.DispatcherType.ERROR;
 import static jakarta.servlet.DispatcherType.FORWARD;
-
+import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
@@ -37,12 +40,23 @@ public class SecurityConfig {
                         .requestMatchers("/**").permitAll() // 임시
                         .anyRequest().authenticated()
                 )
-                //.httpBasic(Customizer.withDefaults())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
-                );
 
+                )
+                //.oauth2Login(withDefaults())
+                .logout((logout) -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) // 로그아웃 URL
+                        .logoutSuccessUrl("/member/login") // 성공 리턴 URL
+                        .invalidateHttpSession(true) // 인증정보를 지우하고 세션을 무효화
+                        .deleteCookies("our-custom-cookie")
+                )
+                .sessionManagement(session -> session
+                        .maximumSessions(1)
+                        .maxSessionsPreventsLogin(false)
+                        .expiredUrl("/login?error=true&exception=Have been attempted to login from a new place. or session expired") // 세션이 만료된 경우 이동 할 페이지를 지정
+                );
 
         return http.build();
     }

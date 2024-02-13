@@ -6,6 +6,6 @@ public interface LoginService {
     LoginDTO getUserInfo(Map loginMap);
 
     LoginDTO getUserInfo(LoginDTO loginDTO);
-    String LoginAction(LoginDTO loginDTO);
+    String loginAction(LoginDTO loginDTO);
 
 }

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="/resources/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="/resources/css/style.css" >
 
-    <script src="${path}/resources/js/jquery.min.js"></script>
-    <script src="${path}/resources/js/uikit.js"></script>
-    <script src="${path}/resources/js/uikit-icons.js"></script>
-    <script src="${path}/resources/js/script.js"></script>
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/uikit.js"></script>
+    <script src="/resources/js/uikit-icons.js"></script>
+    <script src="/resources/js/script.js"></script>
 
     <title>자랑질앱</title>
     <style>
@@ -38,14 +37,14 @@
                 <c:when test="${judgeScoreInfo.mflag_use eq 'Y'}">
                     <li>
                         <div class="bigthum">
-                            <a href="/subShots?id=${judgeScoreInfo.video_id}"><img src="${path}/resources/images/thum/${judgeScoreInfo.video_thumbnail}"  class="thum"></a>
+                            <a href="/subShots?id=${judgeScoreInfo.video_id}"><img src="/upload/thum/${judgeScoreInfo.video_thumbnail}"  class="thum"></a>
                         </div>
                         <div class="list-tit ellipsis2">
                                 ${judgeScoreInfo.video_description}<span>${judgeScoreInfo.video_tags}</span>
                         </div>
                         <div class="list-name">
                             <a href="#none">
-                                <img class="small-thum mr5" src="${path}/resources/images/thum/${judgeScoreInfo.profile_image}">
+                                <img class="small-thum mr5" src="/upload/thum/${judgeScoreInfo.profile_image}">
                                     ${judgeScoreInfo.userNm}
                             </a>
                         </div>
@@ -82,15 +81,15 @@
                     <c:otherwise>
                         <li>
                             <div class="bigthum">
-                                <div class="video-del-100"><img src="${path}/resources/images/icon/del-video.png" alt="삭제된영상아이콘" width="50"></div>
-                                <img src="${path}/resources/images/thum/thum02.jpg"  class="thum filter-gray">
+                                <div class="video-del-100"><img src="/upload/icon/del-video.png" alt="삭제된영상아이콘" width="50"></div>
+                                <img src="/upload/thum/thum02.jpg"  class="thum filter-gray">
                             </div>
                             <div class="list-tit ellipsis2">
                                 <div class="c_red">삭제된 영상입니다.</div>
                             </div>
                             <div class="list-name">
                                 <a href="#none">
-                                    <img class="small-thum mr5 img-grayscale" src="${path}/resources/images/thum/face02.jpg" >
+                                    <img class="small-thum mr5 img-grayscale" src="/upload/thum/face02.jpg" >
                                     dance team
                                 </a>
                             </div>
