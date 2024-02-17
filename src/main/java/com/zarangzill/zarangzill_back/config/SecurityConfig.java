@@ -45,7 +45,7 @@ public class SecurityConfig {
                         .permitAll()
 
                 )
-                //.oauth2Login(withDefaults())
+                .oauth2Login(withDefaults())
                 .logout((logout) -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) // 로그아웃 URL
                         .logoutSuccessUrl("/member/login") // 성공 리턴 URL
