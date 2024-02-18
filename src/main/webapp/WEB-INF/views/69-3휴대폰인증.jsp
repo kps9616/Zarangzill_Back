@@ -29,7 +29,7 @@
 
      <!--탑-->
      <div class="top-bx bline">
-        <a href="${path}/javascript:history.back();" class="top-left link-txt">취소</a>
+        <a href="javascript:history.back();" class="top-left link-txt">취소</a>
         회원가입        
     </div>
     <div class="container pt20">

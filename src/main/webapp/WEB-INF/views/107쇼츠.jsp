@@ -30,7 +30,7 @@
                 브라우저가 비디오 태그를 지원하지 않습니다.
             </video>
             <div class="v_top_icons">
-                <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+                <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
             </div>
 
             <!--비디오 약간어둡게-->

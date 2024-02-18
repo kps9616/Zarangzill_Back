@@ -24,7 +24,7 @@
     <div class="top-bx">
         
         사운드  
-        <a href="${path}/javascript:history.back();" class="top-right pt5" uk-icon="icon: close; ratio:1.5"></a>          
+        <a href="javascript:history.back();" class="top-right pt5" uk-icon="icon: close; ratio:1.5"></a>          
     </div>
     <div class="container">   
 

@@ -28,7 +28,7 @@
 
      <!--탑-->
      <div class="top-bx bline">
-        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>        
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>        
          우승예측    
     </div>
     

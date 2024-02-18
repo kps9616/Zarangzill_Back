@@ -42,12 +42,16 @@
 
         <div class="bttom-modal-con">
             <div class="login-btbx">
-                <button type="button"><img src="${path}/resources/images/icon/google-g.png" alt="구글로그인버튼"></button>
+                <a href="/login/oauth2/authorization/google">
+                    <button type="button"><img src="${path}/resources/images/icon/google-g.png" alt="구글로그인버튼"></button>
+                </a>
                 <button type="button"><img src="${path}/resources/images/icon/apple.png" alt="애플"></button>
             </div>
+            <%--
             <div class="login-other">
                 다른방법으로 <a href="#none" id="other-login-link">로그인</a>
             </div>
+            --%>
         </div>
 
         <div class="uk-modal-footer">

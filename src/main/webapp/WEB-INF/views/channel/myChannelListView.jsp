@@ -22,7 +22,7 @@
 </head>
 <body>
     <div class="top-bx bline">
-        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         내 채널  
         <a href="${path}/90-3채널만들기.html" class="top-right pt5 c_blue">+ 채널 만들기</a>  
     </div>

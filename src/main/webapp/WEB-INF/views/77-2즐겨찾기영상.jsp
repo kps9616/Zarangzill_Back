@@ -27,7 +27,7 @@
 <body>
      <!--탑-->
      <div class="top-bx">
-        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         즐겨찾기영상
     </div>
     <div class="container"> 

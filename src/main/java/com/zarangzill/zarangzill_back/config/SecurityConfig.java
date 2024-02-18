@@ -39,13 +39,17 @@ public class SecurityConfig {
                         .requestMatchers("/signup","/login/**").permitAll()
                         .requestMatchers("/**").permitAll() // 임시
                         .anyRequest().authenticated()
-                )
+                )/*
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
 
+                )*/
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login")
+                        .permitAll()
                 )
-                .oauth2Login(withDefaults())
+
                 .logout((logout) -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) // 로그아웃 URL
                         .logoutSuccessUrl("/member/login") // 성공 리턴 URL

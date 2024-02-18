@@ -22,7 +22,7 @@
 </head>
 <body>
     <div class="top-bx bline">
-        <a href="${path}/javascript:history.back();" class="top-left" >취소</a>
+        <a href="javascript:history.back();" class="top-left" >취소</a>
        채널 만들기
     </div>
     <div class="container"> 

@@ -24,7 +24,7 @@
 
 <body style="background-color: #151515;">
     <div class="top-abs-back">
-        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
     </div>
     <div class="testimg">
         <img src="${path}/images/thum/thum-cu.jpg" >

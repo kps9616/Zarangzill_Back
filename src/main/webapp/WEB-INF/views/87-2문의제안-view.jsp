@@ -27,7 +27,7 @@
 <body>
      <!--탑-->
      <div class="top-bx bline">
-        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         문의/제안
         <a href="${path}/#modal-center" class="top-right pd15 c_red" uk-icon="icon: trash" uk-toggle></a>
     </div>

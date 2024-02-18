@@ -25,7 +25,7 @@
      <!--container-full b_grayLB-->
     <div class="container-full b_grayLB">      
         <div class="top-bx">
-            <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
             채널  <span uk-icon="icon: ban;" class="c_red pl5"></span>         
             <div class="top-right">
                 <button id="popupButton" type="button"><span uk-icon="icon: cog"  class="pd10"></span></button>         

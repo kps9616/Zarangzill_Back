@@ -22,7 +22,7 @@
 </head>
 <body>
     <div class="top-bx">
-        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         내가 올린 사운드       
     </div>
     <div class="container">   

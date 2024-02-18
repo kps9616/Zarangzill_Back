@@ -86,7 +86,7 @@
 
      <!--탑-->
      <div class="top-bx bline">
-        <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         회원정보
         <div class="top-right">
             <button id="popupButton" type="button"><span uk-icon="icon: more-vertical"  class="pd10"></span></button>         

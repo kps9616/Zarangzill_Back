@@ -25,7 +25,7 @@
 
     <div class="container-full b_grayLB">
         <div class="top-bx">
-            <a href="${path}/javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>    
+            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>    
             <div class="top-team-thum pt10">
                 <img src="${path}/images/thum/${fanBoardInfo.channel_profile_image}">
                 <div class="group-thum">
