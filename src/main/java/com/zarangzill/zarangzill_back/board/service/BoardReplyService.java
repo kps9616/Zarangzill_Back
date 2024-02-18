@@ -7,9 +7,9 @@ public interface BoardReplyService {
 
     List<Map> selectBoardReplyList(Map boardReplyMap);
     BoardReplyDTO selectBoardReplyInfo(Map boardReplyMap);
-    int createBoardReply(BoardReplyDTO BoardReplyDto);
+    Map createBoardReply(BoardReplyDTO BoardReplyDto);
 
-    int updateBoardReply(BoardReplyDTO BoardReplyDto);
+    Map updateBoardReply(BoardReplyDTO BoardReplyDto);
 
-    int deleteBoardReply(BoardReplyDTO BoardReplyDto);
+    Map deleteBoardReply(BoardReplyDTO BoardReplyDto);
 }

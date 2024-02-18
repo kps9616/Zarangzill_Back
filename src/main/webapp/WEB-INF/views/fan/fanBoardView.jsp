@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >
@@ -20,6 +21,43 @@
     <script src="${path}/resources/js/script.js"></script>
     
     <title>자랑질앱</title>
+
+    <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(document).ready(function(){
+            // 실행할 기능을 정의해주세요.
+        });
+
+        function fnDeleteBoardReply(reply_id){
+            if(confirm("삭제하시겠습니까?")){
+                $.ajax({
+                    cache : false,
+                    url : "/board/deleteBoardReply",
+                    type : 'POST',
+                    data : {
+                        "reply_id" : reply_id
+                    },
+                    success : function(data) {
+                        if(data.response == "success"){
+                            alert("삭제했습니다.");
+                            location.reload();
+                        } else {
+                            alert("삭제 실패했습니다.");
+                        }
+                    }, // success
+                    beforeSend : function(xhr){
+                        xhr.setRequestHeader(header, token);
+                    },
+                    error : function(xhr, status) {
+                        alert(xhr + " : " + status);
+                    }
+                });
+            }
+        }
+    </script>
+
 </head>
 <body>
 
@@ -56,11 +94,20 @@
                         <div class="chbbslist-bx">
                             <div class="chbbslist-name">
                                 ${boardReplyInfo.userNm}<span>${boardReplyInfo.date_diff}일 전</span>
-                                <em  id="pan-toggle" uk-icon="icon: more-vertical">
-                                    <div id="pan-toggle-con">
-                                        <a href="${path}/#modal-group-1" uk-toggle>신고하기</a>
-                                    </div>
-                                </em>
+                                <c:choose>
+                                    <c:when test="${fanBoardReplyInfo.reply_creator eq sessionScope.id}">
+                                        <em>
+                                            <a href="#" class="c_red" uk-icon="icon: close" onclick="fnDeleteBoardReply(${boardReplyInfo.reply_id})"></a>
+                                        </em>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <em  id="pan-toggle" uk-icon="icon: more-vertical">
+                                            <div id="pan-toggle-con">
+                                                <a href="${path}/#modal-group-1" uk-toggle>신고하기</a>
+                                            </div>
+                                        </em>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div class="chbbslist-text">
                                 <a href="${path}/#none">

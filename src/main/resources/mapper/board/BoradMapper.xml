@@ -4,7 +4,7 @@
 
     <sql id="selectBoard">
         SELECT
-            A.id
+            A.id AS board_id
              , A.subject
              , A.description
              , A.type
@@ -20,9 +20,9 @@
 
     <select id="selectBoardList" parameterType="HashMap" resultType="HashMap">
         <include refid="selectBoard"/>
-        <where>
-            <if test='id != null and id != ""'>
-                AND A.id = #{id}
+        WHERE A.flag_use = 'Y'
+            <if test='board_id != null and board_id != ""'>
+                AND A.id = #{board_id}
             </if>
             <if test='type != null and type != ""'>
                 AND A.type = #{type}
@@ -31,15 +31,15 @@
                 AND DATE_FORMAT(A.created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
             </if>
 
-        </where>
+
         ORDER BY A.updated_at DESC, A.created_at DESC
     </select>
 
     <select id="selectBoardInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
         <include refid="selectBoard"/>
         <where>
-            <if test='id != null and id != ""'>
-                AND id = #{id}
+            <if test='board_id != null and board_id != ""'>
+                AND id = #{board_id}
             </if>
             <if test='type != null and type != ""'>
                 AND type = #{type}
@@ -67,13 +67,13 @@
         <if test='flag_use != null and flag_use != ""'>
           , flag_use = #{flag_use}
         </if>
-        WHERE id =  #{id}
+        WHERE id =  #{board_id}
     </update>
 
     <delete id="deleteBoard" parameterType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
         DELETE
         FROM zarangzill.tb_board
-        WHERE id = #{id}
+        WHERE id = #{board_id}
     </delete>
 
     <insert id="createBoard" parameterType="com.zarangzill.zarangzill_back.board.service.BoardDTO">
@@ -125,6 +125,7 @@
         , D.id AS reply_id
         , D.reply_description
         , D.flag_use AS reply_flag_use
+        , D.creator AS reply_creator
         <include refid="fromFan"/>
         Inner Join tb_board_reply D ON A.id = D.board_id
         WHERE D.creator = #{user_id}

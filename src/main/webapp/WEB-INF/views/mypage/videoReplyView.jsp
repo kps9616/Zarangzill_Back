@@ -7,8 +7,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    
-    
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
+
     <link rel="stylesheet" type="text/css"  href="/resources/css/uikit.css" >
     <link rel="stylesheet" type="text/css"  href="/resources/css/reset.css" >    
     <link rel="stylesheet" type="text/css"  href="/resources/css/video.css" >
@@ -23,6 +25,44 @@
     <style>
       
     </style>
+
+    <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(document).ready(function(){
+            // 실행할 기능을 정의해주세요.
+        });
+
+        function fnDeleteVideoReply(reply_id){
+            if(confirm("삭제하시겠습니까?")){
+                $.ajax({
+                    cache : false,
+                    url : "/api/v1/reply/delete",
+                    type : 'POST',
+                    data : {
+                        "reply_id" : reply_id
+                        ,"flagUse" : "N"
+                    },
+                    success : function(data) {
+                        console.log(data);
+                        if(data.message == "success"){
+                            alert("삭제했습니다.");
+                            location.reload();
+                        } else {
+                            alert("삭제 실패했습니다.");
+                        }
+                    }, // success
+                    beforeSend : function(xhr){
+                        xhr.setRequestHeader(header, token);
+                    },
+                    error : function(xhr, status) {
+                        alert(xhr + " : " + status);
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 <body>
      <!--탑-->
@@ -58,9 +98,11 @@
                 </c:when>
                     <c:otherwise>
                         <li>
+                            <c:if test="${videoReplyInfo.reply_creator_id eq sessionScope.id}">
                             <em>
-                                <a href="#none" class="c_red" uk-icon="icon: close"></a>
+                                <a href="#" class="c_red" uk-icon="icon: close" onclick="fnDeleteVideoReply(${videoReplyInfo.reply_id})"></a>
                             </em>
+                            </c:if>
                             <div class="mych-thum filter-gray" style="background-image:url(/upload/thum/thum01.jpg);">
                                 <div class="video-del"><img src="/upload/icon/del-video.png" alt="삭제된영상아이콘" width="30"></div>
                                 <span class="sr-only">영상썸네일</span>

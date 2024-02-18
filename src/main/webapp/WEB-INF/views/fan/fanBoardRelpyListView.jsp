@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     
     
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
@@ -23,6 +25,41 @@
     <style>
       
     </style>
+    <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(document).ready(function(){
+            // 실행할 기능을 정의해주세요.
+        });
+
+        function fnDeleteBoardReply(reply_id){
+            if(confirm("삭제하시겠습니까?")){
+                $.ajax({
+                    cache : false,
+                    url : "/board/deleteBoardReply",
+                    type : 'POST',
+                    data : {
+                        "reply_id" : reply_id
+                    },
+                    success : function(data) {
+                        if(data.response == "success"){
+                            alert("삭제했습니다.");
+                            location.reload();
+                        } else {
+                            alert("삭제 실패했습니다.");
+                        }
+                    }, // success
+                    beforeSend : function(xhr){
+                        xhr.setRequestHeader(header, token);
+                    },
+                    error : function(xhr, status) {
+                        alert(xhr + " : " + status);
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 <body>
      <!--탑-->
@@ -38,7 +75,11 @@
                 <c:choose>
                 <c:when test="${fanBoardReplyInfo.board_flag_use eq 'Y'}">
                     <li>
-
+                        <c:if test="${fanBoardReplyInfo.reply_creator eq sessionScope.id}">
+                        <em>
+                            <a href="#" class="c_red" uk-icon="icon: close" onclick="fnDeleteBoardReply(${fanBoardReplyInfo.reply_id})"></a>
+                        </em>
+                        </c:if>
                         <div class="mych-bx">
                             <div class="mych-img">
                                 <img src="${path}/images/thum/${fanBoardReplyInfo.channel_profile_image}">

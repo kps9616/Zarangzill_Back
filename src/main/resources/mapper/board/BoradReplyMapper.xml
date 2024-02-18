@@ -52,7 +52,7 @@
     </select>
 
     <update id="updateBoardReply" parameterType="com.zarangzill.zarangzill_back.board.service.BoardReplyDTO">
-        UPDATE zarangzill.tb_boardReply
+        UPDATE zarangzill.tb_board_reply
         SET
             editor = #{reply_editor}
             , updated_at = sysdate()
@@ -67,12 +67,12 @@
 
     <delete id="deleteBoardReply" parameterType="com.zarangzill.zarangzill_back.board.service.BoardReplyDTO">
         DELETE
-        FROM zarangzill.tb_boardReply
+        FROM zarangzill.tb_board_reply
         WHERE id = #{reply_id}
     </delete>
 
     <insert id="createBoardReply" parameterType="com.zarangzill.zarangzill_back.board.service.BoardReplyDTO">
-        INSERT INTO zarangzill.tb_boardReply
+        INSERT INTO zarangzill.tb_board_reply
         (board_id, reply_description, flag_use, creator, created_at)
         VALUES
             (#{board_id}, #{reply_description}, #{reply_flag_use}, #{reply_creator}, sysdate());

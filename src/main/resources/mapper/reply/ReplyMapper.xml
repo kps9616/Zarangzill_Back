@@ -23,6 +23,7 @@
              A.id AS reply_id
              , A.flag_use AS reply_flag_use
              , A.description AS reply_description
+             , A.user_id as reply_creator_id
              , B.flag_use AS video_flag_use
              , B.video_path
              , B.video_thumbnail
@@ -61,7 +62,7 @@
         UPDATE tb_video_reply
            SET flag_use = #{flagUse}
               ,updated_at = NOW()
-         WHERE reply_id = #{replyId}
+         WHERE id = #{reply_id}
     </update>
 
 </mapper>

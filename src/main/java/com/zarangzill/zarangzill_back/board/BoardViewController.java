@@ -57,8 +57,8 @@ public class BoardViewController {
     //문의/제안
     @RequestMapping("/QnAView")
     public String QnAView(@RequestParam Map paramMap, Model model) {
-        model.addAttribute("boardList", boardService.selectBoardList(paramMap));
-        return "QnAView";
+        model.addAttribute("qnaInfo", boardService.selectBoardInfo(paramMap));
+        return "board/QnAView";
     }
 
     //이용약관

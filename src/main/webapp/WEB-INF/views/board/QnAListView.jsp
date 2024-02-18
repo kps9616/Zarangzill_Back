@@ -7,8 +7,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    
-    
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
+
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
@@ -24,11 +26,14 @@
       
     </style>
     <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
         $(document).ready(function(){
 
         });
 
-        function boardSave(){
+        function saveBoard(){
             var formData = $("#boraForm").serialize();
             $.ajax({
                 type:'post',   //post 방식으로 전송
@@ -38,12 +43,46 @@
                 success : function(data){   //파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
                     alert("저장했습니다.");
                     location.reload();
+                }, // success
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader(header, token);
                 },
                 error: function (request, status, error) {
                     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 
                 }
             });
+        }
+
+        var board_id = "";
+        function fnDeleteQnA(){
+            $.ajax({
+                cache : false,
+                url : "/board/updateBoard",
+                type : 'POST',
+                data : {
+                    "board_id" : board_id
+                    ,"flag_use" : "N"
+                },
+                success : function(data) {
+                    console.log(data);
+                    if(data.response == "success"){
+                        alert("삭제했습니다.");
+                        location.reload();
+                    } else {
+                        alert("삭제 실패했습니다.");
+                    }
+                }, // success
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader(header, token);
+                },
+                error : function(xhr, status) {
+                    alert(xhr + " : " + status);
+                }
+            });
+        }
+        function setBoardId(setborad_id){
+            board_id = setborad_id;
         }
     </script>
 </head>
@@ -60,7 +99,7 @@
                 <input class="uk-input" type="hidden" id="type" name="type" value="4" aria-label="Input">
                 <textarea class="inp_txtr mb20" id="description" name="description" placeholder="문의 내용을 입력해주세요"></textarea>
 
-                <button type="button" class="bt_gradient w100" onclick="boardSave();">>문의 등록</button>
+                <button type="button" class="bt_gradient w100" onclick="saveBoard();">문의 등록</button>
             </form>
         </div>
         <c:choose>
@@ -68,7 +107,7 @@
                 <ul class="bbs_list mt40">
                     <c:forEach var="qnaInfo" items="${qnaList}">
                     <li>
-                        <a href="/board/inquirySuggestionView?id=${qnaInfo.id}" class="tit-link">
+                        <a href="/board/QnAView?board_id=${qnaInfo.board_id}" class="tit-link">
                             <c:choose>
                                 <c:when test="${empty(qnaInfo.updated_at)}">
                                     <em>${qnaInfo.created_at}</em>
@@ -92,7 +131,9 @@
 
                         </a>
 
-                        <a href="#modal-center" class="uk-icon-link" uk-icon="trash" uk-toggle></a>
+                        <c:if test="${qnaInfo.creator eq sessionScope.id}">
+                            <a href="#modal-center" class="uk-icon-link" uk-icon="trash" onclick="setBoardId(${qnaInfo.board_id})" uk-toggle></a>
+                        </c:if>
                     </li>
                     </c:forEach>
                 </ul>
@@ -104,8 +145,7 @@
         </c:choose>
     </div>   
     
-    <!--문의 삭제하기
-    -->
+    <!--문의 삭제하기 -->
     <div id="modal-center" class="uk-flex-top" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
@@ -116,8 +156,8 @@
             </div>
         
             <div class="uk-modal-footer uk-text-center">
-                <button class="uk-button uk-button-default uk-modal-close" type="button">취소</button>
-                <button class="uk-button uk-button-danger" type="button">삭제</button>
+                <button class="uk-button uk-button-default uk-modal-close" type="button" onclick="setBoardId('');">취소</button>
+                <button class="uk-button uk-button-danger" type="button" onclick="fnDeleteQnA();">삭제</button>
             </div>
         </div>
     </div>

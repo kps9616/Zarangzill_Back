@@ -35,7 +35,7 @@
         });
         //회원 정보 수정
         function fnSave(){
-            if(confirm("탈퇴하시겠습니까?")){
+            if(confirm("저장하시겠습니까?")){
                 if($("#genderNo").val() == 1){
                     $("#gender").val("M");
                 } else {

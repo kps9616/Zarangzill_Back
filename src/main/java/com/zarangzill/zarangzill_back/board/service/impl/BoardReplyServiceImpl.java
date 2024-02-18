@@ -9,6 +9,7 @@ import com.zarangzill.zarangzill_back.board.service.mapper.BoardReplyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,15 +24,34 @@ public class BoardReplyServiceImpl implements BoardReplyService {
     public BoardReplyDTO selectBoardReplyInfo(Map boardReplyMap) {
         return boardReplyMapper.selectBoardReplyInfo(boardReplyMap);
     }
-    public int createBoardReply(BoardReplyDTO boardReplyDto) {
-        return boardReplyMapper.createBoardReply(boardReplyDto);
+    public Map createBoardReply(BoardReplyDTO boardReplyDto) {
+        Map response = new HashMap<>();
+        if(boardReplyMapper.createBoardReply(boardReplyDto) > 0){
+            response.put("response", "success");
+        } else {
+            response.put("response", "fail");
+        }
+        return response;
     }
 
-    public int updateBoardReply(BoardReplyDTO boardReplyDto) {
-        return boardReplyMapper.updateBoardReply(boardReplyDto);
+    public Map updateBoardReply(BoardReplyDTO boardReplyDto) {
+        Map response = new HashMap<>();
+        if(boardReplyMapper.updateBoardReply(boardReplyDto) > 0){
+            response.put("response", "success");
+        } else {
+            response.put("response", "fail");
+        }
+        return response;
     }
 
-    public int deleteBoardReply(BoardReplyDTO boardReplyDto) {
-        return boardReplyMapper.deleteBoardReply(boardReplyDto);
+    public Map deleteBoardReply(BoardReplyDTO boardReplyDto) {
+        Map response = new HashMap<>();
+        if(boardReplyMapper.deleteBoardReply(boardReplyDto) > 0){
+            response.put("response", "success");
+        } else {
+            response.put("response", "fail");
+        }
+        return response;
+
     }
 }

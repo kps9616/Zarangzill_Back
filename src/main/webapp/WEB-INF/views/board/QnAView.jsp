@@ -29,27 +29,35 @@
             // 실행할 기능을 정의해주세요.
         });
 
-
-        //게시글 삭제
-        function fnMemberWithdrawal(){
-            $("#flag_use").val("N");
-            var formData = $("#form1").serialize();
+        var board_id = "";
+        function fnDeleteQnA(){
             $.ajax({
                 cache : false,
                 url : "/board/updateBoard",
                 type : 'POST',
-                data : formData,
-                beforeSend : function(xhr){
-                    xhr.setRequestHeader(header, token);
+                data : {
+                    "board_id" : board_id
+                    ,"flag_use" : "N"
                 },
                 success : function(data) {
-                    var jsonObj = JSON.parse(data);
+                    console.log(data);
+                    if(data.response == "success"){
+                        alert("삭제했습니다.");
+                        location.reload();
+                    } else {
+                        alert("삭제 실패했습니다.");
+                    }
+                }, // success
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader(header, token);
                 },
                 error : function(xhr, status) {
                     alert(xhr + " : " + status);
                 }
             });
-
+        }
+        function setBoardId(setborad_id){
+            board_id = setborad_id;
         }
     </script>
 </head>
@@ -62,7 +70,9 @@
      <div class="top-bx bline">
         <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         문의/제안
-        <a href="#modal-center" class="top-right pd15 c_red" uk-icon="icon: trash" uk-toggle></a>
+        <c:if test="${qnaInfo.creator eq 1}">
+            <a href="#modal-center" class="top-right pd15 c_red" uk-icon="icon: trash" onclick="setBoardId(${qnaInfo.id})" uk-toggle></a>
+        </c:if>
     </div>
     <div class="container"> 
        <div class="bbs_view">
@@ -83,8 +93,8 @@
         </div>
        
         <div class="uk-modal-footer uk-text-center">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">취소</button>
-            <button class="uk-button uk-button-danger" type="button">삭제</button>
+            <button class="uk-button uk-button-default uk-modal-close" type="button" onclick="setBoardId('');">취소</button>
+            <button class="uk-button uk-button-danger" type="button" onclick="fnDeleteQnA();">삭제</button>
         </div>
     </div>
 </div>  
