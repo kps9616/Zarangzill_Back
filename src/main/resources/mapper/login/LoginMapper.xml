@@ -20,4 +20,10 @@
         FROM tb_member
         WHERE number = #{number}
     </select>-->
+
+    <update id="updateAuthenticationType" parameterType="HashMap">
+        UPDATE tb_member
+        SET social_type = #{oauth2ClientName}
+        WHERE email = #{username}
+    </update>
 </mapper>

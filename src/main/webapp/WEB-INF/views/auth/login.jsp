@@ -42,7 +42,7 @@
 
         <div class="bttom-modal-con">
             <div class="login-btbx">
-                <a href="/login/oauth2/authorization/google">
+                <a href="/oauth2/authorization/google">
                     <button type="button"><img src="${path}/resources/images/icon/google-g.png" alt="구글로그인버튼"></button>
                 </a>
                 <button type="button"><img src="${path}/resources/images/icon/apple.png" alt="애플"></button>

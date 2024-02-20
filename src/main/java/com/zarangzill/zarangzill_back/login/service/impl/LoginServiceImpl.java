@@ -7,6 +7,7 @@ import com.zarangzill.zarangzill_back.login.service.mapper.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -20,16 +21,22 @@ public class LoginServiceImpl implements LoginService {
         return loginMapper.loginUser(loginMap);
     }
 
-    public LoginDTO getUserInfo(LoginDTO loginDTO) {
-        return loginMapper.loginUser(loginDTO);
+    public LoginDTO getUserInfo(LoginDTO loginDto) {
+        return loginMapper.loginUser(loginDto);
     }
 
-    public String loginAction(LoginDTO sLoginDTO){
+    public LoginDTO getUserInfo(String email) {
+        LoginDTO loginDto= new LoginDTO();
+        loginDto.setEmail(email);
+        return loginMapper.loginUser(loginDto);
+    }
+
+    public String loginAction(LoginDTO sLoginDto){
         // 회원정보 조회
-        LoginDTO rLoginDTO = getUserInfo(sLoginDTO);
+        LoginDTO rLoginDto = getUserInfo(sLoginDto);
 
         // 회원
-        if(rLoginDTO != null){
+        if(rLoginDto != null){
 
         } else {
 

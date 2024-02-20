@@ -31,9 +31,19 @@ public class LoginActionController {
     /*
      * Login Action
      * */
-    @RequestMapping(value = "/login/oauth2", produces = "application/json")
+
     @GetMapping("/code/{registrationId}")
     public String googleLogin(@RequestParam String code, @PathVariable String registrationId) {
         return loginService.loginAction(socialLoginService.socialLogin(code, registrationId));
     }
+
+
+/*
+
+    @GetMapping("/code/{registrationId}")
+    public void googleLogin(@RequestParam String code, @PathVariable String registrationId) {
+        loginService.socialLogin(code, registrationId);
+    }
+*/
+
 }

@@ -42,11 +42,11 @@
             </div>
 
             <div class="user-info">
-                <img src="/upload/thum/face02.jpg" class="thum">
+                <img src="<c:url value="/upload/thum/face02.jpg"/>" class="thum" alt="face02.jpg">
                 <div class="user-mody">
-                    <img src="/resources/images/icon/google-g.png">
+                    <img src="<c:url value="/resources/images/icon/google-g.png"/>">
                     <span class="pr5 pl10">010-1234-5678</span>
-                    <a href="/member/memberInfoModifyView" class="uk-icon-link" uk-icon="cog"></a>
+                    <a href="<c:url value="/member/memberInfoModifyView"/>" class="uk-icon-link" uk-icon="cog"></a>
                 </div> 
             </div>
         </div>         
