@@ -7,7 +7,6 @@ import java.util.Map;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -21,7 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-	@Autowired UserService userService;
+	@Autowired
+	CustomOAuth2UserService CustomOAuth2UserService;
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -45,8 +45,7 @@ public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 		log.info("LOGIN SUCCESS : {} FROM {}", email, oauthType);
 
 		log.info("USER SAVED IN SESSION");
-		HttpSession session = request.getSession();
-		session.setAttribute("user", 1);
+
 
 		super.onAuthenticationSuccess(request, response, authentication);
 	}

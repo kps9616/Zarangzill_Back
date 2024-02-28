@@ -74,26 +74,61 @@
     <insert id="createMember" parameterType="com.zarangzill.zarangzill_back.member.service.MemberDTO">
         INSERT INTO zarangzill.tb_member
         ( name
-        , birthday
-        , gender
-        , number
-        , social_yn
         , social_type
-        , social_data
+        , social_yn
         , last_login
-        , dormant_account
-        , dormant_date
-        , profile_image)
-        VALUES ( #{name}
-               , #{birthday}
-               , #{gender}
-               , #{number}
-               , #{social_yn}
-               , #{social_type}
-               , #{social_data}
-               , #{last_login}
-               , #{dormant_account}
-               , #{dormant_date}
-               , #{profile_image})
+        , email
+        , markgChk
+        <if test='birthday != null and birthday != ""'>
+            , birthday
+        </if>
+        <if test='gender != null and gender != ""'>
+            , gender
+        </if>
+        <if test='number != null and number != ""'>
+            , number
+        </if>
+        <if test='social_data != null and social_data != ""'>
+            , social_data
+        </if>
+        <if test='dormant_account != null and dormant_account != ""'>
+            , dormant_account
+        </if>
+        <if test='dormant_date != null and dormant_date != ""'>
+            , dormant_date
+        </if>
+        <if test='profile_image != null and profile_image != ""'>
+            , profile_image
+        </if>
+        )
+        VALUES (
+                #{name}
+                , #{social_type}
+                , #{social_yn}
+                , sysdate()
+                , #{email}
+                , #{markgChk}
+                <if test='birthday != null and birthday != ""'>
+                    , #{birthday}
+                </if>
+                <if test='gender != null and gender != ""'>
+                    , #{gender}
+                </if>
+                <if test='number != null and number != ""'>
+                    , #{number}
+                </if>
+                <if test='social_data != null and social_data != ""'>
+                    , #{social_data}
+                </if>
+                <if test='dormant_account != null and dormant_account != ""'>
+                    , #{dormant_account}
+                </if>
+                <if test='dormant_date != null and dormant_date != ""'>
+                    , #{dormant_date}
+                </if>
+                <if test='profile_image != null and profile_image != ""'>
+                    , #{profile_image}
+                </if>
+        )
     </insert>
 </mapper>

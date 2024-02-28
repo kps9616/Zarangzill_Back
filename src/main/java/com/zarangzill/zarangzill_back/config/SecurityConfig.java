@@ -1,8 +1,9 @@
 package com.zarangzill.zarangzill_back.config;
 
-import com.zarangzill.zarangzill_back.config.oauth.OAuthLoginFailureHandler;
+import com.zarangzill.zarangzill_back.config.oauth.Oauth2FailureHandler;
 import com.zarangzill.zarangzill_back.config.oauth.OAuthLoginSuccessHandler;
-import com.zarangzill.zarangzill_back.config.oauth.UserService;
+import com.zarangzill.zarangzill_back.config.oauth.Role;
+import com.zarangzill.zarangzill_back.config.oauth.CustomOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import static jakarta.servlet.DispatcherType.ERROR;
@@ -28,9 +30,9 @@ public class SecurityConfig {
     @Autowired
     OAuthLoginSuccessHandler oAuthLoginSuccessHandler;
     @Autowired
-    OAuthLoginFailureHandler oAuthLoginFailureHandler;
+    Oauth2FailureHandler oAuthLoginFailureHandler;
     @Autowired
-    UserService userService;
+    CustomOAuth2UserService customOAuth2UserService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -40,31 +42,30 @@ public class SecurityConfig {
                         .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
                         .requestMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
                         .requestMatchers(uploadPathPattern).permitAll()
-                        .requestMatchers("/signup","/login/**").permitAll()
-                        .requestMatchers("/**").permitAll() // 임시
+                        .requestMatchers("/snsSignUp","/termsOfUse","/login/**").permitAll()
+                        .requestMatchers("/**").hasAnyRole(Role.USER.name())
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login")
                         .userInfoEndpoint(userInfo -> userInfo
-                                .userService(userService)
+                                .userService(customOAuth2UserService)
                         )
-                        .successHandler(oAuthLoginSuccessHandler)
+                        //.successHandler(oAuthLoginSuccessHandler)
                         .failureHandler(oAuthLoginFailureHandler)
+                        .defaultSuccessUrl("/main",true)
                 )
 
-                /*
                 .logout((logout) -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) // 로그아웃 URL
-                        .logoutSuccessUrl("/member/login") // 성공 리턴 URL
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // 로그아웃 URL
+                        .logoutSuccessUrl("/login") // 성공 리턴 URL
                         .invalidateHttpSession(true) // 인증정보를 지우하고 세션을 무효화
-                        .deleteCookies("our-custom-cookie")
                 )
                 .sessionManagement(session -> session
                         .maximumSessions(1)
                         .maxSessionsPreventsLogin(false)
                         .expiredUrl("/login?error=true&exception=Have been attempted to login from a new place. or session expired") // 세션이 만료된 경우 이동 할 페이지를 지정
-                )*/;
+                );
 
         return http.build();
     }

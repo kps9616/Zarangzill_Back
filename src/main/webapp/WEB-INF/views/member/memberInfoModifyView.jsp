@@ -93,7 +93,7 @@
         </div>       
       
         <div class="white-bx" id="whiteBox">
-            <a href="${path}/#none">로그아웃</a>
+            <a href="${path}/logout">로그아웃</a>
             <a href="${path}/#unregiste" uk-toggle>회원탈퇴</a>
         </div>
 

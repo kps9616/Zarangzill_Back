@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
@@ -23,6 +24,50 @@
     <style>
       
     </style>
+    <script>
+        var errMsg = "<c:out value="${errMsg}"/>";
+
+        $(document).ready(function(){
+            if(errMsg != ""){
+                alert(errMsg);
+            }
+
+            $('#allAgree').on('change', function() {
+                /* 실행문 */
+                if($('#allAgree').is(':checked')){
+                    $('.allAgree').prop('checked', true);
+                } else {
+                    $('.allAgree').prop('checked', false);
+                }
+            });
+
+            $('#markgChk').on('change', function() {
+                /* 실행문 */
+                fnMarkChek();
+            });
+
+            $('#formAgree').submit(function() {
+                var agreeCnt = $('.allAgree').length;
+                var agreeCheck = $('.allAgree:checked').length;
+
+                fnMarkChek();
+
+                if(agreeCnt != agreeCheck){
+                    alert("이용약관 동의는 필수입니다.")
+                    return false;
+                }
+            });
+
+        });
+
+        function fnMarkChek(){
+            if($('#markgChk').is(':checked')){
+                $('#markgChk').val("Y")
+            } else {
+                $('#markgChk').val("N")
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -32,30 +77,30 @@
         <a href="#cancel" class="top-left link-txt" uk-toggle>취소</a>
         회원가입        
     </div>
-    <div class="container pt20"> 
-
+    <form method="post" action="<c:url value="/snsSignUp"/>" id="formAgree">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <div class="container pt20">
        <h3>이용약관</h3>
         <ul class="join-agree">
             <li>
-                <label><input class="uk-checkbox" type="checkbox" checked> 모두 동의</label>
+                <label><input class="uk-checkbox" type="checkbox" id="allAgree"> 모두 동의</label>
             </li>
             <li>
-                <label><input class="uk-checkbox" type="checkbox"> [필수] 이용약관 동의</label>
+                <label><input class="uk-checkbox allAgree" type="checkbox"> [필수] 이용약관 동의</label>
                 <a href="#agree" class="txt-link"  uk-toggle>보기</a>
             </li>
             <li>
-                <label><input class="uk-checkbox" type="checkbox" > [필수] 개인정보 수집 및 이용 동의</label>
+                <label><input class="uk-checkbox allAgree" type="checkbox" > [필수] 개인정보 수집 및 이용 동의</label>
                 <a href="#policy" class="txt-link"  uk-toggle>보기</a>
             </li>
             <li>
-                <label><input class="uk-checkbox" type="checkbox" > [선택]마케팅 및 광고성 정보수신 동의</label>
+                <label><input class="uk-checkbox" type="checkbox" name="markgChk" id="markgChk" value="N" > [선택]마케팅 및 광고성 정보수신 동의</label>
             </li>
         </ul>
-
-        <button type="button" class="bt_gradient w100" onclick="location='69-2sns연동회원가입.html'">다음</button>   
-
-    </div>   
-    
+        <input name="email" type="hidden" value="${email}">
+        <button type="submit" class="bt_gradient w100" form="formAgree">다음</button>
+    </div>
+    </form>
      <!--이용약관 모달-->
     
          <div id="agree" uk-modal>
@@ -65,7 +110,7 @@
                      <h2 class="uk-modal-title">약관동의</h2>
                  </div>
                  <div class="uk-modal-body" uk-overflow-auto>
-                     <p>${useTermsInfo}</p>
+                     <p>${useTermsInfo.description}</p>
                  </div>
                  <div class="uk-modal-footer tac">
                      <button class="uk-button uk-button-default uk-modal-close" type="button">확인</button>
@@ -80,7 +125,7 @@
                     <h2 class="uk-modal-title">개인정보 수집 및 이용 동의</h2>
                 </div>
                 <div class="uk-modal-body" uk-overflow-auto>
-                    <p>${privacyStatementInfo}</p>
+                    <p>${privacyStatementInfo.description}</p>
                 </div>
                 <div class="uk-modal-footer tac">
                     <button class="uk-button uk-button-default uk-modal-close" type="button">확인</button>

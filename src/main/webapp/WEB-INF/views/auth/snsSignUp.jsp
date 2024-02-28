@@ -32,11 +32,11 @@
         <a href="javascript:history.back();" class="top-left link-txt">취소</a>
         회원가입        
     </div>
-    <div class="container pt20"> 
+    <div class="container pt20">
         <h3 class="mt20 tac">가입연동</h3>
         <p class="font12 tac">구글과 애플 ID중 연동 로그인할 서비스를 선택해 주세요.</p>
         <div class="login-btbx mt20">
-            <button type="button"><img src="${path}/resources/images/icon/google-g.png" alt="구글버튼" onclick="location='69-3휴대폰인증.html'"></button> 
+            <button type="button"><img src="${path}/resources/images/icon/google-g.png" alt="구글버튼" onclick="location='/oauth2/authorization/google'"></button>
             <button type="button"><img src="${path}/resources/images/icon/apple.png" alt="애플" onclick="location='69-3휴대폰인증.html'"></button> 
         </div>
     </div>

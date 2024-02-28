@@ -1,4 +1,5 @@
 package com.zarangzill.zarangzill_back.login.service;
+/*
 
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
@@ -88,3 +89,5 @@ public class SocialLoginService {
 }
 
 //https://accounts.google.com/o/oauth2/auth?client_id=918189902200-adur42hrvf8hnb8imbj059966gfommdh.apps.googleusercontent.com&redirect_uri=http://localhost:8080/api/v1/Login/Google/Action&response_type=code&scope=email%20profile%20openid&access_type=offline
+
+*/

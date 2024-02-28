@@ -2,21 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.zarangzill.zarangzill_back.login.service.mapper.LoginMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
-    <sql id="LoginSql">
+    <sql id="selectLogin">
+        SELECT
             id AS userID
-             , name
-             , number
+            , name
+            , number
+            , email
     </sql>
     <select id="loginUser" parameterType="com.zarangzill.zarangzill_back.login.service.LoginDTO" resultType="com.zarangzill.zarangzill_back.login.service.LoginDTO">
-        SELECT
-            <include refid="LoginSql"/>
+            <include refid="selectLogin"/>
         FROM tb_member
-        WHERE number = #{number}
+        <where>
+            <if test='number != null and number != ""'>
+                AND number = #{number}
+            </if>
+            <if test='email != null and email != ""'>
+                AND email = #{email}
+            </if>
+        </where>
     </select>
 <!--
     <select id="loginUser" parameterType="java.util.HashMap" resultType="com.zarangzill.zarangzill_back.login.service.LoginDTO">
         SELECT
-        <include refid="LoginSql"/>
+        <include refid="selectLogin"/>
         FROM tb_member
         WHERE number = #{number}
     </select>-->
