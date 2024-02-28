@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     
     
     <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
@@ -23,6 +25,16 @@
     <style>
       
     </style>
+    <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(document).ready(function(){
+            $("#toggle" ).click( function() {
+                setTimeout($(location).attr('href', '/mypage/mypageView'),2000)
+            } );
+        });
+    </script>
 </head>
 <body class="bg">
 
@@ -127,7 +139,7 @@
             <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom02;"><i class="sr-only">우승예측</i></span></a></li>
             <li class="mcircle"><a href="${path}/#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
             <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottom04;"><i class="sr-only">팬</i></span></a></li>
-            <li><a href="${path}/#" class="vsicon"><span uk-icon="icon: bottomOn05;"><i class="sr-only">마이페이지</i></span></a></li>
+            <li><a href="${path}/mypage/mypageDancerView" class="vsicon"><span uk-icon="icon: bottomOn05;"><i class="sr-only">마이페이지</i></span></a></li>
         </ul>        
     </div>
     <div class="full-bar-bg"><span></span><span class="bg-transparent"></span><span></span></div>

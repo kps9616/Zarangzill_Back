@@ -78,12 +78,12 @@
                 <c:choose>
                 <c:when test="${videoReplyInfo.video_flag_use eq 'Y'}">
                     <li>
-                        <div class="mych-thum" style="background-image:url(/upload/thum/${videoReplyInfo.video_thumbnail});">
+                        <div class="mych-thum" style="background-image:url(/upload/thumb/${videoReplyInfo.video_thumbnail});">
                             <span class="sr-only">영상썸네일</span>
                         </div>
                         <div class="mych-bx">
                             <div class="mych-img">
-                                <img src="/upload/thum/${videoReplyInfo.profile_image}">
+                                <img src="/upload/thumb/${videoReplyInfo.profile_image}">
                                 <span>${videoReplyInfo.member_name}</span>
                             </div>
                             <div class="mych-text">
@@ -103,13 +103,13 @@
                                 <a href="#" class="c_red" uk-icon="icon: close" onclick="fnDeleteVideoReply(${videoReplyInfo.reply_id})"></a>
                             </em>
                             </c:if>
-                            <div class="mych-thum filter-gray" style="background-image:url(/upload/thum/thum01.jpg);">
+                            <div class="mych-thum filter-gray" style="background-image:url(/upload/thumb/thum01.jpg);">
                                 <div class="video-del"><img src="/upload/icon/del-video.png" alt="삭제된영상아이콘" width="30"></div>
                                 <span class="sr-only">영상썸네일</span>
                             </div>
                             <div class="mych-bx">
                                 <div class="mych-img">
-                                    <img src="/upload/thum/face01.jpg">
+                                    <img src="/upload/thumb/face01.jpg">
                                     <span>${videoReplyInfo.member_name}</span>
                                 </div>
                                 <div class="mych-text c_red">

@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     
     <link rel="stylesheet" type="text/css"  href="/resources/css/uikit.css" >
     <link rel="stylesheet" type="text/css"  href="/resources/css/reset.css" >
@@ -22,6 +23,16 @@
     <style>
 
     </style>
+    <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(document).ready(function(){
+            $("#toggle" ).click( function() {
+                setTimeout($(location).attr('href', '/mypage/mypageDancerView'),2000)
+            } );
+        });
+    </script>
 </head>
 <body class="bg">
 
@@ -42,7 +53,7 @@
             </div>
 
             <div class="user-info">
-                <img src="<c:url value="/upload/thum/face02.jpg"/>" class="thum" alt="face02.jpg">
+                <img src="<c:url value="/upload/thumb/face02.jpg"/>" class="thum" alt="face02.jpg">
                 <div class="user-mody">
                     <img src="<c:url value="/resources/images/icon/google-g.png"/>">
                     <span class="pr5 pl10">010-1234-5678</span>
@@ -156,7 +167,7 @@
          </div>
     </div>
 
-<!--하단메뉴
+<!--하단메뉴-->
 <div class="full-bottom-bar">
     <div class="v_bottom_nav">                
         <ul>
@@ -164,12 +175,12 @@
             <li><a href="#" class="vsicon"><span uk-icon="icon: bottom02;"><i class="sr-only">우승예측</i></span></a></li>
             <li class="mcircle"><a href="#" class="vsicon"> <em uk-icon="icon: bottom03;"><i class="sr-only">촬영</i></em></a></li>
             <li><a href="#" class="vsicon"><span uk-icon="icon: bottom04;"><i class="sr-only">팬</i></span></a></li>
-            <li><a href="#" class="vsicon"><span uk-icon="icon: bottomOn05;"><i class="sr-only">마이페이지</i></span></a></li>
+            <li><a href="/mypage/mypageView" class="vsicon"><span uk-icon="icon: bottomOn05;"><i class="sr-only">마이페이지</i></span></a></li>
         </ul>        
     </div>
     <div class="full-bar-bg"><span></span><span class="bg-transparent"></span><span></span></div>
 </div>
--->
+
 
         
            

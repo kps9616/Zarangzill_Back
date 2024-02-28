@@ -38,14 +38,14 @@
                         <c:when test="${videoFavoriteInfo.video_flag_use eq 'Y'}">
                             <li>
                                 <div class="bigthum">
-                                    <a href="/subShots?id=${videoFavoriteInfo.video_id}"><img src="/upload/thum/${videoFavoriteInfo.video_thumbnail}"  class="thum"></a>
+                                    <a href="/subShots?id=${videoFavoriteInfo.video_id}"><img src="/upload/thumb/${videoFavoriteInfo.video_thumbnail}"  class="thum"></a>
                                 </div>
                                 <div class="list-tit ellipsis2">
                                         ${videoFavoriteInfo.video_description}<span>${videoFavoriteInfo.video_tags}</span>
                                 </div>
                                 <div class="list-name">
                                     <a href="#none">
-                                        <img class="small-thum mr5" src="/upload/thum/${videoFavoriteInfo.profile_image}">
+                                        <img class="small-thum mr5" src="/upload/thumb/${videoFavoriteInfo.profile_image}">
                                             ${videoFavoriteInfo.userNm}
                                     </a>
                                 </div>
@@ -55,14 +55,14 @@
                             <li>
                                 <div class="bigthum">
                                     <div class="video-del-100"><img src="/upload/icon/del-video.png" alt="삭제된영상아이콘" width="50"></div>
-                                    <img src="/upload/thum/thum02.jpg"  class="thum filter-gray">
+                                    <img src="/upload/thumb/thum02.jpg"  class="thum filter-gray">
                                 </div>
                                 <div class="list-tit ellipsis2">
                                     <div class="c_red">삭제된 영상입니다.</div>
                                 </div>
                                 <div class="list-name">
                                     <a href="#none">
-                                        <img class="small-thum mr5 img-grayscale" src="/upload/thum/face02.jpg" >
+                                        <img class="small-thum mr5 img-grayscale" src="/upload/thumb/face02.jpg" >
                                         dance team
                                     </a>
                                 </div>

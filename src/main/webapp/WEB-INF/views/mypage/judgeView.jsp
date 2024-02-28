@@ -37,14 +37,14 @@
                 <c:when test="${judgeScoreInfo.mflag_use eq 'Y'}">
                     <li>
                         <div class="bigthum">
-                            <a href="/subShots?id=${judgeScoreInfo.video_id}"><img src="/upload/thum/${judgeScoreInfo.video_thumbnail}"  class="thum"></a>
+                            <a href="/subShots?id=${judgeScoreInfo.video_id}"><img src="/upload/thumb/${judgeScoreInfo.video_thumbnail}"  class="thum"></a>
                         </div>
                         <div class="list-tit ellipsis2">
                                 ${judgeScoreInfo.video_description}<span>${judgeScoreInfo.video_tags}</span>
                         </div>
                         <div class="list-name">
                             <a href="#none">
-                                <img class="small-thum mr5" src="/upload/thum/${judgeScoreInfo.profile_image}">
+                                <img class="small-thum mr5" src="/upload/thumb/${judgeScoreInfo.profile_image}">
                                     ${judgeScoreInfo.userNm}
                             </a>
                         </div>
@@ -82,14 +82,14 @@
                         <li>
                             <div class="bigthum">
                                 <div class="video-del-100"><img src="/upload/icon/del-video.png" alt="삭제된영상아이콘" width="50"></div>
-                                <img src="/upload/thum/thum02.jpg"  class="thum filter-gray">
+                                <img src="/upload/thumb/thum02.jpg"  class="thum filter-gray">
                             </div>
                             <div class="list-tit ellipsis2">
                                 <div class="c_red">삭제된 영상입니다.</div>
                             </div>
                             <div class="list-name">
                                 <a href="#none">
-                                    <img class="small-thum mr5 img-grayscale" src="/upload/thum/face02.jpg" >
+                                    <img class="small-thum mr5 img-grayscale" src="/upload/thumb/face02.jpg" >
                                     dance team
                                 </a>
                             </div>
