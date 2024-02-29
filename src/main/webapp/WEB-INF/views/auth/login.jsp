@@ -55,7 +55,7 @@
         </div>
 
         <div class="uk-modal-footer">
-            <a href="68-2회원가입.html" class="btn-line-blue w100">회원가입</a>
+            <a href="/termsOfUse" class="btn-line-blue w100">회원가입</a>
         </div>
     </div>
 
