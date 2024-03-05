@@ -43,7 +43,8 @@ public class SecurityConfig {
                         .requestMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
                         .requestMatchers(uploadPathPattern).permitAll()
                         .requestMatchers("/snsSignUp","/termsOfUse","/login/**").permitAll()
-                        .requestMatchers("/**").hasAnyRole(Role.USER.name())
+                        //.requestMatchers("/**").hasAnyRole(Role.USER.name())
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
