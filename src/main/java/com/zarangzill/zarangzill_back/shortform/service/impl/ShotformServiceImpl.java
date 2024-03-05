@@ -58,11 +58,14 @@ public class ShotformServiceImpl implements ShotformService {
     public List<ShotformDTO> selectVideoRankListFor4(ShotformDTO paramMap) {
         return shotformDAO.selectVideoRankListFor4(paramMap, session);
     }
-    public ShotformDTO selectUserCheckWinPredInfo(ShotformDTO paramMap) {
+    public HashMap selectUserCheckWinPredInfo(ShotformDTO paramMap) {
         return shotformDAO.selectUserCheckWinPredInfo(paramMap, session);
     }
     public List<ShotformDTO> selectVideoList(ShotformDTO paramMap) {
         return shotformDAO.selectVideoList(paramMap, session);
+    }
+    public int insertVideoShareCount(ShotformDTO paramMap) {
+        return shotformDAO.insertVideoShareCount(paramMap, session);
     }
 
 

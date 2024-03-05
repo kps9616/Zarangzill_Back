@@ -192,7 +192,7 @@ a.alarm-link .delete-button{position:absolute;right:-17px;top:0; height: 100%;ba
 .relative .bbtn-close, .relative .bbtn-close2, .relative .bbtn-close3, .relative .other-modal-close{color:#585858; position: absolute;top:15px; right: 20px;}
 .modal-footer,.modal-header{padding:2px 16px;background-color:#5cb85c;color:#fff}
 .modal-body{padding:2px 16px}  
-.bottom-modal{height: 70%;}
+.bottom-modal{/*height: 70%;*/}
 .bttom-modal-con{overflow-y: auto; height: calc(100% - 120px);padding: 10px;}
 #targetDiv{background-color:#F2F5FE; border-radius: 10px;}
 .ch-inner li{padding: 10px;}

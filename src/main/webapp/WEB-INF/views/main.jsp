@@ -29,7 +29,7 @@
     <input type="hidden" id="favoritCheckFlg" value="Y"/>
 
     <form id="channelForm" name="channelForm" method="post">
-        <input type="hidden" name="userId" value="1"/>
+        <input type="hidden" name="userId" value="${userId}"/>
         <input type="hidden" name="channelId" value="1"/>
     </form>
 
@@ -77,15 +77,13 @@
     <a href="#none" class="vsicon" id="Btn-comment-judge"><span uk-icon="icon: side01; ratio: 1.1"></span>심사하기</a>
     <a href="#none" id="Btn-comment-winner" class="vsicon"><span uk-icon="icon: side02; ratio: 1.2"></span><em class="new_bg">new</em>우승예측</a>
     <a href="#none" id="Btn-comment" class="vsicon" ><span uk-icon="icon: side03; ratio: 1.2" class="check_on"></span><div id="replyCnt">0</div><i class="sr-only">댓글</i><em uk-icon="icon: v_check; ratio: 1.3" class="circle_check"></em></a>
-    <a href="#none" class="vsicon" onclick="fn_updateVideoUserLike();"><span uk-icon="icon: side04; ratio: 1.2" class="check_on"></span><div id="favoritCnt">0</div> <i class="sr-only">즐겨찾기</i><em uk-icon="icon: v_check; ratio: 1.3" class="circle_check" id="favCheckIcon"></em></a>
+    <a href="#none" id="Btn-userLike" class="vsicon" onclick="fn_updateVideoUserLike();"><span uk-icon="icon: side04; ratio: 1.2" class="check_on"></span><div id="favoritCnt">0</div> <i class="sr-only">즐겨찾기</i><em uk-icon="icon: v_check; ratio: 1.3" class="circle_check" id="favCheckIcon"></em></a>
     <a href="#none" class="vsicon" onclick="fn_shareVideo();"><span uk-icon="icon: side05; ratio: 1.2"></span><i class="sr-only">공유</i></a>
     <!--<a href="#none" class="vsicon"><span uk-icon="icon: side06; ratio: 1.1"></span>음악사용</a>-->
     <a href="#none" class="vsicon main-more"  id="main-toggle"><span uk-icon="icon: more;"></span>
         <div id="main-toggle-con">
             <button type="button" data-uk-toggle="#modal-group-1">신고하기</button>
         </div>
-
-
     </a>
 </div>
 
@@ -95,17 +93,21 @@
     const videoInfoList = [];
     let videoIndex = 0;
     let maxVideoLength = 0;
+    const userId = "${userId}";
+
 
     $( document ).ready(function() {
+
         fn_settingVideoList();
         fn_settingUserFavCheck();
         fn_settingVideoCntInfo();
+
 
     });
 
     function fn_settingVideoList() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/list',
+            url: '/api/v1/short/list',
             method: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -137,7 +139,6 @@
                 $("#v_contents_list").html(html);
 
                 document.getElementById('videoElement').load();
-                document.getElementById('videoElement').play();
 
             },
             error: function(error) {
@@ -149,7 +150,7 @@
 
     function fn_settingUserFavCheck() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/favorit/check',
+            url: '/api/v1/short/favorit/check',
             method: 'GET',
             dataType: 'json',
             data: {
@@ -159,13 +160,13 @@
             success: function(response) {
                 var userFavInfo = response.userFavInfo;
 
-                if(userFavInfo.flag_use == "Y") {
+                if(userFavInfo != null && userFavInfo.flag_use == "Y") {
                     $("#favoritCheckFlg").val("Y");
                     $("#favCheckIcon").show();
                 }
                 else {
                     $("#favoritCheckFlg").val("N");
-                    $("#favCheckIcon").show();
+                    $("#favCheckIcon").hide();
                 }
             },
             error: function(error) {
@@ -176,7 +177,7 @@
 
     function fn_settingVideoCntInfo() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/setting',
+            url: '/api/v1/short/setting',
             method: 'GET',
             dataType: 'json',
             data: {
@@ -199,7 +200,7 @@
 
     function fn_shareVideo() {
         var shareTitle = "공유하기";
-        var shareUrl = "http://1.226.83.35:9090/main"
+        var shareUrl = "/main"
 
         if(navigator.share) {
             navigator.share({
@@ -207,7 +208,8 @@
                 text: "공유하기",
                 url: shareUrl,
 
-            }).then(()=> console.log("success")).catch((error) => console.log("Error",error));
+            }).then(()=> fn_post("channelForm", "short/share/insert/count"))
+                .catch((error) => console.log("Error",error));
         } else {
             alert("공유하기 환경이 아닙니다.");
         }
@@ -216,7 +218,7 @@
 
     function fn_settingWinPredInfo() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/winPred/info',
+            url: '/api/v1/short/winPred/info',
             method: 'GET',
             dataType: 'json',
             data: {
@@ -233,8 +235,8 @@
                 var html = "";
 
 
-                html += '<h3 className="mb10">2월 우승</h3>';
-                html += '<a href="#" onClick="updateWinnerPredict(\'month\');">';
+                html += '<h3 className="mb10">3월 우승</h3>';
+                html += '<a href="#" onClick="updateWinnerPredict(\'M\');">';
                 if(flagMonth == 'Y') {
                     html += '<div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>';
                 }
@@ -246,7 +248,7 @@
 
                 html = "";
                 html += '<h3 class="mb10">'+reangeInfo.week_idx+'번째 우승</h3>';
-                html += '    <a href="#" onClick="updateWinnerPredict(\'week\');">';
+                html += '    <a href="#" onClick="updateWinnerPredict(\'W\');">';
                 if(flagWeek == 'Y') {
                     html += '<div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>';
                 }
@@ -257,12 +259,15 @@
                 html += '    <span class="font11">'+reangeInfo.week_start_date+' ~ '+reangeInfo.week_end_date+'</span>';
                 html += '</a>';
 
+                $("#winner_w_start").val(reangeInfo.searchWeedStartDate);
+                $("#winner_w_end").val(reangeInfo.searchWeedEndDate);
+
 
                 $("#winPredWeek").html(html);
 
                 html = "<h3>최근 순위정보</h3>";
 
-                for(var i=3; i>0; i--) {
+                for(var i=3; i>-1; i--) {
 
                     html += '<div class="w-rank-list">';
                     if(result[i].flag_week_win == 'Y') {
@@ -290,7 +295,6 @@
     let isClicked = false;
     let start_y, end_y;
     let isVideoChange = false;
-    const userId = "1";
 
     // 버튼 클릭 이벤트 리스너 추가
     subscribeButton.addEventListener('click', function() {
@@ -351,6 +355,7 @@
 
         if(isVideoChange) {
             videoSource.setAttribute("src", videoList[videoIndex]);
+            $("winner_video_id").val(videoInfoList[videoIndex]);
             $("#judge_video_id").val(videoInfoList[videoIndex]);
             $("#videoId").val(videoInfoList[videoIndex]);
             fn_settingUserFavCheck();
@@ -382,6 +387,7 @@
             var videoSource = document.getElementById("videoSource");
             videoSource.setAttribute("src", videoList[videoIndex]);
             $("#judge_video_id").val(videoInfoList[videoIndex]);
+            $("winner_video_id").val(videoInfoList[videoIndex]);
             $("#videoId").val(videoInfoList[videoIndex]);
 
 
@@ -426,7 +432,7 @@
         console.log("test");
 
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/reply/list',
+            url: '/api/v1/reply/list',
             method: 'GET',
             dataType: 'json',
             data: $("#replyForm").serialize(),
@@ -526,7 +532,7 @@
         $("#reply_description").val(replyText);
 
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/reply/insert',
+            url: '/api/v1/reply/insert',
             method: 'POST',
             dataType: 'json',
             data: $("#replyForm").serialize(),
@@ -542,7 +548,7 @@
 
     function fn_updateVideoReplyState() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/reply/delete',
+            url: '/api/v1/reply/delete',
             method: 'POST',
             dataType: 'json',
             data: $("#replyForm").serialize(),
@@ -567,7 +573,7 @@
         }
 
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/Favorit',
+            url: '/api/v1/short/Favorit',
             method: 'POST',
             dataType: 'json',
             data: {
@@ -608,7 +614,7 @@
 <div id="bottom-modal" class="bmodal">
 
     <form id="replyForm" name="replyForm" method="post">
-        <input type="hidden" id="userId" name="user_id" value="1">
+        <input type="hidden" id="userId" name="user_id" value="${userId}">
         <input type="hidden" id="videoId" name="video_id" value="1">
         <input type="hidden" id="replyId" name="reply_id" value="1">
         <input type="hidden" id="reply_description" name="reply_description" value="1">
@@ -629,7 +635,7 @@
             </div>
         </div>
 
-        <div class="uk-modal-footer">
+        <div class="uk-modal-footer" id="comment_text">
             <div class="msg-send">
                 <div class="msg-send-img">
                     <img src="${path}/resources/images/thum/face01.jpg">
@@ -779,9 +785,14 @@
 
 <div id="bottom-modal-winner" class="bmodal">
     <form id="winnerCalForm" name="winnerCalForm" method="post">
-        <input type="hidden" id="winner_user_id" name="winner_user_id" value="1">
+        <input type="hidden" id="winner_user_id" name="winner_user_id" value="${userId}">
         <input type="hidden" id="winner_video_id" name="winner_video_id" value="1">
         <input type="hidden" id="winner_cal_type" name="winner_cal_type" value="1">
+        <input type="hidden" id="winner_cal_idx" name="winner_cal_idx" value="8">
+        <input type="hidden" id="winner_w_start" name="winner_w_start" value="">
+        <input type="hidden" id="winner_m_start" name="winner_m_start" value="2024-03-01 00:00:00">
+        <input type="hidden" id="winner_w_end" name="winner_w_end" value="">
+        <input type="hidden" id="winner_m_end" name="winner_m_end" value="2024-03-31 00:00:00">
 
     </form>
     <!-- Modal content -->
@@ -863,13 +874,30 @@
     // When the user clicks the button, open the modal
     btn.onclick = function() {
         modal.style.display = "block";
+
+        if(userId == "") {
+            $("#comment_text").hide();
+        }
+
         fn_getVideoReply();
     }
 
     btn_judge.onclick = function() {
+
+        if(userId == "") {
+            window.location.href="${path}/login";
+            return false;
+        }
+
         modal_judge.style.display = "block";
     }
     btn_winner.onclick = function() {
+
+        if(userId == "") {
+            window.location.href="${path}/login";
+            return false;
+        }
+
         modal_winner.style.display = "block";
         fn_settingWinPredInfo();
     }
@@ -907,7 +935,7 @@
     const percentagePerPoint = totalPercentage / maxVirtualValue;
 
     function adjust(id) {
-        const graphElement = document.getElementById(`${id}-graph`);
+        const graphElement = document.getElementById(id+'-graph');
         const rangeInput = graphElement.querySelector('input[type="range"]');
         const span = graphElement.querySelector('span');
 
@@ -968,7 +996,7 @@
 
     function insertUserViewHistory() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/view/histroy',
+            url: '/api/v1/short/view/histroy',
             method: 'POST',
             dataType: 'json',
             data: {
@@ -990,13 +1018,26 @@
         document.querySelectorAll('input[type="range"]').forEach(input => {
             $("#score_"+input.id).val(Math.round((input.value / totalPercentage) * maxVirtualValue));
         });
-        fn_post("judgeScoreForm","judge/insert");
+        var returnFlag = fn_post("judgeScoreForm","judge/score/ins");
+
+        if(returnFlag) {
+            alert("저장 되었습니다.");
+        }
+
+        modal_judge.style.display = "none";
+
     }
 
     function updateWinnerPredict(type) {
         $("#winner_cal_type").val(type);
 
-        fn_post("winnerCalForm","win/"+type+"/list");
+        var returnFlag = fn_post("winnerCalForm","win/pred/insert");
+
+        if(returnFlag) {
+            alert("저장 되었습니다.");
+        }
+
+        modal_winner.style.display = "none";
     }
 
 

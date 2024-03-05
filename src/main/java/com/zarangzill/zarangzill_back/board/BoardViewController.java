@@ -1,6 +1,8 @@
 package com.zarangzill.zarangzill_back.board;
 
 import com.zarangzill.zarangzill_back.board.service.BoardService;
+import com.zarangzill.zarangzill_back.login.service.LoginDTO;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,9 @@ import java.util.Map;
 public class BoardViewController {
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    HttpSession httpSession;
 
     @RequestMapping(value="/boardListView")
     public String boardListView(@RequestParam Map paramMap, Model model) {
@@ -78,7 +83,10 @@ public class BoardViewController {
     //팬게시글
     @RequestMapping(value="/fanBoardListView")
     public String fanBoardListView(@RequestParam Map ParamMap, Model model) {
-        ParamMap.put("user_id", "1");
+
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
+
         model.addAttribute("fanBoardList", boardService.selectFanBoardList(ParamMap));
         return "/fan/fanBoardListView";
     }
@@ -86,7 +94,8 @@ public class BoardViewController {
     //팬게시물
     @RequestMapping(value="/fanBoardView")
     public String fanBoardView(@RequestParam Map ParamMap, Model model) {
-        ParamMap.put("user_id", "1");
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
         model.addAttribute("fanBoardInfo", boardService.selectFanBoardInfo(ParamMap));
         return "fan/fanBoardView";
     }
@@ -94,7 +103,8 @@ public class BoardViewController {
     //팬댓글
     @RequestMapping(value="/fanBoardRelpyListView")
     public String fanBoardRelpyListView(@RequestParam Map ParamMap, Model model) {
-        ParamMap.put("user_id", "1");
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
         model.addAttribute("fanBoardReplyList", boardService.selectFanBoardReplyList(ParamMap));
         return "fan/fanBoardRelpyListView";
     }
@@ -102,7 +112,8 @@ public class BoardViewController {
     //제작자센터 목록
     @RequestMapping(value="/producerCentorListView")
     public String producerCentorListView(@RequestParam Map ParamMap, Model model) {
-        ParamMap.put("user_id", "1");
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
         model.addAttribute("fanBoardReplyList", boardService.selectBoardList(ParamMap));
         return "board/producerCentorListView";
     }
@@ -110,7 +121,8 @@ public class BoardViewController {
     //제작자센터 목록
     @RequestMapping(value="/producerCentorView")
     public String producerCentorView(@RequestParam Map ParamMap, Model model) {
-        ParamMap.put("user_id", "1");
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
         model.addAttribute("producerCentorList", boardService.selectBoardInfo(ParamMap));
         return "board/producerCentorView";
     }

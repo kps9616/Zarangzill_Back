@@ -107,6 +107,11 @@ public class ShotformDTO {
     @JsonProperty("channel_id")
     private String channelId;
 
+    @JsonProperty("win_idx")
+    private String winIdx;
+
+    private String searchWeedStartDate;
+    private String searchWeedEndDate;
 
 
 

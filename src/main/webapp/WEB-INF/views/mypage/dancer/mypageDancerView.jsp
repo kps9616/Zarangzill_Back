@@ -113,25 +113,25 @@
         </div>
 
         <div class="my-link mt20 mb20">
-        <a href="${path}/90-2내채널.html"> 내 채널<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="${path}/102-2내영상.html"> 내 영상<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="${path}/103-2우승상품.html"> 우승상품<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/channel/myChannelListView"> 내 채널<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/myVideoListView"> 내 영상<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/103-2우승상품.jsp"> 우승상품<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
         
         <div class="my-link mb20">
-        <a href="${path}/104-2즐겨찾는사운드.html"> 즐겨 찾는 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="${path}/104-3내가올린사운드.html"> 내가 올린 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/sound/favoriteSoundListView"> 즐겨 찾는 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/sound/mySoundListView"> 내가 올린 사운드<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
 
         <div class="my-link mt5">
-        <a href="${path}/board/producerCentorListView?type=80> 제작자 센터<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/board/producerCentorListView?type=80"> 제작자 센터<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         <a href="${path}/board/onlineQnAView?type=90"> 온라인 문의<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
 
 
     </div>
 
-<!--하단메뉴-->
+<!--하단메뉴
 <div class="full-bottom-bar">
     <div class="v_bottom_nav">                
         <ul>
@@ -143,7 +143,7 @@
         </ul>        
     </div>
     <div class="full-bar-bg"><span></span><span class="bg-transparent"></span><span></span></div>
-</div>
+</div>-->
 
 
         

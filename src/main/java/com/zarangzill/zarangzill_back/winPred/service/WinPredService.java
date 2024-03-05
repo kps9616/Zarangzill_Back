@@ -10,6 +10,6 @@ public interface WinPredService {
 
     List<HashMap> selectWinPredMonthEndList(WinPredDTO paramMap);
     List<HashMap> selectWinPredWeekEndList(WinPredDTO paramMap);
-
+    int insertUserWinPredInfo(WinPredDTO paramMap);
 
 }

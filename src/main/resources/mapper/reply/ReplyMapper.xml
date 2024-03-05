@@ -16,6 +16,7 @@
              LEFT OUTER JOIN tb_report tr on tvr.user_id = tr.report_target_id
          WHERE tv.flag_use = 'Y'
            AND tv.id = #{videoId}
+           AND tvr.flag_use = 'Y'
          ORDER BY tvr.created_at
     </select>
     <select id="selectVideoReplyListByMypage" parameterType="java.util.HashMap" resultType="java.util.HashMap">

@@ -23,7 +23,7 @@ public class ChannelServiceImpl implements ChannelService {
     }
 
     public List<HashMap> selectRecomChannelList(ChannelDTO paramMap) {
-        return channelDAO.selectFanChannelList(paramMap, session);
+        return channelDAO.selectRecomChannelList(paramMap, session);
     }
     public int deleteUserFanChannel(ChannelDTO paramMap) {
         return channelDAO.deleteUserFanChannel(paramMap, session);

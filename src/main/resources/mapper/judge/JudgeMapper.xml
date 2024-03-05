@@ -32,5 +32,28 @@
                  Left Join zarangzill.tb_member D ON C.user_id = D.id
         ORDER BY A.ranking
     </select>
-
+    <insert id="insertJudgeScore" parameterType="com.zarangzill.zarangzill_back.judge.service.JudgeDTO">
+        INSERT INTO tb_video_judge (
+                    judge_user_id,
+                    video_id,
+                    judge_score_1,
+                    judge_score_2,
+                    judge_score_3,
+                    judge_date,
+                    flag_use,
+                    created_at,
+                    updated_at
+        )
+        VALUES(
+                #{judgeUserId}
+              , #{judgeVideoId}
+              , #{scoreJudgeHeap}
+              , #{scoreJudgeIndividuality}
+              , #{scoreJudgeCuteness}
+              , NOW()
+              , 'Y'
+              , NOW()
+              , NOW()
+        )
+    </insert>
 </mapper>

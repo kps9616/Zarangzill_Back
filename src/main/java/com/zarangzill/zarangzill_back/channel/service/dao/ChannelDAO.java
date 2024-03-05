@@ -14,7 +14,7 @@ public class ChannelDAO {
     }
 
     public List<HashMap> selectRecomChannelList(ChannelDTO paramMap, SqlSessionTemplate session) {
-        return session.selectList("ChannelDAO.userFanChannelList", paramMap);
+        return session.selectList("ChannelDAO.selectRecomChannelList", paramMap);
     }
 
     public int deleteUserFanChannel(ChannelDTO paramMap, SqlSessionTemplate session) {

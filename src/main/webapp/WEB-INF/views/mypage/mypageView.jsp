@@ -53,10 +53,10 @@
             </div>
 
             <div class="user-info">
-                <img src="<c:url value="/upload/thumb/face02.jpg"/>" class="thum" alt="face02.jpg">
+                <img src="${path}${loginDTO.picture}" class="thum" alt="face02.jpg">
                 <div class="user-mody">
                     <img src="<c:url value="/resources/images/icon/google-g.png"/>">
-                    <span class="pr5 pl10">010-1234-5678</span>
+                    <span class="pr5 pl10">${loginDTO.number}</span>
                     <a href="<c:url value="/member/memberInfoModifyView"/>" class="uk-icon-link" uk-icon="cog"></a>
                 </div> 
             </div>
@@ -167,7 +167,7 @@
          </div>
     </div>
 
-<!--하단메뉴-->
+<!--하단메뉴
 <div class="full-bottom-bar">
     <div class="v_bottom_nav">                
         <ul>
@@ -180,7 +180,7 @@
     </div>
     <div class="full-bar-bg"><span></span><span class="bg-transparent"></span><span></span></div>
 </div>
-
+-->
 
         
            

@@ -9,6 +9,9 @@ import lombok.Setter;
 @Setter
 @Data
 public class WinPredDTO {
+    @JsonProperty("user_id")
+    private String userId;
+
     @JsonProperty("video_id")
     private String videoId;
 

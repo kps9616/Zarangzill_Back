@@ -32,7 +32,7 @@
 
     $( document ).ready(function() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/win/month/list',
+            url: '/api/v1/win/month/list',
             method: 'GET',
             dataType: 'json',
             data: $("#winPredForm").serialize(),
@@ -96,7 +96,7 @@
 </form>
 
 <form id="winPredForm" name="winPredForm" method="post">
-    <input type="hidden" id="userId" name="userId" value="1"/>
+    <input type="hidden" id="userId" name="userId" value="${userId}"/>
     <input type="hidden" id="predictionType" name="predictionType" value="M"/>
     <input type="hidden" id="startDate" name="startDate" value="20240101"/>
     <input type="hidden" id="endDate" name="endDate" value="20240131"/>

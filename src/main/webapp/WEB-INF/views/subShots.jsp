@@ -35,13 +35,9 @@
 
     <div class="v_video">
         <video id="videoElement" class="videoElement" preload="metadata" autoplay loop>
-            <source id="videoSource" src="${path}/resources/images/video/svideo.mp4" type="video/mp4">
+            <source id="videoSource" src="" type="video/mp4">
             브라우저가 비디오 태그를 지원하지 않습니다.
         </video>
-        <div class="v_top_icons">
-            <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
-        </div>
-
         <!--비디오 약간어둡게-->
         <div id="videoOverlay"></div>
     </div>
@@ -60,7 +56,7 @@
     </div>
     -->
 </div>
-<div class="v_contents">
+<div class="v_contents" id="v_contents_list">
     <ul>
         <li class="v_con_info">
             <div class="v_img"><a href="91-2채널.html"><img src="${path}/resources/images/thum.jpg"></a></div>
@@ -89,15 +85,66 @@
 
 
 <script>
+    const videoList = [];
+    const videoInfoList = [];
+    let videoIndex = 0;
+    let maxVideoLength = 0;
+    const reply_id = "${reply_id}";
 
     $( document ).ready(function() {
+        fn_settingVideoList();
         fn_settingUserFavCheck();
         fn_settingVideoCntInfo();
+
     });
+
+    function fn_settingVideoList() {
+        $.ajax({
+            url: '/api/v1/short/list',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                var resultList = response.resultList;
+                var listSize = response.resultListSize;
+                var html = "";
+                maxVideoLength = listSize;
+                for(var i=0; i< listSize; i++) {
+                    var resultInfo = resultList[i];
+
+                    if(i == 0) {
+                        html += '<ul id="videoIdx_'+resultInfo.video_id+'">';
+                    }
+                    else {
+                        html += '<ul id="videoIdx_'+resultInfo.video_id+'" style="display:none;">';
+                    }
+                    html += '    <li class="v_con_info">';
+                    html += '       <div class="v_img"><a href="91-2채널.html"><img src="${path}'+resultInfo.channel_profile_image+'"></a></div>';
+                    html += '        <div class="v_grup"><a href="91-2채널.html">'+resultInfo.channel_name+'</a></div>';
+                    html += '       <div><button type="button" id="subscribe-button" class="v_button">팬</button></div>';
+                    html += '    </li>';
+                    html += '    <li class="v_con_tit">'+resultInfo.video_description+'  <span>'+resultInfo.video_tags+'</span> </li>';
+                    html += '    <li class="v_con_name">@'+resultInfo.user_name+'</li>';
+                    html += ' </ul>';
+                    videoList.push("${path}" + resultInfo.video_path);
+                    videoInfoList.push(resultInfo.video_id);
+                }
+                document.getElementById("videoSource").setAttribute("src", videoList[0]);
+                $("#v_contents_list").html(html);
+
+                document.getElementById('videoElement').load();
+                document.getElementById('videoElement').play();
+
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+
 
     function fn_settingUserFavCheck() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/favorit/check',
+            url: '/api/v1/short/favorit/check',
             method: 'GET',
             dataType: 'json',
             data: {
@@ -124,7 +171,7 @@
 
     function fn_settingVideoCntInfo() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/setting',
+            url: '/api/v1/short/setting',
             method: 'GET',
             dataType: 'json',
             data: {
@@ -147,7 +194,7 @@
 
     function fn_shareVideo() {
         var shareTitle = "공유하기";
-        var shareUrl = "http://1.226.83.35:9090/main"
+        var shareUrl = "/main"
 
         if(navigator.share) {
             navigator.share({
@@ -155,140 +202,97 @@
                 text: "공유하기",
                 url: shareUrl,
 
-            }).then(()=> console.log("success")).catch((error) => console.log("Error",error));
+            }).then(()=> fn_post("channelForm", "short/share/insert/count"))
+                .catch((error) => console.log("Error",error));
         } else {
             alert("공유하기 환경이 아닙니다.");
         }
 
+    }
 
+    function fn_settingWinPredInfo() {
+        $.ajax({
+            url: 'http://localhsot:9090/api/v1/short/winPred/info',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                video_id:$("#videoId").val(),
+                user_id:$("#userId").val(),
+            },
+            success: function(response) {
+                var result = response.result;
+                var reangeInfo = response.reangeInfo;
+                var userPredInfo = response.userPredInfo;
+                var flagMonth = userPredInfo.flag_check_month;
+                var flagWeek = userPredInfo.flag_check_week;
+
+                var html = "";
+
+
+                html += '<h3 className="mb10">2월 우승</h3>';
+                html += '<a href="#" onClick="updateWinnerPredict(\'month\');">';
+                if(flagMonth == 'Y') {
+                    html += '<div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>';
+                }
+                else {
+                    html += '<div><em uk-icon="icon: vote-ok;"></em><span>투표하기</span></div>';
+                }
+                html += '</a>';
+                $("#winPredMonth").html(html);
+
+                html = "";
+                html += '<h3 class="mb10">'+reangeInfo.week_idx+'번째 우승</h3>';
+                html += '    <a href="#" onClick="updateWinnerPredict(\'week\');">';
+                if(flagWeek == 'Y') {
+                    html += '<div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>';
+                }
+                else {
+                    html += '<div><em uk-icon="icon: vote-ok;"></em><span>투표하기</span></div>';
+                }
+
+                html += '    <span class="font11">'+reangeInfo.week_start_date+' ~ '+reangeInfo.week_end_date+'</span>';
+                html += '</a>';
+
+
+                $("#winPredWeek").html(html);
+
+                html = "<h3>최근 순위정보</h3>";
+
+                for(var i=3; i>0; i--) {
+
+                    html += '<div class="w-rank-list">';
+                    if(result[i].flag_week_win == 'Y') {
+                        html += '    <img src="${path}/resources/images/icon/crown-yellow.png">';
+                    }
+                    html += '    <span>'+result[i].win_idx+'</span>';
+                    html += '    <em>'+result[i].week_idx+'주</em>';
+                    html += '</div>';
+                }
+
+                $("#winPredBeforeList").html(html);
+
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
     }
 
     //구독버튼 class추가
     // 버튼 요소 가져오기
     const subscribeButton = document.getElementById('subscribe-button');
-    const videoList = ['${path}/resources/images/video/svideo.mp4','${path}/resources/images/video/test720.mp4','${path}/resources/images/video/test720_2.mp4','${path}/resources/images/video/test1080.mp4','${path}/resources/images/video/test1920.mp4'];
-    let videoIndex = 0;
+
     // 클릭 상태를 저장하는 변수
     let isClicked = false;
     let start_y, end_y;
     let isVideoChange = false;
     const userId = "1";
 
-    // 버튼 클릭 이벤트 리스너 추가
-    subscribeButton.addEventListener('click', function() {
-        if (!isClicked) {
-            subscribeButton.classList.add('bt_subscribe'); // 클릭 시 'clicked' 클래스 추가
-            fn_post("channelForm", "channel/fans/ins");
-
-        } else {
-            subscribeButton.classList.remove('bt_subscribe'); // 다시 클릭하면 'clicked' 클래스 제거
-            fn_post("channelForm", "channel/fans/del");
-        }
-        isClicked = !isClicked; // 클릭 상태 토글
-    });
-
-
     //비디오 재생할때 body scroll 감추기
     const body = document.body;
     body.style.overflow = 'hidden';
     body.style.background = '#151515';
     const videoElement = document.getElementById('videoElement');
-
-    //비디오 화면 터치 play or pause
-    videoElement.addEventListener('click', function() {
-        if (videoElement.paused) {
-            videoElement.play();
-        } else {
-            videoElement.pause();
-        }
-    });
-
-    //비디오 화면 휠
-    videoElement.addEventListener('wheel', function(event) {
-        var videoSource = document.getElementById("videoSource");
-        if (event.deltaY > 0) {
-            // scroll up
-            if(videoIndex < 4) {
-                videoIndex++;
-                isVideoChange = true;
-            }
-            else {
-                isVideoChange = false;
-            }
-        }
-        else {
-            // scroll down
-            if(videoIndex > 0) {
-                videoIndex--;
-                isVideoChange = true;
-            }
-            else {
-                isVideoChange = false;
-            }
-        }
-
-        if(isVideoChange) {
-            videoSource.setAttribute("src", videoList[videoIndex]);
-            $("#judge_video_id").val(videoIndex);
-            $("#videoId").val(videoIndex);
-            fn_settingUserFavCheck();
-            fn_settingVideoCntInfo();
-
-            videoElement.load();
-            videoElement.play();
-        }
-    });
-
-
-    //비디오 화면 터치 play or pause
-    videoElement.addEventListener('touchstart', function(e) {
-        start_y = e.touches[0].pageY;
-    });
-
-    //비디오 화면 터치 play or pause
-    videoElement.addEventListener('touchend', function(e) {
-        end_y= e.changedTouches[0].pageY;
-
-        if(start_y > end_y) {
-            nextVideo();
-        }
-        else if(start_y != end_y) {
-            prevVideo();
-        }
-
-        if(isVideoChange) {
-            var videoSource = document.getElementById("videoSource");
-            videoSource.setAttribute("src", videoList[videoIndex]);
-
-            $("#judge_video_id").val(videoIndex);
-            $("#videoId").val(videoIndex);
-
-            fn_settingUserFavCheck();
-            fn_settingVideoCntInfo();
-
-            videoElement.load();
-            videoElement.play();
-        }
-    });
-
-    function nextVideo() {
-        if(videoIndex < 4) {
-            videoIndex++;
-            isVideoChange = true;
-        }
-        else {
-            isVideoChange = false;
-        }
-    }
-    function prevVideo() {
-        if(videoIndex > 0) {
-            videoIndex--;
-            isVideoChange = true;
-        }
-        else {
-            isVideoChange = false;
-        }
-    }
 
     //신고하기
     $('#main-toggle').click(function () {
@@ -299,7 +303,7 @@
         console.log("test");
 
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/reply/list',
+            url: '/api/v1/reply/list',
             method: 'GET',
             dataType: 'json',
             data: $("#replyForm").serialize(),
@@ -399,7 +403,7 @@
         $("#reply_description").val(replyText);
 
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/reply/insert',
+            url: '/api/v1/reply/insert',
             method: 'POST',
             dataType: 'json',
             data: $("#replyForm").serialize(),
@@ -415,7 +419,7 @@
 
     function fn_updateVideoReplyState() {
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/reply/delete',
+            url: '/api/v1/reply/delete',
             method: 'POST',
             dataType: 'json',
             data: $("#replyForm").serialize(),
@@ -440,7 +444,7 @@
         }
 
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/short/Favorit',
+            url: '/api/v1/short/Favorit',
             method: 'POST',
             dataType: 'json',
             data: {
@@ -665,7 +669,7 @@
             <h2 class="uk-modal-title uk-text-center">우승예측 투표하기</h2>
         </div>
 
-        <div class="modal-vote-con">
+        <div class="modal-vote-con" id="winPredVideoInfo">
             <div class="mod-team-txt">홍대 스트리트 댄스팀. 춤에 대한 열정이 많은 멤버들로  구성된 팀들의 진짜 실력
                 <span>#스트리트 댄스팀 #홍대춤꾼</span>
             </div>
@@ -673,13 +677,13 @@
 
             <!--투표버튼-->
             <div class="mod-team-btnbx">
-                <div class="mod-btn-black">
-                    <h3 class="mb10">1월 우승</h3>
+                <div class="mod-btn-black" id="winPredMonth">
+                    <h3 class="mb10">2월 우승</h3>
                     <a href="#" onclick="updateWinnerPredict('month');">
                         <div><em uk-icon="icon: vote-check;"></em><span>투표완료</span></div>
                     </a>
                 </div>
-                <div class="mod-btn-blue">
+                <div class="mod-btn-blue" id="winPredWeek">
                     <h3 class="mb10">30번째 우승</h3>
                     <a href="#" onclick="updateWinnerPredict('week');">
                         <div><em uk-icon="icon: vote-ok;"></em><span>투표하기</span></div>
@@ -689,7 +693,7 @@
             </div>
             <!--최근 순위 정보-->
 
-            <div class="mod-w-rank">
+            <div class="mod-w-rank" id="winPredBeforeList">
                 <h3>최근 순위정보</h3>
                 <div class="w-rank-list">
                     <span>22</span>
@@ -744,6 +748,7 @@
     }
     btn_winner.onclick = function() {
         modal_winner.style.display = "block";
+        fn_settingWinPredInfo();
     }
 
 
@@ -838,13 +843,31 @@
 
     }
 
+    function insertUserViewHistory() {
+        $.ajax({
+            url: '/api/v1/short/view/histroy',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                user_id:$("#userId").val()
+                ,video_id:$("#videoId").val()
+            },
+            success: function(response) {
+                fn_getVideoReply();
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+
     function updateJudgeScore() {
         const emElement = document.querySelector('.score em');
         let sum = 0;
         document.querySelectorAll('input[type="range"]').forEach(input => {
             $("#score_"+input.id).val(Math.round((input.value / totalPercentage) * maxVirtualValue));
         });
-        fn_post("judgeScoreForm","judge/insert");
+        fn_post("judgeScoreForm","judge/score/ins");
     }
 
     function updateWinnerPredict(type) {
@@ -902,19 +925,6 @@
 </script>
 
 
-
-<script>
-    // 하단모달
-    /*var modal = document.getElementById('bottom-modal-judge');
-    var btn = document.getElementById("Btn-comment");
-    var span = document.getElementsByClassName("bbtn-close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }*/
-
-</script>
 
 </body>
 

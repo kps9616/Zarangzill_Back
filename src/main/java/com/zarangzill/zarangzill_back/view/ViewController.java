@@ -1,7 +1,14 @@
 package com.zarangzill.zarangzill_back.view;
 
+import com.zarangzill.zarangzill_back.login.service.LoginDTO;
+import com.zarangzill.zarangzill_back.login.service.LoginService;
+import com.zarangzill.zarangzill_back.util.StringUtil;
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,21 +18,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 @Controller
 @CrossOrigin
 public class ViewController {
 
+    @Autowired
+    LoginService loginService;
     private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
 
+    @Autowired
+    HttpSession httpSession;
     //메인 쇼츠 페이지
     @GetMapping("main")
     public ModelAndView mainShots(Model model) {
         ModelAndView mav = new ModelAndView();
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
 
-        logger.info("hello");
         mav.setViewName("main");
         mav.addObject("title","메인입니다.");
+
+        if(loginDTO != null) {
+            mav.addObject("userId", StringUtil.checkNull(loginDTO.getUserID()));
+        }
+
         return mav;
     }
 
@@ -33,10 +50,17 @@ public class ViewController {
     @GetMapping("fans")
     public ModelAndView fans(Model model) {
         ModelAndView mav = new ModelAndView();
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
 
+        if(loginDTO == null) {
+
+            mav.setViewName("login");
+            return mav;
+        }
         logger.info("hello");
         mav.setViewName("fans");
         mav.addObject("title","메인입니다.");
+        mav.addObject("userId",loginDTO.getUserID());
         return mav;
     }
     //월 우승 진행 중 페이지
@@ -44,10 +68,16 @@ public class ViewController {
     public ModelAndView monthWinner(Model model) {
         ModelAndView mav = new ModelAndView();
         LocalDate now = LocalDate.now();
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
 
+        if(loginDTO == null) {
 
-        logger.info("hello");
+            mav.setViewName("login");
+            return mav;
+        }
+
         mav.setViewName("monthWinner");
+        mav.addObject("userId",loginDTO.getUserID());
         mav.addObject("year",now.getYear());
         mav.addObject("month",now.getMonthValue());
         return mav;
@@ -58,8 +88,16 @@ public class ViewController {
         ModelAndView mav = new ModelAndView();
         LocalDate now = LocalDate.now();
 
-        logger.info("hello");
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+
+        if(loginDTO == null) {
+
+            mav.setViewName("login");
+            return mav;
+        }
+
         mav.setViewName("weekWinner");
+        mav.addObject("userId",loginDTO.getUserID());
         mav.addObject("year",now.getYear());
         mav.addObject("month",now.getMonthValue());
         return mav;
@@ -125,9 +163,16 @@ public class ViewController {
     @GetMapping("alarm")
     public ModelAndView mainAlarm(Model model) {
         ModelAndView mav = new ModelAndView();
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
 
+        if(loginDTO == null) {
+
+            mav.setViewName("login");
+            return mav;
+        }
         mav.setViewName("alarm");
         mav.addObject("title","알람입니다.");
+        mav.addObject("userId",loginDTO.getUserID());
         return mav;
     }
 
@@ -169,10 +214,12 @@ public class ViewController {
     }
 
     @GetMapping("subShots")
-    public ModelAndView subShots(Model model) {
+    public ModelAndView subShots(@RequestParam Map ParamMap, Model model) {
         ModelAndView mav = new ModelAndView();
 
         mav.setViewName("subShots");
+
+        mav.addObject("reply_id",ParamMap.get("reply_id"));
         mav.addObject("title","알람입니다.");
         return mav;
     }

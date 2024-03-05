@@ -13,6 +13,6 @@ public class JudgeDAO {
         return session.selectList("JudgeDAO.selectJudgeScoreList", judgeMap);
     }
     public int insertJudgeScore(JudgeDTO paramMap, SqlSessionTemplate session) {
-        return session.selectOne("UserMapper.userList", paramMap);
+        return session.insert("JudgeDAO.insertJudgeScore", paramMap);
     }
 }

@@ -136,5 +136,26 @@
           and twl.prediction_type = 'W'
         order by twl.week_idx desc
     </select>
+    <insert id="insertUserWinPredInfo" parameterType="com.zarangzill.zarangzill_back.winPred.service.WinPredDTO">
+        INSERT INTO tb_winning_prediction_user_list (
+            user_id,
+            video_id,
+            prediction_type,
+            start_date,
+            end_date,
+            flag_use,
+            created_at,
+            updated_at)
+        VALUES(
+              #{userId}
+            , #{videoId}
+            , #{predictionType}
+            , #{startDate}
+            , #{endDate}
+            , 'Y'
+            , NOW()
+            , NOW()
+        )
+    </insert>
 
 </mapper>

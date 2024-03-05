@@ -48,12 +48,14 @@ public class ShotformDAO {
     public List<ShotformDTO> selectVideoRankListFor4(ShotformDTO paramMap, SqlSessionTemplate session) {
         return session.selectList("ShotformDAO.selectVideoRankListFor4", paramMap);
     }
-    public ShotformDTO selectUserCheckWinPredInfo(ShotformDTO paramMap, SqlSessionTemplate session) {
+    public HashMap selectUserCheckWinPredInfo(ShotformDTO paramMap, SqlSessionTemplate session) {
         return session.selectOne("ShotformDAO.selectUserCheckWinPredInfo", paramMap);
     }
-
     public List<ShotformDTO> selectVideoList(ShotformDTO paramMap, SqlSessionTemplate session) {
         return session.selectList("ShotformDAO.selectVideoList", paramMap);
+    }
+    public int insertVideoShareCount(ShotformDTO paramMap, SqlSessionTemplate session) {
+        return session.insert("ShotformDAO.insertVideoShareCount", paramMap);
     }
 
 }

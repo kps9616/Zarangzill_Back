@@ -12,7 +12,7 @@
             created_at,
             updated_at)
         VALUES(
-               (select max(IFNULL(id,0)) + 1 from tb_video_favorite)
+               (select max(IFNULL(id,0)) + 1 from tb_video_favorite as a),
               #{videoId},
               #{userId},
               #{flagUse},
@@ -176,27 +176,28 @@
         order by A.cnt desc
     </select>
 
-    <select id="selectWeekPredictionRangeInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
-        SELECT week_idx
-             , week_start_date
-             , week_end_date
-             , id as prediction_id
+    <select id="selectWeekPredictionRangeInfo" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+        SELECT week_idx as weekIdx
+             , DATE_FORMAT(week_start_date, '%m월 %d일')  as weekStartDate
+             , DATE_FORMAT(week_end_date, '%m월 %d일')   as weekEndDate
+             , week_start_date as searchWeedStartDate
+             , week_end_date as searchWeedEndDate
+             , id as predictionId
         FROM tb_win_prediction_date_list
         WHERE flag_use = 'Y'
     </select>
 
-    <select id="selectVideoRankListFor4" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="java.util.HashMap">
-       SELECT a.week_idx
-             ,a.week_start_date
-             ,a.week_end_date
-             ,a.id as wp_id
-             ,b.win_idx
-             ,CASE WHEN IFNULL(c.id,0) > 0 THEN 'Y' ELSE 'N' END AS flag_week_win
+    <select id="selectVideoRankListFor4" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO" resultType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+       SELECT a.week_idx as weekIdx
+             ,a.week_start_date as weekStartDate
+             ,a.week_end_date as weekEndDate
+             ,a.id as wpId
+             ,IFNULL(b.win_idx,0) as winIdx
+             ,CASE WHEN IFNULL(c.id,0) > 0 THEN 'Y' ELSE 'N' END AS flagWeekWin
         FROM tb_win_prediction_date_list a
-                 LEFT OUTER JOIN tb_video_win_rank_list b on a.week_idx = b.week_idx and b.win_type = 'W'
+                 LEFT OUTER JOIN tb_video_win_rank_list b on a.week_idx = b.week_idx and b.win_type = 'W' and b.video_id  = #{videoId}
                  left outer join tb_winner_list c on c.week_idx  = b.week_idx and b.video_id  = c.video_id
         WHERE flag_after_use  = 'Y'
-          and b.video_id  = #{videoId}
         order by flag_after_idx desc
     </select>
 
@@ -217,8 +218,8 @@
                     where user_id = #{userId}
                       and video_id = #{videoId}
                       and prediction_type = 'W'
-                      and start_date = #{startWeekDate}
-                      and end_date  = #{endWeekDate}
+                      and start_date = #{weekStartDate}
+                      and end_date  = #{weekEndDate}
                 ),0) > 0 THEN 'Y' ELSE 'N' END AS flag_check_week
     </select>
 
@@ -300,5 +301,20 @@
         where tv.flag_use = 'Y'
         AND tv.flag_open = 'Y'
     </select>
+
+
+    <insert id="insertVideoShareCount" parameterType="com.zarangzill.zarangzill_back.shortform.service.ShotformDTO">
+
+        INSERT INTO tb_video_share (
+            video_id,
+            user_id,
+            created_at
+        )
+        VALUES(
+              #{videoId},
+              #{userId},
+              NOW()
+          )
+    </insert>
 
 </mapper>

@@ -53,9 +53,14 @@
         where tcf.user_id in (
             select user_id
             from tb_channel_fan
-            where channel_id in (${channelIds})
-              and user_id != #{userId}
-            ) AND tch.id not in (${channelIds})
+            where user_id != #{userId}
+            <if test='channelIds != null and !"".equals(channelIds)'>
+              and channel_id in (${channelIds})
+            </if>
+            )
+            <if test='channelIds != null and !"".equals(channelIds)'>
+            AND tch.id not in (${channelIds})
+            </if>
     </select>
 
     <delete id="deleteUserFanChannel" parameterType="com.zarangzill.zarangzill_back.channel.service.ChannelDTO">

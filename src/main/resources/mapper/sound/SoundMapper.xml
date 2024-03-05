@@ -56,7 +56,7 @@
         Inner Join tb_sound_favorite C ON A.id = C.sound_id AND C.flag_use = 'Y'
         <where>
             <if test='user_id != null and user_id != ""'>
-                AND A.creator = #{user_id}
+                AND C.user_id = #{user_id}
             </if>
         </where>
         ORDER BY A.updated_at DESC, A.created_at DESC

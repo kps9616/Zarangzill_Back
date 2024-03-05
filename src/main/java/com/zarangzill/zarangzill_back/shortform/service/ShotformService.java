@@ -20,7 +20,7 @@ public interface ShotformService {
     List<ShotformDTO> selectSearchKeyWordDetailList(ShotformDTO paramMap);
     ShotformDTO selectWeekPredictionRangeInfo(ShotformDTO paramMap);
     List<ShotformDTO> selectVideoRankListFor4(ShotformDTO paramMap);
-    ShotformDTO selectUserCheckWinPredInfo(ShotformDTO paramMap);
+    HashMap selectUserCheckWinPredInfo(ShotformDTO paramMap);
     List<ShotformDTO> selectVideoList(ShotformDTO paramMap);
-
+    int insertVideoShareCount(ShotformDTO paramMap);
 }

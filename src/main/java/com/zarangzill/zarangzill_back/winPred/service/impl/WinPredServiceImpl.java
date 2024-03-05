@@ -28,6 +28,8 @@ public class WinPredServiceImpl implements WinPredService {
     public List<HashMap> selectWinPredWeekEndList(WinPredDTO paramMap) {
         return winPredDAO.selectWinPredWeekEndList(paramMap, session);
     }
-
+    public int insertUserWinPredInfo(WinPredDTO paramMap) {
+        return winPredDAO.insertUserWinPredInfo(paramMap, session);
+    }
 
 }

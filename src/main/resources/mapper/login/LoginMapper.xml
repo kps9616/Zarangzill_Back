@@ -8,6 +8,7 @@
             , name
             , number
             , email
+            , profile_image as picture
     </sql>
     <select id="loginUser" parameterType="com.zarangzill.zarangzill_back.login.service.LoginDTO" resultType="com.zarangzill.zarangzill_back.login.service.LoginDTO">
             <include refid="selectLogin"/>

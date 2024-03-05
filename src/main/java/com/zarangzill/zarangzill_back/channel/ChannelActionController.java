@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
 @CrossOrigin
+@RestController
 @RequestMapping("/api/v1")
 public class ChannelActionController {
 
@@ -63,8 +63,7 @@ public class ChannelActionController {
 
         System.out.println("test start");
         List<HashMap> result = channelService.selectFanChannelList(param);
-        System.out.println(result.get(0));
-        System.out.println("result end");
+
         String channelIds = "";
 
         if(null != result && !result.isEmpty()) {

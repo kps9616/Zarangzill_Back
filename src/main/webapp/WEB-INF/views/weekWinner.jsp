@@ -32,7 +32,7 @@
     $( document ).ready(function() {
         fn_setWeekOfDay();
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/win/week/list',
+            url: '/api/v1/win/week/list',
             method: 'GET',
             dataType: 'json',
             data: $("#winPredForm").serialize(),

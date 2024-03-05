@@ -4,7 +4,6 @@ import com.zarangzill.zarangzill_back.shortform.service.ShotformDTO;
 import com.zarangzill.zarangzill_back.shortform.service.ShotformService;
 import com.zarangzill.zarangzill_back.util.StringUtil;
 import org.jcodec.api.FrameGrab;
-import org.jcodec.api.JCodecException;
 import org.jcodec.common.io.NIOUtils;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
@@ -12,15 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -30,7 +26,6 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin
 public class ShortformActionController {
 
     @Value("${upload.Path}")
@@ -112,8 +107,8 @@ public class ShortformActionController {
     @GetMapping("short/winPred/info")
     public Map<String, Object> getWinPredUserInfo(@RequestParam HashMap map) {
         ShotformDTO params = new ShotformDTO();
-        String videoId = StringUtil.checkNull(map.get("videoId"));
-        String userId = StringUtil.checkNull(map.get("userId"));
+        String videoId = StringUtil.checkNull(map.get("video_id"));
+        String userId = StringUtil.checkNull(map.get("user_id"));
 
         params.setVideoId(videoId);
         params.setUserId(userId);
@@ -128,10 +123,10 @@ public class ShortformActionController {
 
         params.setStartDate(year + month  + "01");
         params.setEndDate(year + month  +  eDay);
-        params.setWeekStartDate(reangeInfo.getWeekStartDate());
-        params.setWeekEndDate(reangeInfo.getWeekEndDate());
+        params.setWeekStartDate(reangeInfo.getSearchWeedStartDate());
+        params.setWeekEndDate(reangeInfo.getSearchWeedEndDate());
 
-        ShotformDTO userPredInfo = shotformService.selectUserCheckWinPredInfo(params);
+        HashMap userPredInfo = shotformService.selectUserCheckWinPredInfo(params);
 
         Map<String, Object> response = new HashMap<String, Object>();
         response.put("code", "200");
@@ -250,8 +245,8 @@ public class ShortformActionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("short/Favorit")
-    public Map<String, Object> favorit(@RequestParam HashMap map) {
+    @PostMapping("/short/Favorit")
+    public Map<String, Object> favorite(@RequestParam HashMap map) {
         ShotformDTO param = new ShotformDTO();
         param.setUserId(StringUtil.checkNull(map.get("user_id")));
         param.setVideoId(StringUtil.checkNull(map.get("video_id")));
@@ -349,6 +344,20 @@ public class ShortformActionController {
             response.put("resultList", result);
             response.put("resultListSize", result.size());
         }
+        return response;
+    }
+    @PostMapping("short/share/insert/count")
+    public Map<String, Object> insertVideoShareCount(@RequestParam HashMap map) {
+        ShotformDTO param = new ShotformDTO();
+        param.setUserId(StringUtil.checkNull(map.get("user_id")));
+        param.setVideoId(StringUtil.checkNull(map.get("video_id")));
+        shotformService.insertVideoShareCount(param);
+
+        //심사 평가 저장
+        Map<String, Object> response = new HashMap<String, Object>();
+        response.put("code", "200");
+        response.put("message", "success");
+
         return response;
     }
 

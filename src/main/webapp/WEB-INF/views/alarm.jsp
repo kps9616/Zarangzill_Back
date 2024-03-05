@@ -152,7 +152,7 @@
  <div id="invte-modal" class="uk-flex-top" uk-modal>
 
      <form id="channelForm" name="channelForm" method="post">
-         <input type="hidden" id="userId" name="userId" value="1"/>
+         <input type="hidden" id="userId" name="userId" value="${userId}"/>
          <input type="hidden" id="channelId" name="channelId" value="1"/>
      </form>
 

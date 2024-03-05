@@ -37,7 +37,7 @@
     function fn_createDiv() {
 
         $.ajax({
-            url: 'http://1.226.83.35:9090/api/v1/win/week/list/old',
+            url: '/api/v1/win/week/list/old',
             method: 'GET',
             dataType: 'json',
             data: $("#weekForm").serialize(),

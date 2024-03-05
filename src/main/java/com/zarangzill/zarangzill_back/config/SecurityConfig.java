@@ -66,6 +66,7 @@ public class SecurityConfig {
                         .maxSessionsPreventsLogin(false)
                         .expiredUrl("/login?error=true&exception=Have been attempted to login from a new place. or session expired") // 세션이 만료된 경우 이동 할 페이지를 지정
                 );
+        http.csrf().disable();
 
         return http.build();
     }

@@ -2,9 +2,11 @@ package com.zarangzill.zarangzill_back.mypage;
 
 import com.zarangzill.zarangzill_back.board.service.BoardService;
 import com.zarangzill.zarangzill_back.judge.service.JudgeService;
+import com.zarangzill.zarangzill_back.login.service.LoginDTO;
 import com.zarangzill.zarangzill_back.video.reply.service.ReplyService;
 import com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoService;
 import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,17 +26,26 @@ public class MypageViewController {
     private JudgeService judgeService;
     @Autowired
     private ReplyService replyService;
+    @Autowired
+    HttpSession httpSession;
 
     //마이페이지
     @RequestMapping(value="/mypageView")
     public String mypageView(@RequestParam Map ParamMap, Model model) {
+
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+
+        model.addAttribute("loginDTO",loginDTO);
+
         return "/mypage/mypageView";
     }
 
     //최근 본 영상
     @RequestMapping(value="/recentViewVideo")
     public String recentViewVideo(@RequestParam Map ParamMap, Model model) {
-        ParamMap.put("user_id" , "1");
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
+
         model.addAttribute("videoViewHistoryList", videoViewHistoryService.selectVideoViewHistoryList(ParamMap));
         return "/mypage/recentViewVideo";
     }
@@ -59,7 +70,8 @@ public class MypageViewController {
     //영상댓글
     @RequestMapping(value="/videoReplyView")
     public String videoReplyView(@RequestParam Map ParamMap, Model model) {
-        ParamMap.put("user_id", "1");
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
         model.addAttribute("videoReplyList", replyService.selectVideoReplyList(ParamMap));
         return "/mypage/videoReplyView";
     }

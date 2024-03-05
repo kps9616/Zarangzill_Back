@@ -91,7 +91,7 @@
                             </div>
                             <div class="comment-view">
                                 <span uk-icon="icon:comment-arrow"></span>
-                                <a href="25-2댓글.html?reply_id=${videoReplyInfo.reply_id}">${videoReplyInfo.reply_description}</a>
+                                <a href="${path}/subShots?reply_id=${videoReplyInfo.reply_id}">${videoReplyInfo.reply_description}</a>
                             </div>
                         </div>
                     </li>

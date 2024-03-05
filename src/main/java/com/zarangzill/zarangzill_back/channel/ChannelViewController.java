@@ -2,6 +2,8 @@ package com.zarangzill.zarangzill_back.channel;
 
 import com.zarangzill.zarangzill_back.channel.service.ChannelDTO;
 import com.zarangzill.zarangzill_back.channel.service.ChannelService;
+import com.zarangzill.zarangzill_back.login.service.LoginDTO;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +17,16 @@ import java.util.Map;
 public class ChannelViewController {
     @Autowired
     private ChannelService channelService;
-    
+    @Autowired
+    HttpSession httpSession;
+
+
     // 내채널
     @RequestMapping(value="/myChannelListView")
     public String myChannel(@RequestParam Map paramMap, Model model) {
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
         ChannelDTO channelDto = new ChannelDTO();
-        channelDto.setUserId("1");
+        channelDto.setUserId(loginDTO.getUserID());
         model.addAttribute("usrChannelList", channelService.selectUsrChannelList(channelDto));
         return "channel/myChannelListView";
     }
