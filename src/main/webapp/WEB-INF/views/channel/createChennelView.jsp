@@ -9,21 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
-    <script src="${path}/js/uikit.js"></script>
-    <script src="${path}/js/uikit-icons.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
+    <script src="${path}/resources/js/uikit.js"></script>
+    <script src="${path}/resources/js/uikit-icons.js"></script>
 
-    <script src="${path}/js/jquery.min.js"></script>
+    <script src="${path}/resources/js/jquery.min.js"></script>
     <title>자랑질</title>
     
 </head>
 <body>
     <div class="top-bx bline">
-        <a href="javascript:history.back();" class="top-left" >취소</a>
-       채널 만들기
+        <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
+        채널 만들기
     </div>
     <div class="container"> 
         <div class="ch-create mt40 mb40">

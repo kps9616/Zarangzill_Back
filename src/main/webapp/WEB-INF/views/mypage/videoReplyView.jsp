@@ -53,9 +53,9 @@
                             alert("삭제 실패했습니다.");
                         }
                     }, // success
-                    beforeSend : function(xhr){
+                    /*beforeSend : function(xhr){
                         xhr.setRequestHeader(header, token);
-                    },
+                    },*/
                     error : function(xhr, status) {
                         alert(xhr + " : " + status);
                     }
@@ -98,7 +98,7 @@
                 </c:when>
                     <c:otherwise>
                         <li>
-                            <c:if test="${videoReplyInfo.reply_creator_id eq sessionScope.id}">
+                            <c:if test="${videoReplyInfo.reply_creator_id eq sessionScope.loginDto.userID}">
                             <em>
                                 <a href="#" class="c_red" uk-icon="icon: close" onclick="fnDeleteVideoReply(${videoReplyInfo.reply_id})"></a>
                             </em>

@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
         setLoginDto.setEmail(email);
         LoginDTO loginDto = loginMapper.loginUser(setLoginDto);
 
-        if(loginDto == null || loginDto.getUserID().isEmpty()){
+        if(loginDto == null){
             return Optional.empty();
         }
         return Optional.of(loginDto);

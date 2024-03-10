@@ -50,9 +50,9 @@
                             alert("삭제 실패했습니다.");
                         }
                     }, // success
-                    beforeSend : function(xhr){
+                    /*beforeSend : function(xhr){
                         xhr.setRequestHeader(header, token);
-                    },
+                    },*/
                     error : function(xhr, status) {
                         alert(xhr + " : " + status);
                     }
@@ -75,7 +75,7 @@
                 <c:choose>
                 <c:when test="${fanBoardReplyInfo.board_flag_use eq 'Y'}">
                     <li>
-                        <c:if test="${fanBoardReplyInfo.reply_creator eq sessionScope.id}">
+                        <c:if test="${fanBoardReplyInfo.reply_creator eq sessionScope.loginDto.userID}">
                         <em>
                             <a href="#" class="c_red" uk-icon="icon: close" onclick="fnDeleteBoardReply(${fanBoardReplyInfo.reply_id})"></a>
                         </em>

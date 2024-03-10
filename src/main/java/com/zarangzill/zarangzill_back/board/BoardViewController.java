@@ -82,55 +82,64 @@ public class BoardViewController {
 
     //팬게시글
     @RequestMapping(value="/fanBoardListView")
-    public String fanBoardListView(@RequestParam Map ParamMap, Model model) {
+    public String fanBoardListView(@RequestParam Map paramMap, Model model) {
 
         LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
-        ParamMap.put("user_id" , loginDTO.getUserID());
+        paramMap.put("user_id" , loginDTO.getUserID());
 
-        model.addAttribute("fanBoardList", boardService.selectFanBoardList(ParamMap));
+        model.addAttribute("fanBoardList", boardService.selectFanBoardList(paramMap));
         return "/fan/fanBoardListView";
     }
 
     //팬게시물
     @RequestMapping(value="/fanBoardView")
-    public String fanBoardView(@RequestParam Map ParamMap, Model model) {
+    public String fanBoardView(@RequestParam Map paramMap, Model model) {
         LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
-        ParamMap.put("user_id" , loginDTO.getUserID());
-        model.addAttribute("fanBoardInfo", boardService.selectFanBoardInfo(ParamMap));
+        paramMap.put("user_id" , loginDTO.getUserID());
+        model.addAttribute("fanBoardInfo", boardService.selectFanBoardInfo(paramMap));
         return "fan/fanBoardView";
     }
 
     //팬댓글
     @RequestMapping(value="/fanBoardRelpyListView")
-    public String fanBoardRelpyListView(@RequestParam Map ParamMap, Model model) {
+    public String fanBoardRelpyListView(@RequestParam Map paramMap, Model model) {
         LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
-        ParamMap.put("user_id" , loginDTO.getUserID());
-        model.addAttribute("fanBoardReplyList", boardService.selectFanBoardReplyList(ParamMap));
+        paramMap.put("user_id" , loginDTO.getUserID());
+        model.addAttribute("fanBoardReplyList", boardService.selectFanBoardReplyList(paramMap));
         return "fan/fanBoardRelpyListView";
     }
 
     //제작자센터 목록
     @RequestMapping(value="/producerCentorListView")
-    public String producerCentorListView(@RequestParam Map ParamMap, Model model) {
+    public String producerCentorListView(@RequestParam Map paramMap, Model model) {
         LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
-        ParamMap.put("user_id" , loginDTO.getUserID());
-        model.addAttribute("fanBoardReplyList", boardService.selectBoardList(ParamMap));
+        paramMap.put("user_id" , loginDTO.getUserID());
+        model.addAttribute("producerCentorList", boardService.selectBoardList(paramMap));
         return "board/producerCentorListView";
     }
 
     //제작자센터 목록
     @RequestMapping(value="/producerCentorView")
-    public String producerCentorView(@RequestParam Map ParamMap, Model model) {
+    public String producerCentorView(@RequestParam Map paramMap, Model model) {
         LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
-        ParamMap.put("user_id" , loginDTO.getUserID());
-        model.addAttribute("producerCentorList", boardService.selectBoardInfo(ParamMap));
+        paramMap.put("user_id" , loginDTO.getUserID());
+        model.addAttribute("producerCentorInfo", boardService.selectBoardInfo(paramMap));
         return "board/producerCentorView";
     }
 
-    //온라인문의
-    @RequestMapping(value="/onlineQnAView")
-    public String onlineQnAView(@RequestParam Map paramMap, Model model) {
+    //온라인문의 목록
+    @RequestMapping(value="/onlineQnAListView")
+    public String onlineQnAListView(@RequestParam Map paramMap, Model model) {
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        paramMap.put("user_id" , loginDTO.getUserID());
         model.addAttribute("onlineQnAList", boardService.selectBoardList(paramMap));
+        return "board/onlineQnAListView";
+    }
+
+    //온라인문의
+    @RequestMapping("/onlineQnAView")
+    public String onlineQnAView(@RequestParam Map paramMap, Model model) {
+        model.addAttribute("onlineQnAInfo", boardService.selectBoardInfo(paramMap));
         return "board/onlineQnAView";
     }
 

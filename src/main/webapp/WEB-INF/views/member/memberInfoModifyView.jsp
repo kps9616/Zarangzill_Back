@@ -48,9 +48,9 @@
                     url : "/member/updateMember", // 요기에
                     type : 'POST',
                     data : formData,
-                    beforeSend : function(xhr){
+                    /*beforeSend : function(xhr){
                         xhr.setRequestHeader(header, token);
-                    },
+                    },*/
                     success : function(data) {
                         var jsonObj = JSON.parse(data);
                     }, // success
@@ -70,9 +70,9 @@
                 success : function(data) {
                     var jsonObj = JSON.parse(data);
                 }, // success
-                beforeSend : function(xhr){
+                /*beforeSend : function(xhr){
                     xhr.setRequestHeader(header, token);
-                },
+                },*/
                 error : function(xhr, status) {
                     alert(xhr + " : " + status);
                 }
@@ -132,6 +132,12 @@
                 </li>
                 <li>
                     만 19세 이상 광고수익 가능하며 허위 기재 시 이용이 제한 될 수 있습니다.
+                </li>
+                <li>
+                    <h3>휴대폰번호</h3>
+                    <div class="hp-login mb20 mt10">
+                        <input class="uk-input" type="text" id="number" name="number" value="${number}" aria-label="Input">
+                    </div>
                 </li>
                 <%--<li>
                     <h3>휴대폰번호</h3>

@@ -48,9 +48,9 @@
                         alert("삭제 실패했습니다.");
                     }
                 }, // success
-                beforeSend : function(xhr){
+                /*beforeSend : function(xhr){
                     xhr.setRequestHeader(header, token);
-                },
+                },*/
                 error : function(xhr, status) {
                     alert(xhr + " : " + status);
                 }
@@ -63,15 +63,15 @@
 </head>
 <body>
     <form id="form1" name="form1" method="post">
-        <input type="hidden" name="board_id" id="board_id" value="${qnaInfo.id}">
+        <input type="hidden" name="board_id" id="board_id" value="${qnaInfo.board_id}">
         <input type="hidden" name="flag_use" id="flag_use">
     </form>
      <!--탑-->
      <div class="top-bx bline">
         <a href="javascript:history.back();" class="top-left" uk-icon="icon: chevron-left; ratio:1.5"></a>
         문의/제안
-        <c:if test="${qnaInfo.creator eq 1}">
-            <a href="#modal-center" class="top-right pd15 c_red" uk-icon="icon: trash" onclick="setBoardId(${qnaInfo.id})" uk-toggle></a>
+        <c:if test="${qnaInfo.creator eq sessionScope.loginDto.userID}">
+            <a href="#modal-center" class="top-right pd15 c_red" uk-icon="icon: trash" onclick="setBoardId(${qnaInfo.board_id})" uk-toggle></a>
         </c:if>
     </div>
     <div class="container"> 

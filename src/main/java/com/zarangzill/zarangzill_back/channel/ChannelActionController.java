@@ -22,7 +22,7 @@ public class ChannelActionController {
     @GetMapping("/channel/usr/list")
     public Map<String, Object> getUsrList(@RequestParam("userId") String userId) {
         ChannelDTO param = new ChannelDTO();
-        param.setUserId(userId);
+        param.setUserId(Integer.parseInt(userId));
 
         List<HashMap> resultList = channelService.selectUsrChannelList(param);
 
@@ -59,7 +59,7 @@ public class ChannelActionController {
     @GetMapping("/channel/fans/list")
     public Map<String, Object> getFansList(@RequestParam("userId") String userId) {
         ChannelDTO param = new ChannelDTO();
-        param.setUserId(userId);
+        param.setUserId(Integer.parseInt(userId));
 
         System.out.println("test start");
         List<HashMap> result = channelService.selectFanChannelList(param);

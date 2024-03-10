@@ -40,9 +40,9 @@
                 url:'/board/createBoard',   //데이터를 주고받을 파일 주소
                 data:formData,   //위의 변수에 담긴 데이터를 전송해준다.
                 dataType:'json',   //html 파일 형식으로 값을 담아온다.
-                beforeSend : function(xhr){
+                /*beforeSend : function(xhr){
                     xhr.setRequestHeader(header, token);
-                },
+                },*/
                 success : function(data){   //파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
                     alert("저장했습니다.");
                     location.reload();
@@ -76,7 +76,7 @@
                 <ul class="bbs_list mt40">
                     <c:forEach var="onlineQnAInfo" items="${onlineQnAList}">
                     <li>
-                        <a href="/board/inquirySuggestionView?id=${onlineQnAInfo.id}" class="tit-link">
+                        <a href="/board/onlineQnAView?board_id=${onlineQnAInfo.board_id}" class="tit-link">
                             <c:choose>
                                 <c:when test="${empty(onlineQnAInfo.updated_at)}">
                                     <em>${onlineQnAInfo.created_at}</em>

@@ -44,9 +44,9 @@
                     alert("저장했습니다.");
                     location.reload();
                 }, // success
-                beforeSend : function(xhr){
+                /*beforeSend : function(xhr){
                     xhr.setRequestHeader(header, token);
-                },
+                },*/
                 error: function (request, status, error) {
                     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 
@@ -73,9 +73,9 @@
                         alert("삭제 실패했습니다.");
                     }
                 }, // success
-                beforeSend : function(xhr){
+                /*beforeSend : function(xhr){
                     xhr.setRequestHeader(header, token);
-                },
+                },*/
                 error : function(xhr, status) {
                     alert(xhr + " : " + status);
                 }
@@ -97,6 +97,7 @@
             <form class="form-signin" id="boraForm">
                 <input class="uk-input" type="text" id="subject" name="subject" placeholder="제목을 입력해주세요" aria-label="Input">
                 <input class="uk-input" type="hidden" id="type" name="type" value="4" aria-label="Input">
+                <input class="uk-input" type="hidden" id="creator" name="creator" value="${sessionScope.loginDto.userID}" aria-label="Input">
                 <textarea class="inp_txtr mb20" id="description" name="description" placeholder="문의 내용을 입력해주세요"></textarea>
 
                 <button type="button" class="bt_gradient w100" onclick="saveBoard();">문의 등록</button>
@@ -131,7 +132,7 @@
 
                         </a>
 
-                        <c:if test="${qnaInfo.creator eq sessionScope.id}">
+                        <c:if test="${qnaInfo.creator eq sessionScope.loginDto.userID}">
                             <a href="#modal-center" class="uk-icon-link" uk-icon="trash" onclick="setBoardId(${qnaInfo.board_id})" uk-toggle></a>
                         </c:if>
                     </li>

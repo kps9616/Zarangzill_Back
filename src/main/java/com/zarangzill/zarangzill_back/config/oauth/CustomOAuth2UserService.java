@@ -83,7 +83,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 		LoginDTO setLoginDTO = new LoginDTO();
 		setLoginDTO.setEmail(oAuthAttributes.getEmail());
 		LoginDTO loginDTO = loginService.getUserInfo(setLoginDTO);
-		if(loginDTO == null || loginDTO.getUserID().isEmpty()){
+		if(loginDTO == null){
 			return "N";
 		}
 		return "Y";

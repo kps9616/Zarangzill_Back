@@ -47,9 +47,9 @@
                             alert("삭제 실패했습니다.");
                         }
                     }, // success
-                    beforeSend : function(xhr){
+                    /*beforeSend : function(xhr){
                         xhr.setRequestHeader(header, token);
-                    },
+                    },*/
                     error : function(xhr, status) {
                         alert(xhr + " : " + status);
                     }
@@ -95,7 +95,7 @@
                             <div class="chbbslist-name">
                                 ${boardReplyInfo.userNm}<span>${boardReplyInfo.date_diff}일 전</span>
                                 <c:choose>
-                                    <c:when test="${fanBoardReplyInfo.reply_creator eq sessionScope.id}">
+                                    <c:when test="${fanBoardReplyInfo.reply_creator eq sessionScope.loginDto.userID}">
                                         <em>
                                             <a href="#" class="c_red" uk-icon="icon: close" onclick="fnDeleteBoardReply(${boardReplyInfo.reply_id})"></a>
                                         </em>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zarangzill.zarangzill_back.winProduct.service.mapper.WinProductMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <sql id="selectWinProduct">
+        SELECT
+            A.id AS winProduct_id
+             , A.subject
+             , A.description
+             , A.thumbnail
+             , A.price
+             , DATE_FORMAT(A.created_at, '%Y-%m-%d %H:%i') AS created_at
+             , DATE_FORMAT(A.updated_at, '%Y-%m-%d %H:%i') AS updated_at
+        From zarangzill.tb_winning_goods_list
+
+            FROM zarangzill.tb_winning_goods_list A
+    </sql>
+
+    <select id="selectWinProductList" parameterType="HashMap" resultType="HashMap">
+        <include refid="selectWinProduct"/>
+        <where>
+            <if test='winProduct_id != null and winProduct_id != ""'>
+                AND A.id = #{winProduct_id}
+            </if>
+            <if test='startSrchDate != null and startSrchDate != "" and endSrchDate != null and endSrchDate != ""'>
+                AND DATE_FORMAT(A.created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
+            </if>
+        </where>
+        ORDER BY A.updated_at DESC, A.created_at DESC
+    </select>
+
+    <update id="updateWinProduct" parameterType="com.zarangzill.zarangzill_back.winProduct.service.WinProductDTO">
+        UPDATE zarangzill.tb_winning_goods_list
+        SET
+            updated_at = sysdate()
+        <if test='subject != null and subject != ""'>
+            , subject = #{subject}
+        </if>
+        <if test='description != null and description != ""'>
+          , description = #{description}
+        </if>
+        <if test='thumbnail != null and thumbnail != ""'>
+          , thumbnail = #{thumbnail}
+        </if>
+        <if test='price != null and price != ""'>
+          , price = #{price}
+        </if>
+        WHERE id =  #{winProduct_id}
+    </update>
+
+    <delete id="deleteWinProduct" parameterType="com.zarangzill.zarangzill_back.winProduct.service.WinProductDTO">
+        DELETE
+        FROM zarangzill.tb_winning_goods_list
+        WHERE id = #{winProduct_id}
+    </delete>
+
+    <insert id="createWinProduct" parameterType="com.zarangzill.zarangzill_back.winProduct.service.WinProductDTO">
+        INSERT INTO zarangzill.tb_winning_goods_list
+        (subject, description, thumbnail, price, created_at)
+        VALUES
+            (#{subject}, #{description}, #{thumbnail}, #{price}, sysdate());
+
+    </insert>
+
+</mapper>

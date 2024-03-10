@@ -14,7 +14,7 @@ public class ChannelDTO {
     private String channelId;
 
     @JsonProperty("user_id")
-    private String userId;
+    private int userId;
 
     @JsonProperty("win_cnt")
     private int winCnt;

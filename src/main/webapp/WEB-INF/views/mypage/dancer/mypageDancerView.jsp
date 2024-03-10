@@ -125,7 +125,7 @@
 
         <div class="my-link mt5">
         <a href="${path}/board/producerCentorListView?type=80"> 제작자 센터<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="${path}/board/onlineQnAView?type=90"> 온라인 문의<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/board/onlineQnAListView?type=90"> 온라인 문의<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
 
 

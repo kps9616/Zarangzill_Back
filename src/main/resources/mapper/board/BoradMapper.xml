@@ -39,10 +39,10 @@
         <include refid="selectBoard"/>
         <where>
             <if test='board_id != null and board_id != ""'>
-                AND id = #{board_id}
+                AND A.id = #{board_id}
             </if>
             <if test='type != null and type != ""'>
-                AND type = #{type}
+                AND A.type = #{type}
             </if>
         </where>
     </select>
@@ -80,7 +80,7 @@
         INSERT INTO zarangzill.tb_board
         (subject, description, type, flag_push, flag_use, creator, created_at)
         VALUES
-            (#{subject}, #{description}, #{type}, #{flag_push}, #{flag_use}, #{creator}, sysdate());
+            (#{subject}, #{description}, #{type}, #{flag_push}, 'Y', #{creator}, sysdate());
 
     </insert>
 
