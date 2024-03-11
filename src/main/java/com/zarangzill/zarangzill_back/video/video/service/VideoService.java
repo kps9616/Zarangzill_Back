@@ -7,6 +7,7 @@ public interface VideoService {
 
 
     List<Map> selectVideoList(Map videoMap);
+    List<Map> selectMyVideoList(Map videoMap);
     Map selectVideoInfo(Map videoMap);
     Map createVideo(VideoDTO VideoDto);
     //Map updateVideo(VideoDTO VideoDto);

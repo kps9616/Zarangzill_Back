@@ -18,6 +18,9 @@ public class VideoServiceImpl implements VideoService {
     public List<Map> selectVideoList(Map videoMap) {
         return videoMapper.selectVideoList(videoMap);
     }
+    public List<Map> selectMyVideoList(Map videoMap) {
+        return videoMapper.selectMyVideoList(videoMap);
+    }
 
     public Map selectVideoInfo(Map videoMap) {
         return videoMapper.selectVideoInfo(videoMap);

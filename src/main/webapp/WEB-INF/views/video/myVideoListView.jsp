@@ -29,10 +29,22 @@
         </div>
          <div class="container">
             <div class="ea-sort">
-                <div class="ea-left">영상 : 2개</div>
+                <div class="ea-left">영상 : ${myVideoList.size()}개</div>
                 <div class="sort-right">
-                    <label><input class="uk-checkbox" type="checkbox">월 우승</label>
-                    <label><input class="uk-checkbox" type="checkbox"> 주 우승</label>
+                    <c:choose>
+                    <c:when test="${win_type eq 'M' }">
+                        <label><input class="uk-checkbox" type="checkbox" checked="checked"  onclick="window.location.href='/video/myVideoListView'">월 우승</label>
+                        <label><input class="uk-checkbox" type="checkbox" onclick="window.location.href='/video/myVideoListView?win_type=W'"> 주 우승</label>
+                    </c:when>
+                    <c:when test="${win_type eq 'W' }">
+                        <label><input class="uk-checkbox" type="checkbox" onclick="window.location.href='/video/myVideoListView?win_type=W'">월 우승</label>
+                        <label><input class="uk-checkbox" type="checkbox" checked="checked"  onclick="window.location.href='/video/myVideoListView'"> 주 우승</label>
+                    </c:when>
+                        <c:otherwise>
+                            <label><input class="uk-checkbox" type="checkbox"  onclick="window.location.href='/video/myVideoListView?win_type=M'">월 우승</label>
+                            <label><input class="uk-checkbox" type="checkbox" onclick="window.location.href='/video/myVideoListView?win_type=W'"> 주 우승</label>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             <div class="mych-mov">
@@ -62,26 +74,6 @@
                     </c:forEach>
                 </c:when>
                     <c:otherwise>
-                        <li>
-                            <div class="mych-mov-img">
-                                <a href="${path}/107쇼츠.html"><img src="${path}/upload/thumb/thum01.jpg"></a>
-                            </div>
-                            <div class="mych-mov-info">
-                                <a href="${path}/94-2영상관리.html">
-                                    <div class="mych-info-tit">
-                                        완벽한 궁극의 아이돌 ✧트와이스✧<span> #TWICE #트와이스</span>
-                                    </div>
-                                    <div class="mych-info-badge b_green">주 우승 2023.07</div>
-                                    <div class="mych-view-info">
-                                        <p><span uk-icon="icon: ban;" class="c_red"></span>신고로 제한된 영상</p>
-                                        <p><span>뷰</span>14,322</p>
-                                        <p><span>심사</span>830 / 55명(27위)</p>
-                                        <p><span>즐겨찾기</span>236</p>
-                                        <p><span>우승예측</span>214</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
                     </c:otherwise>
                 </c:choose>
 

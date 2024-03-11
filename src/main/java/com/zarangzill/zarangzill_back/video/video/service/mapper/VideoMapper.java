@@ -9,6 +9,7 @@ import java.util.Map;
 @Mapper
 public interface VideoMapper {
     List<Map> selectVideoList(Map videoMap);
+    List<Map> selectMyVideoList(Map videoMap);
     Map selectVideoInfo(Map videoMap);
     int createVideo(VideoDTO videoDto);
     int updateVideo(VideoDTO videoDto);

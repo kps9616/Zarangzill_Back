@@ -5,42 +5,57 @@
     <sql id="selectVideo">
         SELECT
             A.id AS video_id
-            , A.sound_id
-            , A.channel_id
-            , A.video_path
-            , A.video_thumbnail
-            , A.video_tags
-            , A.video_description
-            , A.flag_open
-            , A.view_cnt
-            , A.flag_use
-            , A.created_at
-            , A.updated_at
-            , B.rank_id
-            , B.win_type
-            , B.week_idx
-            , F.win_date
-            , F.month_idx
-            , F.week_idx
-            , F.total_score_1
-            , F.total_score_2
-            , F.total_score_3
-            , F.judge_cnt
+             , A.sound_id
+             , A.channel_id
+             , A.video_path
+             , A.video_thumbnail
+             , A.video_tags
+             , A.video_description
+             , A.flag_open
+             , A.view_cnt
+             , A.flag_use
+             , A.created_at
+             , A.updated_at
     </sql>
     <sql id="fromVideo">
         FROM tb_video A
-            Left Join tb_video_win_rank_list B ON A.id = B.video_id
-            Left Join tb_channel C ON A.channel_id = C.id
-            Left Join tb_member D ON C.user_id = D.id
-            Left Join tb_winner_list F ON A.id = F.video_id AND D.id = F.user_id AND F.week_idx = B.week_idx
-
+                 Left Join tb_channel B ON A.channel_id = B.id
+                 Left Join tb_member C ON B.user_id = C.id
     </sql>
 
     <select id="selectVideoList" parameterType="HashMap" resultType="HashMap">
         <include refid="selectVideo"/>
+        <include refid="fromVideo"/>
         <where>
             <if test='user_id != null and user_id != ""'>
-                AND D.id = #{user_id}
+                AND C.id = #{user_id}
+            </if>
+        </where>
+        ORDER BY A.updated_at DESC, A.created_at DESC
+    </select>
+
+    <select id="selectMyVideoList" parameterType="HashMap" resultType="HashMap">
+        <include refid="selectVideo"/>
+        , D.rank_id
+        , D.win_type
+        , D.week_idx
+        , F.win_date
+        , F.month_idx
+        , F.week_idx
+        , F.total_score_1
+        , F.total_score_2
+        , F.total_score_3
+        , F.judge_cnt
+        <include refid="fromVideo"/>
+        Inner Join tb_video_win_rank_list D ON A.id = D.video_id
+        Inner Join tb_winner_list F ON A.id = F.video_id AND F.video_id = D.video_id
+        AND F.user_id = C.id AND F.week_idx = D.week_idx
+        <where>
+            <if test='user_id != null and user_id != ""'>
+                AND C.id = #{user_id}
+            </if>
+            <if test='win_type != null and win_type != ""'>
+                AND D.win_type = #{win_type}
             </if>
         </where>
         ORDER BY A.updated_at DESC, A.created_at DESC
@@ -53,7 +68,7 @@
                 AND A.id = #{video_id}
             </if>
             <if test='user_id != null and user_id != ""'>
-                AND D.id = #{user_id}
+                AND C.id = #{user_id}
             </if>
         </where>
     </select>

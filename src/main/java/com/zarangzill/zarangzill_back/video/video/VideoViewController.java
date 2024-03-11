@@ -36,7 +36,8 @@ public class VideoViewController {
         LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
         //paramMap.put("user_id" , loginDTO.getUserID());
         paramMap.put("user_id" , 1);
-        model.addAttribute("myVideoList", videoService.selectVideoList(paramMap));
+        model.addAttribute("myVideoList", videoService.selectMyVideoList(paramMap));
+        model.addAttribute("win_type", paramMap.get("win_type"));
         return "/video/myVideoListView";
     }
 
