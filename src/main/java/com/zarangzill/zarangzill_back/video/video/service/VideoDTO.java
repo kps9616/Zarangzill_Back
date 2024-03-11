@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class VideoDTO {
-    int id;
+    int video_id;
     int sound_id;
     int channel_id;
     String video_path;

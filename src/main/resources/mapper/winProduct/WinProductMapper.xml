@@ -9,10 +9,8 @@
              , A.description
              , A.thumbnail
              , A.price
-             , DATE_FORMAT(A.created_at, '%Y-%m-%d %H:%i') AS created_at
-             , DATE_FORMAT(A.updated_at, '%Y-%m-%d %H:%i') AS updated_at
-        From zarangzill.tb_winning_goods_list
-
+             , DATE_FORMAT(A.created_at, '%Y-%m-%d') AS created_at
+             , DATE_FORMAT(A.updated_at, '%Y-%m-%d') AS updated_at
             FROM zarangzill.tb_winning_goods_list A
     </sql>
 

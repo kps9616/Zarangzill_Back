@@ -1,35 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zarangzill.zarangzill_back.video.favoritevideo.service.mapper.FavoriteVideoMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+<mapper namespace="com.zarangzill.zarangzill_back.video.video.service.mapper.VideoMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
 
     <sql id="selectVideo">
         SELECT
-            A.id
-             , A.video_id
-             , A.user_id
-             , A.flag_use
-             , DATE_FORMAT(A.created_at, '%Y-%m-%d %H:%i') AS created_at
-             , DATE_FORMAT(A.updated_at, '%Y-%m-%d %H:%i') AS updated_at
-             , B.flag_use AS video_flag_use
-             , B.video_path
-             , B.video_thumbnail
-             , B.video_description
-             , REPLACE(B.video_tags, ',',' ') AS video_tags
-             , C.name AS userNm
-             , C.profile_image
-        FROM zarangzill.tb_video_favorite A
-             Left JOIN zarangzill.tb_video B ON A.video_id = B.id
-             Left JOIN tb_member C ON A.user_id = C.id
+            A.id AS video_id
+            , A.sound_id
+            , A.channel_id
+            , A.video_path
+            , A.video_thumbnail
+            , A.video_tags
+            , A.video_description
+            , A.flag_open
+            , A.view_cnt
+            , A.flag_use
+            , A.created_at
+            , A.updated_at
+            , B.rank_id
+            , B.win_type
+            , B.week_idx
+            , F.win_date
+            , F.month_idx
+            , F.week_idx
+            , F.total_score_1
+            , F.total_score_2
+            , F.total_score_3
+            , F.judge_cnt
+    </sql>
+    <sql id="fromVideo">
+        FROM tb_video A
+            Left Join tb_video_win_rank_list B ON A.id = B.video_id
+            Left Join tb_channel C ON A.channel_id = C.id
+            Left Join tb_member D ON C.user_id = D.id
+            Left Join tb_winner_list F ON A.id = F.video_id AND D.id = F.user_id AND F.week_idx = B.week_idx
+
     </sql>
 
     <select id="selectVideoList" parameterType="HashMap" resultType="HashMap">
         <include refid="selectVideo"/>
         <where>
             <if test='user_id != null and user_id != ""'>
-                AND A.user_id = #{user_id}
-            </if>
-            <if test='startSrchDate != null and startSrchDate != "" and endSrchDate != null and endSrchDate != ""'>
-                AND DATE_FORMAT(A.created_at, '%y-%m-%d') BETWEEN #{startSrchDate} AND #{endSrchDate}
+                AND D.id = #{user_id}
             </if>
         </where>
         ORDER BY A.updated_at DESC, A.created_at DESC
@@ -38,14 +49,11 @@
     <select id="selectVideoInfo" parameterType="HashMap" resultType="com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoDTO">
         <include refid="selectVideo"/>
         <where>
-            <if test='id != null and id != ""'>
-                AND A.id = #{id}
+            <if test='video_id != null and video_id != ""'>
+                AND A.id = #{video_id}
             </if>
             <if test='user_id != null and user_id != ""'>
-                AND A.user_id = #{user_id}
-            </if>
-            <if test='video_id != null and video_id != ""'>
-                AND A.video_id = #{video_id}
+                AND D.id = #{user_id}
             </if>
         </where>
     </select>
@@ -68,14 +76,15 @@
     -->
     <delete id="deleteVideo" parameterType="com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoDTO">
         DELETE
-        FROM zarangzill.tb_video_favorite
-        WHERE id = #{id}
+        FROM zarangzill.tb_video
+        WHERE id = #{video_id}
     </delete>
 
     <insert id="createVideo" parameterType="com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoDTO">
-        INSERT INTO zarangzill.tb_video_favorite
-            (video_id, user_id, flag_use, created_at)
-        VALUES(#{video_id}, #{user_id}, 'Y', sysdate());
+        INSERT INTO zarangzill.tb_video
+        (sound_id, channel_id, video_path, video_thumbnail, video_tags, video_description, flag_open, view_cnt, flag_use, created_at)
+        VALUES
+        (#{sound_id} ,#{ channel_id} ,#{ video_path} ,#{ video_thumbnail} ,#{ video_tags} ,#{ video_description} ,#{ flag_open} ,#{ view_cnt} ,#{ flag_use} ,sysdate());
     </insert>
 
 

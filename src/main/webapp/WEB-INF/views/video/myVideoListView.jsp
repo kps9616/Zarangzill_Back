@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     
     
-    <link rel="stylesheet" type="text/css"  href="${path}/css/uikit.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/reset.css" >    
-    <link rel="stylesheet" type="text/css"  href="${path}/css/video.css" >
-    <link rel="stylesheet" type="text/css"  href="${path}/css/style.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/uikit.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/reset.css" >    
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/video.css" >
+    <link rel="stylesheet" type="text/css"  href="${path}/resources/css/style.css" >
 
-    <script src="${path}/js/jquery.min.js"></script>
-    <script src="${path}/js/uikit.js"></script>
-    <script src="${path}/js/uikit-icons.js"></script>
-    <script src="${path}/js/script.js"></script>
+    <script src="${path}/resources/js/jquery.min.js"></script>
+    <script src="${path}/resources/js/uikit.js"></script>
+    <script src="${path}/resources/js/uikit-icons.js"></script>
+    <script src="${path}/resources/js/script.js"></script>
     
     <title>자랑질앱</title>
 </head>
@@ -39,30 +39,32 @@
                 <ul>
                 <c:choose>
                 <c:when test="${myVideoList.size() >0 }">
-                    <li>
-                        <div class="mych-mov-img">
-                            <a href="${path}/107쇼츠.html"><img src="${path}/images/thum/thum04.jpg"/></a>
-                        </div>
+                    <c:forEach var="myVideoInfo" items="${myVideoList}">
+                        <li>
+                            <div class="mych-mov-img">
+                                <a href="${path}/subShots?id=${myVideoInfo.video_id}"><img src="${path}${myVideoInfo.video_thumbnail}"/></a>
+                            </div>
 
-                        <div class="mych-mov-info">
-                            <a href="${path}/94-2영상관리.html">
-                                <div class="mych-info-tit">
-                                    완벽한 궁극의 아이돌 ✧트와이스✧<span> #TWICE #트와이스</span>
-                                </div>
-                                <div class="mych-info-badge b_blue">월 우승 2023.07</div>
-                                <div class="mych-view-info">
-                                    <p><span>뷰</span>14,322</p>
-                                    <p><span>심사</span>830 / 55명(27위)</p>
-                                    <p><span uk-icon="icon: cog"></p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+                            <div class="mych-mov-info">
+                                <a href="${path}/94-2영상관리.html">
+                                    <div class="mych-info-tit">
+                                        ${myVideoInfo.video_description}<span>${myVideoInfo.video_tags}</span>
+                                    </div>
+                                    <div class="mych-info-badge b_blue">${myVideoInfo.win_date}</div>
+                                    <div class="mych-view-info">
+                                        <p><span>뷰</span>${myVideoInfo.view_cnt}</p>
+                                        <p><span>심사</span>${myVideoInfo.total_score_1 + myVideoInfo.total_score_2 + myVideoInfo.total_score_3} / ${myVideoInfo.judge_cnt}명(27위)</p>
+                                        <p><span uk-icon="icon: cog"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </c:forEach>
                 </c:when>
                     <c:otherwise>
                         <li>
                             <div class="mych-mov-img">
-                                <a href="${path}/107쇼츠.html"><img src="${path}/images/thum/thum01.jpg"></a>
+                                <a href="${path}/107쇼츠.html"><img src="${path}/upload/thumb/thum01.jpg"></a>
                             </div>
                             <div class="mych-mov-info">
                                 <a href="${path}/94-2영상관리.html">

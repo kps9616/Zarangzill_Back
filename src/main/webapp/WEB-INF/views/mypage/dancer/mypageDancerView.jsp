@@ -60,27 +60,27 @@
         <div class="my-badge">
             <div class="my-badge-bx">
                 <div class="my-icon-img">
-                    <img src="${path}/images/icon/my-channel-gray.png">
+                    <img src="${path}/upload/icon/my-channel-gray.png">
                 </div>
                 <div class="my-badge-tit">채널개설</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
-                    <img src="${path}/images/icon/my-movie-gray.png">
+                    <img src="${path}/upload/icon/my-movie-gray.png">
                 </div>
                 <div class="my-badge-tit">영상 등록</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
                     <span>05</span>
-                    <img src="${path}/images/icon/my-mov-num-gray.png">
+                    <img src="${path}/upload/icon/my-mov-num-gray.png">
                 </div>
                 <div class="my-badge-tit">5개 영상</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
                     <span>10</span>
-                    <img src="${path}/images/icon/my-mov-num-gray.png">
+                    <img src="${path}/upload/icon/my-mov-num-gray.png">
                 </div>
                 <div class="my-badge-tit">10개 영상</div>
             </div>
@@ -88,25 +88,25 @@
         <div class="my-badge">
             <div class="my-badge-bx">
                 <div class="my-badge-img">
-                    <img src="${path}/images/icon/top-100-gray.png">
+                    <img src="${path}/upload/icon/top-100-gray.png">
                 </div>
                 <div class="my-badge-tit">TOP 100일</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-badge-img"> 
-                    <img src="${path}/images/icon/my-week-gray.png">
+                    <img src="${path}/upload/icon/my-week-gray.png">
                 </div>
                 <div class="my-badge-tit">주 우승</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-badge-img">    
-                    <img src="${path}/images/icon/my-month-gray.png">
+                    <img src="${path}/upload/icon/my-month-gray.png">
                 </div>
                 <div class="my-badge-tit">월 우승</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-badge-img">
-                    <img src="${path}/images/icon/year-winner-gray.png">
+                    <img src="${path}/upload/icon/year-winner-gray.png">
                 </div>
                 <div class="my-badge-tit">왕중왕</div>
             </div>
@@ -114,8 +114,8 @@
 
         <div class="my-link mt20 mb20">
         <a href="${path}/channel/myChannelListView"> 내 채널<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="${path}/myVideoListView"> 내 영상<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
-        <a href="${path}/103-2우승상품.jsp"> 우승상품<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/video/myVideoListView"> 내 영상<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
+        <a href="${path}/winProduct/winProductListView"> 우승상품<span uk-icon="icon: chevron-right; ratio: 1.2"></span></a>
         </div>
         
         <div class="my-link mb20">

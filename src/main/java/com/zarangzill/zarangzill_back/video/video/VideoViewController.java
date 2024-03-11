@@ -34,7 +34,8 @@ public class VideoViewController {
     @RequestMapping(value="/myVideoListView")
     public String myVideoListView(@RequestParam Map paramMap, Model model) {
         LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
-        paramMap.put("user_id" , loginDTO.getUserID());
+        //paramMap.put("user_id" , loginDTO.getUserID());
+        paramMap.put("user_id" , 1);
         model.addAttribute("myVideoList", videoService.selectVideoList(paramMap));
         return "/video/myVideoListView";
     }
