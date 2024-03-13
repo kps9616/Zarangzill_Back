@@ -60,27 +60,55 @@
         <div class="my-badge">
             <div class="my-badge-bx">
                 <div class="my-icon-img">
-                    <img src="${path}/upload/icon/my-channel-gray.png">
+                    <c:choose>
+                        <c:when test="${ mypageDancerInfo.channelRgstYn eq 'N' }">
+                            <img src="${path}/upload/icon/my-channel-gray.png">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${path}/upload/icon/my-channel.png">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="my-badge-tit">채널개설</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
-                    <img src="${path}/upload/icon/my-movie-gray.png">
+                    <c:choose>
+                        <c:when test="${ mypageDancerInfo.videoRgstYn eq 'N' }">
+                            <img src="${path}/upload/icon/my-movie-gray.png">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${path}/upload/icon/my-movie.png">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="my-badge-tit">영상 등록</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
                     <span>05</span>
-                    <img src="${path}/upload/icon/my-mov-num-gray.png">
+                    <c:choose>
+                        <c:when test="${ mypageDancerInfo.videoRgstCnt >= 5 }">
+                            <img src="${path}/upload/icon/my-mov-num-gray.png">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${path}/upload/icon/my-mov-num.png">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="my-badge-tit">5개 영상</div>
             </div>
             <div class="my-badge-bx">
                 <div class="my-icon-img">
                     <span>10</span>
-                    <img src="${path}/upload/icon/my-mov-num-gray.png">
+                    <c:choose>
+                        <c:when test="${ mypageDancerInfo.videoRgstCnt >= 10 }">
+                            <img src="${path}/upload/icon/my-mov-num-gray.png">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${path}/upload/icon/my-mov-num.png">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="my-badge-tit">10개 영상</div>
             </div>
@@ -93,14 +121,28 @@
                 <div class="my-badge-tit">TOP 100일</div>
             </div>
             <div class="my-badge-bx">
-                <div class="my-badge-img"> 
-                    <img src="${path}/upload/icon/my-week-gray.png">
+                <div class="my-badge-img">
+                    <c:choose>
+                        <c:when test="${ mypageDancerInfo.weekWinYn eq 'N' }">
+                            <img src="${path}/upload/icon/my-week-gray.png">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${path}/upload/icon/my-week.png">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="my-badge-tit">주 우승</div>
             </div>
             <div class="my-badge-bx">
-                <div class="my-badge-img">    
-                    <img src="${path}/upload/icon/my-month-gray.png">
+                <div class="my-badge-img">
+                    <c:choose>
+                        <c:when test="${ mypageDancerInfo.monthWinYn eq 'N' }">
+                            <img src="${path}/upload/icon/my-month-gray.png">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${path}/upload/icon/my-month.png">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="my-badge-tit">월 우승</div>
             </div>

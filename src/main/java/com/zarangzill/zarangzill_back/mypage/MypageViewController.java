@@ -3,6 +3,7 @@ package com.zarangzill.zarangzill_back.mypage;
 import com.zarangzill.zarangzill_back.board.service.BoardService;
 import com.zarangzill.zarangzill_back.judge.service.JudgeService;
 import com.zarangzill.zarangzill_back.login.service.LoginDTO;
+import com.zarangzill.zarangzill_back.mypage.service.MypageService;
 import com.zarangzill.zarangzill_back.video.reply.service.ReplyService;
 import com.zarangzill.zarangzill_back.video.favoritevideo.service.FavoriteVideoService;
 import com.zarangzill.zarangzill_back.video.videoviewhistory.service.VideoViewHistoryService;
@@ -26,6 +27,8 @@ public class MypageViewController {
     private JudgeService judgeService;
     @Autowired
     private ReplyService replyService;
+    @Autowired
+    private MypageService mypageService;
     @Autowired
     HttpSession httpSession;
 
@@ -79,6 +82,9 @@ public class MypageViewController {
     //마이페이지(댄서)
     @RequestMapping(value="/mypageDancerView")
     public String mypageDancerView(@RequestParam Map ParamMap, Model model) {
+        LoginDTO loginDTO = (LoginDTO) httpSession.getAttribute("loginDto");
+        ParamMap.put("user_id" , loginDTO.getUserID());
+        model.addAttribute("mypageDancerInfo", mypageService.selectMypageDancerInfo(ParamMap));
         return "/mypage/dancer/mypageDancerView";
     }
 
